@@ -45,3 +45,76 @@ BEGIN
 END
 GO
 -- Kết thúc hàm tự động thêm ngôn ngữ
+
+--Tự động thêm mã nhà xuất bản khi thêm nhà xuất bản
+CREATE FUNCTION func_Auto_NXBID()
+RETURNS NVARCHAR(10)
+AS
+BEGIN
+	DECLARE @id_next VARCHAR(10)
+	DECLARE @max INT
+	DECLARE @object VARCHAR(3)
+	BEGIN
+		SET @object = 'NXB'
+	END
+	SELECT @max = COUNT(MaNXB) FROM [NXB]
+	SET @id_next = @object + RIGHT('0' + CAST(@max AS nvarchar(10)), 3)
+	-- Kiểm tra id đã tồn tại chưa
+	WHILE(EXISTS(SELECT MaNXB FROM [NXB] WHERE MaNXB = @id_next))
+	BEGIN
+		SET @max = @max + 1
+		SET @id_next = @object + RIGHT('0' + CAST(@max AS nvarchar(10)), 3)
+	END
+		RETURN @id_next
+END
+GO
+--Kết thúc hàm tự động thêm mã nhà xuất bản
+
+--Tự động tăng mã tác giả khi thêm tác giả
+CREATE FUNCTION func_Auto_TacGiaID()
+RETURNS NVARCHAR(10)
+AS
+BEGIN
+	DECLARE @id_next VARCHAR(10)
+	DECLARE @max INT
+	DECLARE @object VARCHAR(2)
+	BEGIN
+		SET @object = 'TG'
+	END
+	SELECT @max = COUNT(MaTG) FROM [TacGia]
+	SET @id_next = @object + RIGHT('0' + CAST(@max AS nvarchar(10)), 3)
+	-- Kiểm tra id đã tồn tại chưa
+	WHILE(EXISTS(SELECT MaTG FROM [TacGia] WHERE MaTG = @id_next))
+	BEGIN
+		SET @max = @max + 1
+		SET @id_next = @object + RIGHT('0' + CAST(@max AS nvarchar(10)), 3)
+	END
+		RETURN @id_next
+END
+GO
+--Kết thúc hàm tự động thêm mã tác giả
+
+--Tự động tăng Mã loại sách khi loại sách
+CREATE FUNCTION func_Auto_LoaiSachID()
+RETURNS NVARCHAR(10)
+AS
+BEGIN
+	DECLARE @id_next VARCHAR(10)
+	DECLARE @max INT
+	DECLARE @object VARCHAR(2)
+	BEGIN
+		SET @object = 'LS'
+	END
+	SELECT @max = COUNT(MaLoaiSach) FROM [LoaiSach]
+	SET @id_next = @object + RIGHT('0' + CAST(@max AS nvarchar(10)), 3)
+	-- Kiểm tra id đã tồn tại chưa
+	WHILE(EXISTS(SELECT MaLoaiSach FROM [LoaiSach] WHERE MaLoaiSach = @id_next))
+	BEGIN
+		SET @max = @max + 1
+		SET @id_next = @object + RIGHT('0' + CAST(@max AS nvarchar(10)), 3)
+	END
+		RETURN @id_next
+END
+GO
+--Kết thúc hàm tự động thêm mã loại sách
+
