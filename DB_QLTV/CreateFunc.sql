@@ -118,18 +118,23 @@ END
 GO
 --Kết thúc hàm tự động thêm mã loại sách
 
---Tự động tăng Mã đọc giả khi loại sách
-CREATE FUNCTION func_Auto_DocGiaID()
+--Tự động tăng Mã đọc giả
+CREATE FUNCTION func_Auto_DocGiaID(@role TINYINT)
 RETURNS NVARCHAR(10)
 AS
 BEGIN
 	DECLARE @id_next VARCHAR(10)
 	DECLARE @max INT
 	DECLARE @object VARCHAR(2)
-	BEGIN
-		SET @object = 'DG'
-	END
-	SELECT @max = COUNT(MaDocGia) FROM [DocGia]
+	IF @role = N'SV'
+		BEGIN
+			SET @object = 'SV'
+		END
+		ELSE
+			BEGIN
+				SET @object = 'GV'
+			END
+		SELECT @max = COUNT(MaLoaiDG) FROM dbo.DocGia WHERE MaLoaiDG = @role
 	SET @id_next = @object + RIGHT('0' + CAST(@max AS nvarchar(10)), 3)
 	-- Kiểm tra id đã tồn tại chưa
 	WHILE(EXISTS(SELECT MaDocGia FROM [DocGia] WHERE MaDocGia = @id_next))
@@ -140,10 +145,10 @@ BEGIN
 		RETURN @id_next
 END
 GO
---Kết thúc hàm tự động thêm mã loại sách
+--Kết thúc hàm tự động thêm mã độc giả
 
 
---Tự động tăng Mã nhà cung cấp khi loại sách
+--Tự động tăng Mã nhà cung cấp khi cung cấp sách
 CREATE FUNCTION func_Auto_CungCapID()
 RETURNS NVARCHAR(10)
 AS
@@ -157,7 +162,7 @@ BEGIN
 	SELECT @max = COUNT(MaNhaCC) FROM [CungCap]
 	SET @id_next = @object + RIGHT('0' + CAST(@max AS nvarchar(10)), 3)
 	-- Kiểm tra id đã tồn tại chưa
-	WHILE(EXISTS(SELECT MaNhaCC FROM [CungCap] WHERE CungCap = @id_next))
+	WHILE(EXISTS(SELECT MaNhaCC FROM [CungCap] WHERE MaNhaCC = @id_next))
 	BEGIN
 		SET @max = @max + 1
 		SET @id_next = @object + RIGHT('0' + CAST(@max AS nvarchar(10)), 3)
@@ -166,8 +171,6 @@ BEGIN
 END
 GO
 --Kết thúc hàm tự động thêm mã nhà cung cấp
-
-
 
 --Tự động tăng Mã phiếu nhập
 CREATE FUNCTION func_Auto_PhieuNhapID()
@@ -183,7 +186,7 @@ BEGIN
 	SELECT @max = COUNT(MaPhieuNhap) FROM [PhieuNhap]
 	SET @id_next = @object + RIGHT('0' + CAST(@max AS nvarchar(10)), 3)
 	-- Kiểm tra id đã tồn tại chưa
-	WHILE(EXISTS(SELECT MaPhieuNhap FROM [PhieuNhap] WHERE PhieuNhap = @id_next))
+	WHILE(EXISTS(SELECT MaPhieuNhap FROM [PhieuNhap] WHERE MaPhieuNhap = @id_next))
 	BEGIN
 		SET @max = @max + 1
 		SET @id_next = @object + RIGHT('0' + CAST(@max AS nvarchar(10)), 3)
