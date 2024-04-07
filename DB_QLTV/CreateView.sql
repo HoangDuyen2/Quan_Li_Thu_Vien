@@ -30,10 +30,16 @@ INNER JOIN NgonNgu NN ON S.MaNgonNgu = NN.MaNgonNgu;
 --Bắt đầu view Danh sách các sách bị hư
 CREATE VIEW SachBiHu 
 AS
-SELECT DISTINCT s.MaSach, s.TenSach, s.MaLoaiSach, s.NamXB, s.MaNgonNgu, s.MaNXB
+SELECT DISTINCT s.MaSach, s.TenSach, ls.TenLoaiSach, s.NamXB, nn.TenNgonNgu, nxb.TenNXB, tg.TenTG, dg.TenDocGia
 FROM ChiTietPhieuMuonTra ctpmt
 INNER JOIN PhieuPhat pp ON ctpmt.MaPhieuMuonTra = pp.MaPhieuMuonTra 
 INNER JOIN Sach s ON s.MaSach = ctpmt.MaSach
+INNER JOIN LoaiSach ls ON s.MaLoaiSach = ls.MaLoaiSach
+INNER JOIN NgonNgu nn ON s.MaNgonNgu = nn.MaNgonNgu
+INNER JOIN NXB nxb ON s.MaNXB = nxb.MaNXB
+INNER JOIN TacGiaSach tgs ON s.MaSach = tgs.MaSach
+INNER JOIN TacGia tg ON tgs.MaTG = tg.MaTG
+INNER JOIN DocGia dg ON dg.MaDocGia = ctpmt.MaPhieuMuonTra
 --Kết thúc view Danh sách các sách bị hư
 
 --Bắt đầu view Danh sách các độc giả
