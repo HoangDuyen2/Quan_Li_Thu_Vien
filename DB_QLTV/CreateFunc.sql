@@ -118,3 +118,79 @@ END
 GO
 --Kết thúc hàm tự động thêm mã loại sách
 
+--Tự động tăng Mã đọc giả khi loại sách
+CREATE FUNCTION func_Auto_DocGiaID()
+RETURNS NVARCHAR(10)
+AS
+BEGIN
+	DECLARE @id_next VARCHAR(10)
+	DECLARE @max INT
+	DECLARE @object VARCHAR(2)
+	BEGIN
+		SET @object = 'DG'
+	END
+	SELECT @max = COUNT(MaDocGia) FROM [DocGia]
+	SET @id_next = @object + RIGHT('0' + CAST(@max AS nvarchar(10)), 3)
+	-- Kiểm tra id đã tồn tại chưa
+	WHILE(EXISTS(SELECT MaDocGia FROM [DocGia] WHERE MaDocGia = @id_next))
+	BEGIN
+		SET @max = @max + 1
+		SET @id_next = @object + RIGHT('0' + CAST(@max AS nvarchar(10)), 3)
+	END
+		RETURN @id_next
+END
+GO
+--Kết thúc hàm tự động thêm mã loại sách
+
+
+--Tự động tăng Mã nhà cung cấp khi loại sách
+CREATE FUNCTION func_Auto_CungCapID()
+RETURNS NVARCHAR(10)
+AS
+BEGIN
+	DECLARE @id_next VARCHAR(10)
+	DECLARE @max INT
+	DECLARE @object VARCHAR(2)
+	BEGIN
+		SET @object = 'NCC'
+	END
+	SELECT @max = COUNT(MaNhaCC) FROM [CungCap]
+	SET @id_next = @object + RIGHT('0' + CAST(@max AS nvarchar(10)), 3)
+	-- Kiểm tra id đã tồn tại chưa
+	WHILE(EXISTS(SELECT MaNhaCC FROM [CungCap] WHERE CungCap = @id_next))
+	BEGIN
+		SET @max = @max + 1
+		SET @id_next = @object + RIGHT('0' + CAST(@max AS nvarchar(10)), 3)
+	END
+		RETURN @id_next
+END
+GO
+--Kết thúc hàm tự động thêm mã nhà cung cấp
+
+
+
+--Tự động tăng Mã phiếu nhập
+CREATE FUNCTION func_Auto_PhieuNhapID()
+RETURNS NVARCHAR(10)
+AS
+BEGIN
+	DECLARE @id_next VARCHAR(10)
+	DECLARE @max INT
+	DECLARE @object VARCHAR(2)
+	BEGIN
+		SET @object = 'PN'
+	END
+	SELECT @max = COUNT(MaPhieuNhap) FROM [PhieuNhap]
+	SET @id_next = @object + RIGHT('0' + CAST(@max AS nvarchar(10)), 3)
+	-- Kiểm tra id đã tồn tại chưa
+	WHILE(EXISTS(SELECT MaPhieuNhap FROM [PhieuNhap] WHERE PhieuNhap = @id_next))
+	BEGIN
+		SET @max = @max + 1
+		SET @id_next = @object + RIGHT('0' + CAST(@max AS nvarchar(10)), 3)
+	END
+		RETURN @id_next
+END
+GO
+--Kết thúc hàm tự động thêm mã nhà cung cấp
+
+
