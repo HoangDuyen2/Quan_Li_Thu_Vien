@@ -42,7 +42,8 @@ CREATE TABLE DocGia (
 	Email CHAR(50) NOT NULL,
 	CHECK(Email LIKE '%@%'),
 	SoDienThoai CHAR(10) NOT NULL CONSTRAINT CHECK_SoDienThoai CHECK (LEN(SoDienThoai) = 10),
-	GioiTinh NVARCHAR(1) NOT NULL CHECK (GioiTinh IN ('M', 'F')), 	
+	GioiTinh NVARCHAR(1) NOT NULL CHECK (GioiTinh IN ('M', 'F')),
+	NgayTao datetime,
 	MaLoaiDG nvarchar(10) CONSTRAINT FK_DocGia_LoaiDocGia FOREIGN KEY REFERENCES LoaiDocGia(MaLoaiDG)	 
 )
 
