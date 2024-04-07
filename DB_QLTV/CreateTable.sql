@@ -136,11 +136,13 @@ CREATE TABLE PhieuPhat(
 )
 
   --Tạo bảng Chi tiết phiếu phạt
-CREATE TABLE ChiTietPhieuPhat(
-	MaPhieuMuonTra nvarchar(10) CONSTRAINT FK_CTPP_MPMT FOREIGN KEY REFERENCES PhieuMuonTra(MaPhieuMuonTra),
-	LoaiPhat nvarchar(10) CONSTRAINT FK_CTPP_PhieuPhat FOREIGN KEY REFERENCES Phat(LoaiPhat),
-	CONSTRAINT PK_ChiTietPhieuPhat PRIMARY KEY (MaPhieuMuonTra, LoaiPhat)
-)
+CREATE TABLE [dbo].[ChiTietPhieuPhat] (
+    [MaPhieuPhat] NVARCHAR (10) NOT NULL,
+    [LoaiPhat]       NVARCHAR (20) NOT NULL,
+    CONSTRAINT [PK_ChiTietPhieuPhat] PRIMARY KEY CLUSTERED ([MaPhieuPhat] ASC, [LoaiPhat] ASC),
+    CONSTRAINT [FK_CTPP_MPP] FOREIGN KEY ([MaPhieuPhat]) REFERENCES [dbo].[PhieuPhat] ([MaPhieuPhat]),
+    CONSTRAINT [FK_CTPP_PhieuPhat] FOREIGN KEY ([LoaiPhat]) REFERENCES [dbo].[Phat] ([LoaiPhat])
+);
 
   --Tạo bảng Cung cấp
 CREATE TABLE CungCap ( 
