@@ -196,4 +196,13 @@ END
 GO
 --Kết thúc hàm tự động thêm mã nhà phiếu nhập
 
-
+--Bắt đầu hàm danh sách nhân viên theo tổ
+CREATE FUNCTION [dbo].[func_NhanVienTheoTo] (@string NVARCHAR(50))
+RETURNS @NVList TABLE (MaNV NVARCHAR(10), TenNV NVARCHAR(50), GioiTinh CHAR(1), DiaChi NVARCHAR(255), SDT NVARCHAR(10), TenTo NVARCHAR(50))
+AS BEGIN
+	INSERT INTO @NVList SELECT MaNV, TenNV, GioiTinh, DiaChi, SDT, nt.TenTo
+	FROM dbo.NhanVien nv INNER JOIN NhomTo nt ON nv.MaTo = nt.MaTo
+	WHERE nv.MaTo = @string
+	RETURN
+END
+--Kết thúc hàm nhân viên theo tổ
