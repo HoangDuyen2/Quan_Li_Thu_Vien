@@ -22,5 +22,10 @@ namespace Quan_Li_Thu_Vien
             FDanhSachCacSach danhSachCacSach = new FDanhSachCacSach();
             danhSachCacSach.ShowDialog();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
