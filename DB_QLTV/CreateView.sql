@@ -59,24 +59,28 @@ INNER JOIN NhanVien tt ON nv.MaTT = tt.MaNV
 
 --Bắt đầu view danh sách các sách đang mượn
 CREATE VIEW SachMuonView AS
-SELECT DISTINCT s.MaSach, s.TenSach, s.NamXB, nn.TenNgonNgu, nxb.TenNXB, ls.TenLoaiSach
+SELECT DISTINCT s.MaSach, s.TenSach, s.NamXB, nn.TenNgonNgu, nxb.TenNXB, ls.TenLoaiSach, tg.TenTG
 FROM Sach s
 INNER JOIN NgonNgu nn ON s.MaNgonNgu = nn.MaNgonNgu
 INNER JOIN NXB nxb ON s.MaNXB = nxb.MaNXB
 INNER JOIN LoaiSach ls ON s.MaLoaiSach = ls.MaLoaiSach
 INNER JOIN ChiTietPhieuMuonTra ctpm ON ctpm.MaSach = s.MaSach
+INNER JOIN TacGiaSach tgs ON tgs.MaSach = s.MaSach
+INNER JOIN TacGia tg ON tg.MaTG = tgs.MaTG
 WHERE ctpm.NgayTra IS NULL
 -- Kết thúc view danh sách các cuốn sách đang mượn
 
 --Danh sách các cuốn sách đã mượn trong ngày
 CREATE VIEW SachDaMuonTrongNgay AS
-SELECT DISTINCT s.MaSach, s.TenSach, s.NamXB, nn.TenNgonNgu, nxb.TenNXB, ls.TenLoaiSach
+SELECT DISTINCT s.MaSach, s.TenSach, s.NamXB, nn.TenNgonNgu, nxb.TenNXB, ls.TenLoaiSach, tg.TenTG
 FROM Sach s
 INNER JOIN NgonNgu nn ON s.MaNgonNgu = nn.MaNgonNgu
 INNER JOIN NXB nxb ON s.MaNXB = nxb.MaNXB
 INNER JOIN LoaiSach ls ON s.MaLoaiSach = ls.MaLoaiSach
 INNER JOIN ChiTietPhieuMuonTra ctpm ON ctpm.MaSach = s.MaSach
 INNER JOIN PhieuMuonTra pmt ON ctpm.MaPhieuMuonTra = pmt.MaPhieuMuonTra
+INNER JOIN TacGiaSach tgs ON s.MaSach = tgs.MaSach
+INNER JOIN TacGia tg ON tgs.MaTG = tg.MaTG
 WHERE pmt.NgayMuon = CONVERT(date,GETDATE())
 --Kết thúc view danh sách các cuốn sách đã mượn trong ngày
 
