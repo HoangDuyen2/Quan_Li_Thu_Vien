@@ -383,3 +383,110 @@ BEGIN
     END;
 END;
 --Kiểm tra phiếu phạt khi trả sách 
+
+
+
+--Bắt đầu trigger NgayTao trong bảng DocGia
+CREATE TRIGGER trg_Inserted_Updated_DocGia
+ON dbo.DocGia
+FOR INSERT, UPDATE
+AS
+DECLARE @NgayTao DATETIME
+DECLARE @MaDocGiaID NVARCHAR(10)
+BEGIN
+	IF TRIGGER_NESTLEVEL() > 1
+    RETURN
+
+	SELECT @MaDocGiaID = Inserted.MaDocGia, @NgayTao = Inserted.NgayTao
+	FROM Inserted
+    -- Inserted
+	IF (@NgayTao IS NULL)
+	BEGIN
+        -- Tự động tạo ngày tạo
+		SET @NgayTao = GETDATE()
+		UPDATE DocGia SET NgayTao = @NgayTao WHERE MaDocGia = @MaDocGiaID
+
+        -- Tự động tạo ID
+	    SET @MaDocGiaID = dbo.func_Auto_DocGiaID()
+	    UPDATE [DocGia] SET MaDocGia = @MaDocGiaID WHERE MaDocGia = 'XX000'
+	END
+    -- Updated
+	ELSE
+	BEGIN
+        -- Tự động tạo ngày cập nhật
+		SET @NgayTao = GETDATE()
+		UPDATE dbo.DocGia SET NgayTao = @NgayTao WHERE MaDocGia = @MaDocGiaID
+	END
+END
+GO
+
+--Bắt đầu trigger NCC trong bảng CungCap
+CREATE TRIGGER trg_Inserted_Updated_CungCap
+ON dbo.CungCap
+FOR INSERT, UPDATE
+AS
+DECLARE @NgayTao DATETIME
+DECLARE @MaCungCapID NVARCHAR(10)
+BEGIN
+	IF TRIGGER_NESTLEVEL() > 1
+    RETURN
+
+	SELECT @MaCungCapID = Inserted.MaNhaCC, @NgayTao = Inserted.NgayTao
+	FROM Inserted
+    -- Inserted
+	IF (@NgayTao IS NULL)
+	BEGIN
+        -- Tự động tạo ngày tạo
+		SET @NgayTao = GETDATE()
+		UPDATE CungCap SET NgayTao = @NgayTao WHERE MaNhaCC = @MaCungCapID
+
+        -- Tự động tạo ID
+	    SET @MaCungCapID = dbo.func_Auto_CungCapID()
+	    UPDATE [CungCap] SET MaNhaCC = @MaCungCapID WHERE MaNhaCC = 'XX000'
+	END
+    -- Updated
+	ELSE
+	BEGIN
+        -- Tự động tạo ngày cập nhật
+		SET @NgayTao = GETDATE()
+		UPDATE dbo.CungCap SET NgayTao = @NgayTao WHERE MaNhaCC = @MaCungCapID
+	END
+END
+GO
+
+
+--Bắt đầu trigger phiếu nhập trong bảng PhieuNhap
+CREATE TRIGGER trg_Inserted_Updated_PhieuNhap
+ON dbo.PhieuNhap
+FOR INSERT, UPDATE
+AS
+DECLARE @NgayTao DATETIME
+DECLARE @MaPhieuNhapID NVARCHAR(10)
+BEGIN
+	IF TRIGGER_NESTLEVEL() > 1
+    RETURN
+
+	SELECT @MaPhieuNhapID = Inserted.MaPhieuNhap, @NgayTao = Inserted.NgayTao
+	FROM Inserted
+    -- Inserted
+	IF (@NgayTao IS NULL)
+	BEGIN
+        -- Tự động tạo ngày tạo
+		SET @NgayTao = GETDATE()
+		UPDATE PhieuNhap SET NgayTao = @NgayTao WHERE MaPhieuNhap = @MaPhieuNhapID
+
+        -- Tự động tạo ID
+	    SET @MaPhieuNhapID = dbo.func_Auto_PhieuNhapID()
+	    UPDATE [PhieuNhap] SET MaPhieuNhap = @MaPhieuNhapID WHERE MaPhieuNhap = 'XX000'
+	END
+    -- Updated
+	ELSE
+	BEGIN
+        -- Tự động tạo ngày cập nhật
+		SET @NgayTao = GETDATE()
+		UPDATE dbo.PhieuNhap SET NgayTao = @NgayTao WHERE MaPhieuNhap = @MaPhieuNhapID
+	END
+END
+GO
+
+
