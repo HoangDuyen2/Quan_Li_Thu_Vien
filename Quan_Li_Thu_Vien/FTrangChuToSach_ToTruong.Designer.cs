@@ -137,6 +137,7 @@
             this.ClientSize = new System.Drawing.Size(1052, 597);
             this.Controls.Add(this.panelNen);
             this.Name = "FTrangChuToSach_ToTruong";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FTrangChuToSach_ToTruong";
             this.panelNen.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picBoxNen)).EndInit();
