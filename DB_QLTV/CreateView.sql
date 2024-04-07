@@ -18,7 +18,7 @@ INNER JOIN
 
 --Bắt đầu view Danh sách các sách trong dữ liệu
 CREATE VIEW SachView AS
-SELECT S.MaSach, S.TenSach, NXB.TenNXB AS TenNXB, LS. TenLoaiSach AS TenLoaiSach, S.NamXB, NN.TenNgonNgu AS TenNgonNgu, S.SoLuongTon, S.SoLuongSach, TG.TenTG
+SELECT DISTINCT S.MaSach, S.TenSach, NXB.TenNXB AS TenNXB, LS. TenLoaiSach AS TenLoaiSach, S.NamXB, NN.TenNgonNgu AS TenNgonNgu, S.SoLuongTon, S.SoLuongSach, TG.TenTG
 FROM Sach S
 INNER JOIN TacGiaSach TGS ON S.MaSach = TGS.MaSach
 INNER JOIN TacGia TG ON TGS.MaTG = TG.MaTG
@@ -35,4 +35,42 @@ FROM ChiTietPhieuMuonTra ctpmt
 INNER JOIN PhieuPhat pp ON ctpmt.MaPhieuMuonTra = pp.MaPhieuMuonTra 
 INNER JOIN Sach s ON s.MaSach = ctpmt.MaSach
 --Kết thúc view Danh sách các sách bị hư
+
+--Bắt đầu view Danh sách các độc giả
+CREATE VIEW DocGiaView AS
+SELECT DISTINCT DG.MaDocGia, DG.TenDocGia, DG.GioiTinh, DG.SoDienThoai, DG.Email, LDG.TenLoaiDG AS LoaiDocGia
+FROM DocGia DG
+INNER JOIN LoaiDocGia LDG ON DG. MaLoaiDG = LDG. MaLoaiDG;
+--Kết thúc view Danh sách các độc giả
+
+--Bắt đầu view Danh sách các nhân viên
+CREATE VIEW NhanVienView AS
+SELECT DISTINCT nv.MaNV, nv.TenNV, nv.GioiTinh, nt.TenTo, tt.TenNV AS TenToTruong, nv.SDT
+FROM NhanVien nv
+INNER JOIN dbo.NhomTo nt ON nv.MaTo = nt.MaTo
+INNER JOIN NhanVien tt ON nv.MaTT = tt.MaNV
+--Kết thúc view danh sách nhân viên
+
+--Bắt đầu view danh sách các sách đang mượn
+CREATE VIEW SachMuonView AS
+SELECT DISTINCT s.MaSach, s.TenSach, s.NamXB, nn.TenNgonNgu, nxb.TenNXB, ls.TenLoaiSach
+FROM Sach s
+INNER JOIN NgonNgu nn ON s.MaNgonNgu = nn.MaNgonNgu
+INNER JOIN NXB nxb ON s.MaNXB = nxb.MaNXB
+INNER JOIN LoaiSach ls ON s.MaLoaiSach = ls.MaLoaiSach
+INNER JOIN ChiTietPhieuMuonTra ctpm ON ctpm.MaSach = s.MaSach
+WHERE ctpm.NgayTra IS NULL
+-- Kết thúc view danh sách các cuốn sách đang mượn
+
+--Danh sách các cuốn sách đã mượn trong ngày
+CREATE VIEW SachDaMuonTrongNgay AS
+SELECT DISTINCT s.MaSach, s.TenSach, s.NamXB, nn.TenNgonNgu, nxb.TenNXB, ls.TenLoaiSach
+FROM Sach s
+INNER JOIN NgonNgu nn ON s.MaNgonNgu = nn.MaNgonNgu
+INNER JOIN NXB nxb ON s.MaNXB = nxb.MaNXB
+INNER JOIN LoaiSach ls ON s.MaLoaiSach = ls.MaLoaiSach
+INNER JOIN ChiTietPhieuMuonTra ctpm ON ctpm.MaSach = s.MaSach
+INNER JOIN PhieuMuonTra pmt ON ctpm.MaPhieuMuonTra = pmt.MaPhieuMuonTra
+WHERE pmt.NgayMuon = CONVERT(date,GETDATE())
+--Kết thúc view danh sách các cuốn sách đã mượn trong ngày
 
