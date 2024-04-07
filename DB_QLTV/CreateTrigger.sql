@@ -345,8 +345,6 @@ BEGIN
 END;
 --Kết thúc trigger Cập nhật số lượng sách khi nhập sách
 
-
-
 --Kiểm tra phiếu phạt khi trả sách 
 CREATE TRIGGER UpdateStock_AfterLoanUpdate
 ON ChiTietPhieuMuonTra
