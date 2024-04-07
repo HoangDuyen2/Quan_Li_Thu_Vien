@@ -332,3 +332,15 @@ BEGIN
 END;
 --Kết thúc trigger kiểm tra nhân viên khi cập nhật/Chèn dữ liệu
 
+--Bắt đầu trigger Cập nhật số lượng sách khi nhập sách
+CREATE TRIGGER CapNhatSachKhiNhap
+ON ChiTietPhieuNhap
+AFTER INSERT
+AS
+BEGIN
+    UPDATE Sach
+    SET SoLuongSach = Sach.SoLuongSach + i.SL
+    FROM Sach
+    INNER JOIN inserted i ON Sach.MaSach = i.MaSach;
+END;
+--Kết thúc trigger Cập nhật số lượng sách khi nhập sách
