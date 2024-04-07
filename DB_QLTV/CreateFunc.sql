@@ -194,6 +194,6 @@ BEGIN
 		RETURN @id_next
 END
 GO
---Kết thúc hàm tự động thêm mã nhà cung cấp
+--Kết thúc hàm tự động thêm mã nhà phiếu nhập
 
 
