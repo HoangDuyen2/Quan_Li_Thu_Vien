@@ -265,6 +265,123 @@ END
 GO
 --Kết thúc NgayTao trong bảng Loại sách
 
+--Bắt đầu trigger kiểm tra số lượng sách còn lại trong bảng Chi tiết phiếu mượn trả
+CREATE TRIGGER KiemTraSoLuongSachConLai
+ON ChiTietPhieuMuonTra
+INSTEAD OF INSERT
+AS
+BEGIN
+ -- Kiểm tra số lượng sách còn lại
+	DECLARE @SoLuongTon INT;
+	SELECT @SoLuongTon = Sach.SoLuongTon
+	FROM Sach
+	WHERE Sach.MaSach IN (SELECT inserted.MaSach FROM inserted);
+	 -- 
+	IF @SoLuongTon > 1
+	BEGIN
+ -- Nếu còn sách thêm phiếu mượn vào PhieuMuonTra
+		INSERT INTO ChiTietPhieuMuonTra (MaPhieuMuonTra, MaSach, TinhTrang, NgayTra)
+		SELECT MaPhieuMuonTra, MaSach, TinhTrang, NgayTra
+		FROM inserted;
+ 
+ -- Cập nhật sô lượng sách
+		UPDATE Sach
+		SET SoLuongTon = SoLuongTon - 1
+		WHERE Sach.MaSach IN (SELECT inserted.MaSach FROM inserted);
+	END
+	ELSE
+		BEGIN
+	 -- Nếu không còn sách, không thêm phiếu mượn và thông báo lỗi
+			RAISERROR ('Số Lượng sách không đủ để mượn' , 16, 1)
+			ROLLBACK;
+		END
+END
+--Kết thúc trigger kiểm tra số lượng sách còn lại trong bảng Chi tiết phiếu mượn trả
+
+--Bắt đầu trigger kiểm tra nhân viên
+CREATE TRIGGER CheckNV
+ON NhanVien
+AFTER INSERT, UPDATE
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    IF EXISTS (
+        SELECT 1
+        FROM inserted
+        WHERE NgaySinh < '1900-01-01'
+    )
+    BEGIN
+        RAISERROR('Ngày sinh không hợp lệ', 16, 1);
+        ROLLBACK;
+        RETURN;
+    END
+
+    IF EXISTS (
+        SELECT 1
+        FROM INSERTED i
+        WHERE LEN(i.SDT) <> 10 OR i.SDT NOT LIKE '[0-9]%'
+    )
+    BEGIN
+        RAISERROR('Số điện thoại không hợp lệ', 16, 1);
+        ROLLBACK;
+        RETURN;
+    END
+
+    PRINT 'Cập nhật thành công';
+END;
+--Kết thúc trigger kiểm tra nhân viên khi cập nhật/Chèn dữ liệu
+
+--Bắt đầu trigger Cập nhật số lượng sách khi nhập sách
+CREATE TRIGGER CapNhatSachKhiNhap
+ON ChiTietPhieuNhap
+AFTER INSERT
+AS
+BEGIN
+    UPDATE Sach
+    SET SoLuongSach = Sach.SoLuongSach + i.SL
+    FROM Sach
+    INNER JOIN inserted i ON Sach.MaSach = i.MaSach;
+END;
+--Kết thúc trigger Cập nhật số lượng sách khi nhập sách
 
 
 
+--Kiểm tra phiếu phạt khi trả sách 
+CREATE TRIGGER UpdateStock_AfterLoanUpdate
+ON ChiTietPhieuMuonTra
+AFTER UPDATE
+AS
+BEGIN
+    DECLARE @MaSach nchar(10);
+    DECLARE @OldTrangThai nvarchar(255);
+    DECLARE @NewTrangThai nvarchar(255);
+    DECLARE @HasFine BIT;
+
+    SELECT
+        @MaSach = i.MaSach,
+        @OldTrangThai = d.TinhTrang,
+        @NewTrangThai = i.TinhTrang,
+        @HasFine = (CASE WHEN EXISTS(SELECT 1 FROM ChiTietPhieuPhat WHERE MaPhieuMuonTra = i.MaPhieuMuonTra) THEN 1 ELSE 0 END)
+    FROM
+        INSERTED i
+    JOIN
+        DELETED d ON i.MaPhieuMuonTra = d.MaPhieuMuonTra;
+
+    IF @OldTrangThai != @NewTrangThai AND @HasFine = 0
+    BEGIN
+        IF @OldTrangThai = N'Đang mượn' AND @NewTrangThai = N'Đã trả'
+        BEGIN
+            UPDATE Sach
+            SET SoLuongTon = SoLuongTon + 1
+            WHERE MaSach = @MaSach;
+        END
+        ELSE IF @OldTrangThai = N'Đã trả' AND @NewTrangThai = N'Đang mượn'
+        BEGIN
+            UPDATE Sach
+            SET SoLuongTon = SoLuongTon - 1
+            WHERE MaSach = @MaSach;
+        END;
+    END;
+END;
+--Kiểm tra phiếu phạt khi trả sách 
