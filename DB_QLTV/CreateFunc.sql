@@ -230,3 +230,75 @@ AS BEGIN
 	RETURN
 END
 --Kết thúc hàm nhân viên theo tổ
+-- Tự động tăng thêm Mã Phiếu Mượn Trả khi thêm Phiếu Mượn Trả
+CREATE FUNCTION func_Auto_PhieuMuonTraID()
+RETURNS NVARCHAR(10)
+AS
+BEGIN
+	DECLARE @id_next VARCHAR(10)
+	DECLARE @max INT
+	DECLARE @object VARCHAR(2)
+	BEGIN
+		SET @object = 'MT'
+	END
+	SELECT @max = COUNT(MaPhieuMuonTra) FROM [PhieuMuonTra]
+	SET @id_next = @object + RIGHT('00' + CAST(@max AS nvarchar(10)), 4)
+	-- Kiểm tra id đã tồn tại chưa
+	WHILE(EXISTS(SELECT MaPhieuMuonTra FROM [PhieuMuonTra] WHERE MaPhieuMuonTra = @id_next))
+	BEGIN
+		SET @max = @max + 1
+		SET @id_next = @object + RIGHT('0' + CAST(@max AS nvarchar(10)), 3)
+	END
+		RETURN @id_next
+END
+GO
+--Kết thúc hàm tự động thêm Phiếu Mượn Trả
+-- Tự động tăng thêm Mã Phiếu Phạt khi thêm Phiếu Phạt
+CREATE FUNCTION func_Auto_PhieuPhatID()
+RETURNS NVARCHAR(10)
+AS
+BEGIN
+	DECLARE @id_next VARCHAR(10)
+	DECLARE @max INT
+	DECLARE @object VARCHAR(2)
+	BEGIN
+		SET @object = 'PP'
+	END
+	SELECT @max = COUNT(MaPhieuPhat) FROM [PhieuPhat]
+	SET @id_next = @object + RIGHT('00' + CAST(@max AS nvarchar(10)), 4)
+	-- Kiểm tra id đã tồn tại chưa
+	WHILE(EXISTS(SELECT MaPhieuPhat FROM [PhieuPhat] WHERE MaPhieuPhat = @id_next))
+	BEGIN
+		SET @max = @max + 1
+		SET @id_next = @object + RIGHT('0' + CAST(@max AS nvarchar(10)), 3)
+	END
+		RETURN @id_next
+END
+GO
+--Kết thúc hàm tự động thêm Phiếu Phạt
+-- Tự động tăng thêm Mã Tổ khi thêm Tổ
+CREATE FUNCTION func_Auto_ToID()
+RETURNS NVARCHAR(10)
+AS
+BEGIN
+	DECLARE @id_next VARCHAR(10)
+	DECLARE @max INT
+	DECLARE @object VARCHAR(2)
+	BEGIN
+		SET @object = 'TO'
+	END
+	SELECT @max = COUNT(MaTo) FROM [NhomTo]
+	SET @id_next = @object + RIGHT('0' + CAST(@max AS nvarchar(10)), 2)
+	-- Kiểm tra id đã tồn tại chưa
+	WHILE(EXISTS(SELECT MaTo FROM [NhomTo] WHERE MaTo = @id_next))
+	BEGIN
+		SET @max = @max + 1
+		SET @id_next = @object + RIGHT('0' + CAST(@max AS nvarchar(10)), 3)
+	END
+		RETURN @id_next
+END
+GO
+--Kết thúc hàm tự động thêm Tổ
+
+
+
