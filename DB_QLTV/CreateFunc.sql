@@ -1,3 +1,27 @@
+--Tự động tăng mã nhân viên khi thêm nhân viên
+CREATE FUNCTION func_Auto_NhanVienID()
+RETURNS NVARCHAR(10)
+AS
+BEGIN
+	DECLARE @id_next VARCHAR(10)
+	DECLARE @max INT
+	DECLARE @object VARCHAR(2)
+	BEGIN
+		SET @object = 'NV'
+	END
+	SELECT @max = COUNT(MaNV) FROM [NhanVien]
+	SET @id_next = @object + RIGHT('0' + CAST(@max AS nvarchar(10)), 3)
+	-- Kiểm tra id đã tồn tại chưa
+	WHILE(EXISTS(SELECT MaNV FROM [NhanVien] WHERE MaNV = @id_next))
+	BEGIN
+		SET @max = @max + 1
+		SET @id_next = @object + RIGHT('0' + CAST(@max AS nvarchar(10)), 3)
+	END
+		RETURN @id_next
+END
+GO
+--Kết thúc hàm Tự động tăng mã nhân viên khi thêm nhân viên
+
 -- Tự động tăng thêm Mã sách khi thêm sách
 CREATE FUNCTION func_Auto_bookID()
 RETURNS NVARCHAR(10)
