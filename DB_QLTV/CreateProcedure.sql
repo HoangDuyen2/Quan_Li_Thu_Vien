@@ -76,3 +76,35 @@ AS
 		WHERE nv.MaTo = @MaTo
 	END
 --Kết thúc xem nhân viên theo mã tổ của người tổ trưởng
+
+--Bắt đầu thêm Sách mới
+CREATE PROCEDURE InsertBook (@TenSach nvarchar(50),
+								@TenNXB nvarchar(50),
+								@TenLoaiSach nvarchar(50),
+								@TenNgonNgu nvarchar(50),
+								@NamXB int,
+								@SoLuongTon varchar(10),
+								@SoLuongSach varchar(50))
+AS
+BEGIN
+	BEGIN TRANSACTION Tran_InsertBook
+	BEGIN TRY
+		DECLARE @MaNXB NVARCHAR(10)
+		SET @MaNXB = (SELECT @TenNXB FROM NXB WHERE @TenNXB = NXB.TenNXB)
+		DECLARE @MaLoaiSach NVARCHAR(10)
+		SET @MaLoaiSach = (SELECT @TenLoaiSach FROM LoaiSach WHERE @TenLoaiSach = LoaiSach.TenLoaiSach)
+		DECLARE @MaNgonNgu NVARCHAR(10)
+		SET @MaNgonNgu = (SELECT @TenNgonNgu FROM NgonNgu WHERE @TenNgonNgu = NgonNgu.TenNgonNgu)
+
+		INSERT INTO dbo.Sach(TenSach, MaNXB, MaLoaiSach, MaNgonNgu, NamXB, SoLuongTon, SoLuongSach)
+		VALUES (@TenSach, @MaNXB, @MaLoaiSach, @MaNgonNgu, @NamXB, @SoLuongTon, @SoLuongSach)
+
+		COMMIT TRANSACTION Tran_InsertBook
+    END TRY
+	BEGIN CATCH
+		PRINT('Thêm không thành công!')
+		COMMIT TRANSACTION Tran_InsertBook
+	END CATCH
+END
+GO
+--Kết thúc thêm sách mới
