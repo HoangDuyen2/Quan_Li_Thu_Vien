@@ -108,3 +108,27 @@ BEGIN
 END
 GO
 --Kết thúc thêm sách mới
+
+--Bắt đầu thêm tác giả
+CREATE PROCEDURE InsertTacGia (@TenTG nvarchar(50),
+								@GioiTinh nvarchar(1),
+								@NamSinh int,
+								@NamMat int,
+								@QueQuan varchar(255))
+AS
+BEGIN
+	BEGIN TRANSACTION Tran_InsertTacGia
+	BEGIN TRY
+
+		INSERT INTO dbo.TacGia(TenTG, GioiTinh, NamSinh, NamMat, QueQuan)
+		VALUES (@TenTG, @GioiTinh, @NamSinh, @NamMat, @QueQuan)
+
+		COMMIT TRANSACTION Tran_InsertTacGia
+    END TRY
+	BEGIN CATCH
+		PRINT('Thêm không thành công!')
+		COMMIT TRANSACTION Tran_InsertTacGia
+	END CATCH
+END
+GO
+--Kết thúc thêm tác giả
