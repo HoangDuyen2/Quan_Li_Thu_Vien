@@ -39,7 +39,8 @@ INNER JOIN NgonNgu nn ON s.MaNgonNgu = nn.MaNgonNgu
 INNER JOIN NXB nxb ON s.MaNXB = nxb.MaNXB
 INNER JOIN TacGiaSach tgs ON s.MaSach = tgs.MaSach
 INNER JOIN TacGia tg ON tgs.MaTG = tg.MaTG
-INNER JOIN DocGia dg ON dg.MaDocGia = ctpmt.MaPhieuMuonTra
+INNER JOIN PhieuMuonTra pmt ON pmt.MaPhieuMuonTra = ctpmt.MaPhieuMuonTra
+INNER JOIN DocGia dg ON dg.MaDocGia = pmt.MaDocGia
 --Kết thúc view Danh sách các sách bị hư
 
 --Bắt đầu view Danh sách các độc giả
