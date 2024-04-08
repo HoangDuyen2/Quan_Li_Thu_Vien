@@ -90,6 +90,41 @@ BEGIN
 END
 --Kết thúc kiểm tra số điện thoại của nhân viên
 
+--Trigger NgayTao trong bảng NhanVien
+CREATE TRIGGER trg_Inserted_Updated_NhanVien
+ON Sach
+FOR INSERT, UPDATE
+AS
+DECLARE @NgayTao DATETIME
+DECLARE @nhanVienID NVARCHAR(10)
+BEGIN
+	IF TRIGGER_NESTLEVEL() > 1
+    RETURN
+
+	SELECT @nhanVienID = Inserted.MaNV, @NgayTao = Inserted.NgayTao
+	FROM Inserted
+    -- Inserted
+	IF (@NgayTao IS NULL)
+	BEGIN
+        -- Tự động tạo ngày tạo
+		SET @NgayTao = GETDATE()
+		UPDATE NhanVien SET NgayTao = @NgayTao WHERE MaNV = @nhanVienID
+
+        -- Tự động tạo ID
+	    SET @nhanVienID = dbo.func_Auto_NhanVienID()
+	    UPDATE [NhanVien] SET MaNV = @nhanVienID WHERE MaNV = 'XX000'
+	END
+    -- Updated
+	ELSE
+	BEGIN
+        -- Tự động tạo ngày cập nhật
+		SET @NgayTao = GETDATE()
+		UPDATE dbo.NhanVien SET NgayTao = @NgayTao WHERE MaNV = @nhanVienID
+	END
+END
+GO
+--Kết thúc trigger NgayTao trong bảng NhanVien
+		 
 --Trigger NgayTao trong bảng Sach
 CREATE TRIGGER trg_Inserted_Updated_Book
 ON Sach
