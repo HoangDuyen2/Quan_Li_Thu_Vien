@@ -31,10 +31,10 @@
             this.panelNen = new System.Windows.Forms.Panel();
             this.picBoxNen = new System.Windows.Forms.PictureBox();
             this.panelMucLuc = new System.Windows.Forms.Panel();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnDSNhanVien = new System.Windows.Forms.Button();
+            this.btnDanhSachSachMuonTrongNgay = new System.Windows.Forms.Button();
+            this.btnDanhSachSachDangMuon = new System.Windows.Forms.Button();
+            this.btnDanhSachCacSachBiHu = new System.Windows.Forms.Button();
             this.btnXemDSSach = new System.Windows.Forms.Button();
             this.panelNen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxNen)).BeginInit();
@@ -63,10 +63,10 @@
             // panelMucLuc
             // 
             this.panelMucLuc.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panelMucLuc.Controls.Add(this.button4);
-            this.panelMucLuc.Controls.Add(this.button3);
-            this.panelMucLuc.Controls.Add(this.button2);
-            this.panelMucLuc.Controls.Add(this.button1);
+            this.panelMucLuc.Controls.Add(this.btnDSNhanVien);
+            this.panelMucLuc.Controls.Add(this.btnDanhSachSachMuonTrongNgay);
+            this.panelMucLuc.Controls.Add(this.btnDanhSachSachDangMuon);
+            this.panelMucLuc.Controls.Add(this.btnDanhSachCacSachBiHu);
             this.panelMucLuc.Controls.Add(this.btnXemDSSach);
             this.panelMucLuc.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.panelMucLuc.Location = new System.Drawing.Point(-1, 2);
@@ -74,50 +74,53 @@
             this.panelMucLuc.Size = new System.Drawing.Size(213, 595);
             this.panelMucLuc.TabIndex = 0;
             // 
-            // button4
+            // btnDSNhanVien
             // 
-            this.button4.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button4.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(-1, 431);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(214, 93);
-            this.button4.TabIndex = 4;
-            this.button4.Text = "Danh sách nhân viên";
-            this.button4.UseVisualStyleBackColor = false;
+            this.btnDSNhanVien.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnDSNhanVien.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDSNhanVien.Location = new System.Drawing.Point(-1, 431);
+            this.btnDSNhanVien.Name = "btnDSNhanVien";
+            this.btnDSNhanVien.Size = new System.Drawing.Size(214, 93);
+            this.btnDSNhanVien.TabIndex = 4;
+            this.btnDSNhanVien.Text = "Danh sách nhân viên";
+            this.btnDSNhanVien.UseVisualStyleBackColor = false;
+            this.btnDSNhanVien.Click += new System.EventHandler(this.btnDSNhanVien_Click);
             // 
-            // button3
+            // btnDanhSachSachMuonTrongNgay
             // 
-            this.button3.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button3.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(-1, 338);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(214, 93);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "     Danh sách sách      bị hư";
-            this.button3.UseVisualStyleBackColor = false;
+            this.btnDanhSachSachMuonTrongNgay.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnDanhSachSachMuonTrongNgay.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDanhSachSachMuonTrongNgay.Location = new System.Drawing.Point(-1, 338);
+            this.btnDanhSachSachMuonTrongNgay.Name = "btnDanhSachSachMuonTrongNgay";
+            this.btnDanhSachSachMuonTrongNgay.Size = new System.Drawing.Size(214, 93);
+            this.btnDanhSachSachMuonTrongNgay.TabIndex = 3;
+            this.btnDanhSachSachMuonTrongNgay.Text = "     Danh sách sách      mượn trong ngày";
+            this.btnDanhSachSachMuonTrongNgay.UseVisualStyleBackColor = false;
+            this.btnDanhSachSachMuonTrongNgay.Click += new System.EventHandler(this.btnDanhSachSachMuonTrongNgay_Click);
             // 
-            // button2
+            // btnDanhSachSachDangMuon
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button2.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(-1, 245);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(214, 93);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "     Danh sách sách      đang mượn";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnDanhSachSachDangMuon.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnDanhSachSachDangMuon.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDanhSachSachDangMuon.Location = new System.Drawing.Point(-1, 245);
+            this.btnDanhSachSachDangMuon.Name = "btnDanhSachSachDangMuon";
+            this.btnDanhSachSachDangMuon.Size = new System.Drawing.Size(214, 93);
+            this.btnDanhSachSachDangMuon.TabIndex = 2;
+            this.btnDanhSachSachDangMuon.Text = "     Danh sách sách      đang mượn";
+            this.btnDanhSachSachDangMuon.UseVisualStyleBackColor = false;
+            this.btnDanhSachSachDangMuon.Click += new System.EventHandler(this.btnDanhSachSachDangMuon_Click);
             // 
-            // button1
+            // btnDanhSachCacSachBiHu
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button1.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(-1, 152);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(214, 93);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "     Danh sách sách      bị hư";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnDanhSachCacSachBiHu.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnDanhSachCacSachBiHu.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDanhSachCacSachBiHu.Location = new System.Drawing.Point(-1, 152);
+            this.btnDanhSachCacSachBiHu.Name = "btnDanhSachCacSachBiHu";
+            this.btnDanhSachCacSachBiHu.Size = new System.Drawing.Size(214, 93);
+            this.btnDanhSachCacSachBiHu.TabIndex = 1;
+            this.btnDanhSachCacSachBiHu.Text = "     Danh sách sách      bị hư";
+            this.btnDanhSachCacSachBiHu.UseVisualStyleBackColor = false;
+            this.btnDanhSachCacSachBiHu.Click += new System.EventHandler(this.btnDanhSachCacSachBiHu_Click);
             // 
             // btnXemDSSach
             // 
@@ -151,11 +154,11 @@
 
         private System.Windows.Forms.Panel panelNen;
         private System.Windows.Forms.Panel panelMucLuc;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnDanhSachCacSachBiHu;
         private System.Windows.Forms.Button btnXemDSSach;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnDSNhanVien;
+        private System.Windows.Forms.Button btnDanhSachSachMuonTrongNgay;
+        private System.Windows.Forms.Button btnDanhSachSachDangMuon;
         private System.Windows.Forms.PictureBox picBoxNen;
     }
 }

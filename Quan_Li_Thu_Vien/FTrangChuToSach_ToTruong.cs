@@ -23,9 +23,28 @@ namespace Quan_Li_Thu_Vien
             danhSachCacSach.ShowDialog();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnDanhSachSachDangMuon_Click(object sender, EventArgs e)
         {
+            FDanhSacCacSachDangMuon dsDanhMuon = new FDanhSacCacSachDangMuon();
+            dsDanhMuon.ShowDialog();
+        }
 
+        private void btnDanhSachSachMuonTrongNgay_Click(object sender, EventArgs e)
+        {
+            FDanhSachSachMuonTrongNgay sachMuonTrongNgay = new FDanhSachSachMuonTrongNgay();
+            sachMuonTrongNgay.ShowDialog();
+        }
+
+        private void btnDSNhanVien_Click(object sender, EventArgs e)
+        {
+            FDanhSachNhanVien DanhSachNhanVien = new FDanhSachNhanVien();
+            DanhSachNhanVien.ShowDialog();
+        }
+
+        private void btnDanhSachCacSachBiHu_Click(object sender, EventArgs e)
+        {
+            FDanhSachCacSachBiHu danhSachCacSachBiHu = new FDanhSachCacSachBiHu();
+            danhSachCacSachBiHu.ShowDialog();
         }
     }
 }

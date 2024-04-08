@@ -1,6 +1,6 @@
 ﻿namespace Quan_Li_Thu_Vien
 {
-    partial class FDanhSachCacSach
+    partial class FDanhSachSachMuonTrongNgay
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,6 @@
         {
             this.panelNen = new System.Windows.Forms.Panel();
             this.panelBangThongTinSach = new System.Windows.Forms.Panel();
-            this.txtSLConLai = new System.Windows.Forms.TextBox();
             this.txtTacGia = new System.Windows.Forms.TextBox();
             this.txtNamXB = new System.Windows.Forms.TextBox();
             this.txtNXB = new System.Windows.Forms.TextBox();
@@ -38,7 +37,6 @@
             this.txtLoaiSach = new System.Windows.Forms.TextBox();
             this.txtTenSach = new System.Windows.Forms.TextBox();
             this.txtMaSach = new System.Windows.Forms.TextBox();
-            this.lbSoLuongConLai = new System.Windows.Forms.Label();
             this.lbTacGia = new System.Windows.Forms.Label();
             this.lbNamXB = new System.Windows.Forms.Label();
             this.lbNhaXuatBan = new System.Windows.Forms.Label();
@@ -64,12 +62,11 @@
             this.panelNen.Location = new System.Drawing.Point(-1, -1);
             this.panelNen.Name = "panelNen";
             this.panelNen.Size = new System.Drawing.Size(1054, 599);
-            this.panelNen.TabIndex = 0;
+            this.panelNen.TabIndex = 4;
             // 
             // panelBangThongTinSach
             // 
             this.panelBangThongTinSach.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panelBangThongTinSach.Controls.Add(this.txtSLConLai);
             this.panelBangThongTinSach.Controls.Add(this.txtTacGia);
             this.panelBangThongTinSach.Controls.Add(this.txtNamXB);
             this.panelBangThongTinSach.Controls.Add(this.txtNXB);
@@ -77,7 +74,6 @@
             this.panelBangThongTinSach.Controls.Add(this.txtLoaiSach);
             this.panelBangThongTinSach.Controls.Add(this.txtTenSach);
             this.panelBangThongTinSach.Controls.Add(this.txtMaSach);
-            this.panelBangThongTinSach.Controls.Add(this.lbSoLuongConLai);
             this.panelBangThongTinSach.Controls.Add(this.lbTacGia);
             this.panelBangThongTinSach.Controls.Add(this.lbNamXB);
             this.panelBangThongTinSach.Controls.Add(this.lbNhaXuatBan);
@@ -91,19 +87,10 @@
             this.panelBangThongTinSach.Size = new System.Drawing.Size(536, 536);
             this.panelBangThongTinSach.TabIndex = 2;
             // 
-            // txtSLConLai
-            // 
-            this.txtSLConLai.Enabled = false;
-            this.txtSLConLai.Location = new System.Drawing.Point(207, 468);
-            this.txtSLConLai.Multiline = true;
-            this.txtSLConLai.Name = "txtSLConLai";
-            this.txtSLConLai.Size = new System.Drawing.Size(288, 30);
-            this.txtSLConLai.TabIndex = 19;
-            // 
             // txtTacGia
             // 
             this.txtTacGia.Enabled = false;
-            this.txtTacGia.Location = new System.Drawing.Point(207, 408);
+            this.txtTacGia.Location = new System.Drawing.Point(218, 438);
             this.txtTacGia.Multiline = true;
             this.txtTacGia.Name = "txtTacGia";
             this.txtTacGia.Size = new System.Drawing.Size(288, 30);
@@ -112,7 +99,7 @@
             // txtNamXB
             // 
             this.txtNamXB.Enabled = false;
-            this.txtNamXB.Location = new System.Drawing.Point(207, 348);
+            this.txtNamXB.Location = new System.Drawing.Point(218, 378);
             this.txtNamXB.Multiline = true;
             this.txtNamXB.Name = "txtNamXB";
             this.txtNamXB.Size = new System.Drawing.Size(288, 30);
@@ -121,7 +108,7 @@
             // txtNXB
             // 
             this.txtNXB.Enabled = false;
-            this.txtNXB.Location = new System.Drawing.Point(207, 288);
+            this.txtNXB.Location = new System.Drawing.Point(218, 318);
             this.txtNXB.Multiline = true;
             this.txtNXB.Name = "txtNXB";
             this.txtNXB.Size = new System.Drawing.Size(288, 30);
@@ -130,7 +117,7 @@
             // txtNgonNgu
             // 
             this.txtNgonNgu.Enabled = false;
-            this.txtNgonNgu.Location = new System.Drawing.Point(207, 228);
+            this.txtNgonNgu.Location = new System.Drawing.Point(218, 258);
             this.txtNgonNgu.Multiline = true;
             this.txtNgonNgu.Name = "txtNgonNgu";
             this.txtNgonNgu.Size = new System.Drawing.Size(288, 30);
@@ -139,7 +126,7 @@
             // txtLoaiSach
             // 
             this.txtLoaiSach.Enabled = false;
-            this.txtLoaiSach.Location = new System.Drawing.Point(207, 168);
+            this.txtLoaiSach.Location = new System.Drawing.Point(218, 198);
             this.txtLoaiSach.Multiline = true;
             this.txtLoaiSach.Name = "txtLoaiSach";
             this.txtLoaiSach.Size = new System.Drawing.Size(288, 30);
@@ -148,7 +135,7 @@
             // txtTenSach
             // 
             this.txtTenSach.Enabled = false;
-            this.txtTenSach.Location = new System.Drawing.Point(207, 108);
+            this.txtTenSach.Location = new System.Drawing.Point(218, 138);
             this.txtTenSach.Multiline = true;
             this.txtTenSach.Name = "txtTenSach";
             this.txtTenSach.Size = new System.Drawing.Size(288, 30);
@@ -157,23 +144,11 @@
             // txtMaSach
             // 
             this.txtMaSach.Enabled = false;
-            this.txtMaSach.Location = new System.Drawing.Point(207, 48);
+            this.txtMaSach.Location = new System.Drawing.Point(218, 78);
             this.txtMaSach.Multiline = true;
             this.txtMaSach.Name = "txtMaSach";
             this.txtMaSach.Size = new System.Drawing.Size(288, 30);
             this.txtMaSach.TabIndex = 12;
-            // 
-            // lbSoLuongConLai
-            // 
-            this.lbSoLuongConLai.AutoSize = true;
-            this.lbSoLuongConLai.BackColor = System.Drawing.Color.Transparent;
-            this.lbSoLuongConLai.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbSoLuongConLai.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lbSoLuongConLai.Location = new System.Drawing.Point(15, 471);
-            this.lbSoLuongConLai.Name = "lbSoLuongConLai";
-            this.lbSoLuongConLai.Size = new System.Drawing.Size(161, 27);
-            this.lbSoLuongConLai.TabIndex = 11;
-            this.lbSoLuongConLai.Text = "Số lượng còn lại";
             // 
             // lbTacGia
             // 
@@ -181,7 +156,7 @@
             this.lbTacGia.BackColor = System.Drawing.Color.Transparent;
             this.lbTacGia.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTacGia.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lbTacGia.Location = new System.Drawing.Point(15, 411);
+            this.lbTacGia.Location = new System.Drawing.Point(26, 441);
             this.lbTacGia.Name = "lbTacGia";
             this.lbTacGia.Size = new System.Drawing.Size(79, 27);
             this.lbTacGia.TabIndex = 10;
@@ -193,7 +168,7 @@
             this.lbNamXB.BackColor = System.Drawing.Color.Transparent;
             this.lbNamXB.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbNamXB.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lbNamXB.Location = new System.Drawing.Point(15, 351);
+            this.lbNamXB.Location = new System.Drawing.Point(26, 381);
             this.lbNamXB.Name = "lbNamXB";
             this.lbNamXB.Size = new System.Drawing.Size(146, 27);
             this.lbNamXB.TabIndex = 9;
@@ -205,7 +180,7 @@
             this.lbNhaXuatBan.BackColor = System.Drawing.Color.Transparent;
             this.lbNhaXuatBan.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbNhaXuatBan.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lbNhaXuatBan.Location = new System.Drawing.Point(15, 291);
+            this.lbNhaXuatBan.Location = new System.Drawing.Point(26, 321);
             this.lbNhaXuatBan.Name = "lbNhaXuatBan";
             this.lbNhaXuatBan.Size = new System.Drawing.Size(139, 27);
             this.lbNhaXuatBan.TabIndex = 8;
@@ -217,7 +192,7 @@
             this.lbNgonNgu.BackColor = System.Drawing.Color.Transparent;
             this.lbNgonNgu.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbNgonNgu.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lbNgonNgu.Location = new System.Drawing.Point(15, 231);
+            this.lbNgonNgu.Location = new System.Drawing.Point(26, 261);
             this.lbNgonNgu.Name = "lbNgonNgu";
             this.lbNgonNgu.Size = new System.Drawing.Size(108, 27);
             this.lbNgonNgu.TabIndex = 7;
@@ -229,7 +204,7 @@
             this.lbLoaiSach.BackColor = System.Drawing.Color.Transparent;
             this.lbLoaiSach.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbLoaiSach.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lbLoaiSach.Location = new System.Drawing.Point(15, 171);
+            this.lbLoaiSach.Location = new System.Drawing.Point(26, 201);
             this.lbLoaiSach.Name = "lbLoaiSach";
             this.lbLoaiSach.Size = new System.Drawing.Size(99, 27);
             this.lbLoaiSach.TabIndex = 6;
@@ -241,7 +216,7 @@
             this.lbTenSach.BackColor = System.Drawing.Color.Transparent;
             this.lbTenSach.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTenSach.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lbTenSach.Location = new System.Drawing.Point(15, 111);
+            this.lbTenSach.Location = new System.Drawing.Point(26, 141);
             this.lbTenSach.Name = "lbTenSach";
             this.lbTenSach.Size = new System.Drawing.Size(145, 27);
             this.lbTenSach.TabIndex = 5;
@@ -253,7 +228,7 @@
             this.lbMaSach.BackColor = System.Drawing.Color.Transparent;
             this.lbMaSach.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbMaSach.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lbMaSach.Location = new System.Drawing.Point(15, 51);
+            this.lbMaSach.Location = new System.Drawing.Point(26, 81);
             this.lbMaSach.Name = "lbMaSach";
             this.lbMaSach.Size = new System.Drawing.Size(142, 27);
             this.lbMaSach.TabIndex = 4;
@@ -278,9 +253,9 @@
             this.lbDanhSachCacCuonSach.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lbDanhSachCacCuonSach.Location = new System.Drawing.Point(3, 12);
             this.lbDanhSachCacCuonSach.Name = "lbDanhSachCacCuonSach";
-            this.lbDanhSachCacCuonSach.Size = new System.Drawing.Size(358, 37);
+            this.lbDanhSachCacCuonSach.Size = new System.Drawing.Size(690, 37);
             this.lbDanhSachCacCuonSach.TabIndex = 1;
-            this.lbDanhSachCacCuonSach.Text = "Danh sách các cuốn sách";
+            this.lbDanhSachCacCuonSach.Text = "Danh sách các cuốn sách đang mượn trong ngày";
             // 
             // dtgvSach
             // 
@@ -301,23 +276,23 @@
             this.btnExit.Location = new System.Drawing.Point(944, 598);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(109, 44);
-            this.btnExit.TabIndex = 1;
+            this.btnExit.TabIndex = 5;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = false;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // FDanhSachCacSach
+            // FDanhSachSachMuonTrongNgay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1052, 641);
-            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.panelNen);
+            this.Controls.Add(this.btnExit);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "FDanhSachCacSach";
+            this.Name = "FDanhSachSachMuonTrongNgay";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FDanhSachCacSach";
-            this.Load += new System.EventHandler(this.FDanhSachCacSach_Load);
+            this.Text = "FDanhSachSachMuonTrongNgay";
+            this.Load += new System.EventHandler(this.FDanhSachSachMuonTrongNgay_Load);
             this.panelNen.ResumeLayout(false);
             this.panelNen.PerformLayout();
             this.panelBangThongTinSach.ResumeLayout(false);
@@ -330,9 +305,15 @@
         #endregion
 
         private System.Windows.Forms.Panel panelNen;
-        private System.Windows.Forms.DataGridView dtgvSach;
-        private System.Windows.Forms.Label lbDanhSachCacCuonSach;
         private System.Windows.Forms.Panel panelBangThongTinSach;
+        private System.Windows.Forms.TextBox txtTacGia;
+        private System.Windows.Forms.TextBox txtNamXB;
+        private System.Windows.Forms.TextBox txtNXB;
+        private System.Windows.Forms.TextBox txtNgonNgu;
+        private System.Windows.Forms.TextBox txtLoaiSach;
+        private System.Windows.Forms.TextBox txtTenSach;
+        private System.Windows.Forms.TextBox txtMaSach;
+        private System.Windows.Forms.Label lbTacGia;
         private System.Windows.Forms.Label lbNamXB;
         private System.Windows.Forms.Label lbNhaXuatBan;
         private System.Windows.Forms.Label lbNgonNgu;
@@ -340,16 +321,8 @@
         private System.Windows.Forms.Label lbTenSach;
         private System.Windows.Forms.Label lbMaSach;
         private System.Windows.Forms.Label lbThongTinCuonSach;
-        private System.Windows.Forms.TextBox txtMaSach;
-        private System.Windows.Forms.Label lbSoLuongConLai;
-        private System.Windows.Forms.Label lbTacGia;
-        private System.Windows.Forms.TextBox txtSLConLai;
-        private System.Windows.Forms.TextBox txtTacGia;
-        private System.Windows.Forms.TextBox txtNamXB;
-        private System.Windows.Forms.TextBox txtNXB;
-        private System.Windows.Forms.TextBox txtNgonNgu;
-        private System.Windows.Forms.TextBox txtLoaiSach;
-        private System.Windows.Forms.TextBox txtTenSach;
+        private System.Windows.Forms.Label lbDanhSachCacCuonSach;
+        private System.Windows.Forms.DataGridView dtgvSach;
         private System.Windows.Forms.Button btnExit;
     }
 }
