@@ -21,9 +21,6 @@ BEGIN
 
 		DECLARE @MaNV NVARCHAR(10)
 		SELECT @MaNV = MAX(@MaNV) FROM dbo.NhanVien WHERE MaTo = @role
-		
-		UPDATE dbo.NhanVien SET Luong = @Luong 
-		WHERE MaNV = @MaNV
 
 		COMMIT TRANSACTION Tran_InsertStaff
     END TRY
