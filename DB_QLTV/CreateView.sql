@@ -85,3 +85,8 @@ INNER JOIN TacGia tg ON tgs.MaTG = tg.MaTG
 WHERE pmt.NgayMuon = CONVERT(date,GETDATE())
 --Kết thúc view danh sách các cuốn sách đã mượn trong ngày
 
+--Bắt đầu danh sách các tác giả
+CREATE VIEW [dbo].[TacGiaView]
+AS SELECT  DISTINCT MaTG, TenTG, GioiTinh, NamSinh, NamMat, QueQuan
+FROM [TacGia]
+--Kết thúc view danh sách các tác giả
