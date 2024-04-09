@@ -1,6 +1,6 @@
 ﻿namespace Quan_Li_Thu_Vien
 {
-    partial class FTrangChuToSach_ToTruong
+    partial class FTrangChuToSach_NhanVien
     {
         /// <summary>
         /// Required designer variable.
@@ -31,12 +31,15 @@
             this.panelNen = new System.Windows.Forms.Panel();
             this.picBoxNen = new System.Windows.Forms.PictureBox();
             this.panelMucLuc = new System.Windows.Forms.Panel();
-            this.btnDSNhanVien = new System.Windows.Forms.Button();
+            this.btnDSLoaiSach = new System.Windows.Forms.Button();
+            this.btnDSNXB = new System.Windows.Forms.Button();
+            this.btnDSNgonNgu = new System.Windows.Forms.Button();
+            this.btnThongTinCaNhan = new System.Windows.Forms.Button();
+            this.btnDSTacGia = new System.Windows.Forms.Button();
             this.btnDanhSachSachMuonTrongNgay = new System.Windows.Forms.Button();
             this.btnDanhSachSachDangMuon = new System.Windows.Forms.Button();
             this.btnDanhSachCacSachBiHu = new System.Windows.Forms.Button();
             this.btnXemDSSach = new System.Windows.Forms.Button();
-            this.btnThongTinCaNhan = new System.Windows.Forms.Button();
             this.panelNen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxNen)).BeginInit();
             this.panelMucLuc.SuspendLayout();
@@ -46,10 +49,10 @@
             // 
             this.panelNen.Controls.Add(this.picBoxNen);
             this.panelNen.Controls.Add(this.panelMucLuc);
-            this.panelNen.Location = new System.Drawing.Point(0, 0);
+            this.panelNen.Location = new System.Drawing.Point(0, -2);
             this.panelNen.Name = "panelNen";
             this.panelNen.Size = new System.Drawing.Size(1052, 600);
-            this.panelNen.TabIndex = 0;
+            this.panelNen.TabIndex = 1;
             // 
             // picBoxNen
             // 
@@ -64,8 +67,11 @@
             // panelMucLuc
             // 
             this.panelMucLuc.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panelMucLuc.Controls.Add(this.btnDSLoaiSach);
+            this.panelMucLuc.Controls.Add(this.btnDSNXB);
+            this.panelMucLuc.Controls.Add(this.btnDSNgonNgu);
             this.panelMucLuc.Controls.Add(this.btnThongTinCaNhan);
-            this.panelMucLuc.Controls.Add(this.btnDSNhanVien);
+            this.panelMucLuc.Controls.Add(this.btnDSTacGia);
             this.panelMucLuc.Controls.Add(this.btnDanhSachSachMuonTrongNgay);
             this.panelMucLuc.Controls.Add(this.btnDanhSachSachDangMuon);
             this.panelMucLuc.Controls.Add(this.btnDanhSachCacSachBiHu);
@@ -76,25 +82,70 @@
             this.panelMucLuc.Size = new System.Drawing.Size(213, 595);
             this.panelMucLuc.TabIndex = 0;
             // 
-            // btnDSNhanVien
+            // btnDSLoaiSach
             // 
-            this.btnDSNhanVien.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnDSNhanVien.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDSNhanVien.Location = new System.Drawing.Point(-1, 374);
-            this.btnDSNhanVien.Name = "btnDSNhanVien";
-            this.btnDSNhanVien.Size = new System.Drawing.Size(214, 93);
-            this.btnDSNhanVien.TabIndex = 4;
-            this.btnDSNhanVien.Text = "Danh sách nhân viên";
-            this.btnDSNhanVien.UseVisualStyleBackColor = false;
-            this.btnDSNhanVien.Click += new System.EventHandler(this.btnDSNhanVien_Click);
+            this.btnDSLoaiSach.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnDSLoaiSach.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDSLoaiSach.Location = new System.Drawing.Point(-1, 462);
+            this.btnDSLoaiSach.Name = "btnDSLoaiSach";
+            this.btnDSLoaiSach.Size = new System.Drawing.Size(214, 65);
+            this.btnDSLoaiSach.TabIndex = 8;
+            this.btnDSLoaiSach.Text = "Danh sách loại sách";
+            this.btnDSLoaiSach.UseVisualStyleBackColor = false;
+            // 
+            // btnDSNXB
+            // 
+            this.btnDSNXB.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnDSNXB.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDSNXB.Location = new System.Drawing.Point(-1, 394);
+            this.btnDSNXB.Name = "btnDSNXB";
+            this.btnDSNXB.Size = new System.Drawing.Size(214, 65);
+            this.btnDSNXB.TabIndex = 7;
+            this.btnDSNXB.Text = "Danh sách nhà xuất bản";
+            this.btnDSNXB.UseVisualStyleBackColor = false;
+            // 
+            // btnDSNgonNgu
+            // 
+            this.btnDSNgonNgu.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnDSNgonNgu.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDSNgonNgu.Location = new System.Drawing.Point(-1, 328);
+            this.btnDSNgonNgu.Name = "btnDSNgonNgu";
+            this.btnDSNgonNgu.Size = new System.Drawing.Size(214, 65);
+            this.btnDSNgonNgu.TabIndex = 6;
+            this.btnDSNgonNgu.Text = "Danh sách ngôn ngữ";
+            this.btnDSNgonNgu.UseVisualStyleBackColor = false;
+            // 
+            // btnThongTinCaNhan
+            // 
+            this.btnThongTinCaNhan.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnThongTinCaNhan.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThongTinCaNhan.Location = new System.Drawing.Point(-1, 530);
+            this.btnThongTinCaNhan.Name = "btnThongTinCaNhan";
+            this.btnThongTinCaNhan.Size = new System.Drawing.Size(214, 65);
+            this.btnThongTinCaNhan.TabIndex = 5;
+            this.btnThongTinCaNhan.Text = "Thông tin cá nhân";
+            this.btnThongTinCaNhan.UseVisualStyleBackColor = false;
+            this.btnThongTinCaNhan.Click += new System.EventHandler(this.btnThongTinCaNhan_Click);
+            // 
+            // btnDSTacGia
+            // 
+            this.btnDSTacGia.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnDSTacGia.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDSTacGia.Location = new System.Drawing.Point(-1, 262);
+            this.btnDSTacGia.Name = "btnDSTacGia";
+            this.btnDSTacGia.Size = new System.Drawing.Size(214, 65);
+            this.btnDSTacGia.TabIndex = 4;
+            this.btnDSTacGia.Text = "Danh sách tác giả";
+            this.btnDSTacGia.UseVisualStyleBackColor = false;
+            this.btnDSTacGia.Click += new System.EventHandler(this.btnDSTacGia_Click);
             // 
             // btnDanhSachSachMuonTrongNgay
             // 
             this.btnDanhSachSachMuonTrongNgay.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnDanhSachSachMuonTrongNgay.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDanhSachSachMuonTrongNgay.Location = new System.Drawing.Point(-1, 281);
+            this.btnDanhSachSachMuonTrongNgay.Location = new System.Drawing.Point(-1, 196);
             this.btnDanhSachSachMuonTrongNgay.Name = "btnDanhSachSachMuonTrongNgay";
-            this.btnDanhSachSachMuonTrongNgay.Size = new System.Drawing.Size(214, 93);
+            this.btnDanhSachSachMuonTrongNgay.Size = new System.Drawing.Size(214, 65);
             this.btnDanhSachSachMuonTrongNgay.TabIndex = 3;
             this.btnDanhSachSachMuonTrongNgay.Text = "     Danh sách sách      mượn trong ngày";
             this.btnDanhSachSachMuonTrongNgay.UseVisualStyleBackColor = false;
@@ -104,9 +155,9 @@
             // 
             this.btnDanhSachSachDangMuon.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnDanhSachSachDangMuon.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDanhSachSachDangMuon.Location = new System.Drawing.Point(-1, 188);
+            this.btnDanhSachSachDangMuon.Location = new System.Drawing.Point(-1, 131);
             this.btnDanhSachSachDangMuon.Name = "btnDanhSachSachDangMuon";
-            this.btnDanhSachSachDangMuon.Size = new System.Drawing.Size(214, 93);
+            this.btnDanhSachSachDangMuon.Size = new System.Drawing.Size(214, 65);
             this.btnDanhSachSachDangMuon.TabIndex = 2;
             this.btnDanhSachSachDangMuon.Text = "     Danh sách sách      đang mượn";
             this.btnDanhSachSachDangMuon.UseVisualStyleBackColor = false;
@@ -116,9 +167,9 @@
             // 
             this.btnDanhSachCacSachBiHu.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnDanhSachCacSachBiHu.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDanhSachCacSachBiHu.Location = new System.Drawing.Point(-1, 95);
+            this.btnDanhSachCacSachBiHu.Location = new System.Drawing.Point(-1, 66);
             this.btnDanhSachCacSachBiHu.Name = "btnDanhSachCacSachBiHu";
-            this.btnDanhSachCacSachBiHu.Size = new System.Drawing.Size(214, 93);
+            this.btnDanhSachCacSachBiHu.Size = new System.Drawing.Size(214, 65);
             this.btnDanhSachCacSachBiHu.TabIndex = 1;
             this.btnDanhSachCacSachBiHu.Text = "     Danh sách sách      bị hư";
             this.btnDanhSachCacSachBiHu.UseVisualStyleBackColor = false;
@@ -128,35 +179,23 @@
             // 
             this.btnXemDSSach.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnXemDSSach.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXemDSSach.Location = new System.Drawing.Point(-1, 2);
+            this.btnXemDSSach.Location = new System.Drawing.Point(-1, 1);
             this.btnXemDSSach.Name = "btnXemDSSach";
-            this.btnXemDSSach.Size = new System.Drawing.Size(214, 93);
+            this.btnXemDSSach.Size = new System.Drawing.Size(214, 65);
             this.btnXemDSSach.TabIndex = 0;
             this.btnXemDSSach.Text = "Danh sách các sách";
             this.btnXemDSSach.UseVisualStyleBackColor = false;
             this.btnXemDSSach.Click += new System.EventHandler(this.btnXemDSSach_Click);
             // 
-            // btnThongTinCaNhan
-            // 
-            this.btnThongTinCaNhan.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnThongTinCaNhan.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThongTinCaNhan.Location = new System.Drawing.Point(-1, 467);
-            this.btnThongTinCaNhan.Name = "btnThongTinCaNhan";
-            this.btnThongTinCaNhan.Size = new System.Drawing.Size(214, 93);
-            this.btnThongTinCaNhan.TabIndex = 6;
-            this.btnThongTinCaNhan.Text = "Thông tin cá nhân";
-            this.btnThongTinCaNhan.UseVisualStyleBackColor = false;
-            this.btnThongTinCaNhan.Click += new System.EventHandler(this.btnThongTinCaNhan_Click);
-            // 
-            // FTrangChuToSach_ToTruong
+            // FTrangChuToSach_NhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1052, 597);
             this.Controls.Add(this.panelNen);
-            this.Name = "FTrangChuToSach_ToTruong";
+            this.Name = "FTrangChuToSach_NhanVien";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FTrangChuToSach_ToTruong";
+            this.Text = "Form1";
             this.panelNen.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picBoxNen)).EndInit();
             this.panelMucLuc.ResumeLayout(false);
@@ -167,13 +206,17 @@
         #endregion
 
         private System.Windows.Forms.Panel panelNen;
+        private System.Windows.Forms.PictureBox picBoxNen;
         private System.Windows.Forms.Panel panelMucLuc;
-        private System.Windows.Forms.Button btnDanhSachCacSachBiHu;
-        private System.Windows.Forms.Button btnXemDSSach;
-        private System.Windows.Forms.Button btnDSNhanVien;
         private System.Windows.Forms.Button btnDanhSachSachMuonTrongNgay;
         private System.Windows.Forms.Button btnDanhSachSachDangMuon;
-        private System.Windows.Forms.PictureBox picBoxNen;
+        private System.Windows.Forms.Button btnDanhSachCacSachBiHu;
+        private System.Windows.Forms.Button btnXemDSSach;
         private System.Windows.Forms.Button btnThongTinCaNhan;
+        private System.Windows.Forms.Button btnDSTacGia;
+        private System.Windows.Forms.Button btnDSLoaiSach;
+        private System.Windows.Forms.Button btnDSNXB;
+        private System.Windows.Forms.Button btnDSNgonNgu;
     }
 }
+

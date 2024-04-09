@@ -1,0 +1,54 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Quan_Li_Thu_Vien
+{
+    public partial class FTrangChuToSach_NhanVien : Form
+    {
+        public FTrangChuToSach_NhanVien()
+        {
+            InitializeComponent();
+        }
+
+        private void btnThongTinCaNhan_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnXemDSSach_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnDanhSachCacSachBiHu_Click(object sender, EventArgs e)
+        {
+            FDanhSachCacSachBiHu danhSachCacSachBiHu = new FDanhSachCacSachBiHu();
+            danhSachCacSachBiHu.ShowDialog();
+        }
+
+        private void btnDanhSachSachDangMuon_Click(object sender, EventArgs e)
+        {
+            FDanhSacCacSachDangMuon danhSacCacSachDangMuon = new FDanhSacCacSachDangMuon();
+            danhSacCacSachDangMuon.ShowDialog();
+        }
+
+        private void btnDanhSachSachMuonTrongNgay_Click(object sender, EventArgs e)
+        {
+            FDanhSachSachMuonTrongNgay danhSachSachMuonTrongNgay = new FDanhSachSachMuonTrongNgay();
+            danhSachSachMuonTrongNgay.ShowDialog();
+        }
+
+        private void btnDSTacGia_Click(object sender, EventArgs e)
+        {
+            FDanhSachCacTacGia danhSachCacTacGia = new FDanhSachCacTacGia();
+            danhSachCacTacGia.ShowDialog();
+        }
+    }
+}

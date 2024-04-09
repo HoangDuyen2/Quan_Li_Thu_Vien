@@ -37,14 +37,19 @@ namespace Quan_Li_Thu_Vien
 
         private void btnDSNhanVien_Click(object sender, EventArgs e)
         {
-            FDanhSachNhanVien DanhSachNhanVien = new FDanhSachNhanVien();
-            DanhSachNhanVien.ShowDialog();
+/*            FDanhSachNhanVien DanhSachNhanVien = new FDanhSachNhanVien();
+            DanhSachNhanVien.ShowDialog();*/
         }
 
         private void btnDanhSachCacSachBiHu_Click(object sender, EventArgs e)
         {
             FDanhSachCacSachBiHu danhSachCacSachBiHu = new FDanhSachCacSachBiHu();
             danhSachCacSachBiHu.ShowDialog();
+        }
+
+        private void btnThongTinCaNhan_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
