@@ -70,31 +70,32 @@ namespace Quan_Li_Thu_Vien
         }
         public bool themTacGia(TacGia tg)
         {
-            try
+            SqlCommand command = new SqlCommand("InsertTacGia", conn.GetSqlConnection());
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.Add("@TenTG", SqlDbType.NVarChar).Value = tg.TenTG;
+            command.Parameters.Add("@GioiTinh", SqlDbType.NVarChar).Value = tg.GioiTinh1;
+            if(tg.NamSinh1 != 0)
+                command.Parameters.Add("@NamSinh", SqlDbType.Int).Value = tg.NamSinh1;
+            else command.Parameters.Add("@NamSinh", SqlDbType.Int).Value = DBNull.Value;
+            if(tg.NamMat1 != 0)
+                command.Parameters.Add("@NamMat", SqlDbType.Int).Value = tg.NamMat1;
+            else command.Parameters.Add("@NamMat", SqlDbType.Int).Value = DBNull.Value;
+            if(tg.QueQuan1 != "")
+                command.Parameters.Add("@QueQuan", SqlDbType.NVarChar).Value = tg.QueQuan1;
+            else command.Parameters.Add("@QueQuan", SqlDbType.NVarChar).Value = tg.QueQuan1;
+            conn.openConnection();
+            if (command.ExecuteNonQuery() > 0)
             {
-                SqlCommand cmd = new SqlCommand("InsertTacGia @TenTG = ", conn.GetSqlConnection());
-                cmd.CommandType = CommandType.StoredProcedure;
-
-                cmd.Parameters.Add("@TenTG", SqlDbType.NVarChar, 50).Value = tg.TenTG;
-                cmd.Parameters.Add("@GioiTinh", SqlDbType.NVarChar, 1).Value = tg.GioiTinh1;
-                cmd.Parameters.Add("@NamSinh", SqlDbType.Int).Value = tg.NamSinh1;
-                cmd.Parameters.Add("@NamMat", SqlDbType.Int).Value = tg.NamMat1;
-                cmd.Parameters.Add("@QueQuan", SqlDbType.VarChar, 255).Value = tg.QueQuan1;
-
-                int rowsAffected = cmd.ExecuteNonQuery();
-
-                if (rowsAffected > 0)
-                {
-                    return true;
-                }
+                conn.closeConnection();
+                return true;
             }
-            catch (Exception ex)
+            else
             {
-                // Log or handle the exception
-                Console.WriteLine("Error: " + ex.Message);
+                conn.closeConnection();
+                return false;
             }
-            return false;
         }
+
     }
 
 }
