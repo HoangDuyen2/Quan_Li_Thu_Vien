@@ -110,25 +110,32 @@ GO
 --Kết thúc thêm sách mới
 
 --Bắt đầu thêm tác giả
-CREATE PROCEDURE InsertTacGia (@TenTG nvarchar(50),
-								@GioiTinh nvarchar(1),
-								@NamSinh int,
-								@NamMat int,
-								@QueQuan varchar(255))
+CREATE PROCEDURE [dbo].[InsertTacGia] 
+    @TenTG nvarchar(50),
+    @GioiTinh nvarchar(1),
+    @NamSinh int,
+    @NamMat int,
+    @QueQuan nvarchar(255)
 AS
 BEGIN
-	BEGIN TRANSACTION Tran_InsertTacGia
-	BEGIN TRY
+    BEGIN TRANSACTION Tran_InsertTacGia
+    BEGIN TRY
+        DECLARE @LastID NVARCHAR(10)
+        SELECT @LastID = MAX(MaTG) FROM dbo.TacGia
 
-		INSERT INTO dbo.TacGia(TenTG, GioiTinh, NamSinh, NamMat, QueQuan)
-		VALUES (@TenTG, @GioiTinh, @NamSinh, @NamMat, @QueQuan)
+        DECLARE @NextID NVARCHAR(10)
+        SET @NextID = LEFT(@LastID, LEN(@LastID) - 1) + CAST((CAST(RIGHT(@LastID, 1) AS INT) + 1) AS NVARCHAR(1))
 
-		COMMIT TRANSACTION Tran_InsertTacGia
+        INSERT INTO dbo.TacGia (MaTG, TenTG, GioiTinh, NamSinh, NamMat, QueQuan)
+        VALUES (@NextID, @TenTG, @GioiTinh, @NamSinh, @NamMat, @QueQuan)
+        
+        COMMIT TRANSACTION Tran_InsertTacGia
     END TRY
-	BEGIN CATCH
-		PRINT('Thêm không thành công!')
-		COMMIT TRANSACTION Tran_InsertTacGia
-	END CATCH
+    BEGIN CATCH
+        DECLARE @err NVARCHAR(MAX)
+        SELECT @err = N'Lỗi: ' + ERROR_MESSAGE()
+        RAISERROR(@err, 16, 1)
+        ROLLBACK TRANSACTION Tran_InsertTacGia
+    END CATCH
 END
-GO
 --Kết thúc thêm tác giả

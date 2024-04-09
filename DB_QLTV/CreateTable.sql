@@ -122,7 +122,7 @@ CREATE TABLE ChiTietPhieuMuonTra (
 
   --Tạo bảng Phạt
 CREATE TABLE Phat (
-  LoaiPhat nvarchar(10) PRIMARY KEY, 
+  LoaiPhat nvarchar(20) PRIMARY KEY, 
   TienPhat int NOT NULL
 );
 
