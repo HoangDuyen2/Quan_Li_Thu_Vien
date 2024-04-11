@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Net;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -70,19 +71,21 @@ namespace Quan_Li_Thu_Vien
         }
         public bool themTacGia(TacGia tg)
         {
-            SqlCommand command = new SqlCommand("InsertTacGia", conn.GetSqlConnection());
+            SqlCommand command = new SqlCommand("pro_InsertTacGia", conn.GetSqlConnection());
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.Add("@TenTG", SqlDbType.NVarChar).Value = tg.TenTG;
             command.Parameters.Add("@GioiTinh", SqlDbType.NVarChar).Value = tg.GioiTinh1;
-            if(tg.NamSinh1 != 0)
-                command.Parameters.Add("@NamSinh", SqlDbType.Int).Value = tg.NamSinh1;
+            int namsinh = tg.NamSinh1;
+            if(namsinh != 0)
+                command.Parameters.Add("@NamSinh", SqlDbType.Int).Value = namsinh;
             else command.Parameters.Add("@NamSinh", SqlDbType.Int).Value = DBNull.Value;
-            if(tg.NamMat1 != 0)
-                command.Parameters.Add("@NamMat", SqlDbType.Int).Value = tg.NamMat1;
+            int nammat = tg.NamMat1;
+            if(nammat != 0)
+                command.Parameters.Add("@NamMat", SqlDbType.Int).Value = nammat;
             else command.Parameters.Add("@NamMat", SqlDbType.Int).Value = DBNull.Value;
             if(tg.QueQuan1 != "")
                 command.Parameters.Add("@QueQuan", SqlDbType.NVarChar).Value = tg.QueQuan1;
-            else command.Parameters.Add("@QueQuan", SqlDbType.NVarChar).Value = tg.QueQuan1;
+            else command.Parameters.Add("@QueQuan", SqlDbType.NVarChar).Value = DBNull.Value;
             conn.openConnection();
             if (command.ExecuteNonQuery() > 0)
             {
@@ -95,7 +98,51 @@ namespace Quan_Li_Thu_Vien
                 return false;
             }
         }
-
+        public bool suaTacGia(TacGia tg)
+        {
+            SqlCommand command = new SqlCommand("pro_UpdateTacGia", conn.GetSqlConnection());
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.Add("@MaTG", SqlDbType.NVarChar).Value = tg.MaTG;
+            command.Parameters.Add("@TenTacGia", SqlDbType.NVarChar).Value = tg.TenTG;
+            command.Parameters.Add("@GioiTinh", SqlDbType.NVarChar).Value = tg.GioiTinh1;
+            int namsinh = tg.NamSinh1;
+            if (namsinh != 0)
+                command.Parameters.Add("@NamSinh", SqlDbType.Int).Value = namsinh;
+            else command.Parameters.Add("@NamSinh", SqlDbType.Int).Value = DBNull.Value;
+            int nammat = tg.NamMat1;
+            if (nammat != 0)
+                command.Parameters.Add("@NamMat", SqlDbType.Int).Value = nammat;
+            else command.Parameters.Add("@NamMat", SqlDbType.Int).Value = DBNull.Value;
+            if (tg.QueQuan1 != "")
+                command.Parameters.Add("@QueQuan", SqlDbType.NVarChar).Value = tg.QueQuan1;
+            else command.Parameters.Add("@QueQuan", SqlDbType.NVarChar).Value = DBNull.Value;
+            conn.openConnection();
+            if (command.ExecuteNonQuery() > 0)
+            {
+                conn.closeConnection();
+                return true;
+            }
+            else
+            {
+                conn.closeConnection();
+                return false;
+            }
+        }
+        public void thucThiThemSua(TacGia tg)
+        {
+            string matg = tg.MaTG;
+            if (matg == "")
+            {
+                if (themTacGia(tg))
+                    MessageBox.Show("Thực thi thêm tác giả thành công", "Information", MessageBoxButtons.OK);
+                else MessageBox.Show("Thực thi thêm tác giả thất bại", "Information", MessageBoxButtons.OK);
+            }
+            else {
+                if (suaTacGia(tg))
+                    MessageBox.Show("Thực thi sửa tác giả thành công", "Information", MessageBoxButtons.OK);
+                else MessageBox.Show("Thực thi sửa tác giả thất bại", "Information", MessageBoxButtons.OK);
+            }
+        }
     }
 
 }

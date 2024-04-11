@@ -111,6 +111,7 @@
             this.btnThem.Size = new System.Drawing.Size(109, 44);
             this.btnThem.TabIndex = 14;
             this.btnThem.Text = "Add";
+            this.btnThem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnThem.UseVisualStyleBackColor = false;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
@@ -292,6 +293,7 @@
             this.btnSua.Size = new System.Drawing.Size(109, 44);
             this.btnSua.TabIndex = 15;
             this.btnSua.Text = "Edit";
+            this.btnSua.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSua.UseVisualStyleBackColor = false;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
