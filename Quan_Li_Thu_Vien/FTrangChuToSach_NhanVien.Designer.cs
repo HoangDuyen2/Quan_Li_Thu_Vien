@@ -114,6 +114,7 @@
             this.btnDSNgonNgu.TabIndex = 6;
             this.btnDSNgonNgu.Text = "Danh sách ngôn ngữ";
             this.btnDSNgonNgu.UseVisualStyleBackColor = false;
+            this.btnDSNgonNgu.Click += new System.EventHandler(this.btnDSNgonNgu_Click);
             // 
             // btnThongTinCaNhan
             // 

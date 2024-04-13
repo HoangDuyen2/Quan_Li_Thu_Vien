@@ -51,5 +51,10 @@ namespace Quan_Li_Thu_Vien
             FDanhSachCacTacGia danhSachCacTacGia = new FDanhSachCacTacGia();
             danhSachCacTacGia.ShowDialog();
         }
+
+        private void btnDSNgonNgu_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

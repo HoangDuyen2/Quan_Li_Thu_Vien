@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
@@ -17,6 +18,7 @@ namespace Quan_Li_Thu_Vien
     public class SachController
     {
         DBConnection conn = new DBConnection();
+        #region list view
         public DataTable DSSach()
         {
             SqlCommand cmd = new SqlCommand("SELECT * FROM SachView", conn.GetSqlConnection());
@@ -69,6 +71,8 @@ namespace Quan_Li_Thu_Vien
             adapter.Fill(datatable);
             return datatable;
         }
+        #endregion
+        #region Add, Update, Search Author
         public bool themTacGia(TacGia tg)
         {
             SqlCommand command = new SqlCommand("pro_InsertTacGia", conn.GetSqlConnection());
@@ -153,7 +157,57 @@ namespace Quan_Li_Thu_Vien
             adapter.Fill(table);
             return table;
         }
-
+        #endregion
+        #region Add, Update, Search Book
+        public DataTable timKiemSach(string tenSach)
+        {
+            string funcName = "func_SearchBookName";
+            SqlCommand command = new SqlCommand("Select * from " + funcName + " (@TenSach)", conn.GetSqlConnection());
+            command.Parameters.Add("@TenSach", SqlDbType.NVarChar).Value = tenSach;
+            DataTable table = new DataTable();
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            adapter.Fill(table);
+            return table;
+        }
+        #endregion
+        #region Load data combobox
+        public DataTable DSCacLoaiSach()
+        {
+            SqlCommand cmmd = new SqlCommand("SELECT * FROM func_TenCacLoaiSach()",conn.GetSqlConnection());
+            SqlDataAdapter adapter = new SqlDataAdapter(cmmd);
+            DataTable table = new DataTable();
+            adapter.Fill(table);
+            return table;
+        }
+        public DataTable DSNgonNgu()
+        {
+            SqlCommand cmmd = new SqlCommand("SELECT * FROM func_TenCacLoaiNgonNgu()", conn.GetSqlConnection());
+            SqlDataAdapter adapter = new SqlDataAdapter(cmmd);
+            DataTable table = new DataTable();
+            adapter.Fill(table);
+            return table;
+        }
+        #endregion
+        #region Filter book
+        public DataTable DSSachTheoTheLoaiSach(string tenLoaiSach)
+        {
+            SqlCommand cmmd = new SqlCommand("SELECT * FROM func_CategorizeBookByGenre(@TenLoaiSach)", conn.GetSqlConnection());
+            cmmd.Parameters.Add("@TenLoaiSach", SqlDbType.NVarChar).Value = tenLoaiSach;
+            SqlDataAdapter adapter = new SqlDataAdapter(cmmd);
+            DataTable table = new DataTable();
+            adapter.Fill(table);
+            return table;
+        }
+        public DataTable DSSachTheoNgonNgu(string tenNgonNgu)
+        {
+            SqlCommand cmmd = new SqlCommand("SELECT * FROM func_CategorizeBookByLanguage(@TenNgonNgu)", conn.GetSqlConnection());
+            cmmd.Parameters.Add("@TenNgonNgu", SqlDbType.NVarChar).Value = tenNgonNgu;
+            SqlDataAdapter adapter = new SqlDataAdapter( cmmd);
+            DataTable table = new DataTable();
+            adapter.Fill(table);
+            return table;
+        }
+        #endregion
     }
 }
 
