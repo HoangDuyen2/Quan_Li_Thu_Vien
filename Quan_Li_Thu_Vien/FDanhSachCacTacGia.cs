@@ -23,7 +23,6 @@ namespace Quan_Li_Thu_Vien
         {
             txtMaTG.Text = "";
             txtTenTG.Text = "";
-            txtGioiTinh.Text = "";
             txtNamSinh.Text = "";
             txtNamMat.Text = "";
             txtQueQuan.Text = "";
@@ -51,7 +50,8 @@ namespace Quan_Li_Thu_Vien
         public void ChinhSua()
         {
             txtTenTG.Enabled = true;
-            txtGioiTinh.Enabled = true;
+            radiobtnNu.Enabled = true;
+            radiobtnNam.Enabled = true;
             txtNamSinh.Enabled = true;
             txtNamMat.Enabled = true;
             txtQueQuan.Enabled = true;
@@ -59,7 +59,8 @@ namespace Quan_Li_Thu_Vien
         public void KhoaSua()
         {
             txtTenTG.Enabled = false;
-            txtGioiTinh.Enabled = false;
+            radiobtnNam.Enabled= false;
+            radiobtnNu.Enabled = false;
             txtNamSinh.Enabled = false;
             txtNamMat.Enabled = false;
             txtQueQuan.Enabled = false;
@@ -75,9 +76,8 @@ namespace Quan_Li_Thu_Vien
                 txtMaTG.Text = row.Cells["MaTG"].Value.ToString();
                 txtTenTG.Text = row.Cells["TenTG"].Value.ToString();
                 if (row.Cells["GioiTinh"].Value.ToString() == "F")
-                    txtGioiTinh.Text = "Nữ";
-                if (row.Cells["GioiTinh"].Value.ToString() == "M")
-                    txtGioiTinh.Text = "Nam";
+                    radiobtnNu.Checked = true;
+                else radiobtnNam.Checked = true;
                 txtNamSinh.Text = row.Cells["NamSinh"].Value.ToString();
                 txtNamMat.Text = row.Cells["NamMat"].Value.ToString();
                 txtQueQuan.Text = row.Cells["QueQuan"].Value.ToString();
@@ -107,15 +107,15 @@ namespace Quan_Li_Thu_Vien
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtTenTG.Text)||string.IsNullOrEmpty(txtGioiTinh.Text))
+            if (string.IsNullOrEmpty(txtTenTG.Text))
             {
                 MessageBox.Show("Please enter a valid value for 'TenTG' and 'GioiTinh'.");
                 return;
             }
             string sex = "";
-            if (txtGioiTinh.Text == "Nữ")
+            if (radiobtnNu.Checked)
                 sex = "F";
-            if (txtGioiTinh.Text == "Nam")
+            else
                 sex = "M";
             int namsinh, nammat;
             if (!int.TryParse(txtNamSinh.Text, out namsinh))
@@ -131,5 +131,28 @@ namespace Quan_Li_Thu_Vien
             LoadData();
         }
         #endregion
+
+        private void btnTimKiem_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtTenTGNhap.Text))
+            {
+                MessageBox.Show("Please enter a valid value for 'TenTG'.");
+                LoadData();
+                return;
+            }
+            else
+            {
+                try
+                {
+                    dtgvTG.DataSource = dsTacGia.timKiemTacGia(txtTenTGNhap.Text);
+                    dtgvTG.AutoResizeColumns();
+                }
+                catch
+                {
+                    MessageBox.Show("Không truy xuất được dữ liệu", "Lỗi");
+                }
+            }
+            
+        }
     }
 }

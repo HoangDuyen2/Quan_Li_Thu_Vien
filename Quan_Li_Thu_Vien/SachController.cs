@@ -143,6 +143,17 @@ namespace Quan_Li_Thu_Vien
                 else MessageBox.Show("Thực thi sửa tác giả thất bại", "Information", MessageBoxButtons.OK);
             }
         }
-    }
+        public DataTable timKiemTacGia(string tenTG)
+        {
+            string funcName = "func_SearchTGName";
+            SqlCommand command = new SqlCommand("Select * from " + funcName + " (@TenTG)", conn.GetSqlConnection());
+            command.Parameters.Add("@TenTG", SqlDbType.NVarChar).Value = tenTG;
+            DataTable table = new DataTable();
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            adapter.Fill(table);
+            return table;
+        }
 
+    }
 }
+
