@@ -40,12 +40,6 @@ namespace Quan_Li_Thu_Vien
             danhSacCacSachDangMuon.ShowDialog();
         }
 
-        private void btnDanhSachSachMuonTrongNgay_Click(object sender, EventArgs e)
-        {
-            FDanhSachSachMuonTrongNgay danhSachSachMuonTrongNgay = new FDanhSachSachMuonTrongNgay();
-            danhSachSachMuonTrongNgay.ShowDialog();
-        }
-
         private void btnDSTacGia_Click(object sender, EventArgs e)
         {
             FDanhSachCacTacGia danhSachCacTacGia = new FDanhSachCacTacGia();

@@ -36,7 +36,6 @@
             this.btnDSNgonNgu = new System.Windows.Forms.Button();
             this.btnThongTinCaNhan = new System.Windows.Forms.Button();
             this.btnDSTacGia = new System.Windows.Forms.Button();
-            this.btnDanhSachSachMuonTrongNgay = new System.Windows.Forms.Button();
             this.btnDanhSachSachDangMuon = new System.Windows.Forms.Button();
             this.btnDanhSachCacSachBiHu = new System.Windows.Forms.Button();
             this.btnXemDSSach = new System.Windows.Forms.Button();
@@ -72,7 +71,6 @@
             this.panelMucLuc.Controls.Add(this.btnDSNgonNgu);
             this.panelMucLuc.Controls.Add(this.btnThongTinCaNhan);
             this.panelMucLuc.Controls.Add(this.btnDSTacGia);
-            this.panelMucLuc.Controls.Add(this.btnDanhSachSachMuonTrongNgay);
             this.panelMucLuc.Controls.Add(this.btnDanhSachSachDangMuon);
             this.panelMucLuc.Controls.Add(this.btnDanhSachCacSachBiHu);
             this.panelMucLuc.Controls.Add(this.btnXemDSSach);
@@ -140,23 +138,11 @@
             this.btnDSTacGia.UseVisualStyleBackColor = false;
             this.btnDSTacGia.Click += new System.EventHandler(this.btnDSTacGia_Click);
             // 
-            // btnDanhSachSachMuonTrongNgay
-            // 
-            this.btnDanhSachSachMuonTrongNgay.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnDanhSachSachMuonTrongNgay.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDanhSachSachMuonTrongNgay.Location = new System.Drawing.Point(-1, 196);
-            this.btnDanhSachSachMuonTrongNgay.Name = "btnDanhSachSachMuonTrongNgay";
-            this.btnDanhSachSachMuonTrongNgay.Size = new System.Drawing.Size(214, 65);
-            this.btnDanhSachSachMuonTrongNgay.TabIndex = 3;
-            this.btnDanhSachSachMuonTrongNgay.Text = "     Danh sách sách      mượn trong ngày";
-            this.btnDanhSachSachMuonTrongNgay.UseVisualStyleBackColor = false;
-            this.btnDanhSachSachMuonTrongNgay.Click += new System.EventHandler(this.btnDanhSachSachMuonTrongNgay_Click);
-            // 
             // btnDanhSachSachDangMuon
             // 
             this.btnDanhSachSachDangMuon.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnDanhSachSachDangMuon.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDanhSachSachDangMuon.Location = new System.Drawing.Point(-1, 131);
+            this.btnDanhSachSachDangMuon.Location = new System.Drawing.Point(-1, 67);
             this.btnDanhSachSachDangMuon.Name = "btnDanhSachSachDangMuon";
             this.btnDanhSachSachDangMuon.Size = new System.Drawing.Size(214, 65);
             this.btnDanhSachSachDangMuon.TabIndex = 2;
@@ -168,7 +154,7 @@
             // 
             this.btnDanhSachCacSachBiHu.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnDanhSachCacSachBiHu.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDanhSachCacSachBiHu.Location = new System.Drawing.Point(-1, 66);
+            this.btnDanhSachCacSachBiHu.Location = new System.Drawing.Point(-1, 138);
             this.btnDanhSachCacSachBiHu.Name = "btnDanhSachCacSachBiHu";
             this.btnDanhSachCacSachBiHu.Size = new System.Drawing.Size(214, 65);
             this.btnDanhSachCacSachBiHu.TabIndex = 1;
@@ -209,7 +195,6 @@
         private System.Windows.Forms.Panel panelNen;
         private System.Windows.Forms.PictureBox picBoxNen;
         private System.Windows.Forms.Panel panelMucLuc;
-        private System.Windows.Forms.Button btnDanhSachSachMuonTrongNgay;
         private System.Windows.Forms.Button btnDanhSachSachDangMuon;
         private System.Windows.Forms.Button btnDanhSachCacSachBiHu;
         private System.Windows.Forms.Button btnXemDSSach;

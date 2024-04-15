@@ -39,6 +39,7 @@
             this.lbDanhSachCacCuonSach = new System.Windows.Forms.Label();
             this.dtgvSach = new System.Windows.Forms.DataGridView();
             this.btnExit = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.panelNen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvSach)).BeginInit();
             this.SuspendLayout();
@@ -154,13 +155,14 @@
             this.dtgvSach.RowTemplate.Height = 24;
             this.dtgvSach.Size = new System.Drawing.Size(1352, 549);
             this.dtgvSach.TabIndex = 0;
+            this.dtgvSach.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvSach_CellContentClick);
             // 
             // btnExit
             // 
             this.btnExit.BackColor = System.Drawing.Color.Red;
             this.btnExit.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExit.ForeColor = System.Drawing.Color.White;
-            this.btnExit.Location = new System.Drawing.Point(1242, 647);
+            this.btnExit.Location = new System.Drawing.Point(1244, 646);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(109, 44);
             this.btnExit.TabIndex = 1;
@@ -168,11 +170,25 @@
             this.btnExit.UseVisualStyleBackColor = false;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
+            // btnAdd
+            // 
+            this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btnAdd.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.ForeColor = System.Drawing.Color.White;
+            this.btnAdd.Location = new System.Drawing.Point(1102, 646);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(144, 44);
+            this.btnAdd.TabIndex = 2;
+            this.btnAdd.Text = "Thêm sách";
+            this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
             // FDanhSachCacSach
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1353, 690);
+            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.panelNen);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -200,5 +216,6 @@
         private System.Windows.Forms.Button btnTimKiem;
         private System.Windows.Forms.TextBox txtTenSach;
         private System.Windows.Forms.Label lbTenSach;
+        private System.Windows.Forms.Button btnAdd;
     }
 }
