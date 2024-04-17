@@ -112,7 +112,7 @@ CREATE TABLE TacGiaSach(
 CREATE TABLE PhieuMuonTra ( 
 	MaPhieuMuonTra nvarchar(10) PRIMARY KEY,
 	MaNV nvarchar(10) CONSTRAINT FK_PhieuMuonTra_NhanVien FOREIGN KEY 
-	REFERENCES NhanVien(MaNV),
+	REFERENCES ThongTinNhanVien(MaNV),
 	MaDocGia nvarchar(10) CONSTRAINT FK_PhieuMuonTra_DocGia FOREIGN KEY
 	REFERENCES DocGia(MaDocGia),
 	NgayMuon DATETIME NOT NULL CHECK (NgayMuon >= 0), 
