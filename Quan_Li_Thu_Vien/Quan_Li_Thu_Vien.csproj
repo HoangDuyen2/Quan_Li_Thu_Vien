@@ -240,11 +240,11 @@
     <Compile Include="FormDangNhap.Designer.cs">
       <DependentUpon>FormDangNhap.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormNhanVien.cs">
+    <Compile Include="FNhanVien.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormNhanVien.Designer.cs">
-      <DependentUpon>FormNhanVien.cs</DependentUpon>
+    <Compile Include="FNhanVien.Designer.cs">
+      <DependentUpon>FNhanVien.cs</DependentUpon>
     </Compile>
     <Compile Include="FThemSach.cs">
       <SubType>Form</SubType>
@@ -265,16 +265,22 @@
       <DependentUpon>FTrangChuToSach_ToTruong.cs</DependentUpon>
     </Compile>
     <Compile Include="Person.cs" />
+    <Compile Include="Phat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Phat.Designer.cs">
+      <DependentUpon>Phat.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sach.cs" />
     <Compile Include="SachController.cs" />
     <Compile Include="TacGia.cs" />
-    <Compile Include="ThongTinCaNhan.cs">
+    <Compile Include="FThongTinCaNhan.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ThongTinCaNhan.Designer.cs">
-      <DependentUpon>ThongTinCaNhan.cs</DependentUpon>
+    <Compile Include="FThongTinCaNhan.Designer.cs">
+      <DependentUpon>FThongTinCaNhan.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="FChiTietSach.resx">
       <DependentUpon>FChiTietSach.cs</DependentUpon>
@@ -300,6 +306,9 @@
     <EmbeddedResource Include="FDanhSachSachMuonTrongNgay.resx">
       <DependentUpon>FDanhSachSachMuonTrongNgay.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FNhanVien.resx">
+      <DependentUpon>FNhanVien.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormDangNhap.resx">
       <DependentUpon>FormDangNhap.cs</DependentUpon>
     </EmbeddedResource>
@@ -322,8 +331,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="ThongTinCaNhan.resx">
-      <DependentUpon>ThongTinCaNhan.cs</DependentUpon>
+    <EmbeddedResource Include="FThongTinCaNhan.resx">
+      <DependentUpon>FThongTinCaNhan.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

@@ -46,10 +46,5 @@ namespace Quan_Li_Thu_Vien
             FDanhSachCacSachBiHu danhSachCacSachBiHu = new FDanhSachCacSachBiHu();
             danhSachCacSachBiHu.ShowDialog();
         }
-
-        private void btnThongTinCaNhan_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
