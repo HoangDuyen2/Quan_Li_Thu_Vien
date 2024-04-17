@@ -18,23 +18,23 @@ CREATE TABLE ThongTinNhanVien(
 )
 	--Tạo bảng Nhân viên
 	CREATE TABLE NhanVien(
-	MaNV nvarchar(10) NOT NULL FOREIGN KEY REFERENCES NhanVien(MaNV),
+	MaNV nvarchar(10) NOT NULL FOREIGN KEY REFERENCES ThongTinNhanVien(MaNV),
 	MaTo nvarchar(10) NOT NULL FOREIGN KEY REFERENCES NhomTo(MaTo)
 	)
 	--Tạo bảng Tổ trưởng
 	CREATE TABLE ToTruong(
-	MaNV nvarchar(10) NOT NULL FOREIGN KEY REFERENCES NhanVien(MaNV),
+	MaNV nvarchar(10) NOT NULL FOREIGN KEY REFERENCES ThongTinNhanVien(MaNV),
 	MaTo nvarchar(10) NOT NULL FOREIGN KEY REFERENCES NhomTo(MaTo)
 	)
 	--Tạo bảng Người Quản Lí
 	CREATE TABLE NguoiQuanLi(
-	MaNV nvarchar(10) NOT NULL FOREIGN KEY REFERENCES NhanVien(MaNV)
+	MaNV nvarchar(10) NOT NULL FOREIGN KEY REFERENCES ThongTinNhanVien(MaNV)
 	)
   --Tạo bảng Tài khoản
 CREATE TABLE TaiKhoan(
 	Username nvarchar(50) PRIMARY KEY,
 	PasswordUser nvarchar(50) NOT NULL,
-	MaNV nvarchar(10) NOT NULL FOREIGN KEY REFERENCES NhanVien(MaNV)
+	MaNV nvarchar(10) NOT NULL FOREIGN KEY REFERENCES ThongTinNhanVien(MaNV)
 )
 
 --Tạo bảng Loại độc giả
