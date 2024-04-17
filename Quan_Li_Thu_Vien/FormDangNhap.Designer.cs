@@ -83,6 +83,7 @@
             this.btnDangNhap.TabIndex = 0;
             this.btnDangNhap.Text = "Đăng Nhập";
             this.btnDangNhap.UseVisualStyleBackColor = true;
+            this.btnDangNhap.Click += new System.EventHandler(this.btnDangNhap_Click);
             // 
             // panel1
             // 
@@ -104,7 +105,7 @@
             this.radbtnToTruong.TabStop = true;
             this.radbtnToTruong.Text = "Tổ Trưởng";
             this.radbtnToTruong.UseVisualStyleBackColor = true;
-            this.radbtnToTruong.CheckedChanged += new System.EventHandler(this.radbtnDocGia_CheckedChanged);
+            this.radbtnToTruong.CheckedChanged += new System.EventHandler(this.radbtnToTruong_CheckedChanged);
             // 
             // radbtnNhanVien
             // 
