@@ -134,6 +134,17 @@
             this.btnXemDSSach.UseVisualStyleBackColor = false;
             this.btnXemDSSach.Click += new System.EventHandler(this.btnXemDSSach_Click);
             // 
+            // btnThongTinCaNhan
+            // 
+            this.btnThongTinCaNhan.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnThongTinCaNhan.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThongTinCaNhan.Location = new System.Drawing.Point(-1, 467);
+            this.btnThongTinCaNhan.Name = "btnThongTinCaNhan";
+            this.btnThongTinCaNhan.Size = new System.Drawing.Size(214, 93);
+            this.btnThongTinCaNhan.TabIndex = 6;
+            this.btnThongTinCaNhan.Text = "Thông tin cá nhân";
+            this.btnThongTinCaNhan.UseVisualStyleBackColor = false;
+            // 
             // FTrangChuToSach_ToTruong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);

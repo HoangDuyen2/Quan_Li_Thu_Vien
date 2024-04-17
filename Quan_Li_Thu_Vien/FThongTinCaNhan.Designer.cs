@@ -1,6 +1,6 @@
 ﻿namespace Quan_Li_Thu_Vien
 {
-    partial class ThongTinCaNhan
+    partial class FThongTinCaNhan
     {
         /// <summary>
         /// Required designer variable.
@@ -28,10 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ThongTinCaNhan));
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.btnQuayLai = new System.Windows.Forms.Button();
-            this.btnCapNhat = new System.Windows.Forms.Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FThongTinCaNhan));
             this.panel2 = new System.Windows.Forms.Panel();
             this.txtHoVaTen = new System.Windows.Forms.TextBox();
             this.lblHoVaTen = new System.Windows.Forms.Label();
@@ -52,7 +49,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtSoDienThoai = new System.Windows.Forms.TextBox();
             this.lblDienThoai = new System.Windows.Forms.Label();
-            this.panel8.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picboxThongTinCaNhan)).BeginInit();
@@ -62,34 +58,6 @@
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // panel8
-            // 
-            this.panel8.Controls.Add(this.btnQuayLai);
-            this.panel8.Controls.Add(this.btnCapNhat);
-            this.panel8.Location = new System.Drawing.Point(11, 463);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(510, 42);
-            this.panel8.TabIndex = 26;
-            // 
-            // btnQuayLai
-            // 
-            this.btnQuayLai.Location = new System.Drawing.Point(3, 3);
-            this.btnQuayLai.Name = "btnQuayLai";
-            this.btnQuayLai.Size = new System.Drawing.Size(104, 35);
-            this.btnQuayLai.TabIndex = 2;
-            this.btnQuayLai.Text = "Quay Lai";
-            this.btnQuayLai.UseVisualStyleBackColor = true;
-            // 
-            // btnCapNhat
-            // 
-            this.btnCapNhat.Font = new System.Drawing.Font("Arial Narrow", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCapNhat.Location = new System.Drawing.Point(315, 4);
-            this.btnCapNhat.Name = "btnCapNhat";
-            this.btnCapNhat.Size = new System.Drawing.Size(192, 34);
-            this.btnCapNhat.TabIndex = 0;
-            this.btnCapNhat.Text = "Cap Nhat";
-            this.btnCapNhat.UseVisualStyleBackColor = true;
             // 
             // panel2
             // 
@@ -265,12 +233,11 @@
             this.lblDienThoai.TabIndex = 0;
             this.lblDienThoai.Text = "Điện Thoại";
             // 
-            // ThongTinCaNhan
+            // FThongTinCaNhan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(536, 519);
-            this.Controls.Add(this.panel8);
+            this.ClientSize = new System.Drawing.Size(530, 488);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel6);
@@ -278,9 +245,8 @@
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
-            this.Name = "ThongTinCaNhan";
+            this.Name = "FThongTinCaNhan";
             this.Text = "ThongTinCaNhan";
-            this.panel8.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel7.ResumeLayout(false);
@@ -300,10 +266,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.Button btnQuayLai;
-        private System.Windows.Forms.Button btnCapNhat;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox txtHoVaTen;
         private System.Windows.Forms.Label lblHoVaTen;

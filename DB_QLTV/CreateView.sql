@@ -24,12 +24,17 @@ INNER JOIN LoaiDocGia LDG ON DG. MaLoaiDG = LDG. MaLoaiDG
 --Kết thúc view Danh sách các độc giả
 
 --Bắt đầu view Danh sách các nhân viên
-CREATE VIEW NhanVienView AS
-SELECT DISTINCT nv.MaNV, nv.TenNV, nv.GioiTinh, nt.TenTo, tt.TenNV AS TenToTruong, nv.SDT
-FROM NhanVien nv
-INNER JOIN dbo.NhomTo nt ON nv.MaTo = nt.MaTo
-INNER JOIN NhanVien tt ON nv.MaTT = tt.MaNV
---Kết thúc view danh sách nhân viên
+Create view NhanVienView AS
+SELECT DISTINCT ttnv.MaNV, ttnv.TenNV, ttnv.GioiTinh, ttt.TenTo, ttt.TenTT AS TenToTruong, ttnv.SDT
+from NhanVien nv
+INNER JOIN ThongTinNhanVien ttnv on nv.MaNV=ttnv.MaNV
+INNER JOIN (SELECT  
+    ThongTinNhanVien.TenNV AS TenTT,
+	ToTruong.MaTo,
+	NhomTo.TenTo
+FROM ToTruong
+Inner JOIN ThongTinNhanVien ON ToTruong.MaNV = ThongTinNhanVien.MaNV
+Inner Join NhomTo on NhomTo.MaTo=ToTruong.MaTo) as ttt on nv.MaTo=ttt.MaTo
 
 --Bắt đầu view Danh sách các sách bị hư
 CREATE VIEW SachBiHu 
@@ -77,9 +82,25 @@ AS SELECT  DISTINCT MaTG, TenTG, GioiTinh, NamSinh, NamMat, QueQuan
 FROM [TacGia]
 --Kết thúc view danh sách các tác giả
 
+<<<<<<< HEAD
+
+--danh sách đọc giả
+CREATE VIEW ViewDocGia AS
+SELECT
+  MaDocGia,
+  TenDocGia,
+  Email,
+  SoDienThoai,
+  GioiTinh,
+  NgayTao,
+  TenLoaiDG
+FROM DocGia
+JOIN LoaiDocGia ON DocGia.MaLoaiDG = LoaiDocGia.MaLoaiDG;
+=======
 --Bắt đầu danh sách các nhà xuất bản
 CREATE VIEW [dbo].[view_NhaXuatBan]
 AS
 SELECT DISTINCT MaNXB, TenNXB, DiaChi, SDT
 FROM [NXB]
 --Kết thúc danh sách các nhà xuất bản
+>>>>>>> de53e375b7ecacc4947b26d9df54bbb1eb6e6c81
