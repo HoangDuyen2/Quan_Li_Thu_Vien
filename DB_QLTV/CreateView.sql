@@ -24,12 +24,17 @@ INNER JOIN LoaiDocGia LDG ON DG. MaLoaiDG = LDG. MaLoaiDG
 --Kết thúc view Danh sách các độc giả
 
 --Bắt đầu view Danh sách các nhân viên
-CREATE VIEW NhanVienView AS
-SELECT DISTINCT nv.MaNV, nv.TenNV, nv.GioiTinh, nt.TenTo, tt.TenNV AS TenToTruong, nv.SDT
-FROM NhanVien nv
-INNER JOIN dbo.NhomTo nt ON nv.MaTo = nt.MaTo
-INNER JOIN NhanVien tt ON nv.MaTT = tt.MaNV
---Kết thúc view danh sách nhân viên
+Create view NhanVienView AS
+SELECT DISTINCT ttnv.MaNV, ttnv.TenNV, ttnv.GioiTinh, ttt.TenTo, ttt.TenTT AS TenToTruong, ttnv.SDT
+from NhanVien nv
+INNER JOIN ThongTinNhanVien ttnv on nv.MaNV=ttnv.MaNV
+INNER JOIN (SELECT  
+    ThongTinNhanVien.TenNV AS TenTT,
+	ToTruong.MaTo,
+	NhomTo.TenTo
+FROM ToTruong
+Inner JOIN ThongTinNhanVien ON ToTruong.MaNV = ThongTinNhanVien.MaNV
+Inner Join NhomTo on NhomTo.MaTo=ToTruong.MaTo) as ttt on nv.MaTo=ttt.MaTo
 
 --Bắt đầu view Danh sách các sách bị hư
 CREATE VIEW SachBiHu 
