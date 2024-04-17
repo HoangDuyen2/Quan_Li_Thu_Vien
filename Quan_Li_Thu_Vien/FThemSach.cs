@@ -16,7 +16,6 @@ namespace Quan_Li_Thu_Vien
         {
             InitializeComponent();
         }
-        Sach sachForm = new Sach();
         SachController sachController = new SachController();
         private void FThemSach_Load(object sender, EventArgs e)
         {
@@ -114,8 +113,6 @@ namespace Quan_Li_Thu_Vien
                 }
             }
         }
-
-
         #endregion
 
         

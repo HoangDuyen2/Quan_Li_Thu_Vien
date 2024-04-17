@@ -72,5 +72,12 @@ namespace Quan_Li_Thu_Vien
                 MessageBox.Show("Không truy xuất được dữ liệu", "Lỗi");
             }
         }
+
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            FNewNXB fNewNXB = new FNewNXB();
+            this.Hide();
+            fNewNXB.ShowDialog();
+        }
     }
 }

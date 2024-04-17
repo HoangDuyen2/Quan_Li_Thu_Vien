@@ -168,6 +168,12 @@
     <Compile Include="FChiTietSachMuon.Designer.cs">
       <DependentUpon>FChiTietSachMuon.cs</DependentUpon>
     </Compile>
+    <Compile Include="FChiTietTacGia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FChiTietTacGia.Designer.cs">
+      <DependentUpon>FChiTietTacGia.cs</DependentUpon>
+    </Compile>
     <Compile Include="FDanhSacCacSachDangMuon.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -271,6 +277,9 @@
     <EmbeddedResource Include="FChiTietSachMuon.resx">
       <DependentUpon>FChiTietSachMuon.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FChiTietTacGia.resx">
+      <DependentUpon>FChiTietTacGia.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FDanhSacCacSachDangMuon.resx">
       <DependentUpon>FDanhSacCacSachDangMuon.cs</DependentUpon>
     </EmbeddedResource>
@@ -285,12 +294,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FDanhSachCacTacGia.resx">
       <DependentUpon>FDanhSachCacTacGia.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FDanhSachNgonNgu.resx">
-      <DependentUpon>FDanhSachNgonNgu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FDanhSachSachMuonTrongNgay.resx">
-      <DependentUpon>FDanhSachSachMuonTrongNgay.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormDangNhap.resx">
       <DependentUpon>FormDangNhap.cs</DependentUpon>
