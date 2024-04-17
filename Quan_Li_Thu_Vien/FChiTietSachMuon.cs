@@ -45,9 +45,7 @@ namespace Quan_Li_Thu_Vien
         #region Các button
         private void btnExit_Click_1(object sender, EventArgs e)
         {
-            FDanhSacCacSachDangMuon dsSach = new FDanhSacCacSachDangMuon();
             this.Hide();
-            dsSach.ShowDialog();
         }
         #endregion
     }

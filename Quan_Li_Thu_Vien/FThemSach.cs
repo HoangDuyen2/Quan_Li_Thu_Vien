@@ -83,11 +83,6 @@ namespace Quan_Li_Thu_Vien
                     FNewLoaiSach newAuthor = new FNewLoaiSach(tenLoaiSach);
                     newAuthor.ShowDialog();
                 }
-                else
-                {
-                    FDanhSachCacLoaiSach dsLoaiSach = new FDanhSachCacLoaiSach();
-                    dsLoaiSach.ShowDialog();
-                }
             }
         }
         public void checkTenTacGia(string tenTacGia)
@@ -116,11 +111,6 @@ namespace Quan_Li_Thu_Vien
                 {
                     FNewLanguage newLanguage = new FNewLanguage(tenNgonNgu);
                     newLanguage.ShowDialog();
-                }
-                else
-                {
-                    FDanhSachCacTacGia dsTacGia = new FDanhSachCacTacGia();
-                    dsTacGia.ShowDialog();
                 }
             }
         }

@@ -31,12 +31,11 @@
             this.panelNen = new System.Windows.Forms.Panel();
             this.picBoxNen = new System.Windows.Forms.PictureBox();
             this.panelMucLuc = new System.Windows.Forms.Panel();
+            this.btnThongTinCaNhan = new System.Windows.Forms.Button();
             this.btnDSNhanVien = new System.Windows.Forms.Button();
-            this.btnDanhSachSachMuonTrongNgay = new System.Windows.Forms.Button();
             this.btnDanhSachSachDangMuon = new System.Windows.Forms.Button();
             this.btnDanhSachCacSachBiHu = new System.Windows.Forms.Button();
             this.btnXemDSSach = new System.Windows.Forms.Button();
-            this.btnThongTinCaNhan = new System.Windows.Forms.Button();
             this.panelNen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxNen)).BeginInit();
             this.panelMucLuc.SuspendLayout();
@@ -66,7 +65,6 @@
             this.panelMucLuc.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panelMucLuc.Controls.Add(this.btnThongTinCaNhan);
             this.panelMucLuc.Controls.Add(this.btnDSNhanVien);
-            this.panelMucLuc.Controls.Add(this.btnDanhSachSachMuonTrongNgay);
             this.panelMucLuc.Controls.Add(this.btnDanhSachSachDangMuon);
             this.panelMucLuc.Controls.Add(this.btnDanhSachCacSachBiHu);
             this.panelMucLuc.Controls.Add(this.btnXemDSSach);
@@ -75,6 +73,18 @@
             this.panelMucLuc.Name = "panelMucLuc";
             this.panelMucLuc.Size = new System.Drawing.Size(213, 595);
             this.panelMucLuc.TabIndex = 0;
+            // 
+            // btnThongTinCaNhan
+            // 
+            this.btnThongTinCaNhan.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnThongTinCaNhan.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThongTinCaNhan.Location = new System.Drawing.Point(-1, 467);
+            this.btnThongTinCaNhan.Name = "btnThongTinCaNhan";
+            this.btnThongTinCaNhan.Size = new System.Drawing.Size(214, 93);
+            this.btnThongTinCaNhan.TabIndex = 6;
+            this.btnThongTinCaNhan.Text = "Thông tin cá nhân";
+            this.btnThongTinCaNhan.UseVisualStyleBackColor = false;
+            this.btnThongTinCaNhan.Click += new System.EventHandler(this.btnThongTinCaNhan_Click);
             // 
             // btnDSNhanVien
             // 
@@ -87,18 +97,6 @@
             this.btnDSNhanVien.Text = "Danh sách nhân viên";
             this.btnDSNhanVien.UseVisualStyleBackColor = false;
             this.btnDSNhanVien.Click += new System.EventHandler(this.btnDSNhanVien_Click);
-            // 
-            // btnDanhSachSachMuonTrongNgay
-            // 
-            this.btnDanhSachSachMuonTrongNgay.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnDanhSachSachMuonTrongNgay.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDanhSachSachMuonTrongNgay.Location = new System.Drawing.Point(-1, 281);
-            this.btnDanhSachSachMuonTrongNgay.Name = "btnDanhSachSachMuonTrongNgay";
-            this.btnDanhSachSachMuonTrongNgay.Size = new System.Drawing.Size(214, 93);
-            this.btnDanhSachSachMuonTrongNgay.TabIndex = 3;
-            this.btnDanhSachSachMuonTrongNgay.Text = "     Danh sách sách      mượn trong ngày";
-            this.btnDanhSachSachMuonTrongNgay.UseVisualStyleBackColor = false;
-            this.btnDanhSachSachMuonTrongNgay.Click += new System.EventHandler(this.btnDanhSachSachMuonTrongNgay_Click);
             // 
             // btnDanhSachSachDangMuon
             // 
@@ -136,18 +134,6 @@
             this.btnXemDSSach.UseVisualStyleBackColor = false;
             this.btnXemDSSach.Click += new System.EventHandler(this.btnXemDSSach_Click);
             // 
-            // btnThongTinCaNhan
-            // 
-            this.btnThongTinCaNhan.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnThongTinCaNhan.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThongTinCaNhan.Location = new System.Drawing.Point(-1, 467);
-            this.btnThongTinCaNhan.Name = "btnThongTinCaNhan";
-            this.btnThongTinCaNhan.Size = new System.Drawing.Size(214, 93);
-            this.btnThongTinCaNhan.TabIndex = 6;
-            this.btnThongTinCaNhan.Text = "Thông tin cá nhân";
-            this.btnThongTinCaNhan.UseVisualStyleBackColor = false;
-            this.btnThongTinCaNhan.Click += new System.EventHandler(this.btnThongTinCaNhan_Click);
-            // 
             // FTrangChuToSach_ToTruong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -171,7 +157,6 @@
         private System.Windows.Forms.Button btnDanhSachCacSachBiHu;
         private System.Windows.Forms.Button btnXemDSSach;
         private System.Windows.Forms.Button btnDSNhanVien;
-        private System.Windows.Forms.Button btnDanhSachSachMuonTrongNgay;
         private System.Windows.Forms.Button btnDanhSachSachDangMuon;
         private System.Windows.Forms.PictureBox picBoxNen;
         private System.Windows.Forms.Button btnThongTinCaNhan;
