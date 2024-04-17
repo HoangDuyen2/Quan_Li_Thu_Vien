@@ -222,6 +222,18 @@
     <Compile Include="FNewNXB.Designer.cs">
       <DependentUpon>FNewNXB.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormDangNhap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDangNhap.Designer.cs">
+      <DependentUpon>FormDangNhap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormNhanVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormNhanVien.Designer.cs">
+      <DependentUpon>FormNhanVien.cs</DependentUpon>
+    </Compile>
     <Compile Include="FThemSach.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -247,9 +259,12 @@
     <Compile Include="Sach.cs" />
     <Compile Include="SachController.cs" />
     <Compile Include="TacGia.cs" />
-    <EmbeddedResource Include="FChiTietNXB.resx">
-      <DependentUpon>FChiTietNXB.cs</DependentUpon>
-    </EmbeddedResource>
+    <Compile Include="ThongTinCaNhan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThongTinCaNhan.Designer.cs">
+      <DependentUpon>ThongTinCaNhan.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="FChiTietSach.resx">
       <DependentUpon>FChiTietSach.cs</DependentUpon>
     </EmbeddedResource>
@@ -271,6 +286,15 @@
     <EmbeddedResource Include="FDanhSachCacTacGia.resx">
       <DependentUpon>FDanhSachCacTacGia.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FDanhSachNgonNgu.resx">
+      <DependentUpon>FDanhSachNgonNgu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FDanhSachSachMuonTrongNgay.resx">
+      <DependentUpon>FDanhSachSachMuonTrongNgay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDangNhap.resx">
+      <DependentUpon>FormDangNhap.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FThemSach.resx">
       <DependentUpon>FThemSach.cs</DependentUpon>
     </EmbeddedResource>
@@ -290,6 +314,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ThongTinCaNhan.resx">
+      <DependentUpon>ThongTinCaNhan.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

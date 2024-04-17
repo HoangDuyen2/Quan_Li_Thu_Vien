@@ -230,6 +230,7 @@ AS BEGIN
 	RETURN
 END
 --Kết thúc hàm nhân viên theo tổ
+	
 -- Tự động tăng thêm Mã Phiếu Mượn Trả khi thêm Phiếu Mượn Trả
 CREATE FUNCTION func_Auto_PhieuMuonTraID()
 RETURNS NVARCHAR(10)
@@ -300,5 +301,212 @@ END
 GO
 --Kết thúc hàm tự động thêm Tổ
 
+--Bắt đầu hàm tìm sách mượn theo ngày
+CREATE FUNCTION [dbo].[func_CategorizeBookByDate](@NgayBD datetime, @NgayKT datetime)
+RETURNS @Book TABLE(MaSach nvarchar(10), TenSach nvarchar(255), TenLoaiSach nvarchar(50), TenNXB nvarchar(255), TenNgonNgu nvarchar(50), NamXB int,
+TenTG nvarchar(255), TenDocGia nvarchar(50), TinhTrang nvarchar(50))
+AS
+BEGIN
+	DECLARE @NgayBD_NoTime datetime = CONVERT(DATE, @NgayBD);
+    DECLARE @NgayKT_NoTime datetime = CONVERT(DATE, @NgayKT);
 
+	INSERT @Book
+	SELECT s.MaSach, s.TenSach, ls.TenLoaiSach, nxb.TenNXB, nn.TenNgonNgu, s.NamXB, tg.TenTG, dg.TenDocGia, ctpm.TinhTrang
+	FROM Sach s
+	INNER JOIN NgonNgu nn ON s.MaNgonNgu = nn.MaNgonNgu
+	INNER JOIN NXB nxb ON s.MaNXB = nxb.MaNXB
+	INNER JOIN LoaiSach ls ON s.MaLoaiSach = ls.MaLoaiSach
+	INNER JOIN ChiTietPhieuMuonTra ctpm ON ctpm.MaSach = s.MaSach
+	INNER JOIN TacGiaSach tgs ON tgs.MaSach = s.MaSach
+	INNER JOIN TacGia tg ON tg.MaTG = tgs.MaTG
+	INNER JOIN PhieuMuonTra pmt ON pmt.MaPhieuMuonTra = ctpm.MaPhieuMuonTra
+	INNER JOIN DocGia dg ON dg.MaDocGia = pmt.MaDocGia
+	WHERE CONVERT(DATE,pmt.NgayMuon) BETWEEN @NgayBD_NoTime AND @NgayKT_NoTime
+	RETURN
+END
+--Kết thúc hàm tự động thêm sách mượn theo ngày
 
+--Bắt đầu tìm sách theo loại sách
+CREATE FUNCTION [dbo].[func_CategorizeBookByGenre](@TenLoaiSach nvarchar(50))
+RETURNS @Book TABLE(MaSach nvarchar(10), TenSach nvarchar(255), TenLoaiSach nvarchar(50), TenNXB nvarchar(255), TenNgonNgu nvarchar(50), NamXB int, SoLuongTon int, SoLuongSach int, TenTG nvarchar(255))
+AS
+BEGIN
+	INSERT @Book
+	SELECT s.MaSach, s.TenSach, ls.TenLoaiSach, nxb.TenNXB, nn.TenNgonNgu, s.NamXB, s.SoLuongTon, s.SoLuongSach, tg.TenTG
+	FROM Sach s INNER JOIN NgonNgu nn ON nn.MaNgonNgu = s.MaNgonNgu INNER JOIN NXB nxb ON s.MaNXB = nxb.MaNXB 
+	INNER JOIN LoaiSach ls ON ls.MaLoaiSach = s.MaLoaiSach INNER JOIN TacGiaSach tgs ON tgs.MaSach = s.MaSach
+	INNER JOIN TacGia tg ON tgs.MaTG = tg.MaTG
+	WHERE ls.TenLoaiSach = @TenLoaiSach
+	RETURN
+END
+--Kết thúc tìm sách theo loại sách
+
+--Bắt đầu tìm sách theo ngôn ngữ
+CREATE FUNCTION [dbo].[func_CategorizeBookByLanguage](@TenNgonNgu nvarchar(50))
+RETURNS @Book TABLE(MaSach nvarchar(10), TenSach nvarchar(255), TenLoaiSach nvarchar(50), TenNXB nvarchar(255), TenNgonNgu nvarchar(50), NamXB int, SoLuongTon int, SoLuongSach int, TenTG nvarchar(255))
+AS
+BEGIN
+	INSERT @Book
+	SELECT s.MaSach, s.TenSach, ls.TenLoaiSach, nxb.TenNXB, nn.TenNgonNgu, s.NamXB, s.SoLuongTon, s.SoLuongSach, tg.TenTG
+	FROM Sach s INNER JOIN NgonNgu nn ON nn.MaNgonNgu = s.MaNgonNgu INNER JOIN NXB nxb ON s.MaNXB = nxb.MaNXB 
+	INNER JOIN LoaiSach ls ON ls.MaLoaiSach = s.MaLoaiSach INNER JOIN TacGiaSach tgs ON tgs.MaSach = s.MaSach
+	INNER JOIN TacGia tg ON tgs.MaTG = tg.MaTG
+	WHERE nn.TenNgonNgu = @TenNgonNgu
+	RETURN
+END
+--Kết thúc tìm sách theo ngôn ngữ
+
+--Bắt đầu tìm sách theo tình trạng(Đã trả/chưa trả)
+CREATE FUNCTION [dbo].[func_CategorizeBookBySituation](@TinhTrang nvarchar(50))
+RETURNS @Book TABLE(MaSach nvarchar(10), TenSach nvarchar(255), TenLoaiSach nvarchar(50), TenNXB nvarchar(255), TenNgonNgu nvarchar(50), NamXB int,
+TenTG nvarchar(255), TenDocGia nvarchar(50), TinhTrang nvarchar(50))
+AS
+BEGIN
+	INSERT @Book
+	SELECT s.MaSach, s.TenSach, ls.TenLoaiSach, nxb.TenNXB, nn.TenNgonNgu, s.NamXB, tg.TenTG, dg.TenDocGia, ctpm.TinhTrang
+	FROM Sach s
+	INNER JOIN NgonNgu nn ON s.MaNgonNgu = nn.MaNgonNgu
+	INNER JOIN NXB nxb ON s.MaNXB = nxb.MaNXB
+	INNER JOIN LoaiSach ls ON s.MaLoaiSach = ls.MaLoaiSach
+	INNER JOIN ChiTietPhieuMuonTra ctpm ON ctpm.MaSach = s.MaSach
+	INNER JOIN TacGiaSach tgs ON tgs.MaSach = s.MaSach
+	INNER JOIN TacGia tg ON tg.MaTG = tgs.MaTG
+	INNER JOIN PhieuMuonTra pmt ON pmt.MaPhieuMuonTra = ctpm.MaPhieuMuonTra
+	INNER JOIN DocGia dg ON dg.MaDocGia = pmt.MaDocGia
+	WHERE ctpm.TinhTrang = @TinhTrang
+	RETURN
+END
+--Kết thúc tìm sách theo tình trạng
+
+--Bắt đầu tìm sách theo tên sách
+CREATE FUNCTION [dbo].[func_SearchBookName] (@TenSach NVARCHAR(50))
+RETURNS @BookList TABLE(MaSach nvarchar(10), TenSach nvarchar(255), TenLoaiSach nvarchar(50), TenNXB nvarchar(255), TenNgonNgu nvarchar(50), NamXB int, SoLuongTon int, SoLuongSach int, TenTG nvarchar(255))
+AS
+BEGIN
+	INSERT @BookList
+	SELECT s.MaSach, s.TenSach, ls.TenLoaiSach, nxb.TenNXB, nn.TenNgonNgu, s.NamXB, s.SoLuongTon, s.SoLuongSach, tg.TenTG
+	FROM Sach s INNER JOIN NgonNgu nn ON nn.MaNgonNgu = s.MaNgonNgu INNER JOIN NXB nxb ON s.MaNXB = nxb.MaNXB 
+	INNER JOIN LoaiSach ls ON ls.MaLoaiSach = s.MaLoaiSach INNER JOIN TacGiaSach tgs ON tgs.MaSach = s.MaSach
+	INNER JOIN TacGia tg ON tgs.MaTG = tg.MaTG
+    WHERE TenSach LIKE N'%' + @TenSach + '%'
+	RETURN
+END
+--Kết thúc tìm sách theo tên
+
+--Bắt đầu tìm sách theo tên nxb
+CREATE FUNCTION [dbo].[func_SearchNXBName] (@TenNXB NVARCHAR(50))
+RETURNS @NXBList TABLE (MaNXB NVARCHAR(10), TenNXB NVARCHAR(50), DiaChi 
+NVARCHAR(255), SDT NVARCHAR(10))
+AS
+BEGIN
+	INSERT INTO @NXBList (MaNXB, TenNXB, DiaChi, SDT)
+    SELECT MaNXB, TenNXB, DiaChi, SDT
+    FROM dbo.NXB
+    WHERE TenNXB LIKE N'%' + @TenNXB + '%'
+	RETURN
+END
+--Kết thúc tìm sách theo tên nhà xuất bản
+
+--Tìm loại sách theo tên loại sách
+CREATE FUNCTION [dbo].[func_SearchTenLoaiSachByTenLoaiSach](@TenLoaiSach nvarchar(50))
+RETURNS INT
+AS
+BEGIN
+	DECLARE @LoaiSachCount INT
+
+	SELECT @LoaiSachCount = COUNT(*)
+	FROM LoaiSach
+	WHERE @TenLoaiSach = TenLoaiSach
+
+	IF(@LoaiSachCount > 0)
+		RETURN 1
+	RETURN 0
+END
+--Kết thúc tìm sách theo tên loại sách
+
+--Bắt đầu tìm ngôn ngữ theo tên ngôn ngữ
+CREATE FUNCTION [dbo].[func_SearchTenNgonNguByTenNgonNgu](@TenNgonNgu nvarchar(50))
+RETURNS INT
+AS
+BEGIN
+	DECLARE @NgonNguCount INT
+
+	SELECT @NgonNguCount = COUNT(*)
+	FROM NgonNgu
+	WHERE @TenNgonNgu = TenNgonNgu
+
+	IF(@NgonNguCount > 0)
+		RETURN 1
+	RETURN 0
+END
+--Kết thúc tìm ngôn ngữ theo tên ngôn ngữ
+
+--Bắt đầu tìm tên nhà xuất bản theo tên nhà xuất bản
+CREATE FUNCTION [dbo].[func_SearchTenNXBByName](@TenNXB nvarchar(255))
+RETURNS INT
+AS
+BEGIN
+	DECLARE @NXBCount INT
+	SELECT @NXBCount = COUNT(*)
+	FROM NXB
+	WHERE TenNXB = @TenNXB
+	
+	IF @NXBCount > 0
+		RETURN 1
+	RETURN 0
+END
+--Kết thúc tìm tên nhà xuất bản theo tên nhà xuất bản
+
+--Tìm kiếm tên tác giả theo tên tác giả
+CREATE FUNCTION [dbo].[func_SearchTenTGByName](@TenTacGia nvarchar(50))
+RETURNS INT
+AS
+BEGIN
+	DECLARE @TenTGCount INT
+	SELECT @TenTGCount = COUNT(*)
+	FROM TacGia
+	WHERE TenTG = @TenTacGia;
+	
+	IF(@TenTGCount > 0)
+		RETURN 1
+	RETURN 0
+END
+--Kết thúc tìm tên tác giả theo tên tác giả
+
+--Danh sách các tác giả theo tên
+CREATE FUNCTION [dbo].[func_SearchTGName] (@TenTG NVARCHAR(50))
+RETURNS @TGList TABLE (MaTG NVARCHAR(10), TenTG NVARCHAR(50), GioiTinh 
+NVARCHAR(1), NamSinh INT, NamMat INT, QueQuan NVARCHAR(50))
+AS
+BEGIN
+	INSERT INTO @TGList (MaTG, TenTG, GioiTinh, NamSinh, NamMat, QueQuan)
+    SELECT MaTG, TenTG, GioiTinh, NamSinh, NamMat, QueQuan
+    FROM dbo.TacGia
+    WHERE TenTG LIKE N'%' + @TenTG + '%'
+	RETURN
+END
+--Kết thúc danh sách các tác giả theo tên
+
+--Bắt đầu tên các loại ngôn ngữ
+CREATE FUNCTION [dbo].[func_TenCacLoaiNgonNgu]()
+RETURNS @DSTenNgonNgu TABLE(TenNgonNgu nvarchar(50))
+AS
+BEGIN
+	INSERT @DSTenNgonNgu(TenNgonNgu)
+	SELECT TenNgonNgu
+	FROM NgonNgu
+	RETURN
+END
+--Kết thúc tên các loại ngôn ngữ
+
+--Bắt đầu tên các loại sách
+CREATE FUNCTION [dbo].[func_TenCacLoaiSach]()
+RETURNS @LoaiSach TABLE (TenLoaiSach nvarchar(50))
+AS
+BEGIN
+	INSERT INTO @LoaiSach(TenLoaiSach)
+	SELECT TenLoaiSach
+	FROM LoaiSach
+	RETURN
+END
+--Kết thúc tên các loại sách

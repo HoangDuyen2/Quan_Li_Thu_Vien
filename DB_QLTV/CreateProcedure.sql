@@ -109,6 +109,64 @@ END
 GO
 --Kết thúc thêm sách mới
 
+--Bắt đầu sửa sách
+CREATE PROCEDURE [dbo].[proc_suaSach]
+	@MaSach nvarchar(10),
+	@TenSach nvarchar(50),
+	@TenNXB nvarchar(255),
+	@TenLoaiSach nvarchar(50),
+	@NamXB int,
+	@TenNgonNgu nvarchar(50),
+	@SoLuongTon int,
+	@SoLuongSach int,
+	@TenTGNew nvarchar(50),
+	@TenTGOld nvarchar(50)
+AS
+BEGIN
+	BEGIN TRY
+	-- Thêm mới sản phẩm
+		DECLARE @MaNXB nvarchar(10)
+		SELECT @MaNXB = MaNXB
+		FROM NXB
+		WHERE TenNXB = @TenNXB
+
+		DECLARE @MaLoaiSach nvarchar(10)
+		SELECT @MaLoaiSach = MaLoaiSach
+		FROM LoaiSach
+		WHERE TenLoaiSach = @TenLoaiSach
+
+		DECLARE @MaNgonNgu nvarchar(10)
+		SELECT @MaNgonNgu = MaNgonNgu
+		FROM NgonNgu
+		WHERE TenNgonNgu = @TenNgonNgu
+
+		DECLARE @MaTGNew nvarchar(10)
+		SELECT @MaTGNew = MaTG
+		FROM TacGia
+		WHERE @TenTGNew = TenTG
+
+		DECLARE @MaTGOld nvarchar(10)
+		SELECT @MaTGOld = MaTG
+		FROM TacGia
+		WHERE @TenTGOld = TenTG
+
+		UPDATE dbo.Sach SET TenSach = @TenSach, NamXB = @NamXB, SoLuongTon = @SoLuongTon, SoLuongSach = @SoLuongSach,MaNXB = @MaNXB,
+							MaLoaiSach = @MaLoaiSach, MaNgonNgu = @MaNgonNgu
+		WHERE MaSach = @MaSach
+
+	
+		DELETE FROM TacGiaSach WHERE MaSach = @MaSach AND MaTG = @MaTGOld
+
+		INSERT INTO TacGiaSach(MaTG, MaSach) VALUES (@MaTGNew, @MaSach)
+	END TRY
+	BEGIN CATCH
+	DECLARE @err NVARCHAR(MAX)
+		SELECT @err = N'Lỗi' + ERROR_MESSAGE()
+		RAISERROR(@err, 16, 1)
+	END CATCH
+END
+--Kết thúc sửa sách
+
 --Bắt đầu thêm tác giả
 CREATE PROCEDURE [dbo].[InsertTacGia] 
     @TenTG nvarchar(50),
@@ -139,3 +197,53 @@ BEGIN
     END CATCH
 END
 --Kết thúc thêm tác giả
+
+--Bắt đầu sửa tác giả
+CREATE PROCEDURE pro_UpdateTacGia (@MaTG nvarchar(10),
+								@TenTacGia nvarchar(50),
+								@GioiTinh nvarchar(1),
+								@NamSinh int,
+								@NamMat int,
+								@QueQuan nvarchar(50))
+AS
+BEGIN
+	BEGIN TRANSACTION Tran_UpdateTacGia
+	BEGIN TRY
+		UPDATE dbo.TacGia SET TenTG = @TenTacGia,
+							  GioiTinh = @GioiTinh,
+							  NamSinh = @NamSinh,
+							  NamMat = @NamMat,
+							  QueQuan = @QueQuan
+		WHERE MaTG = @MaTG
+
+		COMMIT TRANSACTION Tran_UpdateTacGia
+	END TRY
+	BEGIN CATCH
+		PRINT('Cập nhật không thành công')
+		ROLLBACK TRANSACTION Tran_UpdateTacGia
+	END CATCH
+END
+--Kết thúc sửa tác giả
+
+--Bắt đầu sửa nhà xuất bản
+CREATE PROCEDURE pro_UpdateNXB (@MaNXB nvarchar(10),
+								@TenNXB nvarchar(50),
+								@DiaChi nvarchar(255),
+								@SDT nvarchar(11))
+AS
+BEGIN
+	BEGIN TRANSACTION Tran_UpdateNXB
+	BEGIN TRY
+		UPDATE dbo.NXB SET TenNXB = @TenNXB,
+						   DiaChi = @DiaChi,
+						   SDT = @SDT
+						WHERE MaNXB = @MaNXB
+
+		COMMIT TRANSACTION Tran_UpdateNXB
+	END TRY
+	BEGIN CATCH
+		PRINT('Cập nhật không thành công')
+		ROLLBACK TRANSACTION Tran_UpdateNXB
+	END CATCH
+END
+--Kết thúc sửa nhà xuất bản
