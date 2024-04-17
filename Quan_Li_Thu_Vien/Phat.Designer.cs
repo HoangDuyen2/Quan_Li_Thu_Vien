@@ -1,6 +1,6 @@
 ﻿namespace Quan_Li_Thu_Vien
 {
-    partial class FormNhanVien
+    partial class Phat
     {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "FormNhanVien";
+            this.Text = "Phat";
         }
 
         #endregion

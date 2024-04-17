@@ -109,6 +109,64 @@ END
 GO
 --Kết thúc thêm sách mới
 
+--Bắt đầu sửa sách
+CREATE PROCEDURE [dbo].[proc_suaSach]
+	@MaSach nvarchar(10),
+	@TenSach nvarchar(50),
+	@TenNXB nvarchar(255),
+	@TenLoaiSach nvarchar(50),
+	@NamXB int,
+	@TenNgonNgu nvarchar(50),
+	@SoLuongTon int,
+	@SoLuongSach int,
+	@TenTGNew nvarchar(50),
+	@TenTGOld nvarchar(50)
+AS
+BEGIN
+	BEGIN TRY
+	-- Thêm mới sản phẩm
+		DECLARE @MaNXB nvarchar(10)
+		SELECT @MaNXB = MaNXB
+		FROM NXB
+		WHERE TenNXB = @TenNXB
+
+		DECLARE @MaLoaiSach nvarchar(10)
+		SELECT @MaLoaiSach = MaLoaiSach
+		FROM LoaiSach
+		WHERE TenLoaiSach = @TenLoaiSach
+
+		DECLARE @MaNgonNgu nvarchar(10)
+		SELECT @MaNgonNgu = MaNgonNgu
+		FROM NgonNgu
+		WHERE TenNgonNgu = @TenNgonNgu
+
+		DECLARE @MaTGNew nvarchar(10)
+		SELECT @MaTGNew = MaTG
+		FROM TacGia
+		WHERE @TenTGNew = TenTG
+
+		DECLARE @MaTGOld nvarchar(10)
+		SELECT @MaTGOld = MaTG
+		FROM TacGia
+		WHERE @TenTGOld = TenTG
+
+		UPDATE dbo.Sach SET TenSach = @TenSach, NamXB = @NamXB, SoLuongTon = @SoLuongTon, SoLuongSach = @SoLuongSach,MaNXB = @MaNXB,
+							MaLoaiSach = @MaLoaiSach, MaNgonNgu = @MaNgonNgu
+		WHERE MaSach = @MaSach
+
+	
+		DELETE FROM TacGiaSach WHERE MaSach = @MaSach AND MaTG = @MaTGOld
+
+		INSERT INTO TacGiaSach(MaTG, MaSach) VALUES (@MaTGNew, @MaSach)
+	END TRY
+	BEGIN CATCH
+	DECLARE @err NVARCHAR(MAX)
+		SELECT @err = N'Lỗi' + ERROR_MESSAGE()
+		RAISERROR(@err, 16, 1)
+	END CATCH
+END
+--Kết thúc sửa sách
+
 --Bắt đầu thêm tác giả
 CREATE PROCEDURE [dbo].[InsertTacGia] 
     @TenTG nvarchar(50),
@@ -140,6 +198,7 @@ BEGIN
 END
 --Kết thúc thêm tác giả
 
+<<<<<<< HEAD
 
 
 --bắt đầu thêm độc giả mới
@@ -221,6 +280,135 @@ END;
 GO
 --kết thúc cập nhật đọc giả
 
+
+--Bắt đầu sửa tác giả
+CREATE PROCEDURE pro_UpdateTacGia (@MaTG nvarchar(10),
+								@TenTacGia nvarchar(50),
+								@GioiTinh nvarchar(1),
+								@NamSinh int,
+								@NamMat int,
+								@QueQuan nvarchar(50))
+AS
+BEGIN
+	BEGIN TRANSACTION Tran_UpdateTacGia
+	BEGIN TRY
+		UPDATE dbo.TacGia SET TenTG = @TenTacGia,
+							  GioiTinh = @GioiTinh,
+							  NamSinh = @NamSinh,
+							  NamMat = @NamMat,
+							  QueQuan = @QueQuan
+		WHERE MaTG = @MaTG
+
+		COMMIT TRANSACTION Tran_UpdateTacGia
+	END TRY
+	BEGIN CATCH
+		PRINT('Cập nhật không thành công')
+		ROLLBACK TRANSACTION Tran_UpdateTacGia
+	END CATCH
+END
+--Kết thúc sửa tác giả
+
+--Bắt đầu sửa nhà xuất bản
+CREATE PROCEDURE pro_UpdateNXB (@MaNXB nvarchar(10),
+								@TenNXB nvarchar(50),
+								@DiaChi nvarchar(255),
+								@SDT nvarchar(11))
+AS
+BEGIN
+	BEGIN TRANSACTION Tran_UpdateNXB
+	BEGIN TRY
+		UPDATE dbo.NXB SET TenNXB = @TenNXB,
+						   DiaChi = @DiaChi,
+						   SDT = @SDT
+						WHERE MaNXB = @MaNXB
+
+		COMMIT TRANSACTION Tran_UpdateNXB
+	END TRY
+	BEGIN CATCH
+		PRINT('Cập nhật không thành công')
+		ROLLBACK TRANSACTION Tran_UpdateNXB
+	END CATCH
+END
+--Kết thúc sửa nhà xuất bản
+
+--bắt đầu thêm độc giả mới
+CREATE PROCEDURE InsertDocGia (
+							  @TenDocGia NVARCHAR(255) NOT NULL,
+							  @Email CHAR(50) NOT NULL,
+							  @SoDienThoai CHAR(10) NOT NULL,
+							  @GioiTinh NVARCHAR(1) NOT NULL,
+							  @MaLoaiDG nvarchar(10)
+							)
+AS
+BEGIN
+	  -- Wrap the insert statement in a transaction for data integrity
+	  BEGIN TRANSACTION Tran_InsertDocGia
+
+	  BEGIN TRY
+		-- Check if referenced LoaiDocGia record exists before insert
+		IF NOT EXISTS (SELECT 1 FROM LoaiDocGia WHERE MaLoaiDG = @MaLoaiDG)
+		BEGIN
+		  PRINT('MaLoaiDG does not exist!');
+		  THROW; -- Raise an error to rollback the transaction
+		END
+
+		-- Insert data into DocGia table
+		INSERT INTO DocGia (TenDocGia, Email, SoDienThoai, GioiTinh, NgayTao, MaLoaiDG)
+		VALUES (@TenDocGia, @Email, @SoDienThoai, @GioiTinh, GETDATE(), @MaLoaiDG);
+
+		COMMIT TRANSACTION Tran_InsertDocGia
+	  END TRY
+
+	  BEGIN CATCH
+		PRINT('Error inserting DocGia record!');
+		ROLLBACK TRANSACTION Tran_InsertDocGia;
+	  END CATCH
+END;
+GO
+--kết thúc thêm đọc giả
+
+
+--Cập nhật đọc giả
+CREATE PROCEDURE UpdateDocGia (
+  @MaDocGia NVARCHAR(10) NOT NULL,
+  @TenDocGia NVARCHAR(255),
+  @Email CHAR(50),
+  @SoDienThoai CHAR(10),
+  @GioiTinh NVARCHAR(1),
+  @MaLoaiDG nvarchar(10)
+)
+AS
+BEGIN
+	  -- Wrap the update statement in a transaction for data integrity
+	  BEGIN TRANSACTION Tran_UpdateDocGia
+
+	  BEGIN TRY
+		-- Check if DocGia record exists before updating
+		IF NOT EXISTS (SELECT 1 FROM DocGia WHERE MaDocGia = @MaDocGia)
+		BEGIN
+		  PRINT('MaDocGia does not exist!');
+		  THROW; -- Raise an error to rollback the transaction
+		END
+
+		-- Update the DocGia record
+		UPDATE DocGia
+		SET TenDocGia = @TenDocGia,
+			Email = @Email,
+			SoDienThoai = @SoDienThoai,
+			GioiTinh = @GioiTinh,
+			MaLoaiDG = @MaLoaiDG
+		WHERE MaDocGia = @MaDocGia;
+
+		COMMIT TRANSACTION Tran_UpdateDocGia
+	  END TRY
+
+	  BEGIN CATCH
+		PRINT('Error updating DocGia record!');
+		ROLLBACK TRANSACTION Tran_UpdateDocGia;
+	  END CATCH
+END;
+GO
+--kết thúc cập nhật đọc giả
 
 
 

@@ -23,12 +23,17 @@ namespace Quan_Li_Thu_Vien
 
         private void radbtnNhanVien_CheckedChanged(object sender, EventArgs e)
         {
+            if (radbtnNhanVien.Checked)
+            {
 
+            }
         }
-
-        private void radbtnDocGia_CheckedChanged(object sender, EventArgs e)
+        private void radbtnToTruong_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (radbtnToTruong.Checked)
+            {
+                
+            }
         }
 
         private void FormDangNhap_FormClosing(object sender, FormClosingEventArgs e)
@@ -42,6 +47,11 @@ namespace Quan_Li_Thu_Vien
         private void btnThoat_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void btnDangNhap_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
