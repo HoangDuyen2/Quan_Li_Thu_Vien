@@ -376,7 +376,7 @@
             this.Controls.Add(this.btnSua);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FDanhSachCacTacGia";
-            this.Text = "FDanhSachCacTacGia";
+            this.Text = "S";
             this.Load += new System.EventHandler(this.FDanhSachCacTacGia_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgvTG)).EndInit();
             this.panelNen.ResumeLayout(false);

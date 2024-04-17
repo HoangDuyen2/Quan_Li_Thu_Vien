@@ -77,9 +77,25 @@ AS SELECT  DISTINCT MaTG, TenTG, GioiTinh, NamSinh, NamMat, QueQuan
 FROM [TacGia]
 --Kết thúc view danh sách các tác giả
 
+<<<<<<< HEAD
+
+--danh sách đọc giả
+CREATE VIEW ViewDocGia AS
+SELECT
+  MaDocGia,
+  TenDocGia,
+  Email,
+  SoDienThoai,
+  GioiTinh,
+  NgayTao,
+  TenLoaiDG
+FROM DocGia
+JOIN LoaiDocGia ON DocGia.MaLoaiDG = LoaiDocGia.MaLoaiDG;
+=======
 --Bắt đầu danh sách các nhà xuất bản
 CREATE VIEW [dbo].[view_NhaXuatBan]
 AS
 SELECT DISTINCT MaNXB, TenNXB, DiaChi, SDT
 FROM [NXB]
 --Kết thúc danh sách các nhà xuất bản
+>>>>>>> de53e375b7ecacc4947b26d9df54bbb1eb6e6c81
