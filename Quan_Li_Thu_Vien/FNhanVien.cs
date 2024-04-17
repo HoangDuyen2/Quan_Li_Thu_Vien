@@ -16,5 +16,10 @@ namespace Quan_Li_Thu_Vien
         {
             InitializeComponent();
         }
+
+        private void FNhanVien_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
