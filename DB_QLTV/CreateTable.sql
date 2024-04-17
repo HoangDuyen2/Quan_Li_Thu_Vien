@@ -20,15 +20,18 @@ CREATE TABLE ThongTinNhanVien(
 	CREATE TABLE NhanVien(
 	MaNV nvarchar(10) NOT NULL FOREIGN KEY REFERENCES ThongTinNhanVien(MaNV),
 	MaTo nvarchar(10) NOT NULL FOREIGN KEY REFERENCES NhomTo(MaTo)
+	CONSTRAINT PK_NhanVien PRIMARY KEY (MaNV)
 	)
 	--Tạo bảng Tổ trưởng
 	CREATE TABLE ToTruong(
 	MaNV nvarchar(10) NOT NULL FOREIGN KEY REFERENCES ThongTinNhanVien(MaNV),
-	MaTo nvarchar(10) NOT NULL FOREIGN KEY REFERENCES NhomTo(MaTo)
+	MaTo nvarchar(10) NOT NULL FOREIGN KEY REFERENCES NhomTo(MaTo),
+	CONSTRAINT PK_ToTruong PRIMARY KEY (MaNV)
 	)
 	--Tạo bảng Người Quản Lí
 	CREATE TABLE NguoiQuanLi(
 	MaNV nvarchar(10) NOT NULL FOREIGN KEY REFERENCES ThongTinNhanVien(MaNV)
+	CONSTRAINT PK_NguoiQuanLi PRIMARY KEY (MaNV)
 	)
   --Tạo bảng Tài khoản
 CREATE TABLE TaiKhoan(
