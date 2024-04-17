@@ -90,3 +90,17 @@ CREATE VIEW [dbo].[TacGiaView]
 AS SELECT  DISTINCT MaTG, TenTG, GioiTinh, NamSinh, NamMat, QueQuan
 FROM [TacGia]
 --Kết thúc view danh sách các tác giả
+
+
+--danh sách đọc giả
+CREATE VIEW ViewDocGia AS
+SELECT
+  MaDocGia,
+  TenDocGia,
+  Email,
+  SoDienThoai,
+  GioiTinh,
+  NgayTao,
+  TenLoaiDG
+FROM DocGia
+JOIN LoaiDocGia ON DocGia.MaLoaiDG = LoaiDocGia.MaLoaiDG;

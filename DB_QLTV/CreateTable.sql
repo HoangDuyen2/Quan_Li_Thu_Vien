@@ -4,8 +4,8 @@ CREATE TABLE NhomTo(
   TenTo nvarchar(50) NOT NULL
 )
 
---Tạo bảng Nhân viên
-CREATE TABLE NhanVien(
+--Tạo bảng Thong Tin Nhân viên
+CREATE TABLE ThongTinNhanVien(
 	MaNV nvarchar(10) PRIMARY KEY,
 	TenNV nvarchar(50) NOT NULL,
 	GioiTinh CHAR(1) NOT NULL CHECK (GioiTinh IN ('M', 'F')), 
@@ -15,18 +15,30 @@ CREATE TABLE NhanVien(
 	SDT nchar(11) NOT NULL check (len(SDT) = 10),
 	Email CHAR(50) NOT NULL,
 	CHECK(Email LIKE '%@%'),
-	MaNQL nvarchar(10),
-	MaTT nvarchar(10),
-	MaTo nvarchar(10) NOT NULL CONSTRAINT FK_NhanVien_To FOREIGN KEY REFERENCES NhomTo(MaTo),
-	CONSTRAINT FK_NhanVien_MaTT FOREIGN KEY (MaTT) REFERENCES NhanVien(MaNV),
-	CONSTRAINT FK_NhanVien_NQL FOREIGN KEY(MaNQL) REFERENCES NhanVien(MaNV),
+	NgayTao DATETIME;
 )
-
+	--Tạo bảng Nhân viên
+	CREATE TABLE NhanVien(
+	MaNV nvarchar(10) NOT NULL FOREIGN KEY REFERENCES ThongTinNhanVien(MaNV),
+	MaTo nvarchar(10) NOT NULL FOREIGN KEY REFERENCES NhomTo(MaTo)
+	CONSTRAINT PK_NhanVien PRIMARY KEY (MaNV)
+	)
+	--Tạo bảng Tổ trưởng
+	CREATE TABLE ToTruong(
+	MaNV nvarchar(10) NOT NULL FOREIGN KEY REFERENCES ThongTinNhanVien(MaNV),
+	MaTo nvarchar(10) NOT NULL FOREIGN KEY REFERENCES NhomTo(MaTo),
+	CONSTRAINT PK_ToTruong PRIMARY KEY (MaNV)
+	)
+	--Tạo bảng Người Quản Lí
+	CREATE TABLE NguoiQuanLi(
+	MaNV nvarchar(10) NOT NULL FOREIGN KEY REFERENCES ThongTinNhanVien(MaNV)
+	CONSTRAINT PK_NguoiQuanLi PRIMARY KEY (MaNV)
+	)
   --Tạo bảng Tài khoản
 CREATE TABLE TaiKhoan(
 	Username nvarchar(50) PRIMARY KEY,
 	PasswordUser nvarchar(50) NOT NULL,
-	MaNV nvarchar(10) NOT NULL FOREIGN KEY REFERENCES NhanVien(MaNV)
+	MaNV nvarchar(10) NOT NULL FOREIGN KEY REFERENCES ThongTinNhanVien(MaNV)
 )
 
 --Tạo bảng Loại độc giả
@@ -104,7 +116,7 @@ CREATE TABLE TacGiaSach(
 CREATE TABLE PhieuMuonTra ( 
 	MaPhieuMuonTra nvarchar(10) PRIMARY KEY,
 	MaNV nvarchar(10) CONSTRAINT FK_PhieuMuonTra_NhanVien FOREIGN KEY 
-	REFERENCES NhanVien(MaNV),
+	REFERENCES ThongTinNhanVien(MaNV),
 	MaDocGia nvarchar(10) CONSTRAINT FK_PhieuMuonTra_DocGia FOREIGN KEY
 	REFERENCES DocGia(MaDocGia),
 	NgayMuon DATETIME NOT NULL CHECK (NgayMuon >= 0), 
@@ -122,7 +134,7 @@ CREATE TABLE ChiTietPhieuMuonTra (
 
   --Tạo bảng Phạt
 CREATE TABLE Phat (
-  LoaiPhat nvarchar(10) PRIMARY KEY, 
+  LoaiPhat nvarchar(20) PRIMARY KEY, 
   TienPhat int NOT NULL
 );
 

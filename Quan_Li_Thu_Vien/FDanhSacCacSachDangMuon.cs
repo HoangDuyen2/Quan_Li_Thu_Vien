@@ -22,7 +22,9 @@ namespace Quan_Li_Thu_Vien
             try
             {
                 dtgvSach.DataSource = dsSachMuon.DSSachMuon();
-                dtgvSach.AutoResizeColumns();
+                dtgvSach.RowHeadersVisible = false;
+                dtgvSach.BackgroundColor = Color.White;
+                dtgvSach.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
             catch
             {
@@ -40,20 +42,55 @@ namespace Quan_Li_Thu_Vien
             {
                 //Lưu lại dòng dữ liệu vừa kích chọn
                 DataGridViewRow row = this.dtgvSach.Rows[e.RowIndex];
-                //Đưa dữ liệu vào textbox
-                txtMaSach.Text = row.Cells["MaSach"].Value.ToString();
-                txtTenSach.Text = row.Cells["TenSach"].Value.ToString();
-                txtNXB.Text = row.Cells["TenNXB"].Value.ToString();
-                txtLoaiSach.Text = row.Cells["TenLoaiSach"].Value.ToString();
-                txtNamXB.Text = row.Cells["NamXB"].Value.ToString();
-                txtNgonNgu.Text = row.Cells["TenNgonNgu"].Value.ToString();
-                txtTacGia.Text = row.Cells["TenTG"].Value.ToString();
+
+                // Đưa dữ liệu vào các control hoặc xử lý theo nhu cầu
+                Sach sach = new Sach(row.Cells["MaSach"].Value.ToString(), row.Cells["TenSach"].Value.ToString(), row.Cells["TenNXB"].Value.ToString(),
+                    row.Cells["TenLoaiSach"].Value.ToString(), row.Cells["TenNgonNgu"].Value.ToString(), row.Cells["NamXB"].Value.ToString(), null,
+                    null, row.Cells["TenTG"].Value.ToString());
+                // Thêm logic xử lý khi cell được click sau khi áp dụng bộ lọc
+                FChiTietSachMuon fChiTiet = new FChiTietSachMuon(sach, row.Cells["TenDocGia"].Value.ToString(), row.Cells["TinhTrang"].Value.ToString());
+                this.Hide();
+                fChiTiet.ShowDialog();
+
             }
         }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+        private void btnTimKiem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                dtgvSach.DataSource = dsSachMuon.DSSachTheoNgayMuon(dtBatDau.Value,dtKetThuc.Value);
+                DataView dv = new DataView((DataTable)dtgvSach.DataSource);
+                dtgvSach.DataSource = dv.ToTable();
+                dtgvSach.RowHeadersVisible = false;
+                dtgvSach.BackgroundColor = Color.White;
+                dtgvSach.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            }
+            catch
+            {
+                MessageBox.Show("Không truy xuất được dữ liệu", "Lỗi");
+            }
+        }
+
+        private void comboBoxTinhTrang_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                dtgvSach.DataSource = dsSachMuon.DSSachTheoTinhTrang(comboBoxTinhTrang.Text);
+                DataView dv = new DataView((DataTable)dtgvSach.DataSource);
+                dtgvSach.DataSource = dv.ToTable();
+                dtgvSach.RowHeadersVisible = false;
+                dtgvSach.BackgroundColor = Color.White;
+                dtgvSach.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            }
+            catch
+            {
+                MessageBox.Show("Không truy xuất được dữ liệu", "Lỗi");
+            }
         }
     }
 }

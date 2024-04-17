@@ -10,9 +10,14 @@ using System.Windows.Forms;
 
 namespace Quan_Li_Thu_Vien
 {
-    public partial class Form1 : Form
+    public partial class FNewLoaiSach : Form
     {
-        public Form1()
+        string tenLoaiSach;
+        public FNewLoaiSach(string tenLoaiSach) : this()
+        {
+            this.tenLoaiSach = tenLoaiSach;
+        }
+        public FNewLoaiSach()
         {
             InitializeComponent();
         }

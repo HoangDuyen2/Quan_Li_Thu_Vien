@@ -15,8 +15,19 @@ namespace Quan_Li_Thu_Vien
         private string email;
         private string soDienThoai;
         private string gioiTinh;
-        private DateTime ngayTao;
+        private string ngayTao;
         private string maLoaiDG;
+
+        public DocGia(string maDocGia, string tenDocGia, string email, string soDienThoai, string gioiTinh, string ngayTao, string maLoaiDG)
+        {
+            this.maDocGia = maDocGia;
+            this.tenDocGia = tenDocGia;
+            this.email = email;
+            this.soDienThoai = soDienThoai;
+            this.gioiTinh = gioiTinh;
+            this.ngayTao = ngayTao;
+            this.maLoaiDG = maLoaiDG;
+        }
 
         public string MaDocGia { get => maDocGia; set => maDocGia = value; }
         public string TenDocGia { get => tenDocGia; set => tenDocGia = value; }
