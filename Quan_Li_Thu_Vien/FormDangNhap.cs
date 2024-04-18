@@ -20,7 +20,10 @@ namespace Quan_Li_Thu_Vien
         }
         private void radbtnNguoiQuanLy_CheckedChanged(object sender, EventArgs e)
         {
+            if (radbtnNguoiQuanLy.Checked)
+            {
 
+            }
         }
 
         private void radbtnNhanVien_CheckedChanged(object sender, EventArgs e)
@@ -59,7 +62,7 @@ namespace Quan_Li_Thu_Vien
                 conn.openConnection();
                 string tk = txtTenDangNhap.Text;
                 string mk = txtMatKhau.Text;
-                string cmmd = "SELECT * FROM TaiKhoan WHERE Username=@username AND PasswordUser=@password";
+                string cmmd = "select distinct * from NhanVien nv INNER JOIN TaiKhoan tk ON nv.MaNV=tk.MaNV WHERE Username=@username AND PasswordUser=@password";
                 SqlCommand cmd = new SqlCommand(cmmd, conn.GetSqlConnection());
                 cmd.Parameters.AddWithValue("@username", tk);
                 cmd.Parameters.AddWithValue("@password", mk);
@@ -68,6 +71,10 @@ namespace Quan_Li_Thu_Vien
                 if (dta.Read())
                 {
                     MessageBox.Show("Đăng nhập thành công");
+                    FNhanVien fNhanVien = new FNhanVien();
+                    this.Hide();
+                    fNhanVien.ShowDialog();
+                    this.Show();
                 }
                 else
                 {
@@ -75,11 +82,60 @@ namespace Quan_Li_Thu_Vien
                 }
 
                 conn.closeConnection();
+            }
+            if (radbtnNguoiQuanLy.Checked)
+            {
+                conn = new DBConnection();
+                conn.openConnection();
+                string tk = txtTenDangNhap.Text;
+                string mk = txtMatKhau.Text;
+                string cmmd = "select distinct * from NguoiQuanli nv INNER JOIN TaiKhoan tk ON nv.MaNV=tk.MaNV WHERE Username=@username AND PasswordUser=@password";
+                SqlCommand cmd = new SqlCommand(cmmd, conn.GetSqlConnection());
+                cmd.Parameters.AddWithValue("@username", tk);
+                cmd.Parameters.AddWithValue("@password", mk);
 
-                FNhanVien fNhanVien = new FNhanVien();
-                this.Hide();
-                fNhanVien.ShowDialog();
-                this.Show();
+                SqlDataReader dta = cmd.ExecuteReader();
+                if (dta.Read())
+                {
+                    MessageBox.Show("Đăng nhập thành công");
+                    FQuanLy fQuanLy = new FQuanLy();
+                    this.Hide();
+                    fQuanLy.ShowDialog();
+                    this.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Đăng nhập thất bại");
+                }
+
+                conn.closeConnection();
+            }
+            if (radbtnToTruong.Checked)
+            {
+                conn = new DBConnection();
+                conn.openConnection();
+                string tk = txtTenDangNhap.Text;
+                string mk = txtMatKhau.Text;
+                string cmmd = "select distinct * from ToTruong nv INNER JOIN TaiKhoan tk ON nv.MaNV=tk.MaNV WHERE Username=@username AND PasswordUser=@password";
+                SqlCommand cmd = new SqlCommand(cmmd, conn.GetSqlConnection());
+                cmd.Parameters.AddWithValue("@username", tk);
+                cmd.Parameters.AddWithValue("@password", mk);
+
+                SqlDataReader dta = cmd.ExecuteReader();
+                if (dta.Read())
+                {
+                    MessageBox.Show("Đăng nhập thành công");
+                    FNhanVien fNhanVien = new FNhanVien();
+                    this.Hide();
+                    fNhanVien.ShowDialog();
+                    this.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Đăng nhập thất bại");
+                }
+
+                conn.closeConnection();
             }
         }
     }
