@@ -15,7 +15,7 @@ CREATE TABLE ThongTinNhanVien(
 	SDT nchar(11) NOT NULL check (len(SDT) = 10),
 	Email CHAR(50) NOT NULL,
 	CHECK(Email LIKE '%@%'),
-	NgayTao DATETIME;
+	NgayTao DATETIME
 )
 	--Tạo bảng Nhân viên
 	CREATE TABLE NhanVien(

@@ -58,7 +58,7 @@ namespace Quan_Li_Thu_Vien
         #region Các check khi thêm, sửa
         public void checkTenNXB(string tenNXB)
         {
-            if (sachController.checkTenNXB(tenNXB) == false)
+            if (!sachController.checkTenNXB(tenNXB))
             {
                 DialogResult result1 = MessageBox.Show("Tên nhà xuất bản bạn nhập không có trong danh sách nhà xuất bản. Bạn có muốn thêm nhà xuất bản này vào danh sách?", "Warning", MessageBoxButtons.YesNo);
                 if (result1 == DialogResult.Yes)

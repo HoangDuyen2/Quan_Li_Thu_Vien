@@ -27,7 +27,7 @@ namespace Quan_Li_Thu_Vien.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(localdb)\\mssqllocaldb;Initial Catalog=QL_ThuVien;Integrated Security" +
-            "=True")]
+            "=True;Encrypt=False")]
         public string conn {
             get {
                 return ((string)(this["conn"]));

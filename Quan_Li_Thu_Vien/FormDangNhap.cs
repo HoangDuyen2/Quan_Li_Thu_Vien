@@ -7,18 +7,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace Quan_Li_Thu_Vien
 {
     public partial class FormDangNhap : Form
     {
+        DBConnection conn;
         public FormDangNhap()
         {
             InitializeComponent();
         }
         private void radbtnNguoiQuanLy_CheckedChanged(object sender, EventArgs e)
         {
+            if (radbtnNguoiQuanLy.Checked)
+            {
 
+            }
         }
 
         private void radbtnNhanVien_CheckedChanged(object sender, EventArgs e)
@@ -32,7 +37,7 @@ namespace Quan_Li_Thu_Vien
         {
             if (radbtnToTruong.Checked)
             {
-                
+
             }
         }
 
@@ -52,19 +57,38 @@ namespace Quan_Li_Thu_Vien
         private void btnDangNhap_Click(object sender, EventArgs e)
         {
             if (radbtnNhanVien.Checked)
+                DangNhap("NhanVien");
+            if (radbtnNguoiQuanLy.Checked)
+                DangNhap("NguoiQuanLi");
+            if (radbtnToTruong.Checked)
+                DangNhap("ToTruong");
+        }
+        private void DangNhap(string Role)
+        {
+            conn = new DBConnection();
+            conn.openConnection();
+            string tk = txtTenDangNhap.Text;
+            string mk = txtMatKhau.Text;
+            string cmmd = "select distinct * from "+Role+" nv INNER JOIN TaiKhoan tk ON nv.MaNV=tk.MaNV WHERE Username=@username AND PasswordUser=@password";
+            SqlCommand cmd = new SqlCommand(cmmd, conn.GetSqlConnection());
+            cmd.Parameters.AddWithValue("@username", tk);
+            cmd.Parameters.AddWithValue("@password", mk);
+
+            SqlDataReader dta = cmd.ExecuteReader();
+            if (dta.Read())
             {
-                FTrangChuToSach_NhanVien fTrangChuToSach_NhanVien = new FTrangChuToSach_NhanVien();
+                MessageBox.Show("Đăng nhập thành công");
+                LoginInfo.Username = txtTenDangNhap.Text;
+                FNhanVien fNhanVien = new FNhanVien();
                 this.Hide();
-                fTrangChuToSach_NhanVien.ShowDialog();
+                fNhanVien.ShowDialog();
                 this.Show();
             }
-            else if (radbtnToTruong.Checked)
+            else
             {
-                FTrangChuToSach_ToTruong fTrangChuToSach_ToTruong = new FTrangChuToSach_ToTruong();
-                this.Hide();
-                fTrangChuToSach_ToTruong.ShowDialog();
-                this.Show();
+                MessageBox.Show("Đăng nhập thất bại");
             }
+            conn.closeConnection();
         }
     }
 }
