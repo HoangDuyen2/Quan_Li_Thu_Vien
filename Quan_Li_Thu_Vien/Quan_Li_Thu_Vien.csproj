@@ -301,6 +301,9 @@
     <EmbeddedResource Include="FDanhSachCacTacGia.resx">
       <DependentUpon>FDanhSachCacTacGia.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FNhanVien.resx">
+      <DependentUpon>FNhanVien.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormDangNhap.resx">
       <DependentUpon>FormDangNhap.cs</DependentUpon>
     </EmbeddedResource>

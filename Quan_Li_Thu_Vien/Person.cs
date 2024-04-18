@@ -14,9 +14,6 @@ namespace Quan_Li_Thu_Vien
         private string NgaySinh;
         private string diaChi;
         private string SDT;
-        private string maNQL;
-        private string maTo;
-        private string maTT;
         private double luong;
 
         public string MaNguoi { get => maNguoi; set => maNguoi = value; }
@@ -25,9 +22,6 @@ namespace Quan_Li_Thu_Vien
         public string NgaySinh1 { get => NgaySinh; set => NgaySinh = value; }
         public string DiaChi { get => diaChi; set => diaChi = value; }
         public string SDT1 { get => SDT; set => SDT = value; }
-        public string MaNQL { get => maNQL; set => maNQL = value; }
-        public string MaTo { get => maTo; set => maTo = value; }
-        public string MaTT { get => maTT; set => maTT = value; }
         public double Luong { get => luong; set => luong = value; }
     }
 }

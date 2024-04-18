@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FNhanVien));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnThaoTacPhieuMuonTra = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnThaoTacDocGia = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -56,7 +57,6 @@
             this.panel11 = new System.Windows.Forms.Panel();
             this.txtSoDienThoai = new System.Windows.Forms.TextBox();
             this.lblDienThoai = new System.Windows.Forms.Label();
-            this.btnThaoTacPhieuMuonTra = new System.Windows.Forms.Button();
             this.panel12 = new System.Windows.Forms.Panel();
             this.btnThaoTacPhieuNhap = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
@@ -81,6 +81,15 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(360, 82);
             this.panel1.TabIndex = 0;
+            // 
+            // btnThaoTacPhieuMuonTra
+            // 
+            this.btnThaoTacPhieuMuonTra.Location = new System.Drawing.Point(4, 3);
+            this.btnThaoTacPhieuMuonTra.Name = "btnThaoTacPhieuMuonTra";
+            this.btnThaoTacPhieuMuonTra.Size = new System.Drawing.Size(352, 76);
+            this.btnThaoTacPhieuMuonTra.TabIndex = 0;
+            this.btnThaoTacPhieuMuonTra.Text = "Thao Tác Phiếu Mượn Trả";
+            this.btnThaoTacPhieuMuonTra.UseVisualStyleBackColor = true;
             // 
             // panel3
             // 
@@ -170,7 +179,7 @@
             // picboxThongTinCaNhan
             // 
             this.picboxThongTinCaNhan.Image = ((System.Drawing.Image)(resources.GetObject("picboxThongTinCaNhan.Image")));
-            this.picboxThongTinCaNhan.Location = new System.Drawing.Point(175, 3);
+            this.picboxThongTinCaNhan.Location = new System.Drawing.Point(183, 3);
             this.picboxThongTinCaNhan.Name = "picboxThongTinCaNhan";
             this.picboxThongTinCaNhan.Size = new System.Drawing.Size(150, 113);
             this.picboxThongTinCaNhan.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -306,15 +315,6 @@
             this.lblDienThoai.Size = new System.Drawing.Size(111, 24);
             this.lblDienThoai.TabIndex = 0;
             this.lblDienThoai.Text = "Điện Thoại";
-            // 
-            // btnThaoTacPhieuMuonTra
-            // 
-            this.btnThaoTacPhieuMuonTra.Location = new System.Drawing.Point(4, 3);
-            this.btnThaoTacPhieuMuonTra.Name = "btnThaoTacPhieuMuonTra";
-            this.btnThaoTacPhieuMuonTra.Size = new System.Drawing.Size(352, 76);
-            this.btnThaoTacPhieuMuonTra.TabIndex = 0;
-            this.btnThaoTacPhieuMuonTra.Text = "Thao Tác Phiếu Mượn Trả";
-            this.btnThaoTacPhieuMuonTra.UseVisualStyleBackColor = true;
             // 
             // panel12
             // 

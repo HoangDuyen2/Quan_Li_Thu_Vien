@@ -7,11 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace Quan_Li_Thu_Vien
 {
     public partial class FormDangNhap : Form
     {
+        DBConnection conn;
         public FormDangNhap()
         {
             InitializeComponent();
@@ -32,7 +34,7 @@ namespace Quan_Li_Thu_Vien
         {
             if (radbtnToTruong.Checked)
             {
-                
+
             }
         }
 
@@ -53,16 +55,30 @@ namespace Quan_Li_Thu_Vien
         {
             if (radbtnNhanVien.Checked)
             {
-                FTrangChuToSach_NhanVien fTrangChuToSach_NhanVien = new FTrangChuToSach_NhanVien();
+                conn = new DBConnection();
+                conn.openConnection();
+                string tk = txtTenDangNhap.Text;
+                string mk = txtMatKhau.Text;
+                string cmmd = "SELECT * FROM TaiKhoan WHERE Username=@username AND PasswordUser=@password";
+                SqlCommand cmd = new SqlCommand(cmmd, conn.GetSqlConnection());
+                cmd.Parameters.AddWithValue("@username", tk);
+                cmd.Parameters.AddWithValue("@password", mk);
+
+                SqlDataReader dta = cmd.ExecuteReader();
+                if (dta.Read())
+                {
+                    MessageBox.Show("Đăng nhập thành công");
+                }
+                else
+                {
+                    MessageBox.Show("Đăng nhập thất bại");
+                }
+
+                conn.closeConnection();
+
+                FNhanVien fNhanVien = new FNhanVien();
                 this.Hide();
-                fTrangChuToSach_NhanVien.ShowDialog();
-                this.Show();
-            }
-            else if (radbtnToTruong.Checked)
-            {
-                FTrangChuToSach_ToTruong fTrangChuToSach_ToTruong = new FTrangChuToSach_ToTruong();
-                this.Hide();
-                fTrangChuToSach_ToTruong.ShowDialog();
+                fNhanVien.ShowDialog();
                 this.Show();
             }
         }
