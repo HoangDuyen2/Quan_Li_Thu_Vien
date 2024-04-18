@@ -57,86 +57,38 @@ namespace Quan_Li_Thu_Vien
         private void btnDangNhap_Click(object sender, EventArgs e)
         {
             if (radbtnNhanVien.Checked)
-            {
-                conn = new DBConnection();
-                conn.openConnection();
-                string tk = txtTenDangNhap.Text;
-                string mk = txtMatKhau.Text;
-                string cmmd = "select distinct * from NhanVien nv INNER JOIN TaiKhoan tk ON nv.MaNV=tk.MaNV WHERE Username=@username AND PasswordUser=@password";
-                SqlCommand cmd = new SqlCommand(cmmd, conn.GetSqlConnection());
-                cmd.Parameters.AddWithValue("@username", tk);
-                cmd.Parameters.AddWithValue("@password", mk);
-
-                SqlDataReader dta = cmd.ExecuteReader();
-                if (dta.Read())
-                {
-                    MessageBox.Show("Đăng nhập thành công");
-                    FNhanVien fNhanVien = new FNhanVien();
-                    this.Hide();
-                    fNhanVien.ShowDialog();
-                    this.Show();
-                }
-                else
-                {
-                    MessageBox.Show("Đăng nhập thất bại");
-                }
-
-                conn.closeConnection();
-            }
+                DangNhap("NhanVien");
             if (radbtnNguoiQuanLy.Checked)
-            {
-                conn = new DBConnection();
-                conn.openConnection();
-                string tk = txtTenDangNhap.Text;
-                string mk = txtMatKhau.Text;
-                string cmmd = "select distinct * from NguoiQuanli nv INNER JOIN TaiKhoan tk ON nv.MaNV=tk.MaNV WHERE Username=@username AND PasswordUser=@password";
-                SqlCommand cmd = new SqlCommand(cmmd, conn.GetSqlConnection());
-                cmd.Parameters.AddWithValue("@username", tk);
-                cmd.Parameters.AddWithValue("@password", mk);
-
-                SqlDataReader dta = cmd.ExecuteReader();
-                if (dta.Read())
-                {
-                    MessageBox.Show("Đăng nhập thành công");
-                    FQuanLy fQuanLy = new FQuanLy();
-                    this.Hide();
-                    fQuanLy.ShowDialog();
-                    this.Show();
-                }
-                else
-                {
-                    MessageBox.Show("Đăng nhập thất bại");
-                }
-
-                conn.closeConnection();
-            }
+                DangNhap("NguoiQuanLi");
             if (radbtnToTruong.Checked)
+                DangNhap("ToTruong");
+        }
+        private void DangNhap(string Role)
+        {
+            conn = new DBConnection();
+            conn.openConnection();
+            string tk = txtTenDangNhap.Text;
+            string mk = txtMatKhau.Text;
+            string cmmd = "select distinct * from "+Role+" nv INNER JOIN TaiKhoan tk ON nv.MaNV=tk.MaNV WHERE Username=@username AND PasswordUser=@password";
+            SqlCommand cmd = new SqlCommand(cmmd, conn.GetSqlConnection());
+            cmd.Parameters.AddWithValue("@username", tk);
+            cmd.Parameters.AddWithValue("@password", mk);
+
+            SqlDataReader dta = cmd.ExecuteReader();
+            if (dta.Read())
             {
-                conn = new DBConnection();
-                conn.openConnection();
-                string tk = txtTenDangNhap.Text;
-                string mk = txtMatKhau.Text;
-                string cmmd = "select distinct * from ToTruong nv INNER JOIN TaiKhoan tk ON nv.MaNV=tk.MaNV WHERE Username=@username AND PasswordUser=@password";
-                SqlCommand cmd = new SqlCommand(cmmd, conn.GetSqlConnection());
-                cmd.Parameters.AddWithValue("@username", tk);
-                cmd.Parameters.AddWithValue("@password", mk);
-
-                SqlDataReader dta = cmd.ExecuteReader();
-                if (dta.Read())
-                {
-                    MessageBox.Show("Đăng nhập thành công");
-                    FToTruong fToTruong = new FToTruong();
-                    this.Hide();
-                    fToTruong.ShowDialog();
-                    this.Show();
-                }
-                else
-                {
-                    MessageBox.Show("Đăng nhập thất bại");
-                }
-
-                conn.closeConnection();
+                MessageBox.Show("Đăng nhập thành công");
+                FNhanVien fNhanVien = new FNhanVien();
+                this.Hide();
+                fNhanVien.ShowDialog();
+                this.Show();
             }
+            else
+            {
+                MessageBox.Show("Đăng nhập thất bại");
+            }
+
+            conn.closeConnection();
         }
     }
 }
