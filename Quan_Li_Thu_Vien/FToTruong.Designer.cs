@@ -59,9 +59,11 @@
             this.txtSoDienThoai = new System.Windows.Forms.TextBox();
             this.lblDienThoai = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.btnKhoaTaiKhoanNhanVien = new System.Windows.Forms.Button();
+            this.btnXemNhapSach = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnThaoTacNhanVien = new System.Windows.Forms.Button();
+            this.btnToTruong = new System.Windows.Forms.Button();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.btnXemMuonTra = new System.Windows.Forms.Button();
             this.panel15.SuspendLayout();
             this.panel14.SuspendLayout();
             this.panel13.SuspendLayout();
@@ -75,6 +77,7 @@
             this.panel11.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel15
@@ -331,43 +334,62 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.btnKhoaTaiKhoanNhanVien);
+            this.panel3.Controls.Add(this.btnXemNhapSach);
             this.panel3.Location = new System.Drawing.Point(30, 341);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(360, 82);
             this.panel3.TabIndex = 52;
             // 
-            // btnKhoaTaiKhoanNhanVien
+            // btnXemNhapSach
             // 
-            this.btnKhoaTaiKhoanNhanVien.Location = new System.Drawing.Point(4, 4);
-            this.btnKhoaTaiKhoanNhanVien.Name = "btnKhoaTaiKhoanNhanVien";
-            this.btnKhoaTaiKhoanNhanVien.Size = new System.Drawing.Size(353, 75);
-            this.btnKhoaTaiKhoanNhanVien.TabIndex = 0;
-            this.btnKhoaTaiKhoanNhanVien.Text = "Khóa Tài Khoản Nhân Viên";
-            this.btnKhoaTaiKhoanNhanVien.UseVisualStyleBackColor = true;
+            this.btnXemNhapSach.Location = new System.Drawing.Point(4, 4);
+            this.btnXemNhapSach.Name = "btnXemNhapSach";
+            this.btnXemNhapSach.Size = new System.Drawing.Size(353, 75);
+            this.btnXemNhapSach.TabIndex = 0;
+            this.btnXemNhapSach.Text = "Xem Nhập Sách";
+            this.btnXemNhapSach.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.btnThaoTacNhanVien);
+            this.panel1.Controls.Add(this.btnToTruong);
             this.panel1.Location = new System.Drawing.Point(30, 253);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(360, 82);
             this.panel1.TabIndex = 51;
             // 
-            // btnThaoTacNhanVien
+            // btnToTruong
             // 
-            this.btnThaoTacNhanVien.Location = new System.Drawing.Point(4, 3);
-            this.btnThaoTacNhanVien.Name = "btnThaoTacNhanVien";
-            this.btnThaoTacNhanVien.Size = new System.Drawing.Size(352, 76);
-            this.btnThaoTacNhanVien.TabIndex = 0;
-            this.btnThaoTacNhanVien.Text = "Thao Tác Nhân Viên";
-            this.btnThaoTacNhanVien.UseVisualStyleBackColor = true;
+            this.btnToTruong.Location = new System.Drawing.Point(4, 3);
+            this.btnToTruong.Name = "btnToTruong";
+            this.btnToTruong.Size = new System.Drawing.Size(352, 76);
+            this.btnToTruong.TabIndex = 0;
+            this.btnToTruong.Text = "Xem Sách";
+            this.btnToTruong.UseVisualStyleBackColor = true;
+            this.btnToTruong.Click += new System.EventHandler(this.btnToTruong_Click);
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.btnXemMuonTra);
+            this.panel4.Location = new System.Drawing.Point(30, 429);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(360, 82);
+            this.panel4.TabIndex = 63;
+            // 
+            // btnXemMuonTra
+            // 
+            this.btnXemMuonTra.Location = new System.Drawing.Point(4, 4);
+            this.btnXemMuonTra.Name = "btnXemMuonTra";
+            this.btnXemMuonTra.Size = new System.Drawing.Size(353, 75);
+            this.btnXemMuonTra.TabIndex = 0;
+            this.btnXemMuonTra.Text = "Xem Mượn Trả";
+            this.btnXemMuonTra.UseVisualStyleBackColor = true;
             // 
             // FToTruong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(963, 643);
+            this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel15);
             this.Controls.Add(this.panel14);
             this.Controls.Add(this.panel13);
@@ -404,6 +426,7 @@
             this.panel11.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -440,8 +463,10 @@
         private System.Windows.Forms.TextBox txtSoDienThoai;
         private System.Windows.Forms.Label lblDienThoai;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Button btnKhoaTaiKhoanNhanVien;
+        private System.Windows.Forms.Button btnXemNhapSach;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnThaoTacNhanVien;
+        private System.Windows.Forms.Button btnToTruong;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Button btnXemMuonTra;
     }
 }

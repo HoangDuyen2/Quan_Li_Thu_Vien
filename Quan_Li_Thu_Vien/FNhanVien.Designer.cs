@@ -153,6 +153,7 @@
             this.btnThaoTacSach.TabIndex = 0;
             this.btnThaoTacSach.Text = "Thao Tác Sách";
             this.btnThaoTacSach.UseVisualStyleBackColor = true;
+            this.btnThaoTacSach.Click += new System.EventHandler(this.btnThaoTacSach_Click);
             // 
             // panel2
             // 

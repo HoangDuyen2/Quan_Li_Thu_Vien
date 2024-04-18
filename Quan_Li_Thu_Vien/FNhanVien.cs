@@ -21,5 +21,13 @@ namespace Quan_Li_Thu_Vien
         {
 
         }
+
+        private void btnThaoTacSach_Click(object sender, EventArgs e)
+        {
+            FTrangChuToSach_NhanVien fTrangChuToSach_NhanVien = new FTrangChuToSach_NhanVien();
+            this.Hide();
+            fTrangChuToSach_NhanVien.ShowDialog();
+            this.Show();
+        }
     }
 }

@@ -125,9 +125,9 @@ namespace Quan_Li_Thu_Vien
                 if (dta.Read())
                 {
                     MessageBox.Show("Đăng nhập thành công");
-                    FNhanVien fNhanVien = new FNhanVien();
+                    FToTruong fToTruong = new FToTruong();
                     this.Hide();
-                    fNhanVien.ShowDialog();
+                    fToTruong.ShowDialog();
                     this.Show();
                 }
                 else

@@ -16,5 +16,13 @@ namespace Quan_Li_Thu_Vien
         {
             InitializeComponent();
         }
+
+        private void btnToTruong_Click(object sender, EventArgs e)
+        {
+            FTrangChuToSach_ToTruong fTrangChuToSach_ToTruong = new FTrangChuToSach_ToTruong();
+            this.Hide();
+            fTrangChuToSach_ToTruong.ShowDialog();
+            this.Show();
+        }
     }
 }
