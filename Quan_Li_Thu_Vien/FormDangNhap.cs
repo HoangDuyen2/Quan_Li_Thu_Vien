@@ -78,6 +78,8 @@ namespace Quan_Li_Thu_Vien
             if (dta.Read())
             {
                 MessageBox.Show("Đăng nhập thành công");
+                LoginInfo.Username = txtTenDangNhap.Text;
+                LoginInfo.Password = txtMatKhau.Text;
                 FNhanVien fNhanVien = new FNhanVien();
                 this.Hide();
                 fNhanVien.ShowDialog();
@@ -87,7 +89,6 @@ namespace Quan_Li_Thu_Vien
             {
                 MessageBox.Show("Đăng nhập thất bại");
             }
-
             conn.closeConnection();
         }
     }

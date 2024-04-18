@@ -7,11 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace Quan_Li_Thu_Vien
 {
     public partial class FNhanVien : Form
     {
+        DBConnection conn;
         public FNhanVien()
         {
             InitializeComponent();
@@ -28,6 +30,51 @@ namespace Quan_Li_Thu_Vien
             this.Hide();
             fTrangChuToSach_NhanVien.ShowDialog();
             this.Show();
+        }
+
+        private void txtMaNV_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtHoVaTen_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtGioiTinh_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtNgaySinh_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtDiaChi_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtSoDienThoai_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtEmailNV_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtNgayTaoNV_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

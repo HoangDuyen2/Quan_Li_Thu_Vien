@@ -56,13 +56,13 @@
             this.panel12 = new System.Windows.Forms.Panel();
             this.btnThaoTacPhieuNhap = new System.Windows.Forms.Button();
             this.panel13 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtEmailNV = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel14 = new System.Windows.Forms.Panel();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtMaNV = new System.Windows.Forms.TextBox();
             this.lblMaNV = new System.Windows.Forms.Label();
             this.panel15 = new System.Windows.Forms.Panel();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtNgayTaoNV = new System.Windows.Forms.TextBox();
             this.lblNgayTao = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -130,6 +130,7 @@
             this.txtHoVaTen.Name = "txtHoVaTen";
             this.txtHoVaTen.Size = new System.Drawing.Size(307, 22);
             this.txtHoVaTen.TabIndex = 1;
+            this.txtHoVaTen.TextChanged += new System.EventHandler(this.txtHoVaTen_TextChanged);
             // 
             // lblHoVaTen
             // 
@@ -174,6 +175,7 @@
             this.txtGioiTinh.Name = "txtGioiTinh";
             this.txtGioiTinh.Size = new System.Drawing.Size(307, 22);
             this.txtGioiTinh.TabIndex = 1;
+            this.txtGioiTinh.TextChanged += new System.EventHandler(this.txtGioiTinh_TextChanged);
             // 
             // lblGioiTinh
             // 
@@ -200,6 +202,7 @@
             this.txtNgaySinh.Name = "txtNgaySinh";
             this.txtNgaySinh.Size = new System.Drawing.Size(307, 22);
             this.txtNgaySinh.TabIndex = 2;
+            this.txtNgaySinh.TextChanged += new System.EventHandler(this.txtNgaySinh_TextChanged);
             // 
             // lblNgaySinh
             // 
@@ -226,6 +229,7 @@
             this.txtDiaChi.Name = "txtDiaChi";
             this.txtDiaChi.Size = new System.Drawing.Size(307, 22);
             this.txtDiaChi.TabIndex = 1;
+            this.txtDiaChi.TextChanged += new System.EventHandler(this.txtDiaChi_TextChanged);
             // 
             // lblLuong
             // 
@@ -252,6 +256,7 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(307, 22);
             this.txtEmail.TabIndex = 1;
+            this.txtEmail.TextChanged += new System.EventHandler(this.txtEmail_TextChanged);
             // 
             // lblDiaChi
             // 
@@ -278,6 +283,7 @@
             this.txtSoDienThoai.Name = "txtSoDienThoai";
             this.txtSoDienThoai.Size = new System.Drawing.Size(307, 22);
             this.txtSoDienThoai.TabIndex = 1;
+            this.txtSoDienThoai.TextChanged += new System.EventHandler(this.txtSoDienThoai_TextChanged);
             // 
             // lblDienThoai
             // 
@@ -308,19 +314,20 @@
             // 
             // panel13
             // 
-            this.panel13.Controls.Add(this.textBox1);
+            this.panel13.Controls.Add(this.txtEmailNV);
             this.panel13.Controls.Add(this.label1);
             this.panel13.Location = new System.Drawing.Point(411, 517);
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(510, 48);
             this.panel13.TabIndex = 34;
             // 
-            // textBox1
+            // txtEmailNV
             // 
-            this.textBox1.Location = new System.Drawing.Point(200, 12);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(307, 22);
-            this.textBox1.TabIndex = 1;
+            this.txtEmailNV.Location = new System.Drawing.Point(200, 12);
+            this.txtEmailNV.Name = "txtEmailNV";
+            this.txtEmailNV.Size = new System.Drawing.Size(307, 22);
+            this.txtEmailNV.TabIndex = 1;
+            this.txtEmailNV.TextChanged += new System.EventHandler(this.txtEmailNV_TextChanged);
             // 
             // label1
             // 
@@ -334,19 +341,20 @@
             // 
             // panel14
             // 
-            this.panel14.Controls.Add(this.textBox2);
+            this.panel14.Controls.Add(this.txtMaNV);
             this.panel14.Controls.Add(this.lblMaNV);
             this.panel14.Location = new System.Drawing.Point(410, 138);
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(510, 48);
             this.panel14.TabIndex = 35;
             // 
-            // textBox2
+            // txtMaNV
             // 
-            this.textBox2.Location = new System.Drawing.Point(200, 12);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(307, 22);
-            this.textBox2.TabIndex = 1;
+            this.txtMaNV.Location = new System.Drawing.Point(200, 12);
+            this.txtMaNV.Name = "txtMaNV";
+            this.txtMaNV.Size = new System.Drawing.Size(307, 22);
+            this.txtMaNV.TabIndex = 1;
+            this.txtMaNV.TextChanged += new System.EventHandler(this.txtMaNV_TextChanged);
             // 
             // lblMaNV
             // 
@@ -360,19 +368,20 @@
             // 
             // panel15
             // 
-            this.panel15.Controls.Add(this.textBox3);
+            this.panel15.Controls.Add(this.txtNgayTaoNV);
             this.panel15.Controls.Add(this.lblNgayTao);
             this.panel15.Location = new System.Drawing.Point(411, 571);
             this.panel15.Name = "panel15";
             this.panel15.Size = new System.Drawing.Size(510, 48);
             this.panel15.TabIndex = 35;
             // 
-            // textBox3
+            // txtNgayTaoNV
             // 
-            this.textBox3.Location = new System.Drawing.Point(200, 12);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(307, 22);
-            this.textBox3.TabIndex = 1;
+            this.txtNgayTaoNV.Location = new System.Drawing.Point(200, 12);
+            this.txtNgayTaoNV.Name = "txtNgayTaoNV";
+            this.txtNgayTaoNV.Size = new System.Drawing.Size(307, 22);
+            this.txtNgayTaoNV.TabIndex = 1;
+            this.txtNgayTaoNV.TextChanged += new System.EventHandler(this.txtNgayTaoNV_TextChanged);
             // 
             // lblNgayTao
             // 
@@ -461,13 +470,13 @@
         private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.Button btnThaoTacPhieuNhap;
         private System.Windows.Forms.Panel panel13;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtEmailNV;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel14;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtMaNV;
         private System.Windows.Forms.Label lblMaNV;
         private System.Windows.Forms.Panel panel15;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtNgayTaoNV;
         private System.Windows.Forms.Label lblNgayTao;
     }
 }
