@@ -15,8 +15,8 @@ namespace Quan_Li_Thu_Vien
         private string diaChi;
         private string SDT;
         private double luong;
-        private string email
-        public Person(string maNguoi, string tenNguoi, string gioiTinh, string ngaySinh, string diaChi, string sDT, string maNQL, string maTo, string maTT, double luong,string email)
+        private string email;
+        public Person(string maNguoi, string tenNguoi, string gioiTinh, string ngaySinh, string diaChi, string sDT, double luong,string email)
         {
             this.maNguoi = maNguoi;
             this.tenNguoi = tenNguoi;
@@ -24,9 +24,6 @@ namespace Quan_Li_Thu_Vien
             this.NgaySinh = ngaySinh;
             this.diaChi = diaChi;
             this.SDT = sDT;
-            this.maNQL = maNQL;
-            this.maTo = maTo;
-            this.maTT = maTT;
             this.luong = luong;
             this.email = email;
         }

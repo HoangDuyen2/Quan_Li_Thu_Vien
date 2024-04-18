@@ -58,15 +58,17 @@ namespace Quan_Li_Thu_Vien
 
                 // Đưa dữ liệu vào các control hoặc xử lý theo nhu cầu
                 double luong;
-                if (double.TryParse(row.Cells["Luong"].Value.ToString(), out luong)
+                if (!double.TryParse(row.Cells["Luong"].Value.ToString(), out luong))
                     luong = 0;
-                Person nv = new Person(row.Cells["MaNV"].Value.ToString(), row.Cells["TenNV"].Value.ToString(),
-                    row.Cells["GioiTinh"].Value.ToString(), row.Cells["NgaySinh"].Value.ToString(), row.Cells["DiaChi"].Value.ToString(),
-                    row.Cells["SDT"].Value.ToString(), "", row.Cells["MaTo"].Value.ToString(), row.Cells["MaTT"].Value.ToString(), luong, row.Cells["Email"].Value.ToString());
-                // Thêm logic xử lý khi cell được click sau khi áp dụng bộ lọc
-                FChiTietNV fChiTiet = new FChiTietNV(nv);
-                this.Hide();
-                fChiTiet.ShowDialog();
+
+                    Person nv = new Person(row.Cells["MaNV"].Value.ToString(), row.Cells["TenNV"].Value.ToString(),
+                        row.Cells["GioiTinh"].Value.ToString(), row.Cells["NgaySinh"].Value.ToString(), row.Cells["DiaChi"].Value.ToString(),
+                        row.Cells["SDT"].Value.ToString(), luong, row.Cells["Email"].Value.ToString());
+                    // Thêm logic xử lý khi cell được click sau khi áp dụng bộ lọc
+                    FChiTietNV fChiTiet = new FChiTietNV(nv);
+                    this.Hide();
+                    fChiTiet.ShowDialog();
+                
             }
         }
 
@@ -74,7 +76,7 @@ namespace Quan_Li_Thu_Vien
         {
             try
             {
-                dtgvNV.DataSource = dsnxb.timKiemNXB(txtTenNXB.Text);
+                dtgvNV.DataSource = dsnv.timKiemNV(txtTenNV.Text);
                 dtgvNV.RowHeadersVisible = false;
                 dtgvNV.BackgroundColor = Color.White;
                 dtgvNV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;

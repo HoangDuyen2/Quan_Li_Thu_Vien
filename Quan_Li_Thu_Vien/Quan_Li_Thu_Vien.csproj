@@ -152,12 +152,6 @@
     <Compile Include="DBConnection.cs" />
     <Compile Include="DocGia.cs" />
     <Compile Include="DocGiaController.cs" />
-    <Compile Include="FAddDocGia.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FAddDocGia.Designer.cs">
-      <DependentUpon>FAddDocGia.cs</DependentUpon>
-    </Compile>
     <Compile Include="FChiTietNV.cs">
       <SubType>Form</SubType>
     </Compile>
