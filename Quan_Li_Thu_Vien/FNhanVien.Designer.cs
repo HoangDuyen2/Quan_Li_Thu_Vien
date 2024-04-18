@@ -31,10 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FNhanVien));
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnThaoTacPhieuMuonTra = new System.Windows.Forms.Button();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.btnThaoTacDocGia = new System.Windows.Forms.Button();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.btnThaoTacPhieuPhat = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.btnThaoTacSach = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -69,8 +65,6 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.lblNgayTao = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel7.SuspendLayout();
@@ -89,7 +83,7 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.btnThaoTacPhieuMuonTra);
-            this.panel1.Location = new System.Drawing.Point(12, 104);
+            this.panel1.Location = new System.Drawing.Point(8, 213);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(360, 82);
             this.panel1.TabIndex = 0;
@@ -103,44 +97,10 @@
             this.btnThaoTacPhieuMuonTra.Text = "Thao Tác Phiếu Mượn Trả";
             this.btnThaoTacPhieuMuonTra.UseVisualStyleBackColor = true;
             // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.btnThaoTacDocGia);
-            this.panel3.Location = new System.Drawing.Point(12, 192);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(360, 82);
-            this.panel3.TabIndex = 2;
-            // 
-            // btnThaoTacDocGia
-            // 
-            this.btnThaoTacDocGia.Location = new System.Drawing.Point(4, 4);
-            this.btnThaoTacDocGia.Name = "btnThaoTacDocGia";
-            this.btnThaoTacDocGia.Size = new System.Drawing.Size(353, 75);
-            this.btnThaoTacDocGia.TabIndex = 0;
-            this.btnThaoTacDocGia.Text = "Thao Tác Độc Giả";
-            this.btnThaoTacDocGia.UseVisualStyleBackColor = true;
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.btnThaoTacPhieuPhat);
-            this.panel4.Location = new System.Drawing.Point(12, 280);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(360, 82);
-            this.panel4.TabIndex = 3;
-            // 
-            // btnThaoTacPhieuPhat
-            // 
-            this.btnThaoTacPhieuPhat.Location = new System.Drawing.Point(3, 4);
-            this.btnThaoTacPhieuPhat.Name = "btnThaoTacPhieuPhat";
-            this.btnThaoTacPhieuPhat.Size = new System.Drawing.Size(353, 75);
-            this.btnThaoTacPhieuPhat.TabIndex = 0;
-            this.btnThaoTacPhieuPhat.Text = "Thao Tác Phiếu Phạt";
-            this.btnThaoTacPhieuPhat.UseVisualStyleBackColor = true;
-            // 
             // panel5
             // 
             this.panel5.Controls.Add(this.btnThaoTacSach);
-            this.panel5.Location = new System.Drawing.Point(12, 365);
+            this.panel5.Location = new System.Drawing.Point(8, 301);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(360, 82);
             this.panel5.TabIndex = 3;
@@ -332,7 +292,7 @@
             // panel12
             // 
             this.panel12.Controls.Add(this.btnThaoTacPhieuNhap);
-            this.panel12.Location = new System.Drawing.Point(12, 450);
+            this.panel12.Location = new System.Drawing.Point(8, 389);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(360, 82);
             this.panel12.TabIndex = 33;
@@ -441,15 +401,11 @@
             this.Controls.Add(this.panel10);
             this.Controls.Add(this.panel11);
             this.Controls.Add(this.panel5);
-            this.Controls.Add(this.panel4);
-            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Name = "FNhanVien";
             this.Text = "FormNhanVien";
             this.Load += new System.EventHandler(this.FNhanVien_Load);
             this.panel1.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -479,10 +435,6 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Button btnThaoTacDocGia;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Button btnThaoTacPhieuPhat;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Button btnThaoTacSach;
         private System.Windows.Forms.Button btnThaoTacPhieuMuonTra;
