@@ -45,10 +45,10 @@
             this.txtNgaySinh = new System.Windows.Forms.TextBox();
             this.lblNgaySinh = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
-            this.txtDiaChi = new System.Windows.Forms.TextBox();
+            this.txtLuong = new System.Windows.Forms.TextBox();
             this.lblLuong = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.txtDiaChi = new System.Windows.Forms.TextBox();
             this.lblDiaChi = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
             this.txtSoDienThoai = new System.Windows.Forms.TextBox();
@@ -56,7 +56,7 @@
             this.panel12 = new System.Windows.Forms.Panel();
             this.btnThaoTacPhieuNhap = new System.Windows.Forms.Button();
             this.panel13 = new System.Windows.Forms.Panel();
-            this.txtEmailNV = new System.Windows.Forms.TextBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel14 = new System.Windows.Forms.Panel();
             this.txtMaNV = new System.Windows.Forms.TextBox();
@@ -130,7 +130,6 @@
             this.txtHoVaTen.Name = "txtHoVaTen";
             this.txtHoVaTen.Size = new System.Drawing.Size(307, 22);
             this.txtHoVaTen.TabIndex = 1;
-            this.txtHoVaTen.TextChanged += new System.EventHandler(this.txtHoVaTen_TextChanged);
             // 
             // lblHoVaTen
             // 
@@ -175,7 +174,6 @@
             this.txtGioiTinh.Name = "txtGioiTinh";
             this.txtGioiTinh.Size = new System.Drawing.Size(307, 22);
             this.txtGioiTinh.TabIndex = 1;
-            this.txtGioiTinh.TextChanged += new System.EventHandler(this.txtGioiTinh_TextChanged);
             // 
             // lblGioiTinh
             // 
@@ -202,7 +200,6 @@
             this.txtNgaySinh.Name = "txtNgaySinh";
             this.txtNgaySinh.Size = new System.Drawing.Size(307, 22);
             this.txtNgaySinh.TabIndex = 2;
-            this.txtNgaySinh.TextChanged += new System.EventHandler(this.txtNgaySinh_TextChanged);
             // 
             // lblNgaySinh
             // 
@@ -216,20 +213,19 @@
             // 
             // panel9
             // 
-            this.panel9.Controls.Add(this.txtDiaChi);
+            this.panel9.Controls.Add(this.txtLuong);
             this.panel9.Controls.Add(this.lblLuong);
             this.panel9.Location = new System.Drawing.Point(411, 409);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(510, 48);
             this.panel9.TabIndex = 28;
             // 
-            // txtDiaChi
+            // txtLuong
             // 
-            this.txtDiaChi.Location = new System.Drawing.Point(200, 12);
-            this.txtDiaChi.Name = "txtDiaChi";
-            this.txtDiaChi.Size = new System.Drawing.Size(307, 22);
-            this.txtDiaChi.TabIndex = 1;
-            this.txtDiaChi.TextChanged += new System.EventHandler(this.txtDiaChi_TextChanged);
+            this.txtLuong.Location = new System.Drawing.Point(200, 12);
+            this.txtLuong.Name = "txtLuong";
+            this.txtLuong.Size = new System.Drawing.Size(307, 22);
+            this.txtLuong.TabIndex = 1;
             // 
             // lblLuong
             // 
@@ -243,20 +239,19 @@
             // 
             // panel10
             // 
-            this.panel10.Controls.Add(this.txtEmail);
+            this.panel10.Controls.Add(this.txtDiaChi);
             this.panel10.Controls.Add(this.lblDiaChi);
             this.panel10.Location = new System.Drawing.Point(411, 355);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(510, 48);
             this.panel10.TabIndex = 27;
             // 
-            // txtEmail
+            // txtDiaChi
             // 
-            this.txtEmail.Location = new System.Drawing.Point(200, 12);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(307, 22);
-            this.txtEmail.TabIndex = 1;
-            this.txtEmail.TextChanged += new System.EventHandler(this.txtEmail_TextChanged);
+            this.txtDiaChi.Location = new System.Drawing.Point(200, 12);
+            this.txtDiaChi.Name = "txtDiaChi";
+            this.txtDiaChi.Size = new System.Drawing.Size(307, 22);
+            this.txtDiaChi.TabIndex = 1;
             // 
             // lblDiaChi
             // 
@@ -283,7 +278,6 @@
             this.txtSoDienThoai.Name = "txtSoDienThoai";
             this.txtSoDienThoai.Size = new System.Drawing.Size(307, 22);
             this.txtSoDienThoai.TabIndex = 1;
-            this.txtSoDienThoai.TextChanged += new System.EventHandler(this.txtSoDienThoai_TextChanged);
             // 
             // lblDienThoai
             // 
@@ -314,20 +308,19 @@
             // 
             // panel13
             // 
-            this.panel13.Controls.Add(this.txtEmailNV);
+            this.panel13.Controls.Add(this.txtEmail);
             this.panel13.Controls.Add(this.label1);
             this.panel13.Location = new System.Drawing.Point(411, 517);
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(510, 48);
             this.panel13.TabIndex = 34;
             // 
-            // txtEmailNV
+            // txtEmail
             // 
-            this.txtEmailNV.Location = new System.Drawing.Point(200, 12);
-            this.txtEmailNV.Name = "txtEmailNV";
-            this.txtEmailNV.Size = new System.Drawing.Size(307, 22);
-            this.txtEmailNV.TabIndex = 1;
-            this.txtEmailNV.TextChanged += new System.EventHandler(this.txtEmailNV_TextChanged);
+            this.txtEmail.Location = new System.Drawing.Point(200, 12);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(307, 22);
+            this.txtEmail.TabIndex = 1;
             // 
             // label1
             // 
@@ -354,7 +347,6 @@
             this.txtMaNV.Name = "txtMaNV";
             this.txtMaNV.Size = new System.Drawing.Size(307, 22);
             this.txtMaNV.TabIndex = 1;
-            this.txtMaNV.TextChanged += new System.EventHandler(this.txtMaNV_TextChanged);
             // 
             // lblMaNV
             // 
@@ -381,7 +373,6 @@
             this.txtNgayTaoNV.Name = "txtNgayTaoNV";
             this.txtNgayTaoNV.Size = new System.Drawing.Size(307, 22);
             this.txtNgayTaoNV.TabIndex = 1;
-            this.txtNgayTaoNV.TextChanged += new System.EventHandler(this.txtNgayTaoNV_TextChanged);
             // 
             // lblNgayTao
             // 
@@ -459,10 +450,10 @@
         private System.Windows.Forms.TextBox txtNgaySinh;
         private System.Windows.Forms.Label lblNgaySinh;
         private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.TextBox txtDiaChi;
+        private System.Windows.Forms.TextBox txtLuong;
         private System.Windows.Forms.Label lblLuong;
         private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.TextBox txtDiaChi;
         private System.Windows.Forms.Label lblDiaChi;
         private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.TextBox txtSoDienThoai;
@@ -470,7 +461,7 @@
         private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.Button btnThaoTacPhieuNhap;
         private System.Windows.Forms.Panel panel13;
-        private System.Windows.Forms.TextBox txtEmailNV;
+        private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel14;
         private System.Windows.Forms.TextBox txtMaNV;
