@@ -77,7 +77,7 @@
             // 
             // btnDangNhap
             // 
-            this.btnDangNhap.Location = new System.Drawing.Point(7, 3);
+            this.btnDangNhap.Location = new System.Drawing.Point(3, 3);
             this.btnDangNhap.Name = "btnDangNhap";
             this.btnDangNhap.Size = new System.Drawing.Size(128, 59);
             this.btnDangNhap.TabIndex = 0;

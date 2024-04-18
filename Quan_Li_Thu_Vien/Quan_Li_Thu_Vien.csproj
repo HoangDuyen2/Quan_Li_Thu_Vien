@@ -270,6 +270,7 @@
     <Compile Include="FTrangChuToSach_ToTruong.Designer.cs">
       <DependentUpon>FTrangChuToSach_ToTruong.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoginInfo.cs" />
     <Compile Include="NXB.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Program.cs" />

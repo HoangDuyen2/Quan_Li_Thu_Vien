@@ -362,7 +362,7 @@
             // 
             this.panel15.Controls.Add(this.textBox3);
             this.panel15.Controls.Add(this.lblNgayTao);
-            this.panel15.Location = new System.Drawing.Point(409, 571);
+            this.panel15.Location = new System.Drawing.Point(411, 571);
             this.panel15.Name = "panel15";
             this.panel15.Size = new System.Drawing.Size(510, 48);
             this.panel15.TabIndex = 35;

@@ -24,5 +24,10 @@ namespace Quan_Li_Thu_Vien
             fTrangChuToSach_ToTruong.ShowDialog();
             this.Show();
         }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
