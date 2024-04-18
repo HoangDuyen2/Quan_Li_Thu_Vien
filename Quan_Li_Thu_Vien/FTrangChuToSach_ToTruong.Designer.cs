@@ -84,7 +84,6 @@
             this.btnThongTinCaNhan.TabIndex = 6;
             this.btnThongTinCaNhan.Text = "Thông tin cá nhân";
             this.btnThongTinCaNhan.UseVisualStyleBackColor = false;
-            this.btnThongTinCaNhan.Click += new System.EventHandler(this.btnThongTinCaNhan_Click);
             // 
             // btnDSNhanVien
             // 
@@ -96,7 +95,6 @@
             this.btnDSNhanVien.TabIndex = 4;
             this.btnDSNhanVien.Text = "Danh sách nhân viên";
             this.btnDSNhanVien.UseVisualStyleBackColor = false;
-            this.btnDSNhanVien.Click += new System.EventHandler(this.btnDSNhanVien_Click);
             // 
             // btnDanhSachSachDangMuon
             // 

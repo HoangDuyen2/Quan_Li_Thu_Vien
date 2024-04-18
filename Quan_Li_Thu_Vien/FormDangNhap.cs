@@ -51,7 +51,20 @@ namespace Quan_Li_Thu_Vien
 
         private void btnDangNhap_Click(object sender, EventArgs e)
         {
-
+            if (radbtnNhanVien.Checked)
+            {
+                FTrangChuToSach_NhanVien fTrangChuToSach_NhanVien = new FTrangChuToSach_NhanVien();
+                this.Hide();
+                fTrangChuToSach_NhanVien.ShowDialog();
+                this.Show();
+            }
+            else if (radbtnToTruong.Checked)
+            {
+                FTrangChuToSach_ToTruong fTrangChuToSach_ToTruong = new FTrangChuToSach_ToTruong();
+                this.Hide();
+                fTrangChuToSach_ToTruong.ShowDialog();
+                this.Show();
+            }
         }
     }
 }
