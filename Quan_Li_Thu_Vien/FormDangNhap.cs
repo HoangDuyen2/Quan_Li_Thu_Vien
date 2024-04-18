@@ -57,13 +57,13 @@ namespace Quan_Li_Thu_Vien
         private void btnDangNhap_Click(object sender, EventArgs e)
         {
             if (radbtnNhanVien.Checked)
-                DangNhap("NhanVien");
+                DangNhap("NhanVien",new FNhanVien());
             if (radbtnNguoiQuanLy.Checked)
-                DangNhap("NguoiQuanLi");
+                DangNhap("NguoiQuanLi",new FQuanLy());
             if (radbtnToTruong.Checked)
-                DangNhap("ToTruong");
+                DangNhap("ToTruong",new FToTruong());
         }
-        private void DangNhap(string Role)
+        private void DangNhap(string Role,Form f)
         {
             conn = new DBConnection();
             conn.openConnection();
@@ -79,9 +79,9 @@ namespace Quan_Li_Thu_Vien
             {
                 MessageBox.Show("Đăng nhập thành công");
                 LoginInfo.Username = txtTenDangNhap.Text;
-                FNhanVien fNhanVien = new FNhanVien();
+
                 this.Hide();
-                fNhanVien.ShowDialog();
+                f.ShowDialog();
                 this.Show();
             }
             else
