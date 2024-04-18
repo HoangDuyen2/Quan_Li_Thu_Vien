@@ -164,7 +164,7 @@
             this.btnDSNhanVien.TabIndex = 4;
             this.btnDSNhanVien.Text = "Danh sách nhân viên";
             this.btnDSNhanVien.UseVisualStyleBackColor = false;
-            this.btnDSNhanVien.Click += new System.EventHandler(this.btnDSNhanVien_Click);
+            //this.btnDSNhanVien.Click += new System.EventHandler(this.btnDSNhanVien_Click);
             // 
             // FTrangChuToSach_ToTruong
             // 

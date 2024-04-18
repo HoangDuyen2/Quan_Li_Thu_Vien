@@ -26,7 +26,7 @@ namespace Quan_Li_Thu_Vien
 
             string username = LoginInfo.Username;
 
-            string query = "SELECT tk.MaNV, tt.TenNV, tt.GioiTinh, tt.NgaySinh, tt.DiaChi, tt.SDT, tt.Email " +
+            string query = "SELECT tk.MaNV, tt.TenNV, tt.GioiTinh, tt.NgaySinh,tt.Luong, tt.DiaChi, tt.SDT, tt.Email,tt.NgayTao " +
                            "FROM TaiKhoan tk " +
                            "INNER JOIN ThongTinNhanVien tt ON tk.MaNV = tt.MaNV " +
                            "WHERE tk.Username = @username";
@@ -40,11 +40,13 @@ namespace Quan_Li_Thu_Vien
                 // Lấy các giá trị từ cột tương ứng
                 string maNV = reader["MaNV"].ToString();
                 string tenNV = reader["TenNV"].ToString();
-                string gioiTinh = reader["GioiTinh"].ToString();
+                string gioiTinh = (reader["GioiTinh"].ToString()=="M")?"Nam":"Nữ";
                 string ngaySinh = reader["NgaySinh"].ToString();
                 string diaChi = reader["DiaChi"].ToString();
+                int luong= reader.GetInt32(reader.GetOrdinal("Luong")) ;
                 string sdt = reader["SDT"].ToString();
                 string email = reader["Email"].ToString();
+                DateTime ngaytao = reader.GetDateTime(reader.GetOrdinal("NgayTao"));
 
                 // Lấp các giá trị vào TextBox
                 txtMaNV.Text = maNV;
@@ -52,8 +54,10 @@ namespace Quan_Li_Thu_Vien
                 txtGioiTinh.Text = gioiTinh;
                 txtNgaySinh.Text = ngaySinh;
                 txtDiaChi.Text = diaChi;
+                txtLuong.Text = luong.ToString();
                 txtSoDienThoai.Text = sdt;
                 txtEmail.Text = email;
+                txtNgayTaoNV.Text= ngaytao.ToString("dd/MM/yyyy");
             }
             reader.Close();
 
