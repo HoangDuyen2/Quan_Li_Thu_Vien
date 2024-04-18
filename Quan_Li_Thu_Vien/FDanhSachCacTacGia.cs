@@ -13,7 +13,6 @@ namespace Quan_Li_Thu_Vien
     public partial class FDanhSachCacTacGia : Form
     {
         SachController dsTacGia = new SachController();
-        TacGia tg = null;
         public FDanhSachCacTacGia()
         {
             InitializeComponent();
@@ -67,7 +66,6 @@ namespace Quan_Li_Thu_Vien
             this.Close();
         }
         #endregion
-
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtTenTGNhap.Text))
@@ -90,7 +88,7 @@ namespace Quan_Li_Thu_Vien
                     MessageBox.Show("Không truy xuất được dữ liệu", "Lỗi");
                 }
             }
-            
+
         }
     }
 }

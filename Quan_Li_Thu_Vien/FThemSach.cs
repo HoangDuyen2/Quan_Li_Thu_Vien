@@ -44,6 +44,7 @@ namespace Quan_Li_Thu_Vien
             if (sachController.themSach(sach))
             {
                 MessageBox.Show("Thực thi dữ liệu thành công", "Thông báo");
+
             }
             else MessageBox.Show("Thực thi dữ liệu thất bại", "Lỗi");
         }

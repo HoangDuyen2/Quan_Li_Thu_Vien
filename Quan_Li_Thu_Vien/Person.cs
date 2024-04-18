@@ -18,6 +18,21 @@ namespace Quan_Li_Thu_Vien
         private string maTo;
         private string maTT;
         private double luong;
+        private string email
+        public Person(string maNguoi, string tenNguoi, string gioiTinh, string ngaySinh, string diaChi, string sDT, string maNQL, string maTo, string maTT, double luong,string email)
+        {
+            this.maNguoi = maNguoi;
+            this.tenNguoi = tenNguoi;
+            this.gioiTinh = gioiTinh;
+            this.NgaySinh = ngaySinh;
+            this.diaChi = diaChi;
+            this.SDT = sDT;
+            this.maNQL = maNQL;
+            this.maTo = maTo;
+            this.maTT = maTT;
+            this.luong = luong;
+            this.email = email;
+        }
 
         public string MaNguoi { get => maNguoi; set => maNguoi = value; }
         public string TenNguoi { get => tenNguoi; set => tenNguoi = value; }
@@ -29,5 +44,6 @@ namespace Quan_Li_Thu_Vien
         public string MaTo { get => maTo; set => maTo = value; }
         public string MaTT { get => maTT; set => maTT = value; }
         public double Luong { get => luong; set => luong = value; }
+        public string Email { get => email; set => email = value; }
     }
 }

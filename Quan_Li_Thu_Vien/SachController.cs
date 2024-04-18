@@ -261,6 +261,63 @@ namespace Quan_Li_Thu_Vien
                 return false;
             }
         }
+        public bool themNXB(NXB nxb)
+        {
+            SqlCommand cmmd = new SqlCommand("pro_InsertNXB", conn.GetSqlConnection());
+            cmmd.CommandType = CommandType.StoredProcedure;
+            cmmd.Parameters.Add("@TenNXB", SqlDbType.NVarChar).Value = nxb.TenNXB;
+            cmmd.Parameters.Add("@DiaChi", SqlDbType.NVarChar).Value = nxb.DiaChi1;
+            cmmd.Parameters.Add("@SDT", SqlDbType.NVarChar).Value = nxb.SDT1;
+            conn.openConnection() ;
+            if (cmmd.ExecuteNonQuery() > 0)
+            {
+                conn.closeConnection();
+                return true;
+            }
+            else
+            {
+                conn.closeConnection();
+                return false;
+            }
+        }
+        #endregion
+        #region Add Ngôn ngữ
+        public bool ThemNgonNgu(string tenNgonNgu)
+        {
+            SqlCommand cmmd = new SqlCommand("pro_InsertNgonNgu", conn.GetSqlConnection());
+            cmmd.CommandType = CommandType.StoredProcedure;
+            cmmd.Parameters.Add("@TenNN", SqlDbType.NVarChar).Value = tenNgonNgu;
+            conn.openConnection();
+            if(cmmd.ExecuteNonQuery() > 0)
+            {
+                conn.closeConnection();
+                return true;
+            }
+            else
+            {
+                conn.closeConnection();
+                return false;
+            }
+        }
+        #endregion
+        #region Add Loại sách
+        public bool ThemLoaiSach(string tenLS)
+        {
+            SqlCommand cmmd = new SqlCommand("pro_InsertLoaiSach", conn.GetSqlConnection());
+            cmmd.CommandType = CommandType.StoredProcedure;
+            cmmd.Parameters.Add("@TenLS", SqlDbType.NVarChar).Value = tenLS;
+            conn.openConnection();
+            if (cmmd.ExecuteNonQuery() > 0)
+            {
+                conn.closeConnection();
+                return true;
+            }
+            else
+            {
+                conn.closeConnection();
+                return false;
+            }
+        }
         #endregion
         #region Kiểm tra điều kiện khi thêm sách
         public bool checkTenTG(string tenTG)

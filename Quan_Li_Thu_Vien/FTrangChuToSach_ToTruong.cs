@@ -40,5 +40,17 @@ namespace Quan_Li_Thu_Vien
             FDanhSachCacSachBiHu danhSachCacSachBiHu = new FDanhSachCacSachBiHu();
             danhSachCacSachBiHu.ShowDialog();
         }
+
+        private void btnDSTacGia_Click(object sender, EventArgs e)
+        {
+            FDanhSachCacTacGia dsTG = new FDanhSachCacTacGia();
+            dsTG.ShowDialog();
+        }
+
+        private void btnDSNXB_Click(object sender, EventArgs e)
+        {
+            FDanhSachCacNhaXuatBan dsNXB = new FDanhSachCacNhaXuatBan();
+            dsNXB.ShowDialog();
+        }
     }
 }
