@@ -9,10 +9,10 @@ BEGIN
 	BEGIN
 		SET @object = 'NV'
 	END
-	SELECT @max = COUNT(MaNV) FROM [NhanVien]
+	SELECT @max = COUNT(MaNV) FROM [ThongTinNhanVien]
 	SET @id_next = @object + RIGHT('0' + CAST(@max AS nvarchar(10)), 3)
 	-- Kiểm tra id đã tồn tại chưa
-	WHILE(EXISTS(SELECT MaNV FROM [NhanVien] WHERE MaNV = @id_next))
+	WHILE(EXISTS(SELECT MaNV FROM [ThongTinNhanVien] WHERE MaNV = @id_next))
 	BEGIN
 		SET @max = @max + 1
 		SET @id_next = @object + RIGHT('0' + CAST(@max AS nvarchar(10)), 3)
