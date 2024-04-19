@@ -272,11 +272,29 @@
     <Compile Include="FThemSach.Designer.cs">
       <DependentUpon>FThemSach.cs</DependentUpon>
     </Compile>
+    <Compile Include="FThongTinCaNhan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FThongTinCaNhan.Designer.cs">
+      <DependentUpon>FThongTinCaNhan.cs</DependentUpon>
+    </Compile>
     <Compile Include="FToTruong.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FToTruong.Designer.cs">
       <DependentUpon>FToTruong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FTrangChuToMuonSach_NhanVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FTrangChuToMuonSach_NhanVien.Designer.cs">
+      <DependentUpon>FTrangChuToMuonSach_NhanVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FTrangChuToMuonSach_ToTruong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FTrangChuToMuonSach_ToTruong.Designer.cs">
+      <DependentUpon>FTrangChuToMuonSach_ToTruong.cs</DependentUpon>
     </Compile>
     <Compile Include="FTrangChuToSach_NhanVien.cs">
       <SubType>Form</SubType>
@@ -349,8 +367,17 @@
     <EmbeddedResource Include="FThemSach.resx">
       <DependentUpon>FThemSach.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FThongTinCaNhan.resx">
+      <DependentUpon>FThongTinCaNhan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FToTruong.resx">
       <DependentUpon>FToTruong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FTrangChuToMuonSach_NhanVien.resx">
+      <DependentUpon>FTrangChuToMuonSach_NhanVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FTrangChuToMuonSach_ToTruong.resx">
+      <DependentUpon>FTrangChuToMuonSach_ToTruong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FTrangChuToSach_NhanVien.resx">
       <DependentUpon>FTrangChuToSach_NhanVien.cs</DependentUpon>
