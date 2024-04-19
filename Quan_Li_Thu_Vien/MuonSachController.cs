@@ -21,61 +21,6 @@ namespace Quan_Li_Thu_Vien
     {
         DBConnection conn = new DBConnection();
         #region list view
-        public DataTable DSPhieuMuonTra()
-        {
-            SqlCommand cmd = new SqlCommand("SELECT * FROM PhieuMuon", conn.GetSqlConnection());
-            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-            DataTable dataTable = new DataTable();
-            adapter.Fill(dataTable);
-            return dataTable;
-        }
-        public DataTable DSPhieuMuonTra()
-        {
-            SqlCommand cmd = new SqlCommand("SELECT * FROM PhieuMuon", conn.GetSqlConnection());
-            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-            DataTable dataTable = new DataTable();
-            adapter.Fill(dataTable);
-            return dataTable;
-        }
-        public DataTable DSPhieuMuonTra()
-        {
-            SqlCommand cmd = new SqlCommand("SELECT * FROM PhieuMuon", conn.GetSqlConnection());
-            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-            DataTable dataTable = new DataTable();
-            adapter.Fill(dataTable);
-            return dataTable;
-        }
-        public DataTable DSPhieuMuonTra()
-        {
-            SqlCommand cmd = new SqlCommand("SELECT * FROM PhieuMuon", conn.GetSqlConnection());
-            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-            DataTable dataTable = new DataTable();
-            adapter.Fill(dataTable);
-            return dataTable;
-        }
-        public DataTable DSPhieuMuonTra()
-        {
-            SqlCommand cmd = new SqlCommand("SELECT * FROM PhieuMuon", conn.GetSqlConnection());
-            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-            DataTable dataTable = new DataTable();
-            adapter.Fill(dataTable);
-            return dataTable;
-        }
-        public DataTable DSPhieuMuonTra()
-        {
-            SqlCommand cmd = new SqlCommand("SELECT * FROM PhieuMuon", conn.GetSqlConnection());
-            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-            DataTable dataTable = new DataTable();
-            adapter.Fill(dataTable);
-            return dataTable;
-        }
-        public DataTable DSPhieuMuonTra()
-        {
-            SqlCommand cmd = new SqlCommand("SELECT * FROM PhieuMuon", conn.GetSqlConnection());
-            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-            DataTable dataTable = new DataTable();
-            adapter.Fill(dataTable);
-            return dataTable;
-        }
+        #endregion
     }
 }
