@@ -31,13 +31,15 @@
             this.panelNen = new System.Windows.Forms.Panel();
             this.picBoxNen = new System.Windows.Forms.PictureBox();
             this.panelMucLuc = new System.Windows.Forms.Panel();
-            this.btnDSNXB = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnXemNhanVienTrongTo = new System.Windows.Forms.Button();
+            this.btnXemDanhSachPP = new System.Windows.Forms.Button();
             this.btnThongTinCaNhan = new System.Windows.Forms.Button();
-            this.btnDSTacGia = new System.Windows.Forms.Button();
-            this.btnDanhSachSachDangMuon = new System.Windows.Forms.Button();
-            this.btnDanhSachCacSachBiHu = new System.Windows.Forms.Button();
-            this.btnXemDSSach = new System.Windows.Forms.Button();
-            this.btnDSNhanVien = new System.Windows.Forms.Button();
+            this.btnXemPhieuTreHan = new System.Windows.Forms.Button();
+            this.btnXemDocGia = new System.Windows.Forms.Button();
+            this.btnXemDocGiaVP = new System.Windows.Forms.Button();
+            this.btnXemPMT = new System.Windows.Forms.Button();
+            this.btnXemCacSachDaMuon = new System.Windows.Forms.Button();
             this.panelNen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxNen)).BeginInit();
             this.panelMucLuc.SuspendLayout();
@@ -49,7 +51,7 @@
             this.panelNen.Controls.Add(this.panelMucLuc);
             this.panelNen.Location = new System.Drawing.Point(2, 0);
             this.panelNen.Name = "panelNen";
-            this.panelNen.Size = new System.Drawing.Size(1052, 600);
+            this.panelNen.Size = new System.Drawing.Size(1051, 612);
             this.panelNen.TabIndex = 1;
             // 
             // picBoxNen
@@ -58,42 +60,66 @@
             this.picBoxNen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.picBoxNen.Location = new System.Drawing.Point(212, 1);
             this.picBoxNen.Name = "picBoxNen";
-            this.picBoxNen.Size = new System.Drawing.Size(840, 599);
+            this.picBoxNen.Size = new System.Drawing.Size(839, 608);
             this.picBoxNen.TabIndex = 1;
             this.picBoxNen.TabStop = false;
             // 
             // panelMucLuc
             // 
             this.panelMucLuc.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panelMucLuc.Controls.Add(this.btnDSNXB);
+            this.panelMucLuc.Controls.Add(this.button1);
+            this.panelMucLuc.Controls.Add(this.btnXemNhanVienTrongTo);
+            this.panelMucLuc.Controls.Add(this.btnXemDanhSachPP);
             this.panelMucLuc.Controls.Add(this.btnThongTinCaNhan);
-            this.panelMucLuc.Controls.Add(this.btnDSTacGia);
-            this.panelMucLuc.Controls.Add(this.btnDanhSachSachDangMuon);
-            this.panelMucLuc.Controls.Add(this.btnDanhSachCacSachBiHu);
-            this.panelMucLuc.Controls.Add(this.btnXemDSSach);
-            this.panelMucLuc.Controls.Add(this.btnDSNhanVien);
+            this.panelMucLuc.Controls.Add(this.btnXemPhieuTreHan);
+            this.panelMucLuc.Controls.Add(this.btnXemDocGia);
+            this.panelMucLuc.Controls.Add(this.btnXemDocGiaVP);
+            this.panelMucLuc.Controls.Add(this.btnXemPMT);
+            this.panelMucLuc.Controls.Add(this.btnXemCacSachDaMuon);
             this.panelMucLuc.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.panelMucLuc.Location = new System.Drawing.Point(-1, 2);
+            this.panelMucLuc.Location = new System.Drawing.Point(0, 2);
             this.panelMucLuc.Name = "panelMucLuc";
-            this.panelMucLuc.Size = new System.Drawing.Size(213, 595);
+            this.panelMucLuc.Size = new System.Drawing.Size(212, 607);
             this.panelMucLuc.TabIndex = 0;
             // 
-            // btnDSNXB
+            // button1
             // 
-            this.btnDSNXB.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnDSNXB.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDSNXB.Location = new System.Drawing.Point(-4, 265);
-            this.btnDSNXB.Name = "btnDSNXB";
-            this.btnDSNXB.Size = new System.Drawing.Size(214, 65);
-            this.btnDSNXB.TabIndex = 13;
-            this.btnDSNXB.Text = "Danh sách nhà xuất bản";
-            this.btnDSNXB.UseVisualStyleBackColor = false;
+            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button1.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(-2, 478);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(214, 65);
+            this.button1.TabIndex = 15;
+            this.button1.Text = "Quản Lí Lương";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // btnXemNhanVienTrongTo
+            // 
+            this.btnXemNhanVienTrongTo.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnXemNhanVienTrongTo.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXemNhanVienTrongTo.Location = new System.Drawing.Point(-4, 407);
+            this.btnXemNhanVienTrongTo.Name = "btnXemNhanVienTrongTo";
+            this.btnXemNhanVienTrongTo.Size = new System.Drawing.Size(214, 65);
+            this.btnXemNhanVienTrongTo.TabIndex = 14;
+            this.btnXemNhanVienTrongTo.Text = "Xem Nhân Viên Trong Tổ";
+            this.btnXemNhanVienTrongTo.UseVisualStyleBackColor = false;
+            // 
+            // btnXemDanhSachPP
+            // 
+            this.btnXemDanhSachPP.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnXemDanhSachPP.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXemDanhSachPP.Location = new System.Drawing.Point(-4, 265);
+            this.btnXemDanhSachPP.Name = "btnXemDanhSachPP";
+            this.btnXemDanhSachPP.Size = new System.Drawing.Size(214, 65);
+            this.btnXemDanhSachPP.TabIndex = 13;
+            this.btnXemDanhSachPP.Text = "Xem Danh Sách Phiếu Phạt";
+            this.btnXemDanhSachPP.UseVisualStyleBackColor = false;
             // 
             // btnThongTinCaNhan
             // 
             this.btnThongTinCaNhan.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnThongTinCaNhan.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThongTinCaNhan.Location = new System.Drawing.Point(-1, 404);
+            this.btnThongTinCaNhan.Location = new System.Drawing.Point(-2, 545);
             this.btnThongTinCaNhan.Name = "btnThongTinCaNhan";
             this.btnThongTinCaNhan.Size = new System.Drawing.Size(214, 65);
             this.btnThongTinCaNhan.TabIndex = 12;
@@ -101,66 +127,66 @@
             this.btnThongTinCaNhan.UseVisualStyleBackColor = false;
             this.btnThongTinCaNhan.Click += new System.EventHandler(this.btnThongTinCaNhan_Click);
             // 
-            // btnDSTacGia
+            // btnXemPhieuTreHan
             // 
-            this.btnDSTacGia.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnDSTacGia.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDSTacGia.Location = new System.Drawing.Point(-4, 198);
-            this.btnDSTacGia.Name = "btnDSTacGia";
-            this.btnDSTacGia.Size = new System.Drawing.Size(214, 65);
-            this.btnDSTacGia.TabIndex = 11;
-            this.btnDSTacGia.Text = "Danh sách tác giả";
-            this.btnDSTacGia.UseVisualStyleBackColor = false;
+            this.btnXemPhieuTreHan.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnXemPhieuTreHan.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXemPhieuTreHan.Location = new System.Drawing.Point(-4, 198);
+            this.btnXemPhieuTreHan.Name = "btnXemPhieuTreHan";
+            this.btnXemPhieuTreHan.Size = new System.Drawing.Size(214, 65);
+            this.btnXemPhieuTreHan.TabIndex = 11;
+            this.btnXemPhieuTreHan.Text = "Xem Phiếu Trễ Hạn";
+            this.btnXemPhieuTreHan.UseVisualStyleBackColor = false;
             // 
-            // btnDanhSachSachDangMuon
+            // btnXemDocGia
             // 
-            this.btnDanhSachSachDangMuon.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnDanhSachSachDangMuon.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDanhSachSachDangMuon.Location = new System.Drawing.Point(-4, 66);
-            this.btnDanhSachSachDangMuon.Name = "btnDanhSachSachDangMuon";
-            this.btnDanhSachSachDangMuon.Size = new System.Drawing.Size(214, 65);
-            this.btnDanhSachSachDangMuon.TabIndex = 10;
-            this.btnDanhSachSachDangMuon.Text = "     Danh sách sách      đang mượn";
-            this.btnDanhSachSachDangMuon.UseVisualStyleBackColor = false;
+            this.btnXemDocGia.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnXemDocGia.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXemDocGia.Location = new System.Drawing.Point(-4, 66);
+            this.btnXemDocGia.Name = "btnXemDocGia";
+            this.btnXemDocGia.Size = new System.Drawing.Size(214, 65);
+            this.btnXemDocGia.TabIndex = 10;
+            this.btnXemDocGia.Text = "Xem Độc Giả";
+            this.btnXemDocGia.UseVisualStyleBackColor = false;
             // 
-            // btnDanhSachCacSachBiHu
+            // btnXemDocGiaVP
             // 
-            this.btnDanhSachCacSachBiHu.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnDanhSachCacSachBiHu.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDanhSachCacSachBiHu.Location = new System.Drawing.Point(-4, 132);
-            this.btnDanhSachCacSachBiHu.Name = "btnDanhSachCacSachBiHu";
-            this.btnDanhSachCacSachBiHu.Size = new System.Drawing.Size(214, 65);
-            this.btnDanhSachCacSachBiHu.TabIndex = 9;
-            this.btnDanhSachCacSachBiHu.Text = "     Danh sách sách      bị hư";
-            this.btnDanhSachCacSachBiHu.UseVisualStyleBackColor = false;
+            this.btnXemDocGiaVP.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnXemDocGiaVP.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXemDocGiaVP.Location = new System.Drawing.Point(-4, 132);
+            this.btnXemDocGiaVP.Name = "btnXemDocGiaVP";
+            this.btnXemDocGiaVP.Size = new System.Drawing.Size(214, 65);
+            this.btnXemDocGiaVP.TabIndex = 9;
+            this.btnXemDocGiaVP.Text = "Xem Độc Giả Vi Phạm";
+            this.btnXemDocGiaVP.UseVisualStyleBackColor = false;
             // 
-            // btnXemDSSach
+            // btnXemPMT
             // 
-            this.btnXemDSSach.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnXemDSSach.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXemDSSach.Location = new System.Drawing.Point(-4, 0);
-            this.btnXemDSSach.Name = "btnXemDSSach";
-            this.btnXemDSSach.Size = new System.Drawing.Size(214, 65);
-            this.btnXemDSSach.TabIndex = 8;
-            this.btnXemDSSach.Text = "Danh sách các sách";
-            this.btnXemDSSach.UseVisualStyleBackColor = false;
+            this.btnXemPMT.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnXemPMT.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXemPMT.Location = new System.Drawing.Point(-4, 0);
+            this.btnXemPMT.Name = "btnXemPMT";
+            this.btnXemPMT.Size = new System.Drawing.Size(214, 65);
+            this.btnXemPMT.TabIndex = 8;
+            this.btnXemPMT.Text = "Xem Phiếu Mượn Trả";
+            this.btnXemPMT.UseVisualStyleBackColor = false;
             // 
-            // btnDSNhanVien
+            // btnXemCacSachDaMuon
             // 
-            this.btnDSNhanVien.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnDSNhanVien.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDSNhanVien.Location = new System.Drawing.Point(-2, 333);
-            this.btnDSNhanVien.Name = "btnDSNhanVien";
-            this.btnDSNhanVien.Size = new System.Drawing.Size(214, 65);
-            this.btnDSNhanVien.TabIndex = 4;
-            this.btnDSNhanVien.Text = "Danh sách nhân viên";
-            this.btnDSNhanVien.UseVisualStyleBackColor = false;
+            this.btnXemCacSachDaMuon.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnXemCacSachDaMuon.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXemCacSachDaMuon.Location = new System.Drawing.Point(-4, 336);
+            this.btnXemCacSachDaMuon.Name = "btnXemCacSachDaMuon";
+            this.btnXemCacSachDaMuon.Size = new System.Drawing.Size(214, 65);
+            this.btnXemCacSachDaMuon.TabIndex = 4;
+            this.btnXemCacSachDaMuon.Text = "Xem Các Sách Đã Mượn";
+            this.btnXemCacSachDaMuon.UseVisualStyleBackColor = false;
             // 
             // FTrangChuToMuonSach_ToTruong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1055, 602);
+            this.ClientSize = new System.Drawing.Size(1056, 613);
             this.Controls.Add(this.panelNen);
             this.Name = "FTrangChuToMuonSach_ToTruong";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -177,12 +203,14 @@
         private System.Windows.Forms.Panel panelNen;
         private System.Windows.Forms.PictureBox picBoxNen;
         private System.Windows.Forms.Panel panelMucLuc;
-        private System.Windows.Forms.Button btnDSNXB;
+        private System.Windows.Forms.Button btnXemDanhSachPP;
         private System.Windows.Forms.Button btnThongTinCaNhan;
-        private System.Windows.Forms.Button btnDSTacGia;
-        private System.Windows.Forms.Button btnDanhSachSachDangMuon;
-        private System.Windows.Forms.Button btnDanhSachCacSachBiHu;
-        private System.Windows.Forms.Button btnXemDSSach;
-        private System.Windows.Forms.Button btnDSNhanVien;
+        private System.Windows.Forms.Button btnXemPhieuTreHan;
+        private System.Windows.Forms.Button btnXemDocGia;
+        private System.Windows.Forms.Button btnXemDocGiaVP;
+        private System.Windows.Forms.Button btnXemPMT;
+        private System.Windows.Forms.Button btnXemCacSachDaMuon;
+        private System.Windows.Forms.Button btnXemNhanVienTrongTo;
+        private System.Windows.Forms.Button button1;
     }
 }
