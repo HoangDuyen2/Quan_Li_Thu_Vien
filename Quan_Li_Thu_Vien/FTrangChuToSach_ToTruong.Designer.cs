@@ -1,4 +1,6 @@
-﻿namespace Quan_Li_Thu_Vien
+﻿using System;
+
+namespace Quan_Li_Thu_Vien
 {
     partial class FTrangChuToSach_ToTruong
     {
@@ -174,6 +176,8 @@
             this.ResumeLayout(false);
 
         }
+
+
 
         #endregion
 
