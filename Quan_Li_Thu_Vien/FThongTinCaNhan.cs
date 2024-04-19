@@ -37,7 +37,6 @@ namespace Quan_Li_Thu_Vien
             SqlDataReader reader = cmmd.ExecuteReader();
             if (reader.Read())
             {
-                // Lấy các giá trị từ cột tương ứng
                 string maNV = reader["MaNV"].ToString();
                 string tenNV = reader["TenNV"].ToString();
                 string gioiTinh = (reader["GioiTinh"].ToString() == "M") ? "Nam" : "Nữ";
@@ -48,7 +47,6 @@ namespace Quan_Li_Thu_Vien
                 string email = reader["Email"].ToString();
                 DateTime ngaytao = reader.GetDateTime(reader.GetOrdinal("NgayTao"));
 
-                // Lấp các giá trị vào TextBox
                 txtMaNV.Text = maNV;
                 txtHoVaTen.Text = tenNV;
                 txtGioiTinh.Text = gioiTinh;

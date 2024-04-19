@@ -254,18 +254,6 @@
     <Compile Include="FormDangNhap.Designer.cs">
       <DependentUpon>FormDangNhap.cs</DependentUpon>
     </Compile>
-    <Compile Include="FNhanVien.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FNhanVien.Designer.cs">
-      <DependentUpon>FNhanVien.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FQuanLy.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FQuanLy.Designer.cs">
-      <DependentUpon>FQuanLy.cs</DependentUpon>
-    </Compile>
     <Compile Include="FThemSach.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -277,12 +265,6 @@
     </Compile>
     <Compile Include="FThongTinCaNhan.Designer.cs">
       <DependentUpon>FThongTinCaNhan.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FToTruong.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FToTruong.Designer.cs">
-      <DependentUpon>FToTruong.cs</DependentUpon>
     </Compile>
     <Compile Include="FTrangChuToMuonSach_NhanVien.cs">
       <SubType>Form</SubType>
@@ -355,23 +337,14 @@
     <EmbeddedResource Include="FNewNXB.resx">
       <DependentUpon>FNewNXB.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FNhanVien.resx">
-      <DependentUpon>FNhanVien.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormDangNhap.resx">
       <DependentUpon>FormDangNhap.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FQuanLy.resx">
-      <DependentUpon>FQuanLy.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FThemSach.resx">
       <DependentUpon>FThemSach.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FThongTinCaNhan.resx">
       <DependentUpon>FThongTinCaNhan.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FToTruong.resx">
-      <DependentUpon>FToTruong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FTrangChuToMuonSach_NhanVien.resx">
       <DependentUpon>FTrangChuToMuonSach_NhanVien.cs</DependentUpon>
