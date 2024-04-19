@@ -33,7 +33,7 @@
             this.panelMucLuc = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.btnXemNhanVienTrongTo = new System.Windows.Forms.Button();
-            this.btnXemDanhSachPP = new System.Windows.Forms.Button();
+            this.btnXemPhieuPhat = new System.Windows.Forms.Button();
             this.btnThongTinCaNhan = new System.Windows.Forms.Button();
             this.btnXemPhieuTreHan = new System.Windows.Forms.Button();
             this.btnXemDocGia = new System.Windows.Forms.Button();
@@ -69,7 +69,7 @@
             this.panelMucLuc.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panelMucLuc.Controls.Add(this.button1);
             this.panelMucLuc.Controls.Add(this.btnXemNhanVienTrongTo);
-            this.panelMucLuc.Controls.Add(this.btnXemDanhSachPP);
+            this.panelMucLuc.Controls.Add(this.btnXemPhieuPhat);
             this.panelMucLuc.Controls.Add(this.btnThongTinCaNhan);
             this.panelMucLuc.Controls.Add(this.btnXemPhieuTreHan);
             this.panelMucLuc.Controls.Add(this.btnXemDocGia);
@@ -104,16 +104,16 @@
             this.btnXemNhanVienTrongTo.Text = "Xem Nhân Viên Trong Tổ";
             this.btnXemNhanVienTrongTo.UseVisualStyleBackColor = false;
             // 
-            // btnXemDanhSachPP
+            // btnXemPhieuPhat
             // 
-            this.btnXemDanhSachPP.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnXemDanhSachPP.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXemDanhSachPP.Location = new System.Drawing.Point(-4, 265);
-            this.btnXemDanhSachPP.Name = "btnXemDanhSachPP";
-            this.btnXemDanhSachPP.Size = new System.Drawing.Size(214, 65);
-            this.btnXemDanhSachPP.TabIndex = 13;
-            this.btnXemDanhSachPP.Text = "Xem Danh Sách Phiếu Phạt";
-            this.btnXemDanhSachPP.UseVisualStyleBackColor = false;
+            this.btnXemPhieuPhat.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnXemPhieuPhat.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXemPhieuPhat.Location = new System.Drawing.Point(-4, 265);
+            this.btnXemPhieuPhat.Name = "btnXemPhieuPhat";
+            this.btnXemPhieuPhat.Size = new System.Drawing.Size(214, 65);
+            this.btnXemPhieuPhat.TabIndex = 13;
+            this.btnXemPhieuPhat.Text = "Xem Phiếu Phạt";
+            this.btnXemPhieuPhat.UseVisualStyleBackColor = false;
             // 
             // btnThongTinCaNhan
             // 
@@ -203,7 +203,7 @@
         private System.Windows.Forms.Panel panelNen;
         private System.Windows.Forms.PictureBox picBoxNen;
         private System.Windows.Forms.Panel panelMucLuc;
-        private System.Windows.Forms.Button btnXemDanhSachPP;
+        private System.Windows.Forms.Button btnXemPhieuPhat;
         private System.Windows.Forms.Button btnThongTinCaNhan;
         private System.Windows.Forms.Button btnXemPhieuTreHan;
         private System.Windows.Forms.Button btnXemDocGia;

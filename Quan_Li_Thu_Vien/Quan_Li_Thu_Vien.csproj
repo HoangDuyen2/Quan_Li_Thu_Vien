@@ -291,6 +291,7 @@
       <DependentUpon>FTrangChuToSach_ToTruong.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginInfo.cs" />
+    <Compile Include="MuonSachController.cs" />
     <Compile Include="NXB.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Program.cs" />
