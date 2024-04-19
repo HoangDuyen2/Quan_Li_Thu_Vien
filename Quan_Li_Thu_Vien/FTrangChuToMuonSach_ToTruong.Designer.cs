@@ -103,6 +103,7 @@
             this.btnXemNhanVienTrongTo.TabIndex = 14;
             this.btnXemNhanVienTrongTo.Text = "Xem Nhân Viên Trong Tổ";
             this.btnXemNhanVienTrongTo.UseVisualStyleBackColor = false;
+            this.btnXemNhanVienTrongTo.Click += new System.EventHandler(this.btnXemNhanVienTrongTo_Click);
             // 
             // btnXemPhieuPhat
             // 
@@ -114,6 +115,7 @@
             this.btnXemPhieuPhat.TabIndex = 13;
             this.btnXemPhieuPhat.Text = "Xem Phiếu Phạt";
             this.btnXemPhieuPhat.UseVisualStyleBackColor = false;
+            this.btnXemPhieuPhat.Click += new System.EventHandler(this.btnXemPhieuPhat_Click);
             // 
             // btnThongTinCaNhan
             // 
@@ -137,6 +139,7 @@
             this.btnXemPhieuTreHan.TabIndex = 11;
             this.btnXemPhieuTreHan.Text = "Xem Phiếu Trễ Hạn";
             this.btnXemPhieuTreHan.UseVisualStyleBackColor = false;
+            this.btnXemPhieuTreHan.Click += new System.EventHandler(this.btnXemPhieuTreHan_Click);
             // 
             // btnXemDocGia
             // 
@@ -148,6 +151,7 @@
             this.btnXemDocGia.TabIndex = 10;
             this.btnXemDocGia.Text = "Xem Độc Giả";
             this.btnXemDocGia.UseVisualStyleBackColor = false;
+            this.btnXemDocGia.Click += new System.EventHandler(this.btnXemDocGia_Click);
             // 
             // btnXemDocGiaVP
             // 
@@ -159,6 +163,7 @@
             this.btnXemDocGiaVP.TabIndex = 9;
             this.btnXemDocGiaVP.Text = "Xem Độc Giả Vi Phạm";
             this.btnXemDocGiaVP.UseVisualStyleBackColor = false;
+            this.btnXemDocGiaVP.Click += new System.EventHandler(this.btnXemDocGiaVP_Click);
             // 
             // btnXemPMT
             // 
@@ -182,6 +187,7 @@
             this.btnXemCacSachDaMuon.TabIndex = 4;
             this.btnXemCacSachDaMuon.Text = "Xem Các Sách Đã Mượn";
             this.btnXemCacSachDaMuon.UseVisualStyleBackColor = false;
+            this.btnXemCacSachDaMuon.Click += new System.EventHandler(this.btnXemCacSachDaMuon_Click);
             // 
             // FTrangChuToMuonSach_ToTruong
             // 

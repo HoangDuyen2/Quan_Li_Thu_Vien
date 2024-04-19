@@ -25,7 +25,7 @@ namespace Quan_Li_Thu_Vien
 
         private void btnDanhSachSachDangMuon_Click(object sender, EventArgs e)
         {
-            FDanhSacCacSachDangMuon dsDanhMuon = new FDanhSacCacSachDangMuon();
+            FDanhSachCacSachDangMuon dsDanhMuon = new FDanhSachCacSachDangMuon();
             dsDanhMuon.ShowDialog();
         }
         private void btnDanhSachCacSachBiHu_Click(object sender, EventArgs e)

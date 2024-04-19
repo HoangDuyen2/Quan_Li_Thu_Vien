@@ -39,7 +39,7 @@ namespace Quan_Li_Thu_Vien
         }
         public DataTable DSDocGiaViPham()
         {
-            SqlCommand cmd = new SqlCommand("SELECT * FROM DocGiaViPham", conn.GetSqlConnection());
+            SqlCommand cmd = new SqlCommand("SELECT * FROM DanhSachDocGiaViPham", conn.GetSqlConnection());
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
             DataTable dataTable = new DataTable();
             adapter.Fill(dataTable);
