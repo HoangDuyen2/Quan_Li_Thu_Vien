@@ -170,6 +170,7 @@
             this.btnXemPMT.TabIndex = 8;
             this.btnXemPMT.Text = "Xem Phiếu Mượn Trả";
             this.btnXemPMT.UseVisualStyleBackColor = false;
+            this.btnXemPMT.Click += new System.EventHandler(this.btnXemPMT_Click);
             // 
             // btnXemCacSachDaMuon
             // 

@@ -51,5 +51,10 @@ namespace Quan_Li_Thu_Vien
             FThongTinCaNhan fThongTinCaNhan = new FThongTinCaNhan();
             fThongTinCaNhan.ShowDialog();
         }
+
+        private void btnDSNhanVien_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

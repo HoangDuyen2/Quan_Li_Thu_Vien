@@ -218,6 +218,12 @@
     <Compile Include="FDanhSachNhanVien.Designer.cs">
       <DependentUpon>FDanhSachNhanVien.cs</DependentUpon>
     </Compile>
+    <Compile Include="FDanhSachPhieuMuonTra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FDanhSachPhieuMuonTra.Designer.cs">
+      <DependentUpon>FDanhSachPhieuMuonTra.cs</DependentUpon>
+    </Compile>
     <Compile Include="FNewAuthor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -325,6 +331,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FDanhSachNhanVien.resx">
       <DependentUpon>FDanhSachNhanVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FDanhSachPhieuMuonTra.resx">
+      <DependentUpon>FDanhSachPhieuMuonTra.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FNewAuthor.resx">
       <DependentUpon>FNewAuthor.cs</DependentUpon>

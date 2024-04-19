@@ -148,7 +148,7 @@
             // dtgvSach
             // 
             this.dtgvSach.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvSach.Location = new System.Drawing.Point(2, 101);
+            this.dtgvSach.Location = new System.Drawing.Point(3, 96);
             this.dtgvSach.Name = "dtgvSach";
             this.dtgvSach.ReadOnly = true;
             this.dtgvSach.RowHeadersWidth = 51;
@@ -187,7 +187,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1353, 690);
+            this.ClientSize = new System.Drawing.Size(1354, 689);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.panelNen);
