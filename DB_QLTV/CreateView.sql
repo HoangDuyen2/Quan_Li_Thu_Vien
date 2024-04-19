@@ -96,11 +96,22 @@ SELECT
   TenLoaiDG
 FROM DocGia
 JOIN LoaiDocGia ON DocGia.MaLoaiDG = LoaiDocGia.MaLoaiDG;
-=======
 --Bắt đầu danh sách các nhà xuất bản
 CREATE VIEW [dbo].[view_NhaXuatBan]
 AS
 SELECT DISTINCT MaNXB, TenNXB, DiaChi, SDT
 FROM [NXB]
 --Kết thúc danh sách các nhà xuất bản
->>>>>>> de53e375b7ecacc4947b26d9df54bbb1eb6e6c81
+
+--View phiếu mượn trả
+Create view MuonTraView As
+select distinct 
+mt.MaPhieuMuonTra,
+ttnv.TenNV,
+dg.TenDocGia,
+mt.NgayMuon,
+mt.HanTra
+from PhieuMuonTra mt
+inner join DocGia dg on mt.MaDocGia=dg.MaDocGia
+inner join ThongTinNhanVien ttnv on ttnv.MaNV=mt.MaNV;
+--Kết thúc view phiếu mượn
