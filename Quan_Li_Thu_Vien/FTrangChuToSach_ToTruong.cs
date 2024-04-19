@@ -45,5 +45,9 @@ namespace Quan_Li_Thu_Vien
             FDanhSachCacNhaXuatBan dsNXB = new FDanhSachCacNhaXuatBan();
             dsNXB.ShowDialog();
         }
+        private void btnDSNhanVien_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -437,7 +437,12 @@ namespace Quan_Li_Thu_Vien
             adapter.Fill(table);
             return table;
         }
-        
+
+        public object timKiemNV(string text)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
     }
 }
