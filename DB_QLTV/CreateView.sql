@@ -77,8 +77,6 @@ AS SELECT  DISTINCT MaTG, TenTG, GioiTinh, NamSinh, NamMat, QueQuan
 FROM [TacGia]
 --Kết thúc view danh sách các tác giả
 
-<<<<<<< HEAD
-
 --danh sách đọc giả
 CREATE VIEW ViewDocGia AS
 SELECT
@@ -98,4 +96,23 @@ AS
 SELECT DISTINCT MaNXB, TenNXB, DiaChi, SDT
 FROM [NXB]
 --Kết thúc danh sách các nhà xuất bản
->>>>>>> de53e375b7ecacc4947b26d9df54bbb1eb6e6c81
+
+CREATE VIEW ViewPhieuNhapChiTiet AS
+SELECT 
+    PN.MaPhieuNhap,
+    PN.NgayNhap,
+    PN.GiaTriDonHang,
+    PN.MaNhaCC,
+    CC.TenNhaCC, -- Lấy tên nhà cung cấp từ bảng CungCap
+    CT.MaSach,
+    S.TenSach, -- Lấy tên sách từ bảng Sach
+    CT.DonGia,
+    CT.SL
+FROM 
+    PhieuNhap PN
+INNER JOIN 
+    ChiTietPhieuNhap CT ON PN.MaPhieuNhap = CT.MaPhieuNhap
+INNER JOIN 
+    CungCap CC ON PN.MaNhaCC = CC.MaNhaCC
+INNER JOIN 
+    Sach S ON CT.MaSach = S.MaSach;
