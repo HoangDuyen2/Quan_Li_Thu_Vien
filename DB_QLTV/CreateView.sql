@@ -129,7 +129,8 @@ SELECT DISTINCT
     ttnv.TenNV,
     dg.TenDocGia,
     mt.NgayMuon,
-    mt.HanTra
+    mt.HanTra,
+    ctpm.NgayTra
 FROM PhieuMuonTra mt
 INNER JOIN DocGia dg ON mt.MaDocGia = dg.MaDocGia
 INNER JOIN ThongTinNhanVien ttnv ON ttnv.MaNV = mt.MaNV
