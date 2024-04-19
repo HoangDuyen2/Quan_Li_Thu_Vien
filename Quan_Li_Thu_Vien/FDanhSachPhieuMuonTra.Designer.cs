@@ -40,7 +40,7 @@
             this.panelNen.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panelNen.Controls.Add(this.lbDanhSachCacCuonSach);
             this.panelNen.Controls.Add(this.dtgvPhieuMuonTra);
-            this.panelNen.Location = new System.Drawing.Point(6, 1);
+            this.panelNen.Location = new System.Drawing.Point(0, 0);
             this.panelNen.Name = "panelNen";
             this.panelNen.Size = new System.Drawing.Size(1354, 650);
             this.panelNen.TabIndex = 3;
