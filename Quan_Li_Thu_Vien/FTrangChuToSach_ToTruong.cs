@@ -28,23 +28,28 @@ namespace Quan_Li_Thu_Vien
             FDanhSacCacSachDangMuon dsDanhMuon = new FDanhSacCacSachDangMuon();
             dsDanhMuon.ShowDialog();
         }
-
-        private void btnDanhSachSachMuonTrongNgay_Click(object sender, EventArgs e)
-        {
-            FDanhSachSachMuonTrongNgay sachMuonTrongNgay = new FDanhSachSachMuonTrongNgay();
-            sachMuonTrongNgay.ShowDialog();
-        }
-
-        private void btnDSNhanVien_Click(object sender, EventArgs e)
-        {
-/*            FDanhSachNhanVien DanhSachNhanVien = new FDanhSachNhanVien();
-            DanhSachNhanVien.ShowDialog();*/
-        }
-
         private void btnDanhSachCacSachBiHu_Click(object sender, EventArgs e)
         {
             FDanhSachCacSachBiHu danhSachCacSachBiHu = new FDanhSachCacSachBiHu();
             danhSachCacSachBiHu.ShowDialog();
+        }
+
+        private void btnDSTacGia_Click(object sender, EventArgs e)
+        {
+            FDanhSachCacTacGia dsTG = new FDanhSachCacTacGia();
+            dsTG.ShowDialog();
+        }
+
+        private void btnDSNXB_Click(object sender, EventArgs e)
+        {
+            FDanhSachCacNhaXuatBan dsNXB = new FDanhSachCacNhaXuatBan();
+            dsNXB.ShowDialog();
+        }
+
+        private void btnThongTinCaNhan_Click(object sender, EventArgs e)
+        {
+            FThongTinCaNhan fThongTinCaNhan = new FThongTinCaNhan();
+            fThongTinCaNhan.ShowDialog();
         }
     }
 }

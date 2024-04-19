@@ -413,7 +413,7 @@ GO
 
 --nhập sách và tạo phiếu nhập
 
-CREATE PROCEDURE insert_phieunhap_chitietphieunhap(
+CREATE PROCEDURE InsertPhieunhapChitietphieunhap(
 			  @ngayNhap DATE,
 			  @giaTriDonHang FLOAT,
 			  @maNhaCC NVARCHAR(10),
@@ -424,7 +424,6 @@ CREATE PROCEDURE insert_phieunhap_chitietphieunhap(
 )
 AS
 BEGIN
-	
 	   IF EXISTS (
 			SELECT 1
 			FROM ToTruong

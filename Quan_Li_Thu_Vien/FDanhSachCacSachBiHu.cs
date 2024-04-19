@@ -22,7 +22,9 @@ namespace Quan_Li_Thu_Vien
             try
             {
                 dtgvSachBiHu.DataSource = dsSachBiHu.DSSachHu();
-                dtgvSachBiHu.AutoResizeColumns();
+                dtgvSachBiHu.RowHeadersVisible = false;
+                dtgvSachBiHu.BackgroundColor = Color.White;
+                dtgvSachBiHu.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
             catch
             {
@@ -37,14 +39,12 @@ namespace Quan_Li_Thu_Vien
                 //Lưu lại dòng dữ liệu vừa kích chọn
                 DataGridViewRow row = this.dtgvSachBiHu.Rows[e.RowIndex];
                 //Đưa dữ liệu vào textbox
-                txtMaSach.Text = row.Cells["MaSach"].Value.ToString();
-                txtTenSach.Text = row.Cells["TenSach"].Value.ToString();
-                txtNXB.Text = row.Cells["TenNXB"].Value.ToString();
-                txtLoaiSach.Text = row.Cells["TenLoaiSach"].Value.ToString();
-                txtNamXB.Text = row.Cells["NamXB"].Value.ToString();
-                txtNgonNgu.Text = row.Cells["TenNgonNgu"].Value.ToString();
-                txtTenDGViPham.Text = row.Cells["TenDocGia"].Value.ToString();
-                txtTacGia.Text = row.Cells["TenTG"].Value.ToString();
+                Sach sach = new Sach(row.Cells["MaSach"].Value.ToString(), row.Cells["TenSach"].Value.ToString(), row.Cells["TenNXB"].Value.ToString(),
+                    row.Cells["TenLoaiSach"].Value.ToString(), row.Cells["TenNgonNgu"].Value.ToString(), row.Cells["NamXB"].Value.ToString(), null,
+                    null, row.Cells["TenTG"].Value.ToString());
+                // Thêm logic xử lý khi cell được click sau khi áp dụng bộ lọc
+                FChiTietSachMuon fChiTiet = new FChiTietSachMuon(sach, row.Cells["TenDocGia"].Value.ToString(), row.Cells["TinhTrang"].Value.ToString());
+                fChiTiet.ShowDialog();
             }
         }
 

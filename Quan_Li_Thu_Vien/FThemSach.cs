@@ -16,7 +16,6 @@ namespace Quan_Li_Thu_Vien
         {
             InitializeComponent();
         }
-        Sach sachForm = new Sach();
         SachController sachController = new SachController();
         private void FThemSach_Load(object sender, EventArgs e)
         {
@@ -45,6 +44,7 @@ namespace Quan_Li_Thu_Vien
             if (sachController.themSach(sach))
             {
                 MessageBox.Show("Thực thi dữ liệu thành công", "Thông báo");
+
             }
             else MessageBox.Show("Thực thi dữ liệu thất bại", "Lỗi");
         }
@@ -58,7 +58,7 @@ namespace Quan_Li_Thu_Vien
         #region Các check khi thêm, sửa
         public void checkTenNXB(string tenNXB)
         {
-            if (sachController.checkTenNXB(tenNXB) == false)
+            if (!sachController.checkTenNXB(tenNXB))
             {
                 DialogResult result1 = MessageBox.Show("Tên nhà xuất bản bạn nhập không có trong danh sách nhà xuất bản. Bạn có muốn thêm nhà xuất bản này vào danh sách?", "Warning", MessageBoxButtons.YesNo);
                 if (result1 == DialogResult.Yes)
@@ -82,11 +82,6 @@ namespace Quan_Li_Thu_Vien
                 {
                     FNewLoaiSach newAuthor = new FNewLoaiSach(tenLoaiSach);
                     newAuthor.ShowDialog();
-                }
-                else
-                {
-                    FDanhSachCacLoaiSach dsLoaiSach = new FDanhSachCacLoaiSach();
-                    dsLoaiSach.ShowDialog();
                 }
             }
         }
@@ -117,15 +112,8 @@ namespace Quan_Li_Thu_Vien
                     FNewLanguage newLanguage = new FNewLanguage(tenNgonNgu);
                     newLanguage.ShowDialog();
                 }
-                else
-                {
-                    FDanhSachCacTacGia dsTacGia = new FDanhSachCacTacGia();
-                    dsTacGia.ShowDialog();
-                }
             }
         }
-
-
         #endregion
 
         

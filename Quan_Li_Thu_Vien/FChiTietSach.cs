@@ -109,8 +109,8 @@ namespace Quan_Li_Thu_Vien
                 DialogResult result1 = MessageBox.Show("Tên nhà xuất bản bạn nhập không có trong danh sách nhà xuất bản. Bạn có muốn thêm nhà xuất bản này vào danh sách?", "Warning", MessageBoxButtons.YesNo);
                 if (result1 == DialogResult.Yes)
                 {
-                    FNewNXB newAuthor = new FNewNXB(tenNXB);
-                    newAuthor.ShowDialog();
+                    FNewNXB newNXB = new FNewNXB(tenNXB);
+                    newNXB.ShowDialog();
                 }
                 else
                 {
@@ -126,13 +126,8 @@ namespace Quan_Li_Thu_Vien
                 DialogResult result1 = MessageBox.Show("Tên loại sách bạn nhập không có trong danh sách loại sách. Bạn có muốn thêm loại sách này vào danh sách?", "Warning", MessageBoxButtons.YesNo);
                 if (result1 == DialogResult.Yes)
                 {
-                    FNewLoaiSach newAuthor = new FNewLoaiSach(tenLoaiSach);
-                    newAuthor.ShowDialog();
-                }
-                else
-                {
-                    FDanhSachCacLoaiSach dsLoaiSach = new FDanhSachCacLoaiSach();
-                    dsLoaiSach.ShowDialog();
+                    FNewLoaiSach newLoaiSach = new FNewLoaiSach(tenLoaiSach);
+                    newLoaiSach.ShowDialog();
                 }
             }
         }

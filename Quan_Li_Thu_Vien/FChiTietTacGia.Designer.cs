@@ -1,6 +1,6 @@
 ﻿namespace Quan_Li_Thu_Vien
 {
-    partial class FNewAuthor
+    partial class FChiTietTacGia
     {
         /// <summary>
         /// Required designer variable.
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.panelBangThongTinSach = new System.Windows.Forms.Panel();
             this.radioBtnNu = new System.Windows.Forms.RadioButton();
             this.radiobtnNam = new System.Windows.Forms.RadioButton();
             this.txtNamSinh = new System.Windows.Forms.TextBox();
@@ -35,6 +36,7 @@
             this.lbGioiTinh = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
+            this.btnChinhSua = new System.Windows.Forms.Button();
             this.txtQueQuan = new System.Windows.Forms.TextBox();
             this.txtTacGia = new System.Windows.Forms.TextBox();
             this.txtNamMat = new System.Windows.Forms.TextBox();
@@ -44,9 +46,34 @@
             this.lbNamMat = new System.Windows.Forms.Label();
             this.lbMaTG = new System.Windows.Forms.Label();
             this.lbThongTinTacGia = new System.Windows.Forms.Label();
-            this.panelBangThongTinSach = new System.Windows.Forms.Panel();
             this.panelBangThongTinSach.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // panelBangThongTinSach
+            // 
+            this.panelBangThongTinSach.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panelBangThongTinSach.Controls.Add(this.radioBtnNu);
+            this.panelBangThongTinSach.Controls.Add(this.radiobtnNam);
+            this.panelBangThongTinSach.Controls.Add(this.txtNamSinh);
+            this.panelBangThongTinSach.Controls.Add(this.lbNamSinh);
+            this.panelBangThongTinSach.Controls.Add(this.lbGioiTinh);
+            this.panelBangThongTinSach.Controls.Add(this.btnExit);
+            this.panelBangThongTinSach.Controls.Add(this.btnOK);
+            this.panelBangThongTinSach.Controls.Add(this.btnChinhSua);
+            this.panelBangThongTinSach.Controls.Add(this.txtQueQuan);
+            this.panelBangThongTinSach.Controls.Add(this.txtTacGia);
+            this.panelBangThongTinSach.Controls.Add(this.txtNamMat);
+            this.panelBangThongTinSach.Controls.Add(this.txtMaTG);
+            this.panelBangThongTinSach.Controls.Add(this.lbQueQuan);
+            this.panelBangThongTinSach.Controls.Add(this.lbTenTG);
+            this.panelBangThongTinSach.Controls.Add(this.lbNamMat);
+            this.panelBangThongTinSach.Controls.Add(this.lbMaTG);
+            this.panelBangThongTinSach.Controls.Add(this.lbThongTinTacGia);
+            this.panelBangThongTinSach.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panelBangThongTinSach.Location = new System.Drawing.Point(0, 1);
+            this.panelBangThongTinSach.Name = "panelBangThongTinSach";
+            this.panelBangThongTinSach.Size = new System.Drawing.Size(1030, 637);
+            this.panelBangThongTinSach.TabIndex = 5;
             // 
             // radioBtnNu
             // 
@@ -63,7 +90,6 @@
             // radiobtnNam
             // 
             this.radiobtnNam.AutoSize = true;
-            this.radiobtnNam.Checked = true;
             this.radiobtnNam.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radiobtnNam.Location = new System.Drawing.Point(514, 258);
             this.radiobtnNam.Name = "radiobtnNam";
@@ -75,6 +101,7 @@
             // 
             // txtNamSinh
             // 
+            this.txtNamSinh.Enabled = false;
             this.txtNamSinh.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNamSinh.Location = new System.Drawing.Point(494, 330);
             this.txtNamSinh.Multiline = true;
@@ -132,8 +159,22 @@
             this.btnOK.UseVisualStyleBackColor = false;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
+            // btnChinhSua
+            // 
+            this.btnChinhSua.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnChinhSua.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChinhSua.ForeColor = System.Drawing.Color.Black;
+            this.btnChinhSua.Location = new System.Drawing.Point(414, 574);
+            this.btnChinhSua.Name = "btnChinhSua";
+            this.btnChinhSua.Size = new System.Drawing.Size(136, 42);
+            this.btnChinhSua.TabIndex = 25;
+            this.btnChinhSua.Text = "Chỉnh sửa";
+            this.btnChinhSua.UseVisualStyleBackColor = false;
+            this.btnChinhSua.Click += new System.EventHandler(this.btnChinhSua_Click);
+            // 
             // txtQueQuan
             // 
+            this.txtQueQuan.Enabled = false;
             this.txtQueQuan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtQueQuan.Location = new System.Drawing.Point(494, 499);
             this.txtQueQuan.Multiline = true;
@@ -143,6 +184,7 @@
             // 
             // txtTacGia
             // 
+            this.txtTacGia.Enabled = false;
             this.txtTacGia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTacGia.Location = new System.Drawing.Point(494, 182);
             this.txtTacGia.Multiline = true;
@@ -152,6 +194,7 @@
             // 
             // txtNamMat
             // 
+            this.txtNamMat.Enabled = false;
             this.txtNamMat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNamMat.Location = new System.Drawing.Point(494, 414);
             this.txtNamMat.Multiline = true;
@@ -229,42 +272,17 @@
             this.lbThongTinTacGia.TabIndex = 3;
             this.lbThongTinTacGia.Text = "Thông tin tác giả";
             // 
-            // panelBangThongTinSach
-            // 
-            this.panelBangThongTinSach.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panelBangThongTinSach.Controls.Add(this.radioBtnNu);
-            this.panelBangThongTinSach.Controls.Add(this.radiobtnNam);
-            this.panelBangThongTinSach.Controls.Add(this.txtNamSinh);
-            this.panelBangThongTinSach.Controls.Add(this.lbNamSinh);
-            this.panelBangThongTinSach.Controls.Add(this.lbGioiTinh);
-            this.panelBangThongTinSach.Controls.Add(this.btnExit);
-            this.panelBangThongTinSach.Controls.Add(this.btnOK);
-            this.panelBangThongTinSach.Controls.Add(this.txtQueQuan);
-            this.panelBangThongTinSach.Controls.Add(this.txtTacGia);
-            this.panelBangThongTinSach.Controls.Add(this.txtNamMat);
-            this.panelBangThongTinSach.Controls.Add(this.txtMaTG);
-            this.panelBangThongTinSach.Controls.Add(this.lbQueQuan);
-            this.panelBangThongTinSach.Controls.Add(this.lbTenTG);
-            this.panelBangThongTinSach.Controls.Add(this.lbNamMat);
-            this.panelBangThongTinSach.Controls.Add(this.lbMaTG);
-            this.panelBangThongTinSach.Controls.Add(this.lbThongTinTacGia);
-            this.panelBangThongTinSach.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panelBangThongTinSach.Location = new System.Drawing.Point(-2, 0);
-            this.panelBangThongTinSach.Name = "panelBangThongTinSach";
-            this.panelBangThongTinSach.Size = new System.Drawing.Size(1032, 634);
-            this.panelBangThongTinSach.TabIndex = 6;
-            // 
-            // FNewAuthor
+            // FChiTietTacGia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1030, 637);
             this.Controls.Add(this.panelBangThongTinSach);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "FNewAuthor";
+            this.Name = "FChiTietTacGia";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FNewAuthor";
-            this.Load += new System.EventHandler(this.FNewAuthor_Load);
+            this.Text = "FChiTietTacGia";
+            this.Load += new System.EventHandler(this.FChiTietTacGia_Load);
             this.panelBangThongTinSach.ResumeLayout(false);
             this.panelBangThongTinSach.PerformLayout();
             this.ResumeLayout(false);
@@ -273,13 +291,13 @@
 
         #endregion
 
-        private System.Windows.Forms.RadioButton radioBtnNu;
-        private System.Windows.Forms.RadioButton radiobtnNam;
+        private System.Windows.Forms.Panel panelBangThongTinSach;
         private System.Windows.Forms.TextBox txtNamSinh;
         private System.Windows.Forms.Label lbNamSinh;
         private System.Windows.Forms.Label lbGioiTinh;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnOK;
+        private System.Windows.Forms.Button btnChinhSua;
         private System.Windows.Forms.TextBox txtQueQuan;
         private System.Windows.Forms.TextBox txtTacGia;
         private System.Windows.Forms.TextBox txtNamMat;
@@ -289,6 +307,7 @@
         private System.Windows.Forms.Label lbNamMat;
         private System.Windows.Forms.Label lbMaTG;
         private System.Windows.Forms.Label lbThongTinTacGia;
-        private System.Windows.Forms.Panel panelBangThongTinSach;
+        private System.Windows.Forms.RadioButton radioBtnNu;
+        private System.Windows.Forms.RadioButton radiobtnNam;
     }
 }

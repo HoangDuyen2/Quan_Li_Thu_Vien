@@ -74,6 +74,14 @@ namespace Quan_Li_Thu_Vien
             adapter.Fill(datatable);
             return datatable;
         }
+        public DataTable DSNhaXuatBan()
+        {
+            SqlCommand cmmd = new SqlCommand("SELECT * FROM view_NhaXuatBan", conn.GetSqlConnection());
+            SqlDataAdapter adapter = new SqlDataAdapter(cmmd);
+            DataTable table = new DataTable();
+            adapter.Fill(table);
+            return table;
+        }
         #endregion
         #region Add, Update, Search Author
         public bool themTacGia(TacGia tg)
@@ -223,6 +231,94 @@ namespace Quan_Li_Thu_Vien
             }
         }
         #endregion
+        #region Add, Update, Search NXB
+        public DataTable timKiemNXB(string tenNXB)
+        {
+            SqlCommand cmmd = new SqlCommand("SELECT * FROM func_SearchNXBName (@TenNXB)", conn.GetSqlConnection());
+            cmmd.Parameters.Add("@TenNXB", SqlDbType.NVarChar).Value = tenNXB;
+            DataTable table = new DataTable();
+            SqlDataAdapter adapter = new SqlDataAdapter(cmmd);
+            adapter.Fill(table);
+            return table;
+        }
+        public bool suaNXB(NXB nxb)
+        {
+            SqlCommand cmmd = new SqlCommand("pro_UpdateNXB", conn.GetSqlConnection());
+            cmmd.CommandType = CommandType.StoredProcedure;
+            cmmd.Parameters.Add("@MaNXB",SqlDbType.NVarChar).Value = nxb.MaNXB;
+            cmmd.Parameters.Add("@TenNXB",SqlDbType.NVarChar).Value = nxb.TenNXB;
+            cmmd.Parameters.Add("@DiaChi",SqlDbType.NVarChar).Value = nxb.DiaChi1;
+            cmmd.Parameters.Add("@SDT",SqlDbType.NVarChar).Value = nxb.SDT1;
+            conn.openConnection();
+            if(cmmd.ExecuteNonQuery() > 0)
+            {
+                conn.closeConnection();
+                return true;
+            }
+            else
+            {
+                conn.closeConnection();
+                return false;
+            }
+        }
+        public bool themNXB(NXB nxb)
+        {
+            SqlCommand cmmd = new SqlCommand("pro_InsertNXB", conn.GetSqlConnection());
+            cmmd.CommandType = CommandType.StoredProcedure;
+            cmmd.Parameters.Add("@TenNXB", SqlDbType.NVarChar).Value = nxb.TenNXB;
+            cmmd.Parameters.Add("@DiaChi", SqlDbType.NVarChar).Value = nxb.DiaChi1;
+            cmmd.Parameters.Add("@SDT", SqlDbType.NVarChar).Value = nxb.SDT1;
+            conn.openConnection() ;
+            if (cmmd.ExecuteNonQuery() > 0)
+            {
+                conn.closeConnection();
+                return true;
+            }
+            else
+            {
+                conn.closeConnection();
+                return false;
+            }
+        }
+        #endregion
+        #region Add Ngôn ngữ
+        public bool ThemNgonNgu(string tenNgonNgu)
+        {
+            SqlCommand cmmd = new SqlCommand("pro_InsertNgonNgu", conn.GetSqlConnection());
+            cmmd.CommandType = CommandType.StoredProcedure;
+            cmmd.Parameters.Add("@TenNN", SqlDbType.NVarChar).Value = tenNgonNgu;
+            conn.openConnection();
+            if(cmmd.ExecuteNonQuery() > 0)
+            {
+                conn.closeConnection();
+                return true;
+            }
+            else
+            {
+                conn.closeConnection();
+                return false;
+            }
+        }
+        #endregion
+        #region Add Loại sách
+        public bool ThemLoaiSach(string tenLS)
+        {
+            SqlCommand cmmd = new SqlCommand("pro_InsertLoaiSach", conn.GetSqlConnection());
+            cmmd.CommandType = CommandType.StoredProcedure;
+            cmmd.Parameters.Add("@TenLS", SqlDbType.NVarChar).Value = tenLS;
+            conn.openConnection();
+            if (cmmd.ExecuteNonQuery() > 0)
+            {
+                conn.closeConnection();
+                return true;
+            }
+            else
+            {
+                conn.closeConnection();
+                return false;
+            }
+        }
+        #endregion
         #region Kiểm tra điều kiện khi thêm sách
         public bool checkTenTG(string tenTG)
         {
@@ -279,7 +375,7 @@ namespace Quan_Li_Thu_Vien
         }
         #endregion
         #region Load data combobox
-        public DataTable DSCacLoaiSach()
+        public DataTable DSTenCacLoaiSach()
         {
             SqlCommand cmmd = new SqlCommand("SELECT * FROM func_TenCacLoaiSach()",conn.GetSqlConnection());
             SqlDataAdapter adapter = new SqlDataAdapter(cmmd);
@@ -287,7 +383,7 @@ namespace Quan_Li_Thu_Vien
             adapter.Fill(table);
             return table;
         }
-        public DataTable DSNgonNgu()
+        public DataTable DSTenNgonNgu()
         {
             SqlCommand cmmd = new SqlCommand("SELECT * FROM func_TenCacLoaiNgonNgu()", conn.GetSqlConnection());
             SqlDataAdapter adapter = new SqlDataAdapter(cmmd);
@@ -341,6 +437,12 @@ namespace Quan_Li_Thu_Vien
             adapter.Fill(table);
             return table;
         }
+
+        public object timKiemNV(string text)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
     }
 }

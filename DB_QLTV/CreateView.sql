@@ -24,12 +24,17 @@ INNER JOIN LoaiDocGia LDG ON DG. MaLoaiDG = LDG. MaLoaiDG
 --Kết thúc view Danh sách các độc giả
 
 --Bắt đầu view Danh sách các nhân viên
-CREATE VIEW NhanVienView AS
-SELECT DISTINCT nv.MaNV, nv.TenNV, nv.GioiTinh, nt.TenTo, tt.TenNV AS TenToTruong, nv.SDT
-FROM NhanVien nv
-INNER JOIN dbo.NhomTo nt ON nv.MaTo = nt.MaTo
-INNER JOIN NhanVien tt ON nv.MaTT = tt.MaNV
---Kết thúc view danh sách nhân viên
+Create view NhanVienView AS
+SELECT DISTINCT ttnv.MaNV, ttnv.TenNV, ttnv.GioiTinh, ttt.TenTo, ttt.TenTT AS TenToTruong, ttnv.SDT
+from NhanVien nv
+INNER JOIN ThongTinNhanVien ttnv on nv.MaNV=ttnv.MaNV
+INNER JOIN (SELECT  
+    ThongTinNhanVien.TenNV AS TenTT,
+	ToTruong.MaTo,
+	NhomTo.TenTo
+FROM ToTruong
+Inner JOIN ThongTinNhanVien ON ToTruong.MaNV = ThongTinNhanVien.MaNV
+Inner Join NhomTo on NhomTo.MaTo=ToTruong.MaTo) as ttt on nv.MaTo=ttt.MaTo
 
 --Bắt đầu view Danh sách các sách bị hư
 CREATE VIEW SachBiHu 
@@ -89,7 +94,6 @@ SELECT
   TenLoaiDG
 FROM DocGia
 JOIN LoaiDocGia ON DocGia.MaLoaiDG = LoaiDocGia.MaLoaiDG;
-=======
 --Bắt đầu danh sách các nhà xuất bản
 CREATE VIEW [dbo].[view_NhaXuatBan]
 AS
@@ -97,6 +101,7 @@ SELECT DISTINCT MaNXB, TenNXB, DiaChi, SDT
 FROM [NXB]
 --Kết thúc danh sách các nhà xuất bản
 
+<<<<<<< HEAD
 CREATE VIEW ViewPhieuNhapChiTiet AS
 SELECT 
     PN.MaPhieuNhap,
@@ -116,3 +121,54 @@ INNER JOIN
     CungCap CC ON PN.MaNhaCC = CC.MaNhaCC
 INNER JOIN 
     Sach S ON CT.MaSach = S.MaSach;
+=======
+--View phiếu mượn trả
+Create view MuonTraView As
+select distinct 
+mt.MaPhieuMuonTra,
+ttnv.TenNV,
+dg.TenDocGia,
+mt.NgayMuon,
+mt.HanTra
+from PhieuMuonTra mt
+inner join DocGia dg on mt.MaDocGia=dg.MaDocGia
+inner join ThongTinNhanVien ttnv on ttnv.MaNV=mt.MaNV;
+--Kết thúc view phiếu mượn
+
+--Bắt đầu danh sách Nhân viên THEO TỔ
+CREATE VIEW NhanVienTheoToMuonSach AS
+SELECT ttnv.MaNV,ttnv.TenNV, ttnv.GioiTinh, ttnv.NgaySinh,ttnv.Luong, ttnv.DiaChi, ttnv.SDT, ttnv.Email,ttnv.NgayTao
+FROM ThongTinNhanVien ttnv
+INNER JOIN NhanVien nv on ttnv.MaNV=nv.MaNV
+Where nv.MaTo='TO02';
+
+-- Kết thúc danh sách Nhân viên THEO TỔ
+--View phiếu mượn trả trễ hạn
+CREATE VIEW MuonTraTreHanView AS
+SELECT DISTINCT
+    mt.MaPhieuMuonTra,
+    ttnv.TenNV,
+    dg.TenDocGia,
+    mt.NgayMuon,
+    mt.HanTra,
+    ctpm.NgayTra
+FROM PhieuMuonTra mt
+INNER JOIN DocGia dg ON mt.MaDocGia = dg.MaDocGia
+INNER JOIN ThongTinNhanVien ttnv ON ttnv.MaNV = mt.MaNV
+INNER JOIN ChiTietPhieuMuonTra ctpm ON ctpm.MaPhieuMuonTra = mt.MaPhieuMuonTra
+WHERE ctpm.NgayTra > mt.HanTra OR (ctpm.NgayTra IS NULL and mt.HanTra < GETDATE()) ;
+--kết thúc View phiếu mượn trả trễ hạn
+--View phiếu phạt
+Create view PhieuPhatView As
+select distinct 
+pp.MaPhieuPhat,
+mt.MaPhieuMuonTra,
+dg.TenDocGia,
+s.TenSach,
+pp.TongTien
+from PhieuPhat pp
+inner join PhieuMuonTra mt on pp.MaPhieuMuonTra=mt.MaPhieuMuonTra
+inner join DocGia dg on mt.MaDocGia=dg.MaDocGia
+inner join Sach s on s.MaSach=pp.MaSach
+--Kết thúc View phiếu phạt
+>>>>>>> 814ac8c57d6fbac435bdfe54e081b55114c7dc07

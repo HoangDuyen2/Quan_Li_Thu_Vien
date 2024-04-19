@@ -31,9 +31,7 @@
             this.panelNen = new System.Windows.Forms.Panel();
             this.picBoxNen = new System.Windows.Forms.PictureBox();
             this.panelMucLuc = new System.Windows.Forms.Panel();
-            this.btnDSLoaiSach = new System.Windows.Forms.Button();
             this.btnDSNXB = new System.Windows.Forms.Button();
-            this.btnDSNgonNgu = new System.Windows.Forms.Button();
             this.btnThongTinCaNhan = new System.Windows.Forms.Button();
             this.btnDSTacGia = new System.Windows.Forms.Button();
             this.btnDanhSachSachDangMuon = new System.Windows.Forms.Button();
@@ -66,9 +64,7 @@
             // panelMucLuc
             // 
             this.panelMucLuc.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panelMucLuc.Controls.Add(this.btnDSLoaiSach);
             this.panelMucLuc.Controls.Add(this.btnDSNXB);
-            this.panelMucLuc.Controls.Add(this.btnDSNgonNgu);
             this.panelMucLuc.Controls.Add(this.btnThongTinCaNhan);
             this.panelMucLuc.Controls.Add(this.btnDSTacGia);
             this.panelMucLuc.Controls.Add(this.btnDanhSachSachDangMuon);
@@ -80,56 +76,35 @@
             this.panelMucLuc.Size = new System.Drawing.Size(213, 595);
             this.panelMucLuc.TabIndex = 0;
             // 
-            // btnDSLoaiSach
-            // 
-            this.btnDSLoaiSach.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnDSLoaiSach.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDSLoaiSach.Location = new System.Drawing.Point(-1, 462);
-            this.btnDSLoaiSach.Name = "btnDSLoaiSach";
-            this.btnDSLoaiSach.Size = new System.Drawing.Size(214, 65);
-            this.btnDSLoaiSach.TabIndex = 8;
-            this.btnDSLoaiSach.Text = "Danh sách loại sách";
-            this.btnDSLoaiSach.UseVisualStyleBackColor = false;
-            // 
             // btnDSNXB
             // 
             this.btnDSNXB.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnDSNXB.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDSNXB.Location = new System.Drawing.Point(-1, 394);
+            this.btnDSNXB.Location = new System.Drawing.Point(-1, 266);
             this.btnDSNXB.Name = "btnDSNXB";
             this.btnDSNXB.Size = new System.Drawing.Size(214, 65);
             this.btnDSNXB.TabIndex = 7;
             this.btnDSNXB.Text = "Danh sách nhà xuất bản";
             this.btnDSNXB.UseVisualStyleBackColor = false;
-            // 
-            // btnDSNgonNgu
-            // 
-            this.btnDSNgonNgu.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnDSNgonNgu.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDSNgonNgu.Location = new System.Drawing.Point(-1, 328);
-            this.btnDSNgonNgu.Name = "btnDSNgonNgu";
-            this.btnDSNgonNgu.Size = new System.Drawing.Size(214, 65);
-            this.btnDSNgonNgu.TabIndex = 6;
-            this.btnDSNgonNgu.Text = "Danh sách ngôn ngữ";
-            this.btnDSNgonNgu.UseVisualStyleBackColor = false;
-            this.btnDSNgonNgu.Click += new System.EventHandler(this.btnDSNgonNgu_Click);
+            this.btnDSNXB.Click += new System.EventHandler(this.btnDSNXB_Click);
             // 
             // btnThongTinCaNhan
             // 
             this.btnThongTinCaNhan.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnThongTinCaNhan.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThongTinCaNhan.Location = new System.Drawing.Point(-1, 530);
+            this.btnThongTinCaNhan.Location = new System.Drawing.Point(-1, 335);
             this.btnThongTinCaNhan.Name = "btnThongTinCaNhan";
             this.btnThongTinCaNhan.Size = new System.Drawing.Size(214, 65);
             this.btnThongTinCaNhan.TabIndex = 5;
             this.btnThongTinCaNhan.Text = "Thông tin cá nhân";
             this.btnThongTinCaNhan.UseVisualStyleBackColor = false;
+            this.btnThongTinCaNhan.Click += new System.EventHandler(this.btnThongTinCaNhan_Click);
             // 
             // btnDSTacGia
             // 
             this.btnDSTacGia.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnDSTacGia.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDSTacGia.Location = new System.Drawing.Point(-1, 262);
+            this.btnDSTacGia.Location = new System.Drawing.Point(-1, 199);
             this.btnDSTacGia.Name = "btnDSTacGia";
             this.btnDSTacGia.Size = new System.Drawing.Size(214, 65);
             this.btnDSTacGia.TabIndex = 4;
@@ -153,7 +128,7 @@
             // 
             this.btnDanhSachCacSachBiHu.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnDanhSachCacSachBiHu.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDanhSachCacSachBiHu.Location = new System.Drawing.Point(-1, 138);
+            this.btnDanhSachCacSachBiHu.Location = new System.Drawing.Point(-1, 133);
             this.btnDanhSachCacSachBiHu.Name = "btnDanhSachCacSachBiHu";
             this.btnDanhSachCacSachBiHu.Size = new System.Drawing.Size(214, 65);
             this.btnDanhSachCacSachBiHu.TabIndex = 1;
@@ -199,9 +174,7 @@
         private System.Windows.Forms.Button btnXemDSSach;
         private System.Windows.Forms.Button btnThongTinCaNhan;
         private System.Windows.Forms.Button btnDSTacGia;
-        private System.Windows.Forms.Button btnDSLoaiSach;
         private System.Windows.Forms.Button btnDSNXB;
-        private System.Windows.Forms.Button btnDSNgonNgu;
     }
 }
 

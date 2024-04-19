@@ -80,9 +80,9 @@
             this.panelBangThongTinSach.Controls.Add(this.lbMaSach);
             this.panelBangThongTinSach.Controls.Add(this.lbThongTinCuonSach);
             this.panelBangThongTinSach.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panelBangThongTinSach.Location = new System.Drawing.Point(0, 0);
+            this.panelBangThongTinSach.Location = new System.Drawing.Point(0, -1);
             this.panelBangThongTinSach.Name = "panelBangThongTinSach";
-            this.panelBangThongTinSach.Size = new System.Drawing.Size(1030, 636);
+            this.panelBangThongTinSach.Size = new System.Drawing.Size(1029, 637);
             this.panelBangThongTinSach.TabIndex = 3;
             // 
             // btnExit

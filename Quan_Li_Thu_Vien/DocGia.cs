@@ -34,7 +34,7 @@ namespace Quan_Li_Thu_Vien
         public string Email { get => email; set => email = value; }
         public string SoDienThoai { get => soDienThoai; set => soDienThoai = value; }
         public string GioiTinh { get => gioiTinh; set => gioiTinh = value; }
-        public DateTime NgayTao { get => ngayTao; set => ngayTao = value; }
+        public string NgayTao { get => ngayTao; set => ngayTao = value; }
         public string MaLoaiDG { get => maLoaiDG; set => maLoaiDG = value; }
     }
 }

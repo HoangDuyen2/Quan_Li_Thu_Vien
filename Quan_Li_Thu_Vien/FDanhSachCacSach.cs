@@ -23,13 +23,13 @@ namespace Quan_Li_Thu_Vien
         #region LoadComboBox
         public void LoadComboboxLoaiSach()
         {
-            comboBoxLoaiSach.DataSource = dssach.DSCacLoaiSach();
-            comboBoxLoaiSach.DisplayMember = dssach.DSCacLoaiSach().Columns[0].ToString();
+            comboBoxLoaiSach.DataSource = dssach.DSTenCacLoaiSach();
+            comboBoxLoaiSach.DisplayMember = dssach.DSTenCacLoaiSach().Columns[0].ToString();
         }
         public void LoadComboboxNgonNgu()
         {
-            comboBoxNgonNgu.DataSource = dssach.DSNgonNgu();
-            comboBoxNgonNgu.DisplayMember = dssach.DSNgonNgu().Columns[0].ToString();
+            comboBoxNgonNgu.DataSource = dssach.DSTenNgonNgu();
+            comboBoxNgonNgu.DisplayMember = dssach.DSTenNgonNgu().Columns[0].ToString();
         }
         #endregion
         public void LoadData()
