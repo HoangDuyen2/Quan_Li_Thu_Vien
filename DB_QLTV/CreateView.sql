@@ -117,10 +117,12 @@ inner join ThongTinNhanVien ttnv on ttnv.MaNV=mt.MaNV;
 --Kết thúc view phiếu mượn
 
 --Bắt đầu danh sách Nhân viên THEO TỔ
-CREATE VIEW NhanVienTheoTo AS
-SELECT MaNV, TenNV, Luong, GioiTinh, TenTo
-FROM NhanVien
-INNER JOIN NhomTo ON NhanVien.MaTo = NhomTo.MaTo;
+CREATE VIEW NhanVienTheoToMuonSach AS
+SELECT ttnv.MaNV,ttnv.TenNV, ttnv.GioiTinh, ttnv.NgaySinh,ttnv.Luong, ttnv.DiaChi, ttnv.SDT, ttnv.Email,ttnv.NgayTao
+FROM ThongTinNhanVien ttnv
+INNER JOIN NhanVien nv on ttnv.MaNV=nv.MaNV
+Where nv.MaTo='TO02';
+
 -- Kết thúc danh sách Nhân viên THEO TỔ
 --View phiếu mượn trả trễ hạn
 CREATE VIEW MuonTraTreHanView AS
@@ -137,3 +139,16 @@ INNER JOIN ThongTinNhanVien ttnv ON ttnv.MaNV = mt.MaNV
 INNER JOIN ChiTietPhieuMuonTra ctpm ON ctpm.MaPhieuMuonTra = mt.MaPhieuMuonTra
 WHERE ctpm.NgayTra > mt.HanTra OR (ctpm.NgayTra IS NULL and mt.HanTra < GETDATE()) ;
 --kết thúc View phiếu mượn trả trễ hạn
+--View phiếu phạt
+Create view PhieuPhatView As
+select distinct 
+pp.MaPhieuPhat,
+mt.MaPhieuMuonTra,
+dg.TenDocGia,
+s.TenSach,
+pp.TongTien
+from PhieuPhat pp
+inner join PhieuMuonTra mt on pp.MaPhieuMuonTra=mt.MaPhieuMuonTra
+inner join DocGia dg on mt.MaDocGia=dg.MaDocGia
+inner join Sach s on s.MaSach=pp.MaSach
+--Kết thúc View phiếu phạt
