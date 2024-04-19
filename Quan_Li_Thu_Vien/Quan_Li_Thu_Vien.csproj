@@ -152,13 +152,12 @@
     <Compile Include="DBConnection.cs" />
     <Compile Include="DocGia.cs" />
     <Compile Include="DocGiaController.cs" />
-<<<<<<< HEAD
     <Compile Include="FAddDocGia.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FAddDocGia.Designer.cs">
-      <DependentUpon>FAddDocGia.cs</DependentUpon>
-=======
+	  <Compile Include="FAddDocGia.Designer.cs">
+		  <DependentUpon>FAddDocGia.cs</DependentUpon>
+	  </Compile>
     <Compile Include="FChiTietNV.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -170,7 +169,6 @@
     </Compile>
     <Compile Include="FChiTietNXB.Designer.cs">
       <DependentUpon>FChiTietNXB.cs</DependentUpon>
->>>>>>> 814ac8c57d6fbac435bdfe54e081b55114c7dc07
     </Compile>
     <Compile Include="FChiTietSach.cs">
       <SubType>Form</SubType>
@@ -183,15 +181,12 @@
     </Compile>
     <Compile Include="FChiTietSachMuon.Designer.cs">
       <DependentUpon>FChiTietSachMuon.cs</DependentUpon>
-<<<<<<< HEAD
-=======
     </Compile>
     <Compile Include="FChiTietTacGia.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FChiTietTacGia.Designer.cs">
       <DependentUpon>FChiTietTacGia.cs</DependentUpon>
->>>>>>> 814ac8c57d6fbac435bdfe54e081b55114c7dc07
     </Compile>
     <Compile Include="FDanhSacCacSachDangMuon.cs">
       <SubType>Form</SubType>
@@ -265,7 +260,6 @@
     <Compile Include="FormDangNhap.Designer.cs">
       <DependentUpon>FormDangNhap.cs</DependentUpon>
     </Compile>
-<<<<<<< HEAD
     <Compile Include="FNhanVien.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -278,8 +272,6 @@
     <Compile Include="FThemPhieuNhap.Designer.cs">
       <DependentUpon>FThemPhieuNhap.cs</DependentUpon>
     </Compile>
-=======
->>>>>>> 814ac8c57d6fbac435bdfe54e081b55114c7dc07
     <Compile Include="FThemSach.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -320,7 +312,6 @@
     <Compile Include="MuonSachController.cs" />
     <Compile Include="NXB.cs" />
     <Compile Include="Person.cs" />
-<<<<<<< HEAD
     <Compile Include="Phat.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -329,30 +320,22 @@
     </Compile>
     <Compile Include="PhieuNhap.cs" />
     <Compile Include="PhieuNhapController.cs" />
-=======
->>>>>>> 814ac8c57d6fbac435bdfe54e081b55114c7dc07
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sach.cs" />
     <Compile Include="SachController.cs" />
-<<<<<<< HEAD
     <EmbeddedResource Include="FAddDocGia.resx">
       <DependentUpon>FAddDocGia.cs</DependentUpon>
     </EmbeddedResource>
-=======
->>>>>>> 814ac8c57d6fbac435bdfe54e081b55114c7dc07
     <Compile Include="TacGia.cs" />
     <EmbeddedResource Include="FChiTietSach.resx">
       <DependentUpon>FChiTietSach.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FChiTietSachMuon.resx">
       <DependentUpon>FChiTietSachMuon.cs</DependentUpon>
-<<<<<<< HEAD
-=======
     </EmbeddedResource>
     <EmbeddedResource Include="FChiTietTacGia.resx">
       <DependentUpon>FChiTietTacGia.cs</DependentUpon>
->>>>>>> 814ac8c57d6fbac435bdfe54e081b55114c7dc07
     </EmbeddedResource>
     <EmbeddedResource Include="FDanhSacCacSachDangMuon.resx">
       <DependentUpon>FDanhSacCacSachDangMuon.cs</DependentUpon>
