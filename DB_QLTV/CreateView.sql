@@ -115,3 +115,10 @@ from PhieuMuonTra mt
 inner join DocGia dg on mt.MaDocGia=dg.MaDocGia
 inner join ThongTinNhanVien ttnv on ttnv.MaNV=mt.MaNV;
 --Kết thúc view phiếu mượn
+
+--Bắt đầu danh sách Nhân viên THEO TỔ
+CREATE VIEW NhanVienTheoTo AS
+SELECT MaNV, TenNV, Luong, GioiTinh, TenTo
+FROM NhanVien
+INNER JOIN NhomTo ON NhanVien.MaTo = NhomTo.MaTo;
+-- Kết thúc danh sách Nhân viên THEO TỔ
