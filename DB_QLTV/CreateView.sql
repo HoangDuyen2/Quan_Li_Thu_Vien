@@ -122,3 +122,17 @@ SELECT MaNV, TenNV, Luong, GioiTinh, TenTo
 FROM NhanVien
 INNER JOIN NhomTo ON NhanVien.MaTo = NhomTo.MaTo;
 -- Kết thúc danh sách Nhân viên THEO TỔ
+--View phiếu mượn trả trễ hạn
+CREATE VIEW MuonTraTreHanView AS
+SELECT DISTINCT
+    mt.MaPhieuMuonTra,
+    ttnv.TenNV,
+    dg.TenDocGia,
+    mt.NgayMuon,
+    mt.HanTra
+FROM PhieuMuonTra mt
+INNER JOIN DocGia dg ON mt.MaDocGia = dg.MaDocGia
+INNER JOIN ThongTinNhanVien ttnv ON ttnv.MaNV = mt.MaNV
+INNER JOIN ChiTietPhieuMuonTra ctpm ON ctpm.MaPhieuMuonTra = mt.MaPhieuMuonTra
+WHERE ctpm.NgayTra > mt.HanTra OR (ctpm.NgayTra IS NULL and mt.HanTra < GETDATE()) ;
+--kết thúc View phiếu mượn trả trễ hạn
