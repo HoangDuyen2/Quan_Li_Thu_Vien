@@ -16,5 +16,11 @@ namespace Quan_Li_Thu_Vien
         {
             InitializeComponent();
         }
+
+        private void btnThongTinCaNhan_Click(object sender, EventArgs e)
+        {
+            FThongTinCaNhan fThongTinCaNhan = new FThongTinCaNhan();
+            fThongTinCaNhan.ShowDialog();
+        }
     }
 }

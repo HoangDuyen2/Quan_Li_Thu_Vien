@@ -341,6 +341,7 @@
             this.Name = "FThongTinCaNhan";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FThongTinCaNhan";
+            this.Load += new System.EventHandler(this.FThongTinCaNhan_Load);
             this.panel15.ResumeLayout(false);
             this.panel15.PerformLayout();
             this.panel14.ResumeLayout(false);
