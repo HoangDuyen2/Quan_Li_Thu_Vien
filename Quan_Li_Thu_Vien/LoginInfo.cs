@@ -10,7 +10,6 @@ namespace Quan_Li_Thu_Vien
     internal class LoginInfo
     {
         public static string Username { get; set; }
-        public static string Password { get; set; }
-        public static string MaNV { get; set; }
     }
+
 }
