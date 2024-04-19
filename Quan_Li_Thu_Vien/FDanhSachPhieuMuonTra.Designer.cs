@@ -30,16 +30,16 @@
         {
             this.panelNen = new System.Windows.Forms.Panel();
             this.lbDanhSachCacCuonSach = new System.Windows.Forms.Label();
-            this.dtgvSach = new System.Windows.Forms.DataGridView();
+            this.dtgvPhieuMuonTra = new System.Windows.Forms.DataGridView();
             this.panelNen.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgvSach)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvPhieuMuonTra)).BeginInit();
             this.SuspendLayout();
             // 
             // panelNen
             // 
             this.panelNen.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panelNen.Controls.Add(this.lbDanhSachCacCuonSach);
-            this.panelNen.Controls.Add(this.dtgvSach);
+            this.panelNen.Controls.Add(this.dtgvPhieuMuonTra);
             this.panelNen.Location = new System.Drawing.Point(6, 1);
             this.panelNen.Name = "panelNen";
             this.panelNen.Size = new System.Drawing.Size(1354, 650);
@@ -56,16 +56,16 @@
             this.lbDanhSachCacCuonSach.TabIndex = 1;
             this.lbDanhSachCacCuonSach.Text = "Danh Sách Phiếu Mượn Trả";
             // 
-            // dtgvSach
+            // dtgvPhieuMuonTra
             // 
-            this.dtgvSach.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvSach.Location = new System.Drawing.Point(0, 98);
-            this.dtgvSach.Name = "dtgvSach";
-            this.dtgvSach.ReadOnly = true;
-            this.dtgvSach.RowHeadersWidth = 51;
-            this.dtgvSach.RowTemplate.Height = 24;
-            this.dtgvSach.Size = new System.Drawing.Size(1352, 549);
-            this.dtgvSach.TabIndex = 0;
+            this.dtgvPhieuMuonTra.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgvPhieuMuonTra.Location = new System.Drawing.Point(0, 98);
+            this.dtgvPhieuMuonTra.Name = "dtgvPhieuMuonTra";
+            this.dtgvPhieuMuonTra.ReadOnly = true;
+            this.dtgvPhieuMuonTra.RowHeadersWidth = 51;
+            this.dtgvPhieuMuonTra.RowTemplate.Height = 24;
+            this.dtgvPhieuMuonTra.Size = new System.Drawing.Size(1352, 549);
+            this.dtgvPhieuMuonTra.TabIndex = 0;
             // 
             // FDanhSachPhieuMuonTra
             // 
@@ -77,7 +77,7 @@
             this.Text = "FDanhSachPhieuMuonTra";
             this.panelNen.ResumeLayout(false);
             this.panelNen.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgvSach)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvPhieuMuonTra)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -85,6 +85,6 @@
         #endregion
         private System.Windows.Forms.Panel panelNen;
         private System.Windows.Forms.Label lbDanhSachCacCuonSach;
-        private System.Windows.Forms.DataGridView dtgvSach;
+        private System.Windows.Forms.DataGridView dtgvPhieuMuonTra;
     }
 }
