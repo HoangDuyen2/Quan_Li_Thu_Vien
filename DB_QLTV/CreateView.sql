@@ -96,11 +96,44 @@ SELECT
   TenLoaiDG
 FROM DocGia
 JOIN LoaiDocGia ON DocGia.MaLoaiDG = LoaiDocGia.MaLoaiDG;
-=======
 --Bắt đầu danh sách các nhà xuất bản
 CREATE VIEW [dbo].[view_NhaXuatBan]
 AS
 SELECT DISTINCT MaNXB, TenNXB, DiaChi, SDT
 FROM [NXB]
 --Kết thúc danh sách các nhà xuất bản
->>>>>>> de53e375b7ecacc4947b26d9df54bbb1eb6e6c81
+
+--View phiếu mượn trả
+Create view MuonTraView As
+select distinct 
+mt.MaPhieuMuonTra,
+ttnv.TenNV,
+dg.TenDocGia,
+mt.NgayMuon,
+mt.HanTra
+from PhieuMuonTra mt
+inner join DocGia dg on mt.MaDocGia=dg.MaDocGia
+inner join ThongTinNhanVien ttnv on ttnv.MaNV=mt.MaNV;
+--Kết thúc view phiếu mượn
+
+--Bắt đầu danh sách Nhân viên THEO TỔ
+CREATE VIEW NhanVienTheoTo AS
+SELECT MaNV, TenNV, Luong, GioiTinh, TenTo
+FROM NhanVien
+INNER JOIN NhomTo ON NhanVien.MaTo = NhomTo.MaTo;
+-- Kết thúc danh sách Nhân viên THEO TỔ
+--View phiếu mượn trả trễ hạn
+CREATE VIEW MuonTraTreHanView AS
+SELECT DISTINCT
+    mt.MaPhieuMuonTra,
+    ttnv.TenNV,
+    dg.TenDocGia,
+    mt.NgayMuon,
+    mt.HanTra,
+    ctpm.NgayTra
+FROM PhieuMuonTra mt
+INNER JOIN DocGia dg ON mt.MaDocGia = dg.MaDocGia
+INNER JOIN ThongTinNhanVien ttnv ON ttnv.MaNV = mt.MaNV
+INNER JOIN ChiTietPhieuMuonTra ctpm ON ctpm.MaPhieuMuonTra = mt.MaPhieuMuonTra
+WHERE ctpm.NgayTra > mt.HanTra OR (ctpm.NgayTra IS NULL and mt.HanTra < GETDATE()) ;
+--kết thúc View phiếu mượn trả trễ hạn

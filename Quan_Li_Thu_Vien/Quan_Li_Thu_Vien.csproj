@@ -254,29 +254,29 @@
     <Compile Include="FormDangNhap.Designer.cs">
       <DependentUpon>FormDangNhap.cs</DependentUpon>
     </Compile>
-    <Compile Include="FNhanVien.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FNhanVien.Designer.cs">
-      <DependentUpon>FNhanVien.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FQuanLy.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FQuanLy.Designer.cs">
-      <DependentUpon>FQuanLy.cs</DependentUpon>
-    </Compile>
     <Compile Include="FThemSach.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FThemSach.Designer.cs">
       <DependentUpon>FThemSach.cs</DependentUpon>
     </Compile>
-    <Compile Include="FToTruong.cs">
+    <Compile Include="FThongTinCaNhan.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FToTruong.Designer.cs">
-      <DependentUpon>FToTruong.cs</DependentUpon>
+    <Compile Include="FThongTinCaNhan.Designer.cs">
+      <DependentUpon>FThongTinCaNhan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FTrangChuToMuonSach_NhanVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FTrangChuToMuonSach_NhanVien.Designer.cs">
+      <DependentUpon>FTrangChuToMuonSach_NhanVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FTrangChuToMuonSach_ToTruong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FTrangChuToMuonSach_ToTruong.Designer.cs">
+      <DependentUpon>FTrangChuToMuonSach_ToTruong.cs</DependentUpon>
     </Compile>
     <Compile Include="FTrangChuToSach_NhanVien.cs">
       <SubType>Form</SubType>
@@ -291,6 +291,7 @@
       <DependentUpon>FTrangChuToSach_ToTruong.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginInfo.cs" />
+    <Compile Include="MuonSachController.cs" />
     <Compile Include="NXB.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Program.cs" />
@@ -337,20 +338,20 @@
     <EmbeddedResource Include="FNewNXB.resx">
       <DependentUpon>FNewNXB.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FNhanVien.resx">
-      <DependentUpon>FNhanVien.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormDangNhap.resx">
       <DependentUpon>FormDangNhap.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FQuanLy.resx">
-      <DependentUpon>FQuanLy.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FThemSach.resx">
       <DependentUpon>FThemSach.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FToTruong.resx">
-      <DependentUpon>FToTruong.cs</DependentUpon>
+    <EmbeddedResource Include="FThongTinCaNhan.resx">
+      <DependentUpon>FThongTinCaNhan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FTrangChuToMuonSach_NhanVien.resx">
+      <DependentUpon>FTrangChuToMuonSach_NhanVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FTrangChuToMuonSach_ToTruong.resx">
+      <DependentUpon>FTrangChuToMuonSach_ToTruong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FTrangChuToSach_NhanVien.resx">
       <DependentUpon>FTrangChuToSach_NhanVien.cs</DependentUpon>

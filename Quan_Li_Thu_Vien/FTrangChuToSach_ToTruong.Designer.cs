@@ -102,17 +102,10 @@ namespace Quan_Li_Thu_Vien
             this.btnThongTinCaNhan.TabIndex = 12;
             this.btnThongTinCaNhan.Text = "Thông tin cá nhân";
             this.btnThongTinCaNhan.UseVisualStyleBackColor = false;
+            this.btnThongTinCaNhan.Click += new System.EventHandler(this.btnThongTinCaNhan_Click);
             // 
             // btnDSTacGia
             // 
-            this.btnDSNhanVien.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnDSNhanVien.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDSNhanVien.Location = new System.Drawing.Point(-1, 374);
-            this.btnDSNhanVien.Name = "btnDSNhanVien";
-            this.btnDSNhanVien.Size = new System.Drawing.Size(214, 93);
-            this.btnDSNhanVien.TabIndex = 4;
-            this.btnDSNhanVien.Text = "Danh sách nhân viên";
-            this.btnDSNhanVien.UseVisualStyleBackColor = false;
             this.btnDSTacGia.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnDSTacGia.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDSTacGia.Location = new System.Drawing.Point(-4, 198);
@@ -166,7 +159,6 @@ namespace Quan_Li_Thu_Vien
             this.btnDSNhanVien.TabIndex = 4;
             this.btnDSNhanVien.Text = "Danh sách nhân viên";
             this.btnDSNhanVien.UseVisualStyleBackColor = false;
-            this.btnDSNhanVien.Click += new System.EventHandler(this.btnDSNhanVien_Click);
             // 
             // FTrangChuToSach_ToTruong
             // 

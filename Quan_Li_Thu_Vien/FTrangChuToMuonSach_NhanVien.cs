@@ -10,11 +10,17 @@ using System.Windows.Forms;
 
 namespace Quan_Li_Thu_Vien
 {
-    public partial class FQuanLy : Form
+    public partial class FTrangChuToMuonSach_NhanVien : Form
     {
-        public FQuanLy()
+        public FTrangChuToMuonSach_NhanVien()
         {
             InitializeComponent();
+        }
+
+        private void btnThongTinCaNhan_Click(object sender, EventArgs e)
+        {
+            FThongTinCaNhan fThongTinCaNhan = new FThongTinCaNhan();
+            fThongTinCaNhan.ShowDialog();
         }
     }
 }
