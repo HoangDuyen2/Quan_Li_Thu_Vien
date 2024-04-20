@@ -12,7 +12,7 @@ namespace Quan_Li_Thu_Vien
 {
     public partial class FDanhSachPhieuPhat : Form
     {
-        MuonSachController dspp = new MuonSachController();
+        MuonTraSachController dspp = new MuonTraSachController();
         public FDanhSachPhieuPhat()
         {
             InitializeComponent();

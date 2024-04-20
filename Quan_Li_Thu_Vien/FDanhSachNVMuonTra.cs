@@ -16,7 +16,7 @@ namespace Quan_Li_Thu_Vien
         {
             InitializeComponent();
         }
-        MuonSachController dsnvtmt = new MuonSachController();
+        MuonTraSachController dsnvtmt = new MuonTraSachController();
         public void LoadData()
         {
             try

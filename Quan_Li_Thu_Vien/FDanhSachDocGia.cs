@@ -12,7 +12,7 @@ namespace Quan_Li_Thu_Vien
 {
     public partial class FDanhSachDocGia : Form
     {
-        MuonSachController dsdg = new MuonSachController();
+        MuonTraSachController dsdg = new MuonTraSachController();
         public FDanhSachDocGia()
         {
             InitializeComponent();
