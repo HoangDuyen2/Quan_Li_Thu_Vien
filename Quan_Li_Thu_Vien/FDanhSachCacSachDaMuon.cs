@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace Quan_Li_Thu_Vien
 {
-    public partial class FDanhSachPhieuMuonTra : Form
+    public partial class FDanhSachCacSachDaMuon : Form
     {
-        MuonSachController dspmt = new MuonSachController();
-        public FDanhSachPhieuMuonTra()
+        MuonSachController dscsdm = new MuonSachController();
+        public FDanhSachCacSachDaMuon()
         {
             InitializeComponent();
         }
@@ -21,17 +21,17 @@ namespace Quan_Li_Thu_Vien
         {
             try
             {
-                dtgvPhieuMuonTra.DataSource = dspmt.DSPhieuMuonTra();
-                dtgvPhieuMuonTra.RowHeadersVisible = false;
-                dtgvPhieuMuonTra.BackgroundColor = Color.White;
-                dtgvPhieuMuonTra.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dtgvSachDaMuon.DataSource = dscsdm.DSSachDaMuonTrongNgay();
+                dtgvSachDaMuon.RowHeadersVisible = false;
+                dtgvSachDaMuon.BackgroundColor = Color.White;
+                dtgvSachDaMuon.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
             catch
             {
                 MessageBox.Show("Không truy xuất được dữ liệu", "Lỗi");
             }
         }
-        private void FDanhSachPhieuMuonTra_Load(object sender, EventArgs e)
+        private void FDanhSachCacSachDaMuon_Load(object sender, EventArgs e)
         {
             LoadData();
         }
