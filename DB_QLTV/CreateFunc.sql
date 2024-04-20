@@ -243,7 +243,7 @@ BEGIN
 		SET @object = 'MT'
 	END
 	SELECT @max = COUNT(MaPhieuMuonTra) FROM [PhieuMuonTra]
-	SET @id_next = @object + RIGHT('00' + CAST(@max AS nvarchar(10)), 4)
+	SET @id_next = @object + RIGHT('00' + CAST(@max AS nvarchar(10)), 3)
 	-- Kiểm tra id đã tồn tại chưa
 	WHILE(EXISTS(SELECT MaPhieuMuonTra FROM [PhieuMuonTra] WHERE MaPhieuMuonTra = @id_next))
 	BEGIN
@@ -266,7 +266,7 @@ BEGIN
 		SET @object = 'PP'
 	END
 	SELECT @max = COUNT(MaPhieuPhat) FROM [PhieuPhat]
-	SET @id_next = @object + RIGHT('00' + CAST(@max AS nvarchar(10)), 4)
+	SET @id_next = @object + RIGHT('00' + CAST(@max AS nvarchar(10)), 3)
 	-- Kiểm tra id đã tồn tại chưa
 	WHILE(EXISTS(SELECT MaPhieuPhat FROM [PhieuPhat] WHERE MaPhieuPhat = @id_next))
 	BEGIN
