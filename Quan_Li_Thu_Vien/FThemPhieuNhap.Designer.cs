@@ -44,8 +44,6 @@
             this.soLuong = new System.Windows.Forms.TextBox();
             this.maNv = new System.Windows.Forms.TextBox();
             this.tenSach = new System.Windows.Forms.TextBox();
-            this.view_list_phieu_nhap = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.view_list_phieu_nhap)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -60,7 +58,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(452, 142);
+            this.label2.Location = new System.Drawing.Point(80, 142);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(76, 16);
             this.label2.TabIndex = 1;
@@ -69,7 +67,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(452, 225);
+            this.label3.Location = new System.Drawing.Point(80, 219);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(110, 16);
             this.label3.TabIndex = 2;
@@ -78,7 +76,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(452, 328);
+            this.label4.Location = new System.Drawing.Point(80, 325);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(109, 16);
             this.label4.TabIndex = 3;
@@ -87,7 +85,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(839, 139);
+            this.label5.Location = new System.Drawing.Point(628, 142);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(55, 16);
             this.label5.TabIndex = 4;
@@ -96,7 +94,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(839, 225);
+            this.label6.Location = new System.Drawing.Point(628, 222);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(60, 16);
             this.label6.TabIndex = 5;
@@ -105,7 +103,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(831, 328);
+            this.label7.Location = new System.Drawing.Point(628, 319);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(120, 16);
             this.label7.TabIndex = 6;
@@ -114,7 +112,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(452, 415);
+            this.label8.Location = new System.Drawing.Point(80, 409);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(65, 16);
             this.label8.TabIndex = 7;
@@ -122,7 +120,7 @@
             // 
             // btn_tao_phieu
             // 
-            this.btn_tao_phieu.Location = new System.Drawing.Point(834, 489);
+            this.btn_tao_phieu.Location = new System.Drawing.Point(525, 474);
             this.btn_tao_phieu.Name = "btn_tao_phieu";
             this.btn_tao_phieu.Size = new System.Drawing.Size(163, 46);
             this.btn_tao_phieu.TabIndex = 8;
@@ -132,14 +130,14 @@
             // 
             // ngayNhap
             // 
-            this.ngayNhap.Location = new System.Drawing.Point(576, 136);
+            this.ngayNhap.Location = new System.Drawing.Point(210, 136);
             this.ngayNhap.Name = "ngayNhap";
             this.ngayNhap.Size = new System.Drawing.Size(194, 22);
             this.ngayNhap.TabIndex = 10;
             // 
             // maNcc
             // 
-            this.maNcc.Location = new System.Drawing.Point(576, 322);
+            this.maNcc.Location = new System.Drawing.Point(210, 319);
             this.maNcc.Name = "maNcc";
             this.maNcc.Size = new System.Drawing.Size(194, 22);
             this.maNcc.TabIndex = 11;
@@ -147,57 +145,45 @@
             // 
             // giaTri
             // 
-            this.giaTri.Location = new System.Drawing.Point(576, 219);
+            this.giaTri.Location = new System.Drawing.Point(210, 222);
             this.giaTri.Name = "giaTri";
             this.giaTri.Size = new System.Drawing.Size(194, 22);
             this.giaTri.TabIndex = 12;
             // 
             // donGia
             // 
-            this.donGia.Location = new System.Drawing.Point(970, 133);
+            this.donGia.Location = new System.Drawing.Point(781, 139);
             this.donGia.Name = "donGia";
             this.donGia.Size = new System.Drawing.Size(193, 22);
             this.donGia.TabIndex = 13;
             // 
             // soLuong
             // 
-            this.soLuong.Location = new System.Drawing.Point(970, 219);
+            this.soLuong.Location = new System.Drawing.Point(781, 216);
             this.soLuong.Name = "soLuong";
             this.soLuong.Size = new System.Drawing.Size(193, 22);
             this.soLuong.TabIndex = 14;
             // 
             // maNv
             // 
-            this.maNv.Location = new System.Drawing.Point(970, 322);
+            this.maNv.Location = new System.Drawing.Point(781, 316);
             this.maNv.Name = "maNv";
             this.maNv.Size = new System.Drawing.Size(193, 22);
             this.maNv.TabIndex = 15;
             // 
             // tenSach
             // 
-            this.tenSach.Location = new System.Drawing.Point(576, 409);
+            this.tenSach.Location = new System.Drawing.Point(210, 409);
             this.tenSach.Name = "tenSach";
             this.tenSach.Size = new System.Drawing.Size(194, 22);
             this.tenSach.TabIndex = 16;
             this.tenSach.TextChanged += new System.EventHandler(this.textBox7_TextChanged);
-            // 
-            // view_list_phieu_nhap
-            // 
-            this.view_list_phieu_nhap.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.view_list_phieu_nhap.Location = new System.Drawing.Point(12, 73);
-            this.view_list_phieu_nhap.Name = "view_list_phieu_nhap";
-            this.view_list_phieu_nhap.RowHeadersWidth = 51;
-            this.view_list_phieu_nhap.RowTemplate.Height = 24;
-            this.view_list_phieu_nhap.Size = new System.Drawing.Size(422, 475);
-            this.view_list_phieu_nhap.TabIndex = 17;
-            this.view_list_phieu_nhap.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.view_list_phieu_nhap_CellContentClick);
             // 
             // FThemPhieuNhap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1207, 591);
-            this.Controls.Add(this.view_list_phieu_nhap);
             this.Controls.Add(this.tenSach);
             this.Controls.Add(this.maNv);
             this.Controls.Add(this.soLuong);
@@ -216,7 +202,6 @@
             this.Controls.Add(this.label1);
             this.Name = "FThemPhieuNhap";
             this.Text = "FThemPhieuNhap";
-            ((System.ComponentModel.ISupportInitialize)(this.view_list_phieu_nhap)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -240,6 +225,5 @@
         private System.Windows.Forms.TextBox soLuong;
         private System.Windows.Forms.TextBox maNv;
         private System.Windows.Forms.TextBox tenSach;
-        private System.Windows.Forms.DataGridView view_list_phieu_nhap;
     }
 }

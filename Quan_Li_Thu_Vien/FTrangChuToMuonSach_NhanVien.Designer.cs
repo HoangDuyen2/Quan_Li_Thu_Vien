@@ -94,6 +94,7 @@
             this.btnDSDocGia.TabIndex = 2;
             this.btnDSDocGia.Text = "Danh Sách Độc Giả";
             this.btnDSDocGia.UseVisualStyleBackColor = false;
+            this.btnDSDocGia.Click += new System.EventHandler(this.btnDSDocGia_Click);
             // 
             // btnDSPhieuPhat
             // 
@@ -105,6 +106,7 @@
             this.btnDSPhieuPhat.TabIndex = 1;
             this.btnDSPhieuPhat.Text = "Danh Sách Phiếu Phạt";
             this.btnDSPhieuPhat.UseVisualStyleBackColor = false;
+            this.btnDSPhieuPhat.Click += new System.EventHandler(this.btnDSPhieuPhat_Click);
             // 
             // btnDSPhieuMuonTra
             // 
@@ -116,6 +118,7 @@
             this.btnDSPhieuMuonTra.TabIndex = 0;
             this.btnDSPhieuMuonTra.Text = "Danh Sách Phiếu Mượn Trả";
             this.btnDSPhieuMuonTra.UseVisualStyleBackColor = false;
+            this.btnDSPhieuMuonTra.Click += new System.EventHandler(this.btnDSPhieuMuonTra_Click);
             // 
             // FTrangChuToMuonSach_NhanVien
             // 

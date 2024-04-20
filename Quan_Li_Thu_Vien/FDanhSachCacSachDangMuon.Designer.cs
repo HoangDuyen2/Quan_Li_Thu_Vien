@@ -1,6 +1,6 @@
 ﻿namespace Quan_Li_Thu_Vien
 {
-    partial class FDanhSacCacSachDangMuon
+    partial class FDanhSachCacSachDangMuon
     {
         /// <summary>
         /// Required designer variable.

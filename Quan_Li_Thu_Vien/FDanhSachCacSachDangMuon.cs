@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace Quan_Li_Thu_Vien
 {
-    public partial class FDanhSacCacSachDangMuon : Form
+    public partial class FDanhSachCacSachDangMuon : Form
     {
         SachController dsSachMuon = new SachController();
-        public FDanhSacCacSachDangMuon()
+        public FDanhSachCacSachDangMuon()
         {
             InitializeComponent();
         }

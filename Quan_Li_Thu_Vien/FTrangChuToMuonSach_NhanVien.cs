@@ -22,5 +22,29 @@ namespace Quan_Li_Thu_Vien
             FThongTinCaNhan fThongTinCaNhan = new FThongTinCaNhan();
             fThongTinCaNhan.ShowDialog();
         }
+
+        private void btnDSPhieuMuonTra_Click(object sender, EventArgs e)
+        {
+            FDanhSachPhieuMuonTra fDanhSachPhieuMuonTra = new FDanhSachPhieuMuonTra();
+            this.Hide();
+            fDanhSachPhieuMuonTra.ShowDialog();
+            this.Show();
+        }
+
+        private void btnDSDocGia_Click(object sender, EventArgs e)
+        {
+            FDanhSachDocGia fDanhSachDocGia = new FDanhSachDocGia();
+            this.Hide();
+            fDanhSachDocGia.ShowDialog();
+            this.Show();
+        }
+
+        private void btnDSPhieuPhat_Click(object sender, EventArgs e)
+        {
+            FDanhSachPhieuPhat fDanhSachPhieuPhat = new FDanhSachPhieuPhat();
+            this.Hide();
+            fDanhSachPhieuPhat.ShowDialog();
+            this.Show();
+        }
     }
 }

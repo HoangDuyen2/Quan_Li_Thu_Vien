@@ -10,28 +10,28 @@ using System.Windows.Forms;
 
 namespace Quan_Li_Thu_Vien
 {
-    public partial class FDanhSachPhieuMuonTra : Form
+    public partial class FDanhSachPhieuTreHan : Form
     {
-        MuonSachController dspmt = new MuonSachController();
-        public FDanhSachPhieuMuonTra()
+        public FDanhSachPhieuTreHan()
         {
             InitializeComponent();
         }
+        MuonSachController dspth = new MuonSachController();
         public void LoadData()
         {
             try
             {
-                dtgvPhieuMuonTra.DataSource = dspmt.DSPhieuMuonTra();
-                dtgvPhieuMuonTra.RowHeadersVisible = false;
-                dtgvPhieuMuonTra.BackgroundColor = Color.White;
-                dtgvPhieuMuonTra.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dtgvPhieuTreHan.DataSource = dspth.DSPhieuTreHan();
+                dtgvPhieuTreHan.RowHeadersVisible = false;
+                dtgvPhieuTreHan.BackgroundColor = Color.White;
+                dtgvPhieuTreHan.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
             catch
             {
                 MessageBox.Show("Không truy xuất được dữ liệu", "Lỗi");
             }
         }
-        private void FDanhSachPhieuMuonTra_Load(object sender, EventArgs e)
+        private void FDanhSachPhieuTreHan_Load(object sender, EventArgs e)
         {
             LoadData();
         }

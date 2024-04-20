@@ -31,7 +31,7 @@ namespace Quan_Li_Thu_Vien
 
         private void btnDanhSachSachDangMuon_Click(object sender, EventArgs e)
         {
-            FDanhSacCacSachDangMuon danhSacCacSachDangMuon = new FDanhSacCacSachDangMuon();
+            FDanhSachCacSachDangMuon danhSacCacSachDangMuon = new FDanhSachCacSachDangMuon();
             danhSacCacSachDangMuon.ShowDialog();
         }
 

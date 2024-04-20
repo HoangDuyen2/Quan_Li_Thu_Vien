@@ -41,18 +41,17 @@ namespace Quan_Li_Thu_Vien
             }
             PhieuNhap phieuNhap = new PhieuNhap(DateTime.Parse(ngayNhap.Text), float.Parse(giaTri.Text), maNcc.Text, tenSach.Text,
                 float.Parse(donGia.Text), int.Parse(soLuong.Text), maNv.Text);
-            if(phieuNhapController.taoPhieuNhap(phieuNhap))
+            if (phieuNhapController.taoPhieuNhap(phieuNhap))
             {
                 MessageBox.Show("Thực thi dữ liệu thành công", "Thông báo");
             }
-            else MessageBox.Show("Thực thi dữ liệu thất bại", "Lỗi");
-        }
+            else
+            { 
+                MessageBox.Show("Thực thi dữ liệu thất bại", "Sách không tồn tại vui lòng nhập đầu sách");
+                FThemSach fThemSach = new FThemSach();
+                fThemSach.ShowDialog();
+            }
 
-        private void view_list_phieu_nhap_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            view_list_phieu_nhap = new DataGridView();
-            DataTable dataTable = phieuNhapController.DSPhieuPhat();
-            view_list_phieu_nhap.DataSource = dataTable;
         }
     }
 }
