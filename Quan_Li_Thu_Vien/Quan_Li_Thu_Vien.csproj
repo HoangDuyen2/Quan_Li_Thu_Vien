@@ -313,6 +313,12 @@
     <Compile Include="Sach.cs" />
     <Compile Include="SachController.cs" />
     <Compile Include="TacGia.cs" />
+    <Compile Include="TrangChuToNhapSach_NhanVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TrangChuToNhapSach_NhanVien.Designer.cs">
+      <DependentUpon>TrangChuToNhapSach_NhanVien.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="FChiTietSach.resx">
       <DependentUpon>FChiTietSach.cs</DependentUpon>
     </EmbeddedResource>
@@ -389,6 +395,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="TrangChuToNhapSach_NhanVien.resx">
+      <DependentUpon>TrangChuToNhapSach_NhanVien.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
