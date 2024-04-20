@@ -37,9 +37,9 @@ namespace Quan_Li_Thu_Vien
             }
         }
 
-        public DataTable DSPhieuPhat()
+        public DataTable DSPhieuNhap()
         {
-            SqlCommand cmd = new SqlCommand("SELECT * FROM ViewDocGia", conn.GetSqlConnection());
+            SqlCommand cmd = new SqlCommand("SELECT * FROM ViewPhieuNhapChiTiet", conn.GetSqlConnection());
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
             DataTable dataTable = new DataTable();
             adapter.Fill(dataTable);

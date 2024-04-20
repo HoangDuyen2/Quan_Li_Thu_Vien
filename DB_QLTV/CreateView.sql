@@ -101,7 +101,6 @@ SELECT DISTINCT MaNXB, TenNXB, DiaChi, SDT
 FROM [NXB]
 --Kết thúc danh sách các nhà xuất bản
 
-<<<<<<< HEAD
 CREATE VIEW ViewPhieuNhapChiTiet AS
 SELECT 
     PN.MaPhieuNhap,
@@ -171,4 +170,3 @@ inner join PhieuMuonTra mt on pp.MaPhieuMuonTra=mt.MaPhieuMuonTra
 inner join DocGia dg on mt.MaDocGia=dg.MaDocGia
 inner join Sach s on s.MaSach=pp.MaSach
 --Kết thúc View phiếu phạt
->>>>>>> 814ac8c57d6fbac435bdfe54e081b55114c7dc07
