@@ -197,25 +197,22 @@ GO
 --Kết thúc hàm tự động thêm mã nhà cung cấp
 
 --Tự động tăng Mã phiếu nhập
-CREATE FUNCTION func_Auto_PhieuNhapID()
+CREATE FUNCTION func_Auto_PhieuMuonTraID()
 RETURNS NVARCHAR(10)
 AS
 BEGIN
-	DECLARE @id_next VARCHAR(10)
-	DECLARE @max INT
-	DECLARE @object VARCHAR(2)
-	BEGIN
-		SET @object = 'PN'
-	END
-	SELECT @max = COUNT(MaPhieuNhap) FROM [PhieuNhap]
-	SET @id_next = @object + RIGHT('0' + CAST(@max AS nvarchar(10)), 3)
-	-- Kiểm tra id đã tồn tại chưa
-	WHILE(EXISTS(SELECT MaPhieuNhap FROM [PhieuNhap] WHERE MaPhieuNhap = @id_next))
-	BEGIN
-		SET @max = @max + 1
-		SET @id_next = @object + RIGHT('0' + CAST(@max AS nvarchar(10)), 3)
-	END
-		RETURN @id_next
+    DECLARE @id_next VARCHAR(10)
+    DECLARE @max INT
+    DECLARE @object VARCHAR(2)
+    
+    SET @object = 'MT'
+    
+    SELECT @max = ISNULL(MAX(CAST(SUBSTRING(MaPhieuMuonTra, 3, LEN(MaPhieuMuonTra) - 2) AS INT)), 0) 
+    FROM PhieuMuonTra
+
+    SET @id_next = @object + RIGHT('00' + CAST((@max + 1) AS nvarchar(10)), 3)
+
+    RETURN @id_next
 END
 GO
 --Kết thúc hàm tự động thêm mã nhà phiếu nhập
