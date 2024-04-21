@@ -57,17 +57,6 @@ END
 GO
 --Kết Thúc Procedure sửa nhân viên
 
---Bắt đầu xem nhân viên theo mã tổ của người tổ trưởng
-CREATE PROCEDURE [dbo].[proc_NhanVienTheoTo]
-	@MaTo NVARCHAR(10)
-AS
-	BEGIN
-		SELECT MaNV, TenNV, GioiTinh, NgaySinh, DiaChi, SDT, Email, nt.TenTo
-		FROM dbo.NhanVien nv INNER JOIN NhomTo nt ON nv.MaTo = nt.MaTo
-		WHERE nv.MaTo = @MaTo
-	END
---Kết thúc xem nhân viên theo mã tổ của người tổ trưởng
-
 --Bắt đầu thêm Sách mới
 CREATE PROCEDURE InsertBook (@TenSach nvarchar(50),
 								@TenNXB nvarchar(50),
