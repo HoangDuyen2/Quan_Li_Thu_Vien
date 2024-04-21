@@ -167,6 +167,7 @@ CREATE TABLE CungCap (
 	TenNhaCC NVARCHAR(255) NOT NULL, 
 	DiaChi NVARCHAR(255) NOT NULL, 
 	SoDienThoai CHAR(11) NOT NULL, 
+	NgayTao datetime,
 	CONSTRAINT CK_SoDienThoai CHECK (LEN(SoDienThoai) = 10)
 )
 
