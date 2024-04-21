@@ -436,28 +436,15 @@ CREATE Procedure InsertPhieuMuonTra(
 )
 AS
 BEGIN
-    -- Kiểm tra  mã độc giả đã tồn tại chưa
+    -- Kiểm tra mã nhân viên và mã độc giả đã tồn tại chưa
+	 DECLARE @newID NVARCHAR(10)
+        SET @newID = dbo.func_Auto_PhieuMuonTraID()
+    IF NOT EXISTS (SELECT 1 FROM NhanVien WHERE MaNV = @MaNV)
+        RETURN 'Mã nhân viên không tồn tại'
     IF NOT EXISTS (SELECT 1 FROM DocGia WHERE MaDocGia = @MaDocGia)
         RETURN 'Mã độc giả không tồn tại'
-    INSERT INTO PhieuMuonTra (MaNV, MaDocGia, NgayMuon, HanTra)
-    VALUES (@MaNV, @MaDocGia, @HanTra)
-    RETURN 
-END
---End Insert PMT
---Insert ChiTietPhieuMuonTra
-CREATE Procedure InsertChiTietPhieuMuonTra(@MaSach nvarchar(10))
-AS
-BEGIN
-DECLARE @MaPhieuMuonTraMoiNhat NVARCHAR(10)
-
-SELECT TOP 1 @MaPhieuMuonTraMoiNhat = MaPhieuMuonTra
-FROM PhieuMuonTra
-ORDER BY MaPhieuMuonTra DESC
-	IF NOT EXISTS (SELECT 1 FROM Sach WHERE MaSach = @MaSach)
-	RETURN 'Mã sách không tồn tại'
-	INSERT INTO ChiTietPhieuMuonTra(MaPhieuMuonTra,MaSach)
-	VALUES (@MaPhieuMuonTraMoiNhat,@MaSach)
-	RETURN
+    INSERT INTO PhieuMuonTra (MaPhieuMuonTra,MaNV, MaDocGia,NgayMuon, HanTra)
+    VALUES (@newID,@MaNV, @MaDocGia,GETDATE(), @HanTra)
 END
 --END Insert ChiTietPhieuMuonTra
 
