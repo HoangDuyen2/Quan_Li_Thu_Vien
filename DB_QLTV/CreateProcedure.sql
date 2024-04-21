@@ -420,3 +420,25 @@ BEGIN
 	  SET SoLuongTon = SoLuongTon + @soLuong
 	  WHERE MaSach = @maSach;
 END;
+--Tìm kiếm nhân viên theo tổ
+CREATE PROCEDURE NhanVienTheoTo
+    @MaTo nvarchar(10)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    IF NOT EXISTS (SELECT 1 FROM NhanVien WHERE MaTo = @MaTo)
+    BEGIN
+        RAISERROR('Mã Tổ không tồn tại', 16, 1);
+        RETURN;
+    END
+
+    SELECT 
+        ttnv.MaNV, ttnv.TenNV, ttnv.GioiTinh, ttnv.NgaySinh, ttnv.Luong, 
+        ttnv.DiaChi, ttnv.SDT, ttnv.Email, ttnv.NgayTao
+    FROM ThongTinNhanVien ttnv
+    INNER JOIN NhanVien nv ON ttnv.MaNV = nv.MaNV
+    WHERE nv.MaTo = @MaTo;
+END
+GO
+-- End Tìm kiếm nhân viên theo tổ
