@@ -62,13 +62,15 @@ CREATE TABLE DocGia (
   --Tạo bảng Ngôn ngữ
 CREATE TABLE NgonNgu(
 	MaNgonNgu nvarchar(10) CONSTRAINT PK_NgonNgu PRIMARY KEY,
-	TenNgonNgu nvarchar(50) NOT NULL
+	TenNgonNgu nvarchar(50) NOT NULL,
+	NgayTao datetime
 )
 
 --Tạo bảng Loại sách
 CREATE TABLE LoaiSach(
 	MaLoaiSach nvarchar(10) CONSTRAINT PK_LoaiSach PRIMARY KEY,
-	TenLoaiSach nvarchar(50) NOT NULL
+	TenLoaiSach nvarchar(50) NOT NULL,
+	NgayTao datetime
 )
 
   --Tạo bảng Nhà xuất bản
@@ -76,7 +78,8 @@ CREATE TABLE NXB(
 	MaNXB nvarchar(10) CONSTRAINT PK_NXB PRIMARY KEY,
 	TenNXB nvarchar(50) NOT NULL,
 	DiaChi nvarchar(50) NOT NULL,
-	SDT nvarchar(11) NOT NULL check (len(SDT) = 10)
+	SDT nvarchar(11) NOT NULL check (len(SDT) = 10),
+	NgayTao datetime
 )
 
   --Tạo bảng Tác giả
@@ -86,7 +89,8 @@ CREATE TABLE TacGia(
 	GioiTinh nvarchar(1) NOT NULL CHECK (GioiTinh IN('M','F')),
 	NamSinh int check (NamSinh > 0),
 	NamMat int check (NamMat > 0),
-	QueQuan nvarchar(50)
+	QueQuan nvarchar(50),
+	NgayTao datetime
 )
 
   --Tạo bảng Sách
@@ -101,6 +105,7 @@ CREATE TABLE Sach (
 		SoLuongSach int,
 		CHECK (SoLuongSach >= SoLuongTon),
 		CONSTRAINT FK_Sach_NgonNgu FOREIGN KEY (MaNgonNgu) REFERENCES NgonNgu(MaNgonNgu),
+	NgayTao datetime
     	CONSTRAINT FK_Sach_NXB FOREIGN KEY (MaNXB) REFERENCES NXB(MaNXB),
     	CONSTRAINT FK_Sach_TheLoai FOREIGN KEY (MaLoaiSach) REFERENCES LoaiSach(MaLoaiSach)
 )
