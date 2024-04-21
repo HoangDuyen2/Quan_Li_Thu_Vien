@@ -277,29 +277,6 @@ BEGIN
 END
 GO
 --Kết thúc hàm tự động thêm Phiếu Phạt
--- Tự động tăng thêm Mã Tổ khi thêm Tổ
-CREATE FUNCTION func_Auto_ToID()
-RETURNS NVARCHAR(10)
-AS
-BEGIN
-	DECLARE @id_next VARCHAR(10)
-	DECLARE @max INT
-	DECLARE @object VARCHAR(2)
-	BEGIN
-		SET @object = 'TO'
-	END
-	SELECT @max = COUNT(MaTo) FROM [NhomTo]
-	SET @id_next = @object + RIGHT('0' + CAST(@max AS nvarchar(10)), 2)
-	-- Kiểm tra id đã tồn tại chưa
-	WHILE(EXISTS(SELECT MaTo FROM [NhomTo] WHERE MaTo = @id_next))
-	BEGIN
-		SET @max = @max + 1
-		SET @id_next = @object + RIGHT('0' + CAST(@max AS nvarchar(10)), 3)
-	END
-		RETURN @id_next
-END
-GO
---Kết thúc hàm tự động thêm Tổ
 
 --Bắt đầu hàm tìm sách mượn theo ngày
 CREATE FUNCTION [dbo].[func_CategorizeBookByDate](@NgayBD datetime, @NgayKT datetime)
