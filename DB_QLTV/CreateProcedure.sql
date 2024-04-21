@@ -466,7 +466,6 @@ BEGIN
     );
 
     -- Xóa các bản ghi liên quan trong bảng PhieuPhat
-if ex
     DELETE FROM PhieuPhat
     WHERE MaPhieuMuonTra = @mapmt;
 
