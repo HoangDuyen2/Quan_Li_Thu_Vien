@@ -39,15 +39,13 @@ AS
 BEGIN
 	BEGIN TRANSACTION Tran_UpdateStaff
 	BEGIN TRY
-		UPDATE dbo.NhanVien SET TenNV = @TenNV,
+		UPDATE dbo.ThongTinNhanVien SET TenNV = @TenNV,
 					GioiTinh = @GioiTinh,
 					NgaySinh = @NgaySinh,
 					DiaChi = @DiaChi,
 					SDT = @SDT,
 					Email = @Email,
-					MaNQL = @MaNQL,
-					MaTT = @MaTT,
-					MaTo = @MaTo
+
 		WHERE MaNV = @MaNV
 		COMMIT TRANSACTION Tran_UpdateStaff
 	END TRY
