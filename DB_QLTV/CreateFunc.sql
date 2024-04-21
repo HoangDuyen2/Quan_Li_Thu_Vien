@@ -487,3 +487,32 @@ BEGIN
 	RETURN 0
 --End Tìm kiếm độc giả theo mã độc giả
 END
+--Tìm kiếm Phiếu mượn trả theo tên độc giả
+CREATE FUNCTION func_SearchPMTByTenDG
+(
+    @ReaderName NVARCHAR(50)
+)
+RETURNS @BookLoansList TABLE
+(
+    MaPhieuMuonTra NVARCHAR(10),
+    TenNV NVARCHAR(255),
+    TenDocGia NVARCHAR(255),
+    NgayMuon DATE,
+    HanTra DATE
+)
+AS
+BEGIN
+    INSERT INTO @BookLoansList
+    SELECT
+        pm.MaPhieuMuonTra,
+        nv.TenNV,
+        dg.TenDocGia,
+        pm.NgayMuon,
+        pm.HanTra
+    FROM PhieuMuonTra pm
+    INNER JOIN DocGia dg ON pm.MaDocGia = dg.MaDocGia
+    INNER JOIN ThongTinNhanVien nv ON pm.MaNV = nv.MaNV
+    WHERE dg.TenDocGia LIKE N'%' + @ReaderName + '%'
+    RETURN
+END
+--END Tìm kiếm Phiếu mượn trả theo tên độc giả
