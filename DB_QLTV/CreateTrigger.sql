@@ -335,8 +335,9 @@ END
 --Kết thúc trigger kiểm tra số lượng sách còn lại trong bảng Chi tiết phiếu mượn trả
 
 --Bắt đầu trigger kiểm tra nhân viên
+GO
 CREATE TRIGGER CheckNV
-ON NhanVien
+ON ThongTinNhanVien
 AFTER INSERT, UPDATE
 AS
 BEGIN
