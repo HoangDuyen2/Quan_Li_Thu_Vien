@@ -13,8 +13,6 @@ BEGIN
 
 		INSERT INTO dbo.ThongTinNhanVien(TenNV, GioiTinh, NgaySinh, DiaChi, Luong, SDT, Email)
 		VALUES (@TenNV, @GioiTinh, @NgaySinh, @DiaChi, @Luong, @SDT, @Email)
-		DECLARE @MaNV NVARCHAR(10)
-		SELECT @MaNV = MAX(@MaNV) FROM dbo.ThongTinNhanVien
 		COMMIT TRANSACTION Tran_InsertStaff
     END TRY
 	BEGIN CATCH
@@ -32,9 +30,6 @@ CREATE PROCEDURE UpdateStaff (@TenNV nvarchar(32),
 								@DiaChi nvarchar(255),
 								@SDT varchar(10),
 								@Email varchar(50),
-								@MaNQL nvarchar(255),
-								@MaTT varchar(20),
-								@MaTo nvarchar(10))
 AS
 BEGIN
 	BEGIN TRANSACTION Tran_UpdateStaff
