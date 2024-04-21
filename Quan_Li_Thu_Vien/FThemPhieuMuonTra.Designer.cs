@@ -40,6 +40,7 @@
             this.lbMaNhanVien = new System.Windows.Forms.Label();
             this.lbMaPhieuMT = new System.Windows.Forms.Label();
             this.lbThongTinCuonSach = new System.Windows.Forms.Label();
+            this.btnExit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnOK
@@ -47,7 +48,7 @@
             this.btnOK.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnOK.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOK.ForeColor = System.Drawing.Color.Black;
-            this.btnOK.Location = new System.Drawing.Point(463, 580);
+            this.btnOK.Location = new System.Drawing.Point(311, 580);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(136, 42);
             this.btnOK.TabIndex = 47;
@@ -78,6 +79,7 @@
             // 
             // txtNgayMuon
             // 
+            this.txtNgayMuon.Enabled = false;
             this.txtNgayMuon.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNgayMuon.Location = new System.Drawing.Point(311, 414);
             this.txtNgayMuon.Multiline = true;
@@ -96,6 +98,7 @@
             // 
             // txtMaNV
             // 
+            this.txtMaNV.Enabled = false;
             this.txtMaNV.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMaNV.Location = new System.Drawing.Point(311, 215);
             this.txtMaNV.Multiline = true;
@@ -105,6 +108,7 @@
             // 
             // txtMaPMT
             // 
+            this.txtMaPMT.Enabled = false;
             this.txtMaPMT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMaPMT.Location = new System.Drawing.Point(311, 125);
             this.txtMaPMT.Multiline = true;
@@ -172,11 +176,25 @@
             this.lbThongTinCuonSach.TabIndex = 28;
             this.lbThongTinCuonSach.Text = "Thông Tin Phiếu Mượn Trả";
             // 
+            // btnExit
+            // 
+            this.btnExit.BackColor = System.Drawing.Color.Red;
+            this.btnExit.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.ForeColor = System.Drawing.Color.White;
+            this.btnExit.Location = new System.Drawing.Point(446, 580);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(136, 42);
+            this.btnExit.TabIndex = 48;
+            this.btnExit.Text = "Exit";
+            this.btnExit.UseVisualStyleBackColor = false;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
             // FThemPhieuMuonTra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(651, 647);
+            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.txtHanTra);
             this.Controls.Add(this.lblHanTra);
@@ -189,7 +207,9 @@
             this.Controls.Add(this.lbMaNhanVien);
             this.Controls.Add(this.lbMaPhieuMT);
             this.Controls.Add(this.lbThongTinCuonSach);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FThemPhieuMuonTra";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FThemPhieuMuonTra";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -209,5 +229,6 @@
         private System.Windows.Forms.Label lbMaNhanVien;
         private System.Windows.Forms.Label lbMaPhieuMT;
         private System.Windows.Forms.Label lbThongTinCuonSach;
+        private System.Windows.Forms.Button btnExit;
     }
 }

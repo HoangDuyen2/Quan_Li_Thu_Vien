@@ -51,7 +51,7 @@ namespace Quan_Li_Thu_Vien
         private void btnXoa_Click(object sender, EventArgs e)
         {
             // Kiểm tra xem đã chọn mã phiếu mượn trả hay chưa
-            if (!string.IsNullOrEmpty(maPMT))
+/*            if (!string.IsNullOrEmpty(maPMT))
             {
                 // Gọi stored procedure DeletePhieuMuonTra để xóa phiếu mượn trả
                 bool isDeleted = dspmt.XoaPhieuMuonTra(maPMT);
@@ -71,7 +71,7 @@ namespace Quan_Li_Thu_Vien
             else
             {
                 MessageBox.Show("Vui lòng chọn một phiếu mượn trả để xóa", "Thông báo");
-            }
+            }*/
         }
     }
 }
