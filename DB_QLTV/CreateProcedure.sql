@@ -440,7 +440,7 @@ BEGIN
     IF NOT EXISTS (SELECT 1 FROM DocGia WHERE MaDocGia = @MaDocGia)
         RETURN 'Mã độc giả không tồn tại'
     INSERT INTO PhieuMuonTra (MaNV, MaDocGia, NgayMuon, HanTra)
-    VALUES (@MaNV, @MaDocGia, GETDATE(), @HanTra)
+    VALUES (@MaNV, @MaDocGia, @HanTra)
     RETURN 
 END
 --End Insert PMT
