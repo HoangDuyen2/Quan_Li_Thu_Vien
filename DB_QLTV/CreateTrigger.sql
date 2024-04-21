@@ -528,37 +528,5 @@ BEGIN
 END
 GO
 
---trigger PhieuMuonTra
-CREATE TRIGGER trg_Inserted_Updated_PhieuMuonTra
-ON dbo.PhieuMuonTra
-FOR INSERT, UPDATE
-AS
-DECLARE @NgayMuon DATETIME
-DECLARE @MaPhieuMuonTraID NVARCHAR(10)
-BEGIN
-	IF TRIGGER_NESTLEVEL() > 1
-    RETURN
-
-	SELECT @MaPhieuMuonTraID = Inserted.MaPhieuMuonTra, @NgayMuon = Inserted.NgayMuon
-	FROM Inserted
-    -- Inserted
-	IF (@NgayMuon IS NULL)
-	BEGIN
-        -- Tự động tạo ngày tạo
-		SET @NgayMuon = GETDATE()
-		UPDATE PhieuMuonTra SET NgayMuon = @NgayMuon WHERE MaPhieuMuonTra = @MaPhieuMuonTraID
-
-        -- Tự động tạo ID
-	    SET @MaPhieuMuonTraID = dbo.func_Auto_PhieuMuonTraID()
-	    UPDATE [PhieuMuonTra] SET MaPhieuMuonTra = @MaPhieuMuonTraID WHERE MaPhieuMuonTra = 'XX000'
-	END
-    -- Updated
-	ELSE
-	BEGIN
-        -- Tự động tạo ngày cập nhật
-		SET @NgayMuon = GETDATE()
-		UPDATE dbo.PhieuMuonTra SET NgayMuon= @NgayMuon WHERE MaPhieuMuonTra = @MaPhieuMuonTraID
-	END
-END
---end trigger PhieuMuonTra
+//
 
