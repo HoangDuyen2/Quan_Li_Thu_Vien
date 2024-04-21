@@ -233,21 +233,18 @@ CREATE FUNCTION func_Auto_PhieuMuonTraID()
 RETURNS NVARCHAR(10)
 AS
 BEGIN
-	DECLARE @id_next VARCHAR(10)
-	DECLARE @max INT
-	DECLARE @object VARCHAR(2)
-	BEGIN
-		SET @object = 'MT'
-	END
-	SELECT @max = COUNT(MaPhieuMuonTra) FROM [PhieuMuonTra]
-	SET @id_next = @object + RIGHT('00' + CAST(@max AS nvarchar(10)), 3)
-	-- Kiểm tra id đã tồn tại chưa
-	WHILE(EXISTS(SELECT MaPhieuMuonTra FROM [PhieuMuonTra] WHERE MaPhieuMuonTra = @id_next))
-	BEGIN
-		SET @max = @max + 1
-		SET @id_next = @object + RIGHT('0' + CAST(@max AS nvarchar(10)), 3)
-	END
-		RETURN @id_next
+    DECLARE @id_next VARCHAR(10)
+    DECLARE @max INT
+    DECLARE @object VARCHAR(2)
+    
+    SET @object = 'MT'
+    
+    SELECT @max = ISNULL(CAST(RIGHT(MAX(MaPhieuMuonTra), 4) AS INT), 0) 
+    FROM PhieuMuonTra
+
+    SET @id_next = @object + RIGHT('0000' + CAST((@max + 1) AS nvarchar(10)), 4)
+
+    RETURN @id_next
 END
 GO
 --Kết thúc hàm tự động thêm Phiếu Mượn Trả
