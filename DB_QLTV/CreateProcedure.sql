@@ -401,12 +401,14 @@ BEGIN
     -- Kiểm tra mã nhân viên và mã độc giả đã tồn tại chưa
 	 DECLARE @newID NVARCHAR(10)
         SET @newID = dbo.func_Auto_PhieuMuonTraID()
+	DECLARE @CurrentDate DATE
+	SET @CurrentDate = CAST(GETDATE() AS DATE)
     IF NOT EXISTS (SELECT 1 FROM NhanVien WHERE MaNV = @MaNV)
         RETURN 'Mã nhân viên không tồn tại'
     IF NOT EXISTS (SELECT 1 FROM DocGia WHERE MaDocGia = @MaDocGia)
         RETURN 'Mã độc giả không tồn tại'
     INSERT INTO PhieuMuonTra (MaPhieuMuonTra,MaNV, MaDocGia,NgayMuon, HanTra)
-    VALUES (@newID,@MaNV, @MaDocGia,GETDATE(), @HanTra)
+    VALUES (@newID,@MaNV, @MaDocGia,@CurrentDate, @HanTra)
 END
 --END Insert PhieuMuonTra
 --Update PMT
