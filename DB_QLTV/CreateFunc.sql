@@ -487,3 +487,19 @@ BEGIN
 	RETURN
 END
 --Kết thúc tên các loại sách
+--Tìm kiếm độc giả theo mã độc giả
+CREATE FUNCTION [dbo].[func_SearchDocGiabyMaDocGia](@MaDocGia nvarchar(10))
+RETURNS INT
+AS
+BEGIN
+	DECLARE @MaDocGiaCount INT
+
+	SELECT @MaDocGiaCount = COUNT(*)
+	FROM DocGia
+	WHERE @MaDocGia = MaDocGia
+
+	IF(@MaDocGiaCount > 0)
+		RETURN 1
+	RETURN 0
+--End Tìm kiếm độc giả theo mã độc giả
+END
