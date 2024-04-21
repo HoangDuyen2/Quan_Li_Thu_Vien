@@ -431,11 +431,12 @@ FOR INSERT, UPDATE
 AS
 DECLARE @NgayTao DATETIME
 DECLARE @MaDocGiaID NVARCHAR(10)
+DECLARE @MaLoaiDocGia NVARCHAR(10)
 BEGIN
 	IF TRIGGER_NESTLEVEL() > 1
     RETURN
 
-	SELECT @MaDocGiaID = Inserted.MaDocGia, @NgayTao = Inserted.NgayTao
+	SELECT @MaDocGiaID = Inserted.MaDocGia, @NgayTao = Inserted.NgayTao, @MaLoaiDocGia = inserted.MaLoaiDG
 	FROM Inserted
     -- Inserted
 	IF (@NgayTao IS NULL)
@@ -445,7 +446,7 @@ BEGIN
 		UPDATE DocGia SET NgayTao = @NgayTao WHERE MaDocGia = @MaDocGiaID
 
         -- Tự động tạo ID
-	    SET @MaDocGiaID = dbo.func_Auto_DocGiaID(Inserted.MaLoaiDG)
+	    SET @MaDocGiaID = dbo.func_Auto_DocGiaID(@MaLoaiDocGia)
 	    UPDATE [DocGia] SET MaDocGia = @MaDocGiaID WHERE MaDocGia = 'XX000'
 	END
     -- Updated
