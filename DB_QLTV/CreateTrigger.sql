@@ -68,8 +68,9 @@ END
 --Kết thúc kiểm tra số điện thoại của độc giả
 
 --Kiểm tra số điện thoại trùng của Nhân viên
+GO
 CREATE TRIGGER Nhanvien_TrungSDT
-ON NhanVien
+ON ThongTinNhanVien
 AFTER INSERT, UPDATE
 AS
 BEGIN
@@ -79,7 +80,7 @@ BEGIN
 			 FROM inserted i
 			 WHERE EXISTS (
 				 SELECT *
-				 FROM NhanVien nv
+				 FROM ThongTinNhanVien nv
 				 WHERE nv.SDT = i.SDT AND nv.MaNV <> i.MaNV
 			 ))
 	 BEGIN
@@ -334,8 +335,9 @@ END
 --Kết thúc trigger kiểm tra số lượng sách còn lại trong bảng Chi tiết phiếu mượn trả
 
 --Bắt đầu trigger kiểm tra nhân viên
+GO
 CREATE TRIGGER CheckNV
-ON NhanVien
+ON ThongTinNhanVien
 AFTER INSERT, UPDATE
 AS
 BEGIN
@@ -381,6 +383,7 @@ END;
 --Kết thúc trigger Cập nhật số lượng sách khi nhập sách
 
 --Kiểm tra phiếu phạt khi trả sách 
+GO
 CREATE TRIGGER UpdateStock_AfterLoanUpdate
 ON ChiTietPhieuMuonTra
 AFTER UPDATE
@@ -395,7 +398,7 @@ BEGIN
         @MaSach = i.MaSach,
         @OldTrangThai = d.TinhTrang,
         @NewTrangThai = i.TinhTrang,
-        @HasFine = (CASE WHEN EXISTS(SELECT 1 FROM ChiTietPhieuPhat WHERE MaPhieuMuonTra = i.MaPhieuMuonTra) THEN 1 ELSE 0 END)
+        @HasFine = (CASE WHEN EXISTS(SELECT 1 FROM PhieuPhat pp WHERE pp.MaPhieuMuonTra = i.MaPhieuMuonTra) THEN 1 ELSE 0 END)
     FROM
         INSERTED i
     JOIN
