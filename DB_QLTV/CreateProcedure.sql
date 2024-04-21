@@ -5,23 +5,16 @@ CREATE PROCEDURE InsertStaff (@TenNV nvarchar(50),
 								@DiaChi nvarchar(255),
 								@Luong int,
 								@SDT varchar(10),
-								@Email varchar(50),
-								@MaNQL nvarchar(255),
-								@MaTT varchar(20),
-								@MaTo nvarchar(10))
+								@Email varchar(50))
 AS
 BEGIN
 	BEGIN TRANSACTION Tran_InsertStaff
 	BEGIN TRY
-		DECLARE @role TINYINT
-        SET @role = @MaTo
 
-		INSERT INTO dbo.NhanVien(TenNV, GioiTinh, NgaySinh, DiaChi, Luong, SDT, Email, MaNQL, MaTT, MaTo)
-		VALUES (@TenNV, @GioiTinh, @NgaySinh, @DiaChi, @Luong, @SDT, @Email, @MaNQL, @MaTT, @MaTo)
-
+		INSERT INTO dbo.ThongTinNhanVien(TenNV, GioiTinh, NgaySinh, DiaChi, Luong, SDT, Email)
+		VALUES (@TenNV, @GioiTinh, @NgaySinh, @DiaChi, @Luong, @SDT, @Email)
 		DECLARE @MaNV NVARCHAR(10)
-		SELECT @MaNV = MAX(@MaNV) FROM dbo.NhanVien WHERE MaTo = @role
-
+		SELECT @MaNV = MAX(@MaNV) FROM dbo.ThongTinNhanVien
 		COMMIT TRANSACTION Tran_InsertStaff
     END TRY
 	BEGIN CATCH
