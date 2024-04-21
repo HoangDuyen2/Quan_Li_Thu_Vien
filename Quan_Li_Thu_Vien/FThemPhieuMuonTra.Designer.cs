@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.btnOK = new System.Windows.Forms.Button();
-            this.txtSoLuongSach = new System.Windows.Forms.TextBox();
-            this.lbNgayTra = new System.Windows.Forms.Label();
-            this.txtNgonNgu = new System.Windows.Forms.TextBox();
-            this.txtLoaiSach = new System.Windows.Forms.TextBox();
-            this.txtTenSach = new System.Windows.Forms.TextBox();
-            this.txtMaSach = new System.Windows.Forms.TextBox();
+            this.txtHanTra = new System.Windows.Forms.TextBox();
+            this.lblHanTra = new System.Windows.Forms.Label();
+            this.txtNgayMuon = new System.Windows.Forms.TextBox();
+            this.txtMaDocGia = new System.Windows.Forms.TextBox();
+            this.txtMaNV = new System.Windows.Forms.TextBox();
+            this.txtMaPMT = new System.Windows.Forms.TextBox();
             this.lblNgayMuon = new System.Windows.Forms.Label();
             this.lbMaDocGia = new System.Windows.Forms.Label();
             this.lbMaNhanVien = new System.Windows.Forms.Label();
@@ -53,63 +53,64 @@
             this.btnOK.TabIndex = 47;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = false;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
-            // txtSoLuongSach
+            // txtHanTra
             // 
-            this.txtSoLuongSach.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSoLuongSach.Location = new System.Drawing.Point(311, 510);
-            this.txtSoLuongSach.Multiline = true;
-            this.txtSoLuongSach.Name = "txtSoLuongSach";
-            this.txtSoLuongSach.Size = new System.Drawing.Size(288, 30);
-            this.txtSoLuongSach.TabIndex = 46;
+            this.txtHanTra.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtHanTra.Location = new System.Drawing.Point(311, 510);
+            this.txtHanTra.Multiline = true;
+            this.txtHanTra.Name = "txtHanTra";
+            this.txtHanTra.Size = new System.Drawing.Size(288, 30);
+            this.txtHanTra.TabIndex = 46;
             // 
-            // lbNgayTra
+            // lblHanTra
             // 
-            this.lbNgayTra.AutoSize = true;
-            this.lbNgayTra.BackColor = System.Drawing.Color.Transparent;
-            this.lbNgayTra.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbNgayTra.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lbNgayTra.Location = new System.Drawing.Point(25, 512);
-            this.lbNgayTra.Name = "lbNgayTra";
-            this.lbNgayTra.Size = new System.Drawing.Size(103, 28);
-            this.lbNgayTra.TabIndex = 45;
-            this.lbNgayTra.Text = "Ngày Trả";
+            this.lblHanTra.AutoSize = true;
+            this.lblHanTra.BackColor = System.Drawing.Color.Transparent;
+            this.lblHanTra.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHanTra.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblHanTra.Location = new System.Drawing.Point(25, 512);
+            this.lblHanTra.Name = "lblHanTra";
+            this.lblHanTra.Size = new System.Drawing.Size(93, 28);
+            this.lblHanTra.TabIndex = 45;
+            this.lblHanTra.Text = "Hạn Trả";
             // 
-            // txtNgonNgu
+            // txtNgayMuon
             // 
-            this.txtNgonNgu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNgonNgu.Location = new System.Drawing.Point(311, 414);
-            this.txtNgonNgu.Multiline = true;
-            this.txtNgonNgu.Name = "txtNgonNgu";
-            this.txtNgonNgu.Size = new System.Drawing.Size(288, 30);
-            this.txtNgonNgu.TabIndex = 39;
+            this.txtNgayMuon.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNgayMuon.Location = new System.Drawing.Point(311, 414);
+            this.txtNgayMuon.Multiline = true;
+            this.txtNgayMuon.Name = "txtNgayMuon";
+            this.txtNgayMuon.Size = new System.Drawing.Size(288, 30);
+            this.txtNgayMuon.TabIndex = 39;
             // 
-            // txtLoaiSach
+            // txtMaDocGia
             // 
-            this.txtLoaiSach.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLoaiSach.Location = new System.Drawing.Point(311, 317);
-            this.txtLoaiSach.Multiline = true;
-            this.txtLoaiSach.Name = "txtLoaiSach";
-            this.txtLoaiSach.Size = new System.Drawing.Size(288, 30);
-            this.txtLoaiSach.TabIndex = 38;
+            this.txtMaDocGia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMaDocGia.Location = new System.Drawing.Point(311, 317);
+            this.txtMaDocGia.Multiline = true;
+            this.txtMaDocGia.Name = "txtMaDocGia";
+            this.txtMaDocGia.Size = new System.Drawing.Size(288, 30);
+            this.txtMaDocGia.TabIndex = 38;
             // 
-            // txtTenSach
+            // txtMaNV
             // 
-            this.txtTenSach.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTenSach.Location = new System.Drawing.Point(311, 215);
-            this.txtTenSach.Multiline = true;
-            this.txtTenSach.Name = "txtTenSach";
-            this.txtTenSach.Size = new System.Drawing.Size(288, 30);
-            this.txtTenSach.TabIndex = 37;
+            this.txtMaNV.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMaNV.Location = new System.Drawing.Point(311, 215);
+            this.txtMaNV.Multiline = true;
+            this.txtMaNV.Name = "txtMaNV";
+            this.txtMaNV.Size = new System.Drawing.Size(288, 30);
+            this.txtMaNV.TabIndex = 37;
             // 
-            // txtMaSach
+            // txtMaPMT
             // 
-            this.txtMaSach.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaSach.Location = new System.Drawing.Point(311, 125);
-            this.txtMaSach.Multiline = true;
-            this.txtMaSach.Name = "txtMaSach";
-            this.txtMaSach.Size = new System.Drawing.Size(288, 30);
-            this.txtMaSach.TabIndex = 36;
+            this.txtMaPMT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMaPMT.Location = new System.Drawing.Point(311, 125);
+            this.txtMaPMT.Multiline = true;
+            this.txtMaPMT.Name = "txtMaPMT";
+            this.txtMaPMT.Size = new System.Drawing.Size(288, 30);
+            this.txtMaPMT.TabIndex = 36;
             // 
             // lblNgayMuon
             // 
@@ -177,12 +178,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(651, 647);
             this.Controls.Add(this.btnOK);
-            this.Controls.Add(this.txtSoLuongSach);
-            this.Controls.Add(this.lbNgayTra);
-            this.Controls.Add(this.txtNgonNgu);
-            this.Controls.Add(this.txtLoaiSach);
-            this.Controls.Add(this.txtTenSach);
-            this.Controls.Add(this.txtMaSach);
+            this.Controls.Add(this.txtHanTra);
+            this.Controls.Add(this.lblHanTra);
+            this.Controls.Add(this.txtNgayMuon);
+            this.Controls.Add(this.txtMaDocGia);
+            this.Controls.Add(this.txtMaNV);
+            this.Controls.Add(this.txtMaPMT);
             this.Controls.Add(this.lblNgayMuon);
             this.Controls.Add(this.lbMaDocGia);
             this.Controls.Add(this.lbMaNhanVien);
@@ -197,12 +198,12 @@
 
         #endregion
         private System.Windows.Forms.Button btnOK;
-        private System.Windows.Forms.TextBox txtSoLuongSach;
-        private System.Windows.Forms.Label lbNgayTra;
-        private System.Windows.Forms.TextBox txtNgonNgu;
-        private System.Windows.Forms.TextBox txtLoaiSach;
-        private System.Windows.Forms.TextBox txtTenSach;
-        private System.Windows.Forms.TextBox txtMaSach;
+        private System.Windows.Forms.TextBox txtHanTra;
+        private System.Windows.Forms.Label lblHanTra;
+        private System.Windows.Forms.TextBox txtNgayMuon;
+        private System.Windows.Forms.TextBox txtMaDocGia;
+        private System.Windows.Forms.TextBox txtMaNV;
+        private System.Windows.Forms.TextBox txtMaPMT;
         private System.Windows.Forms.Label lblNgayMuon;
         private System.Windows.Forms.Label lbMaDocGia;
         private System.Windows.Forms.Label lbMaNhanVien;
