@@ -5,23 +5,16 @@ CREATE PROCEDURE InsertStaff (@TenNV nvarchar(50),
 								@DiaChi nvarchar(255),
 								@Luong int,
 								@SDT varchar(10),
-								@Email varchar(50),
-								@MaNQL nvarchar(255),
-								@MaTT varchar(20),
-								@MaTo nvarchar(10))
+								@Email varchar(50))
 AS
 BEGIN
 	BEGIN TRANSACTION Tran_InsertStaff
 	BEGIN TRY
-		DECLARE @role TINYINT
-        SET @role = @MaTo
 
-		INSERT INTO dbo.NhanVien(TenNV, GioiTinh, NgaySinh, DiaChi, Luong, SDT, Email, MaNQL, MaTT, MaTo)
-		VALUES (@TenNV, @GioiTinh, @NgaySinh, @DiaChi, @Luong, @SDT, @Email, @MaNQL, @MaTT, @MaTo)
-
+		INSERT INTO dbo.ThongTinNhanVien(TenNV, GioiTinh, NgaySinh, DiaChi, Luong, SDT, Email)
+		VALUES (@TenNV, @GioiTinh, @NgaySinh, @DiaChi, @Luong, @SDT, @Email)
 		DECLARE @MaNV NVARCHAR(10)
-		SELECT @MaNV = MAX(@MaNV) FROM dbo.NhanVien WHERE MaTo = @role
-
+		SELECT @MaNV = MAX(@MaNV) FROM dbo.ThongTinNhanVien
 		COMMIT TRANSACTION Tran_InsertStaff
     END TRY
 	BEGIN CATCH
@@ -198,9 +191,6 @@ BEGIN
 END
 --Kết thúc thêm tác giả
 
-<<<<<<< HEAD
-
-
 --bắt đầu thêm độc giả mới
 CREATE PROCEDURE InsertDocGia (
 							  @TenDocGia NVARCHAR(255) NOT NULL,
@@ -236,50 +226,6 @@ BEGIN
 END;
 GO
 --kết thúc thêm đọc giả
-
-
---Cập nhật đọc giả
-CREATE PROCEDURE UpdateDocGia (
-  @MaDocGia NVARCHAR(10) NOT NULL,
-  @TenDocGia NVARCHAR(255),
-  @Email CHAR(50),
-  @SoDienThoai CHAR(10),
-  @GioiTinh NVARCHAR(1),
-  @MaLoaiDG nvarchar(10)
-)
-AS
-BEGIN
-	  -- Wrap the update statement in a transaction for data integrity
-	  BEGIN TRANSACTION Tran_UpdateDocGia
-
-	  BEGIN TRY
-		-- Check if DocGia record exists before updating
-		IF NOT EXISTS (SELECT 1 FROM DocGia WHERE MaDocGia = @MaDocGia)
-		BEGIN
-		  PRINT('MaDocGia does not exist!');
-		  THROW; -- Raise an error to rollback the transaction
-		END
-
-		-- Update the DocGia record
-		UPDATE DocGia
-		SET TenDocGia = @TenDocGia,
-			Email = @Email,
-			SoDienThoai = @SoDienThoai,
-			GioiTinh = @GioiTinh,
-			MaLoaiDG = @MaLoaiDG
-		WHERE MaDocGia = @MaDocGia;
-
-		COMMIT TRANSACTION Tran_UpdateDocGia
-	  END TRY
-
-	  BEGIN CATCH
-		PRINT('Error updating DocGia record!');
-		ROLLBACK TRANSACTION Tran_UpdateDocGia;
-	  END CATCH
-END;
-GO
---kết thúc cập nhật đọc giả
-
 
 --Bắt đầu sửa tác giả
 CREATE PROCEDURE pro_UpdateTacGia (@MaTG nvarchar(10),
@@ -478,3 +424,25 @@ BEGIN
 	  SET SoLuongTon = SoLuongTon + @soLuong
 	  WHERE MaSach = @maSach;
 END;
+--Tìm kiếm nhân viên theo tổ
+CREATE PROCEDURE NhanVienTheoTo
+    @MaTo nvarchar(10)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    IF NOT EXISTS (SELECT 1 FROM NhanVien WHERE MaTo = @MaTo)
+    BEGIN
+        RAISERROR('Mã Tổ không tồn tại', 16, 1);
+        RETURN;
+    END
+
+    SELECT 
+        ttnv.MaNV, ttnv.TenNV, ttnv.GioiTinh, ttnv.NgaySinh, ttnv.Luong, 
+        ttnv.DiaChi, ttnv.SDT, ttnv.Email, ttnv.NgayTao
+    FROM ThongTinNhanVien ttnv
+    INNER JOIN NhanVien nv ON ttnv.MaNV = nv.MaNV
+    WHERE nv.MaTo = @MaTo;
+END
+GO
+-- End Tìm kiếm nhân viên theo tổ
