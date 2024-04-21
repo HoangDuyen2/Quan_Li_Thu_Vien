@@ -207,10 +207,10 @@ BEGIN
     
     SET @object = 'MT'
     
-    SELECT @max = ISNULL(MAX(CAST(SUBSTRING(MaPhieuMuonTra, 3, LEN(MaPhieuMuonTra) - 2) AS INT)), 0) 
+    SELECT @max = ISNULL(CAST(RIGHT(MAX(MaPhieuMuonTra), 4) AS INT), 0) 
     FROM PhieuMuonTra
 
-    SET @id_next = @object + RIGHT('00' + CAST((@max + 1) AS nvarchar(10)), 3)
+    SET @id_next = @object + RIGHT('0000' + CAST((@max + 1) AS nvarchar(10)), 4)
 
     RETURN @id_next
 END
