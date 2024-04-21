@@ -207,26 +207,15 @@ BEGIN
     
     SET @object = 'MT'
     
-    SELECT @max = ISNULL(CAST(RIGHT(MAX(MaPhieuMuonTra), 4) AS INT), 0) 
+    SELECT @max = ISNULL(MAX(CAST(SUBSTRING(MaPhieuMuonTra, 3, LEN(MaPhieuMuonTra) - 2) AS INT)), 0) 
     FROM PhieuMuonTra
 
-    SET @id_next = @object + RIGHT('0000' + CAST((@max + 1) AS nvarchar(10)), 4)
+    SET @id_next = @object + RIGHT('00' + CAST((@max + 1) AS nvarchar(10)), 3)
 
     RETURN @id_next
 END
 GO
 --Kết thúc hàm tự động thêm mã nhà phiếu nhập
-
---Bắt đầu hàm danh sách nhân viên theo tổ
-CREATE FUNCTION [dbo].[func_NhanVienTheoTo] (@string NVARCHAR(50))
-RETURNS @NVList TABLE (MaNV NVARCHAR(10), TenNV NVARCHAR(50), GioiTinh CHAR(1), DiaChi NVARCHAR(255), SDT NVARCHAR(10), TenTo NVARCHAR(50))
-AS BEGIN
-	INSERT INTO @NVList SELECT MaNV, TenNV, GioiTinh, DiaChi, SDT, nt.TenTo
-	FROM dbo.NhanVien nv INNER JOIN NhomTo nt ON nv.MaTo = nt.MaTo
-	WHERE nv.MaTo = @string
-	RETURN
-END
---Kết thúc hàm nhân viên theo tổ
 	
 -- Tự động tăng thêm Mã Phiếu Mượn Trả khi thêm Phiếu Mượn Trả
 CREATE FUNCTION func_Auto_PhieuMuonTraID()
@@ -248,6 +237,7 @@ BEGIN
 END
 GO
 --Kết thúc hàm tự động thêm Phiếu Mượn Trả
+	
 -- Tự động tăng thêm Mã Phiếu Phạt khi thêm Phiếu Phạt
 CREATE FUNCTION func_Auto_PhieuPhatID()
 RETURNS NVARCHAR(10)
