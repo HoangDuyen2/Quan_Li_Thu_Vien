@@ -173,42 +173,6 @@ BEGIN
 END
 --Kết thúc thêm tác giả
 
---bắt đầu thêm độc giả mới
-CREATE PROCEDURE InsertDocGia (
-							  @TenDocGia NVARCHAR(255) NOT NULL,
-							  @Email CHAR(50) NOT NULL,
-							  @SoDienThoai CHAR(10) NOT NULL,
-							  @GioiTinh NVARCHAR(1) NOT NULL,
-							  @MaLoaiDG nvarchar(10)
-							)
-AS
-BEGIN
-	  -- Wrap the insert statement in a transaction for data integrity
-	  BEGIN TRANSACTION Tran_InsertDocGia
-
-	  BEGIN TRY
-		-- Check if referenced LoaiDocGia record exists before insert
-		IF NOT EXISTS (SELECT 1 FROM LoaiDocGia WHERE MaLoaiDG = @MaLoaiDG)
-		BEGIN
-		  PRINT('MaLoaiDG does not exist!');
-		  THROW; -- Raise an error to rollback the transaction
-		END
-
-		-- Insert data into DocGia table
-		INSERT INTO DocGia (TenDocGia, Email, SoDienThoai, GioiTinh, NgayTao, MaLoaiDG)
-		VALUES (@TenDocGia, @Email, @SoDienThoai, @GioiTinh, GETDATE(), @MaLoaiDG);
-
-		COMMIT TRANSACTION Tran_InsertDocGia
-	  END TRY
-
-	  BEGIN CATCH
-		PRINT('Error inserting DocGia record!');
-		ROLLBACK TRANSACTION Tran_InsertDocGia;
-	  END CATCH
-END;
-GO
---kết thúc thêm đọc giả
-
 --Bắt đầu sửa tác giả
 CREATE PROCEDURE pro_UpdateTacGia (@MaTG nvarchar(10),
 								@TenTacGia nvarchar(50),
