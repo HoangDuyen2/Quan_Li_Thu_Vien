@@ -335,8 +335,9 @@ END
 --Kết thúc trigger kiểm tra số lượng sách còn lại trong bảng Chi tiết phiếu mượn trả
 
 --Bắt đầu trigger kiểm tra nhân viên
+GO
 CREATE TRIGGER CheckNV
-ON NhanVien
+ON ThongTinNhanVien
 AFTER INSERT, UPDATE
 AS
 BEGIN
@@ -382,6 +383,7 @@ END;
 --Kết thúc trigger Cập nhật số lượng sách khi nhập sách
 
 --Kiểm tra phiếu phạt khi trả sách 
+GO
 CREATE TRIGGER UpdateStock_AfterLoanUpdate
 ON ChiTietPhieuMuonTra
 AFTER UPDATE
@@ -396,7 +398,7 @@ BEGIN
         @MaSach = i.MaSach,
         @OldTrangThai = d.TinhTrang,
         @NewTrangThai = i.TinhTrang,
-        @HasFine = (CASE WHEN EXISTS(SELECT 1 FROM ChiTietPhieuPhat WHERE MaPhieuMuonTra = i.MaPhieuMuonTra) THEN 1 ELSE 0 END)
+        @HasFine = (CASE WHEN EXISTS(SELECT 1 FROM PhieuPhat pp WHERE pp.MaPhieuMuonTra = i.MaPhieuMuonTra) THEN 1 ELSE 0 END)
     FROM
         INSERTED i
     JOIN
@@ -429,11 +431,12 @@ FOR INSERT, UPDATE
 AS
 DECLARE @NgayTao DATETIME
 DECLARE @MaDocGiaID NVARCHAR(10)
+DECLARE @MaLoaiDocGia NVARCHAR(10)
 BEGIN
 	IF TRIGGER_NESTLEVEL() > 1
     RETURN
 
-	SELECT @MaDocGiaID = Inserted.MaDocGia, @NgayTao = Inserted.NgayTao
+	SELECT @MaDocGiaID = Inserted.MaDocGia, @NgayTao = Inserted.NgayTao, @MaLoaiDocGia = inserted.MaLoaiDG
 	FROM Inserted
     -- Inserted
 	IF (@NgayTao IS NULL)
@@ -443,7 +446,7 @@ BEGIN
 		UPDATE DocGia SET NgayTao = @NgayTao WHERE MaDocGia = @MaDocGiaID
 
         -- Tự động tạo ID
-	    SET @MaDocGiaID = dbo.func_Auto_DocGiaID()
+	    SET @MaDocGiaID = dbo.func_Auto_DocGiaID(@MaLoaiDocGia)
 	    UPDATE [DocGia] SET MaDocGia = @MaDocGiaID WHERE MaDocGia = 'XX000'
 	END
     -- Updated
@@ -524,5 +527,37 @@ BEGIN
 	END
 END
 GO
+--trigger PhieuMuonTra
 
+CREATE TRIGGER trg_Inserted_Updated_PhieuMuonTra
+ON dbo.PhieuMuonTra
+FOR INSERT, UPDATE
+AS
+DECLARE @NgayMuon DATETIME
+DECLARE @MaPhieuMuonTraID NVARCHAR(10)
+BEGIN
+	IF TRIGGER_NESTLEVEL() > 1
+    RETURN
 
+	SELECT @MaPhieuMuonTraID = Inserted.MaPhieuMuonTra, @NgayMuon = Inserted.NgayMuon
+	FROM Inserted
+    -- Inserted
+	IF (@NgayMuon IS NULL)
+	BEGIN
+        -- Tự động tạo ngày tạo
+		SET @NgayMuon = GETDATE()
+		UPDATE PhieuMuonTra SET NgayMuon = @NgayMuon WHERE MaPhieuMuonTra = @MaPhieuMuonTraID
+
+        -- Tự động tạo ID
+	    SET @MaPhieuMuonTraID = dbo.func_Auto_PhieuMuonTraID()
+	    UPDATE [PhieuMuonTra] SET MaPhieuMuonTra = @MaPhieuMuonTraID WHERE MaPhieuMuonTra = 'XX000'
+	END
+    -- Updated
+	ELSE
+	BEGIN
+        -- Tự động tạo ngày cập nhật
+		SET @NgayMuon = GETDATE()
+		UPDATE dbo.PhieuMuonTra SET NgayMuon= @NgayMuon WHERE MaPhieuMuonTra = @MaPhieuMuonTraID
+	END
+END
+--end trigger PhieuMuonTra

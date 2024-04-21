@@ -167,6 +167,7 @@ CREATE TABLE CungCap (
 	TenNhaCC NVARCHAR(255) NOT NULL, 
 	DiaChi NVARCHAR(255) NOT NULL, 
 	SoDienThoai CHAR(11) NOT NULL, 
+	NgayTao datetime,
 	CONSTRAINT CK_SoDienThoai CHECK (LEN(SoDienThoai) = 10)
 )
 
@@ -175,6 +176,7 @@ CREATE TABLE PhieuNhap (
 	MaPhieuNhap nvarchar(10) CONSTRAINT PK_PhieuNhap PRIMARY KEY, 
 	NgayNhap date check (DATEDIFF(day, NgayNhap, GETDATE())>=0),  
 	GiaTriDonHang float check (GiaTriDonHang >= 0),
+	NgayTao datetime,
 	MaNhaCC nvarchar(10) CONSTRAINT FK_PhieuNhap_MaNhaCC FOREIGN KEY REFERENCES CungCap(MaNhaCC) 
 )
 
