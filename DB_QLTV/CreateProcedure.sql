@@ -1,5 +1,6 @@
 --Bắt đầu thêm nhân viên mới
-CREATE PROCEDURE InsertStaff (@TenNV nvarchar(50),
+CREATE PROCEDURE InsertStaff (@MaNV nvarchar(10);
+								@TenNV nvarchar(50),
 								@GioiTinh nvarchar(1),
 								@NgaySinh DATETIME,
 								@DiaChi nvarchar(255),
@@ -407,7 +408,23 @@ BEGIN
     INSERT INTO PhieuMuonTra (MaPhieuMuonTra,MaNV, MaDocGia,NgayMuon, HanTra)
     VALUES (@newID,@MaNV, @MaDocGia,GETDATE(), @HanTra)
 END
---END Insert ChiTietPhieuMuonTra
+--END Insert PhieuMuonTra
+--Update PMT
+CREATE Procedure UpdatePhieuMuonTra(
+    @MaPhieuMuonTra nvarchar(10),
+    @MaDocGia VARCHAR(10),
+    @HanTra DATE
+)
+AS
+BEGIN
+    -- Kiểm tra mã nhân viên và mã độc giả đã tồn tại chưa
+    IF NOT EXISTS (SELECT 1 FROM DocGia WHERE MaDocGia = @MaDocGia)
+        RETURN 'Mã độc giả không tồn tại'
+    UPDATE PhieuMuonTra (MaDocGia, HanTra)
+	SET MaDocGia=@MaDocGia,HanTra=@HanTra
+    WHERE MaPhieuMuonTra=@MaPhieuMuonTra
+END
+--END Update PhieuMuonTra
 
 --Delete PMT
 CREATE PROCEDURE DeletePhieuMuonTra
