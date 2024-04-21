@@ -418,9 +418,11 @@ CREATE Procedure UpdatePhieuMuonTra(
 AS
 BEGIN
     -- Kiểm tra mã nhân viên và mã độc giả đã tồn tại chưa
+     IF NOT EXISTS (SELECT 1 FROM PhieuMuonTra WHERE MaPhieuMuonTra=@MaPhieuMuonTra)
+        RETURN 'Mã phiếu mượn trả không tồn tại'
     IF NOT EXISTS (SELECT 1 FROM DocGia WHERE MaDocGia = @MaDocGia)
         RETURN 'Mã độc giả không tồn tại'
-    UPDATE PhieuMuonTra (MaDocGia, HanTra)
+    UPDATE PhieuMuonTra
 	SET MaDocGia=@MaDocGia,HanTra=@HanTra
     WHERE MaPhieuMuonTra=@MaPhieuMuonTra
 END
