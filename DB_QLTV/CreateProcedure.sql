@@ -428,3 +428,37 @@ BEGIN
 END
 GO
 -- End Tìm kiếm nhân viên theo tổ
+--Insert PMT
+CREATE Procedure InsertPhieuMuonTra(
+    @MaNV VARCHAR(10),
+    @MaDocGia VARCHAR(10),
+    @HanTra DATE
+)
+AS
+BEGIN
+    -- Kiểm tra  mã độc giả đã tồn tại chưa
+    IF NOT EXISTS (SELECT 1 FROM DocGia WHERE MaDocGia = @MaDocGia)
+        RETURN 'Mã độc giả không tồn tại'
+    INSERT INTO PhieuMuonTra (MaNV, MaDocGia, NgayMuon, HanTra)
+    VALUES (@MaNV, @MaDocGia, GETDATE(), @HanTra)
+    RETURN 
+END
+--End Insert PMT
+--Insert ChiTietPhieuMuonTra
+CREATE Procedure InsertChiTietPhieuMuonTra(@MaSach nvarchar(10))
+AS
+BEGIN
+DECLARE @MaPhieuMuonTraMoiNhat NVARCHAR(10)
+
+SELECT TOP 1 @MaPhieuMuonTraMoiNhat = MaPhieuMuonTra
+FROM PhieuMuonTra
+ORDER BY MaPhieuMuonTra DESC
+	IF NOT EXISTS (SELECT 1 FROM Sach WHERE MaSach = @MaSach)
+	RETURN 'Mã sách không tồn tại'
+	INSERT INTO ChiTietPhieuMuonTra(MaPhieuMuonTra,MaSach)
+	VALUES (@MaPhieuMuonTraMoiNhat,@MaSach)
+	RETURN
+END
+--END Insert ChiTietPhieuMuonTra
+
+
