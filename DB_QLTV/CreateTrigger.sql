@@ -383,6 +383,7 @@ END;
 --Kết thúc trigger Cập nhật số lượng sách khi nhập sách
 
 --Kiểm tra phiếu phạt khi trả sách 
+GO
 CREATE TRIGGER UpdateStock_AfterLoanUpdate
 ON ChiTietPhieuMuonTra
 AFTER UPDATE
@@ -397,7 +398,7 @@ BEGIN
         @MaSach = i.MaSach,
         @OldTrangThai = d.TinhTrang,
         @NewTrangThai = i.TinhTrang,
-        @HasFine = (CASE WHEN EXISTS(SELECT 1 FROM ChiTietPhieuPhat WHERE MaPhieuMuonTra = i.MaPhieuMuonTra) THEN 1 ELSE 0 END)
+        @HasFine = (CASE WHEN EXISTS(SELECT 1 FROM PhieuPhat pp WHERE pp.MaPhieuMuonTra = i.MaPhieuMuonTra) THEN 1 ELSE 0 END)
     FROM
         INSERTED i
     JOIN
