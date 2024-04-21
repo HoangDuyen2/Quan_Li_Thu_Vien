@@ -94,6 +94,7 @@ SELECT
   TenLoaiDG
 FROM DocGia
 JOIN LoaiDocGia ON DocGia.MaLoaiDG = LoaiDocGia.MaLoaiDG;
+
 --Bắt đầu danh sách các nhà xuất bản
 CREATE VIEW [dbo].[view_NhaXuatBan]
 AS

@@ -5,23 +5,14 @@ CREATE PROCEDURE InsertStaff (@TenNV nvarchar(50),
 								@DiaChi nvarchar(255),
 								@Luong int,
 								@SDT varchar(10),
-								@Email varchar(50),
-								@MaNQL nvarchar(255),
-								@MaTT varchar(20),
-								@MaTo nvarchar(10))
+								@Email varchar(50))
 AS
 BEGIN
 	BEGIN TRANSACTION Tran_InsertStaff
 	BEGIN TRY
-		DECLARE @role TINYINT
-        SET @role = @MaTo
 
-		INSERT INTO dbo.NhanVien(TenNV, GioiTinh, NgaySinh, DiaChi, Luong, SDT, Email, MaNQL, MaTT, MaTo)
-		VALUES (@TenNV, @GioiTinh, @NgaySinh, @DiaChi, @Luong, @SDT, @Email, @MaNQL, @MaTT, @MaTo)
-
-		DECLARE @MaNV NVARCHAR(10)
-		SELECT @MaNV = MAX(@MaNV) FROM dbo.NhanVien WHERE MaTo = @role
-
+		INSERT INTO dbo.ThongTinNhanVien(TenNV, GioiTinh, NgaySinh, DiaChi, Luong, SDT, Email)
+		VALUES (@TenNV, @GioiTinh, @NgaySinh, @DiaChi, @Luong, @SDT, @Email)
 		COMMIT TRANSACTION Tran_InsertStaff
     END TRY
 	BEGIN CATCH
@@ -39,22 +30,17 @@ CREATE PROCEDURE UpdateStaff (@TenNV nvarchar(32),
 								@DiaChi nvarchar(255),
 								@SDT varchar(10),
 								@Email varchar(50),
-								@MaNQL nvarchar(255),
-								@MaTT varchar(20),
-								@MaTo nvarchar(10))
 AS
 BEGIN
 	BEGIN TRANSACTION Tran_UpdateStaff
 	BEGIN TRY
-		UPDATE dbo.NhanVien SET TenNV = @TenNV,
+		UPDATE dbo.ThongTinNhanVien SET TenNV = @TenNV,
 					GioiTinh = @GioiTinh,
 					NgaySinh = @NgaySinh,
 					DiaChi = @DiaChi,
 					SDT = @SDT,
 					Email = @Email,
-					MaNQL = @MaNQL,
-					MaTT = @MaTT,
-					MaTo = @MaTo
+
 		WHERE MaNV = @MaNV
 		COMMIT TRANSACTION Tran_UpdateStaff
 	END TRY
@@ -65,17 +51,6 @@ BEGIN
 END
 GO
 --Kết Thúc Procedure sửa nhân viên
-
---Bắt đầu xem nhân viên theo mã tổ của người tổ trưởng
-CREATE PROCEDURE [dbo].[proc_NhanVienTheoTo]
-	@MaTo NVARCHAR(10)
-AS
-	BEGIN
-		SELECT MaNV, TenNV, GioiTinh, NgaySinh, DiaChi, SDT, Email, nt.TenTo
-		FROM dbo.NhanVien nv INNER JOIN NhomTo nt ON nv.MaTo = nt.MaTo
-		WHERE nv.MaTo = @MaTo
-	END
---Kết thúc xem nhân viên theo mã tổ của người tổ trưởng
 
 --Bắt đầu thêm Sách mới
 CREATE PROCEDURE InsertBook (@TenSach nvarchar(50),
@@ -198,9 +173,6 @@ BEGIN
 END
 --Kết thúc thêm tác giả
 
-<<<<<<< HEAD
-
-
 --bắt đầu thêm độc giả mới
 CREATE PROCEDURE InsertDocGia (
 							  @TenDocGia NVARCHAR(255) NOT NULL,
@@ -236,50 +208,6 @@ BEGIN
 END;
 GO
 --kết thúc thêm đọc giả
-
-
---Cập nhật đọc giả
-CREATE PROCEDURE UpdateDocGia (
-  @MaDocGia NVARCHAR(10) NOT NULL,
-  @TenDocGia NVARCHAR(255),
-  @Email CHAR(50),
-  @SoDienThoai CHAR(10),
-  @GioiTinh NVARCHAR(1),
-  @MaLoaiDG nvarchar(10)
-)
-AS
-BEGIN
-	  -- Wrap the update statement in a transaction for data integrity
-	  BEGIN TRANSACTION Tran_UpdateDocGia
-
-	  BEGIN TRY
-		-- Check if DocGia record exists before updating
-		IF NOT EXISTS (SELECT 1 FROM DocGia WHERE MaDocGia = @MaDocGia)
-		BEGIN
-		  PRINT('MaDocGia does not exist!');
-		  THROW; -- Raise an error to rollback the transaction
-		END
-
-		-- Update the DocGia record
-		UPDATE DocGia
-		SET TenDocGia = @TenDocGia,
-			Email = @Email,
-			SoDienThoai = @SoDienThoai,
-			GioiTinh = @GioiTinh,
-			MaLoaiDG = @MaLoaiDG
-		WHERE MaDocGia = @MaDocGia;
-
-		COMMIT TRANSACTION Tran_UpdateDocGia
-	  END TRY
-
-	  BEGIN CATCH
-		PRINT('Error updating DocGia record!');
-		ROLLBACK TRANSACTION Tran_UpdateDocGia;
-	  END CATCH
-END;
-GO
---kết thúc cập nhật đọc giả
-
 
 --Bắt đầu sửa tác giả
 CREATE PROCEDURE pro_UpdateTacGia (@MaTG nvarchar(10),
@@ -333,38 +261,45 @@ END
 
 --bắt đầu thêm độc giả mới
 CREATE PROCEDURE InsertDocGia (
-							  @TenDocGia NVARCHAR(255) NOT NULL,
-							  @Email CHAR(50) NOT NULL,
-							  @SoDienThoai CHAR(10) NOT NULL,
-							  @GioiTinh NVARCHAR(1) NOT NULL,
-							  @MaLoaiDG nvarchar(10)
-							)
+  @TenDocGia NVARCHAR(255) NOT NULL,
+  @Email CHAR(50) NOT NULL,
+  @SoDienThoai CHAR(10) NOT NULL,
+  @GioiTinh NVARCHAR(1) NOT NULL,
+  @MaLoaiDG NVARCHAR(10)
+)
 AS
 BEGIN
-	  -- Wrap the insert statement in a transaction for data integrity
-	  BEGIN TRANSACTION Tran_InsertDocGia
+  -- Begin transaction
+  BEGIN TRANSACTION Tran_InsertDocGia;
 
-	  BEGIN TRY
-		-- Check if referenced LoaiDocGia record exists before insert
-		IF NOT EXISTS (SELECT 1 FROM LoaiDocGia WHERE MaLoaiDG = @MaLoaiDG)
-		BEGIN
-		  PRINT('MaLoaiDG does not exist!');
-		  THROW; -- Raise an error to rollback the transaction
-		END
+  BEGIN TRY
+    -- Check if MaLoaiDG exists
+    IF NOT EXISTS (SELECT 1 FROM LoaiDocGia WHERE MaLoaiDG = @MaLoaiDG)
+    BEGIN
+      PRINT('MaLoaiDG does not exist!');
+      THROW TRAN EXCEPT; -- Throw an exception within CATCH block
+    END
 
-		-- Insert data into DocGia table
-		INSERT INTO DocGia (TenDocGia, Email, SoDienThoai, GioiTinh, NgayTao, MaLoaiDG)
-		VALUES (@TenDocGia, @Email, @SoDienThoai, @GioiTinh, GETDATE(), @MaLoaiDG);
+    -- Insert DocGia
+    INSERT INTO DocGia (TenDocGia, Email, SoDienThoai, GioiTinh, NgayTao, MaLoaiDG)
+      VALUES (@TenDocGia, @Email, @SoDienThoai, @GioiTinh, GETDATE(), @MaLoaiDG);
 
-		COMMIT TRANSACTION Tran_InsertDocGia
-	  END TRY
+    -- Commit transaction if successful
+    COMMIT TRANSACTION Tran_InsertDocGia;
+  END TRY
 
-	  BEGIN CATCH
-		PRINT('Error inserting DocGia record!');
-		ROLLBACK TRANSACTION Tran_InsertDocGia;
-	  END CATCH
-END;
-GO
+  BEGIN CATCH
+    -- Handle errors here
+    DECLARE @err NVARCHAR(MAX);
+    SELECT @err = N'Lỗi: ' + ERROR_MESSAGE();
+    RAISERROR (@err, 16, 1);
+
+    -- Rollback transaction on error
+    ROLLBACK TRANSACTION Tran_InsertDocGia;
+  END CATCH
+END
+
+
 --kết thúc thêm đọc giả
 
 
@@ -387,7 +322,7 @@ BEGIN
 		IF NOT EXISTS (SELECT 1 FROM DocGia WHERE MaDocGia = @MaDocGia)
 		BEGIN
 		  PRINT('MaDocGia does not exist!');
-		  THROW; -- Raise an error to rollback the transaction
+		  THROW TRAN EXCEPT; -- Raise an error to rollback the transaction
 		END
 
 		-- Update the DocGia record
@@ -403,7 +338,9 @@ BEGIN
 	  END TRY
 
 	  BEGIN CATCH
-		PRINT('Error updating DocGia record!');
+		DECLARE @err NVARCHAR(MAX);
+		SELECT @err = N'Lỗi: ' + ERROR_MESSAGE();
+		RAISERROR (@err, 16, 1);
 		ROLLBACK TRANSACTION Tran_UpdateDocGia;
 	  END CATCH
 END;
@@ -440,6 +377,7 @@ BEGIN
 
 	  -- 1. Kiểm tra xem sách có tồn tại hay không
 	  DECLARE @maSach NVARCHAR(10);
+	  DECLARE @maPhieuNhap INT
 
 	  SELECT @maSach = MaSach
 	  FROM Sach
@@ -457,7 +395,8 @@ BEGIN
 	  INSERT INTO PhieuNhap (NgayNhap, GiaTriDonHang, MaNhaCC)
 	  VALUES (@ngayNhap, @giaTriDonHang, @maNhaCC);
 
-	 
+	  SET @maPhieuNhap = SCOPE_IDENTITY();
+
 	  INSERT INTO ChiTietPhieuNhap (MaPhieuNhap, MaSach, DonGia, SL)
 	  VALUES (@maPhieuNhap, @maSach, @donGia, @soLuong);
 	 
@@ -467,3 +406,78 @@ BEGIN
 	  SET SoLuongTon = SoLuongTon + @soLuong
 	  WHERE MaSach = @maSach;
 END;
+--Tìm kiếm nhân viên theo tổ
+CREATE PROCEDURE NhanVienTheoTo
+    @MaTo nvarchar(10)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    IF NOT EXISTS (SELECT 1 FROM NhanVien WHERE MaTo = @MaTo)
+    BEGIN
+        RAISERROR('Mã Tổ không tồn tại', 16, 1);
+        RETURN;
+    END
+
+    SELECT 
+        ttnv.MaNV, ttnv.TenNV, ttnv.GioiTinh, ttnv.NgaySinh, ttnv.Luong, 
+        ttnv.DiaChi, ttnv.SDT, ttnv.Email, ttnv.NgayTao
+    FROM ThongTinNhanVien ttnv
+    INNER JOIN NhanVien nv ON ttnv.MaNV = nv.MaNV
+    WHERE nv.MaTo = @MaTo;
+END
+GO
+-- End Tìm kiếm nhân viên theo tổ
+--Insert PMT
+CREATE Procedure InsertPhieuMuonTra(
+    @MaNV VARCHAR(10),
+    @MaDocGia VARCHAR(10),
+    @HanTra DATE
+)
+AS
+BEGIN
+    -- Kiểm tra mã nhân viên và mã độc giả đã tồn tại chưa
+	 DECLARE @newID NVARCHAR(10)
+        SET @newID = dbo.func_Auto_PhieuMuonTraID()
+    IF NOT EXISTS (SELECT 1 FROM NhanVien WHERE MaNV = @MaNV)
+        RETURN 'Mã nhân viên không tồn tại'
+    IF NOT EXISTS (SELECT 1 FROM DocGia WHERE MaDocGia = @MaDocGia)
+        RETURN 'Mã độc giả không tồn tại'
+    INSERT INTO PhieuMuonTra (MaPhieuMuonTra,MaNV, MaDocGia,NgayMuon, HanTra)
+    VALUES (@newID,@MaNV, @MaDocGia,GETDATE(), @HanTra)
+END
+--END Insert ChiTietPhieuMuonTra
+
+--Delete PMT
+CREATE PROCEDURE DeletePhieuMuonTra
+    @mapmt nvarchar(10)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    BEGIN TRANSACTION;
+
+    -- Xóa các bản ghi liên quan trong bảng ChiTietPhieuPhat
+    DELETE FROM ChiTietPhieuPhat
+    WHERE MaPhieuPhat IN (
+        SELECT MaPhieuPhat
+        FROM PhieuPhat
+        WHERE MaPhieuMuonTra = @mapmt
+    );
+
+    -- Xóa các bản ghi liên quan trong bảng PhieuPhat
+    DELETE FROM PhieuPhat
+    WHERE MaPhieuMuonTra = @mapmt;
+
+    -- Xóa các bản ghi liên quan trong bảng ChiTietPhieuMuonTra
+    DELETE FROM ChiTietPhieuMuonTra
+    WHERE MaPhieuMuonTra = @mapmt;
+
+    -- Xóa bản ghi trong bảng PhieuMuonTra
+    DELETE FROM PhieuMuonTra
+    WHERE MaPhieuMuonTra = @mapmt;
+
+    COMMIT TRANSACTION;
+END
+--End Delete PMT
+
