@@ -267,49 +267,46 @@ END
 --kết thúc thêm đọc giả
 
 
---Cập nhật đọc giả
 CREATE PROCEDURE UpdateDocGia (
-  @MaDocGia NVARCHAR(10) NOT NULL,
+  @MaDocGia NVARCHAR(10),
   @TenDocGia NVARCHAR(255),
   @Email CHAR(50),
   @SoDienThoai CHAR(10),
   @GioiTinh NVARCHAR(1),
-  @MaLoaiDG nvarchar(10)
+  @MaLoaiDG NVARCHAR(10)
 )
 AS
 BEGIN
-	  -- Wrap the update statement in a transaction for data integrity
-	  BEGIN TRANSACTION Tran_UpdateDocGia
+    -- Wrap the update statement in a transaction for data integrity
+    BEGIN TRANSACTION Tran_UpdateDocGia
 
-	  BEGIN TRY
-		-- Check if DocGia record exists before updating
-		IF NOT EXISTS (SELECT 1 FROM DocGia WHERE MaDocGia = @MaDocGia)
-		BEGIN
-		  PRINT('MaDocGia does not exist!');
-		  THROW TRAN EXCEPT; -- Raise an error to rollback the transaction
-		END
+    BEGIN TRY
+        -- Check if DocGia record exists before updating
+        IF NOT EXISTS (SELECT 1 FROM DocGia WHERE MaDocGia = @MaDocGia)
+        BEGIN
+            PRINT('MaDocGia does not exist!');
+            THROW 51000, 'MaDocGia does not exist!', 1; -- Raise a custom error to rollback the transaction
+        END
 
-		-- Update the DocGia record
-		UPDATE DocGia
-		SET TenDocGia = @TenDocGia,
-			Email = @Email,
-			SoDienThoai = @SoDienThoai,
-			GioiTinh = @GioiTinh,
-			MaLoaiDG = @MaLoaiDG
-		WHERE MaDocGia = @MaDocGia;
+        -- Update the DocGia record
+        UPDATE DocGia
+        SET TenDocGia = @TenDocGia,
+            Email = @Email,
+            SoDienThoai = @SoDienThoai,
+            GioiTinh = @GioiTinh,
+            MaLoaiDG = @MaLoaiDG
+        WHERE MaDocGia = @MaDocGia;
 
-		COMMIT TRANSACTION Tran_UpdateDocGia
-	  END TRY
+        COMMIT TRANSACTION Tran_UpdateDocGia
+    END TRY
 
-	  BEGIN CATCH
-		DECLARE @err NVARCHAR(MAX);
-		SELECT @err = N'Lỗi: ' + ERROR_MESSAGE();
-		RAISERROR (@err, 16, 1);
-		ROLLBACK TRANSACTION Tran_UpdateDocGia;
-	  END CATCH
+    BEGIN CATCH
+        DECLARE @err NVARCHAR(MAX);
+        SELECT @err = N'Lỗi: ' + ERROR_MESSAGE();
+        RAISERROR (@err, 16, 1);
+        ROLLBACK TRANSACTION Tran_UpdateDocGia;
+    END CATCH
 END;
-GO
---kết thúc cập nhật đọc giả
 
 
 --nhập sách và tạo phiếu nhập
