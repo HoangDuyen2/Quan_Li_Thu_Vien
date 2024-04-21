@@ -442,7 +442,7 @@ BEGIN
 		UPDATE DocGia SET NgayTao = @NgayTao WHERE MaDocGia = @MaDocGiaID
 
         -- Tự động tạo ID
-	    SET @MaDocGiaID = dbo.func_Auto_DocGiaID()
+	    SET @MaDocGiaID = dbo.func_Auto_DocGiaID(Inserted.MaLoaiDG)
 	    UPDATE [DocGia] SET MaDocGia = @MaDocGiaID WHERE MaDocGia = 'XX000'
 	END
     -- Updated
