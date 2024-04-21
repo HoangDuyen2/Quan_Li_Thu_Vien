@@ -73,5 +73,10 @@ namespace Quan_Li_Thu_Vien
                 MessageBox.Show("Vui lòng chọn một phiếu mượn trả để xóa", "Thông báo");
             }*/
         }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
