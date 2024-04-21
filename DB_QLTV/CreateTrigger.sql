@@ -68,8 +68,9 @@ END
 --Kết thúc kiểm tra số điện thoại của độc giả
 
 --Kiểm tra số điện thoại trùng của Nhân viên
+GO
 CREATE TRIGGER Nhanvien_TrungSDT
-ON NhanVien
+ON ThongTinNhanVien
 AFTER INSERT, UPDATE
 AS
 BEGIN
@@ -79,7 +80,7 @@ BEGIN
 			 FROM inserted i
 			 WHERE EXISTS (
 				 SELECT *
-				 FROM NhanVien nv
+				 FROM ThongTinNhanVien nv
 				 WHERE nv.SDT = i.SDT AND nv.MaNV <> i.MaNV
 			 ))
 	 BEGIN
