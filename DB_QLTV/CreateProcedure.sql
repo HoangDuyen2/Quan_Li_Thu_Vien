@@ -448,4 +448,37 @@ BEGIN
 END
 --END Insert ChiTietPhieuMuonTra
 
+--Delete PMT
+CREATE PROCEDURE DeletePhieuMuonTra
+    @mapmt nvarchar(10)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    BEGIN TRANSACTION;
+
+    -- Xóa các bản ghi liên quan trong bảng ChiTietPhieuPhat
+    DELETE FROM ChiTietPhieuPhat
+    WHERE MaPhieuPhat IN (
+        SELECT MaPhieuPhat
+        FROM PhieuPhat
+        WHERE MaPhieuMuonTra = @mapmt
+    );
+
+    -- Xóa các bản ghi liên quan trong bảng PhieuPhat
+if ex
+    DELETE FROM PhieuPhat
+    WHERE MaPhieuMuonTra = @mapmt;
+
+    -- Xóa các bản ghi liên quan trong bảng ChiTietPhieuMuonTra
+    DELETE FROM ChiTietPhieuMuonTra
+    WHERE MaPhieuMuonTra = @mapmt;
+
+    -- Xóa bản ghi trong bảng PhieuMuonTra
+    DELETE FROM PhieuMuonTra
+    WHERE MaPhieuMuonTra = @mapmt;
+
+    COMMIT TRANSACTION;
+END
+--End Delete PMT
 
