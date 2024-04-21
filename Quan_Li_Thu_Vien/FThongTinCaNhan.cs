@@ -61,6 +61,9 @@ namespace Quan_Li_Thu_Vien
             conn.closeConnection();
         }
 
-
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

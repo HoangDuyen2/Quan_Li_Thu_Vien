@@ -1,6 +1,6 @@
 ﻿namespace Quan_Li_Thu_Vien
 {
-    partial class FThemPhieuMuonTra
+    partial class FSuaPhieuMuonTra
     {
         /// <summary>
         /// Required designer variable.
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.btnExit = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
             this.txtHanTra = new System.Windows.Forms.TextBox();
             this.lblHanTra = new System.Windows.Forms.Label();
@@ -40,18 +41,29 @@
             this.lbMaNhanVien = new System.Windows.Forms.Label();
             this.lbMaPhieuMT = new System.Windows.Forms.Label();
             this.lbThongTinCuonSach = new System.Windows.Forms.Label();
-            this.btnExit = new System.Windows.Forms.Button();
             this.SuspendLayout();
+            // 
+            // btnExit
+            // 
+            this.btnExit.BackColor = System.Drawing.Color.Red;
+            this.btnExit.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.ForeColor = System.Drawing.Color.White;
+            this.btnExit.Location = new System.Drawing.Point(466, 584);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(136, 42);
+            this.btnExit.TabIndex = 61;
+            this.btnExit.Text = "Exit";
+            this.btnExit.UseVisualStyleBackColor = false;
             // 
             // btnOK
             // 
             this.btnOK.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnOK.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOK.ForeColor = System.Drawing.Color.Black;
-            this.btnOK.Location = new System.Drawing.Point(311, 580);
+            this.btnOK.Location = new System.Drawing.Point(331, 584);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(136, 42);
-            this.btnOK.TabIndex = 47;
+            this.btnOK.TabIndex = 60;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = false;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
@@ -59,11 +71,11 @@
             // txtHanTra
             // 
             this.txtHanTra.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtHanTra.Location = new System.Drawing.Point(311, 510);
+            this.txtHanTra.Location = new System.Drawing.Point(331, 514);
             this.txtHanTra.Multiline = true;
             this.txtHanTra.Name = "txtHanTra";
             this.txtHanTra.Size = new System.Drawing.Size(288, 30);
-            this.txtHanTra.TabIndex = 46;
+            this.txtHanTra.TabIndex = 59;
             // 
             // lblHanTra
             // 
@@ -71,51 +83,49 @@
             this.lblHanTra.BackColor = System.Drawing.Color.Transparent;
             this.lblHanTra.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHanTra.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblHanTra.Location = new System.Drawing.Point(25, 512);
+            this.lblHanTra.Location = new System.Drawing.Point(45, 516);
             this.lblHanTra.Name = "lblHanTra";
             this.lblHanTra.Size = new System.Drawing.Size(93, 28);
-            this.lblHanTra.TabIndex = 45;
+            this.lblHanTra.TabIndex = 58;
             this.lblHanTra.Text = "Hạn Trả";
             // 
             // txtNgayMuon
             // 
             this.txtNgayMuon.Enabled = false;
             this.txtNgayMuon.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNgayMuon.Location = new System.Drawing.Point(311, 414);
+            this.txtNgayMuon.Location = new System.Drawing.Point(331, 418);
             this.txtNgayMuon.Multiline = true;
             this.txtNgayMuon.Name = "txtNgayMuon";
             this.txtNgayMuon.Size = new System.Drawing.Size(288, 30);
-            this.txtNgayMuon.TabIndex = 39;
+            this.txtNgayMuon.TabIndex = 57;
             // 
             // txtMaDocGia
             // 
             this.txtMaDocGia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaDocGia.Location = new System.Drawing.Point(311, 317);
+            this.txtMaDocGia.Location = new System.Drawing.Point(331, 321);
             this.txtMaDocGia.Multiline = true;
             this.txtMaDocGia.Name = "txtMaDocGia";
             this.txtMaDocGia.Size = new System.Drawing.Size(288, 30);
-            this.txtMaDocGia.TabIndex = 38;
-            this.txtMaDocGia.TextChanged += new System.EventHandler(this.txtMaDocGia_TextChanged);
+            this.txtMaDocGia.TabIndex = 56;
             // 
             // txtMaNV
             // 
             this.txtMaNV.Enabled = false;
             this.txtMaNV.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaNV.Location = new System.Drawing.Point(311, 215);
+            this.txtMaNV.Location = new System.Drawing.Point(331, 219);
             this.txtMaNV.Multiline = true;
             this.txtMaNV.Name = "txtMaNV";
             this.txtMaNV.Size = new System.Drawing.Size(288, 30);
-            this.txtMaNV.TabIndex = 37;
+            this.txtMaNV.TabIndex = 55;
             // 
             // txtMaPMT
             // 
-            this.txtMaPMT.Enabled = false;
             this.txtMaPMT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaPMT.Location = new System.Drawing.Point(311, 125);
+            this.txtMaPMT.Location = new System.Drawing.Point(331, 129);
             this.txtMaPMT.Multiline = true;
             this.txtMaPMT.Name = "txtMaPMT";
             this.txtMaPMT.Size = new System.Drawing.Size(288, 30);
-            this.txtMaPMT.TabIndex = 36;
+            this.txtMaPMT.TabIndex = 54;
             // 
             // lblNgayMuon
             // 
@@ -123,10 +133,10 @@
             this.lblNgayMuon.BackColor = System.Drawing.Color.Transparent;
             this.lblNgayMuon.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNgayMuon.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblNgayMuon.Location = new System.Drawing.Point(25, 416);
+            this.lblNgayMuon.Location = new System.Drawing.Point(45, 420);
             this.lblNgayMuon.Name = "lblNgayMuon";
             this.lblNgayMuon.Size = new System.Drawing.Size(128, 28);
-            this.lblNgayMuon.TabIndex = 32;
+            this.lblNgayMuon.TabIndex = 53;
             this.lblNgayMuon.Text = "Ngày Mượn";
             // 
             // lbMaDocGia
@@ -135,10 +145,10 @@
             this.lbMaDocGia.BackColor = System.Drawing.Color.Transparent;
             this.lbMaDocGia.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbMaDocGia.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lbMaDocGia.Location = new System.Drawing.Point(25, 319);
+            this.lbMaDocGia.Location = new System.Drawing.Point(45, 323);
             this.lbMaDocGia.Name = "lbMaDocGia";
             this.lbMaDocGia.Size = new System.Drawing.Size(127, 28);
-            this.lbMaDocGia.TabIndex = 31;
+            this.lbMaDocGia.TabIndex = 52;
             this.lbMaDocGia.Text = "Mã Độc Giả";
             // 
             // lbMaNhanVien
@@ -147,10 +157,10 @@
             this.lbMaNhanVien.BackColor = System.Drawing.Color.Transparent;
             this.lbMaNhanVien.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbMaNhanVien.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lbMaNhanVien.Location = new System.Drawing.Point(25, 217);
+            this.lbMaNhanVien.Location = new System.Drawing.Point(45, 221);
             this.lbMaNhanVien.Name = "lbMaNhanVien";
             this.lbMaNhanVien.Size = new System.Drawing.Size(153, 28);
-            this.lbMaNhanVien.TabIndex = 30;
+            this.lbMaNhanVien.TabIndex = 51;
             this.lbMaNhanVien.Text = "Mã Nhân Viên";
             // 
             // lbMaPhieuMT
@@ -159,10 +169,10 @@
             this.lbMaPhieuMT.BackColor = System.Drawing.Color.Transparent;
             this.lbMaPhieuMT.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbMaPhieuMT.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lbMaPhieuMT.Location = new System.Drawing.Point(25, 125);
+            this.lbMaPhieuMT.Location = new System.Drawing.Point(45, 129);
             this.lbMaPhieuMT.Name = "lbMaPhieuMT";
             this.lbMaPhieuMT.Size = new System.Drawing.Size(210, 28);
-            this.lbMaPhieuMT.TabIndex = 29;
+            this.lbMaPhieuMT.TabIndex = 50;
             this.lbMaPhieuMT.Text = "Mã Phiếu Mượn Trả";
             // 
             // lbThongTinCuonSach
@@ -171,30 +181,17 @@
             this.lbThongTinCuonSach.BackColor = System.Drawing.Color.Transparent;
             this.lbThongTinCuonSach.Font = new System.Drawing.Font("Microsoft YaHei UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbThongTinCuonSach.ForeColor = System.Drawing.Color.Blue;
-            this.lbThongTinCuonSach.Location = new System.Drawing.Point(78, 22);
+            this.lbThongTinCuonSach.Location = new System.Drawing.Point(98, 26);
             this.lbThongTinCuonSach.Name = "lbThongTinCuonSach";
             this.lbThongTinCuonSach.Size = new System.Drawing.Size(470, 44);
-            this.lbThongTinCuonSach.TabIndex = 28;
+            this.lbThongTinCuonSach.TabIndex = 49;
             this.lbThongTinCuonSach.Text = "Thông Tin Phiếu Mượn Trả";
             // 
-            // btnExit
-            // 
-            this.btnExit.BackColor = System.Drawing.Color.Red;
-            this.btnExit.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.ForeColor = System.Drawing.Color.White;
-            this.btnExit.Location = new System.Drawing.Point(446, 580);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(136, 42);
-            this.btnExit.TabIndex = 48;
-            this.btnExit.Text = "Exit";
-            this.btnExit.UseVisualStyleBackColor = false;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
-            // 
-            // FThemPhieuMuonTra
+            // FSuaPhieuMuonTra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(651, 647);
+            this.ClientSize = new System.Drawing.Size(665, 652);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.txtHanTra);
@@ -208,17 +205,17 @@
             this.Controls.Add(this.lbMaNhanVien);
             this.Controls.Add(this.lbMaPhieuMT);
             this.Controls.Add(this.lbThongTinCuonSach);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "FThemPhieuMuonTra";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FThemPhieuMuonTra";
-            this.Load += new System.EventHandler(this.FThemPhieuMuonTra_Load_1);
+            this.Name = "FSuaPhieuMuonTra";
+            this.Text = "FSuaPhieuMuonTra";
+            this.Load += new System.EventHandler(this.FSuaPhieuMuonTra_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.TextBox txtHanTra;
         private System.Windows.Forms.Label lblHanTra;
@@ -231,6 +228,5 @@
         private System.Windows.Forms.Label lbMaNhanVien;
         private System.Windows.Forms.Label lbMaPhieuMT;
         private System.Windows.Forms.Label lbThongTinCuonSach;
-        private System.Windows.Forms.Button btnExit;
     }
 }

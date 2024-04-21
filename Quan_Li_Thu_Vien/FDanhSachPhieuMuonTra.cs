@@ -35,7 +35,7 @@ namespace Quan_Li_Thu_Vien
         private void btnThem_Click(object sender, EventArgs e)
         {
             FThemPhieuMuonTra fThemPhieuMuonTra = new FThemPhieuMuonTra();
-            this.Hide();
+            this.Close();
             fThemPhieuMuonTra.ShowDialog();
             this.Show();
         }
@@ -82,6 +82,29 @@ namespace Quan_Li_Thu_Vien
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+            FSuaPhieuMuonTra fSuaPhieuMuonTra = new FSuaPhieuMuonTra();
+            this.Close();
+            fSuaPhieuMuonTra.ShowDialog();
+            this.Show();
+        }
+
+        private void btnTimKiem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                dtgvPhieuMuonTra.DataSource = dspmt.timKiemPhieuMuonTra(txtTenDocGia.Text);
+                dtgvPhieuMuonTra.RowHeadersVisible = false;
+                dtgvPhieuMuonTra.BackgroundColor = Color.White;
+                dtgvPhieuMuonTra.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            }
+            catch
+            {
+                MessageBox.Show("Không truy xuất được dữ liệu", "Lỗi");
+            }
         }
     }
 }

@@ -134,5 +134,15 @@ namespace Quan_Li_Thu_Vien
             themSach.ShowDialog();
             
         }
+
+        private void txtTenSach_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbTenSach_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
