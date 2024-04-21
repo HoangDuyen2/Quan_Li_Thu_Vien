@@ -17,7 +17,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace Quan_Li_Thu_Vien
 {
-    public class MuonSachController
+    public class MuonTraSachController
     {
         DBConnection conn = new DBConnection();
         #region list view

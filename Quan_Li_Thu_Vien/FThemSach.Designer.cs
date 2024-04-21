@@ -262,7 +262,7 @@
             this.lbMaSach.BackColor = System.Drawing.Color.Transparent;
             this.lbMaSach.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbMaSach.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lbMaSach.Location = new System.Drawing.Point(17, 126);
+            this.lbMaSach.Location = new System.Drawing.Point(17, 128);
             this.lbMaSach.Name = "lbMaSach";
             this.lbMaSach.Size = new System.Drawing.Size(151, 28);
             this.lbMaSach.TabIndex = 4;

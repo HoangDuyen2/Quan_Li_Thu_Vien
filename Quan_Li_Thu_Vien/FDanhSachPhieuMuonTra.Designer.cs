@@ -31,6 +31,7 @@
             this.panelNen = new System.Windows.Forms.Panel();
             this.lbDanhSachCacCuonSach = new System.Windows.Forms.Label();
             this.dtgvPhieuMuonTra = new System.Windows.Forms.DataGridView();
+            this.btnThem = new System.Windows.Forms.Button();
             this.panelNen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvPhieuMuonTra)).BeginInit();
             this.SuspendLayout();
@@ -38,6 +39,7 @@
             // panelNen
             // 
             this.panelNen.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panelNen.Controls.Add(this.btnThem);
             this.panelNen.Controls.Add(this.lbDanhSachCacCuonSach);
             this.panelNen.Controls.Add(this.dtgvPhieuMuonTra);
             this.panelNen.Location = new System.Drawing.Point(0, 0);
@@ -67,6 +69,19 @@
             this.dtgvPhieuMuonTra.Size = new System.Drawing.Size(1352, 549);
             this.dtgvPhieuMuonTra.TabIndex = 0;
             // 
+            // btnThem
+            // 
+            this.btnThem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btnThem.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThem.ForeColor = System.Drawing.Color.White;
+            this.btnThem.Location = new System.Drawing.Point(1207, 606);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.Size = new System.Drawing.Size(144, 44);
+            this.btnThem.TabIndex = 4;
+            this.btnThem.Text = "Thêm";
+            this.btnThem.UseVisualStyleBackColor = false;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
+            // 
             // FDanhSachPhieuMuonTra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -87,5 +102,6 @@
         private System.Windows.Forms.Panel panelNen;
         private System.Windows.Forms.Label lbDanhSachCacCuonSach;
         private System.Windows.Forms.DataGridView dtgvPhieuMuonTra;
+        private System.Windows.Forms.Button btnThem;
     }
 }

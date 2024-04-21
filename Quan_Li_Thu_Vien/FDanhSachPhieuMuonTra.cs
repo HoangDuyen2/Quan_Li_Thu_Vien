@@ -12,7 +12,7 @@ namespace Quan_Li_Thu_Vien
 {
     public partial class FDanhSachPhieuMuonTra : Form
     {
-        MuonSachController dspmt = new MuonSachController();
+        MuonTraSachController dspmt = new MuonTraSachController();
         public FDanhSachPhieuMuonTra()
         {
             InitializeComponent();
@@ -34,6 +34,11 @@ namespace Quan_Li_Thu_Vien
         private void FDanhSachPhieuMuonTra_Load(object sender, EventArgs e)
         {
             LoadData();
+        }
+
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
