@@ -78,5 +78,63 @@ namespace Quan_Li_Thu_Vien
             return dataTable;
         }
         #endregion
+        public bool checkMaDocGia(string maDocGia)
+        {
+            string funcName = "[dbo].[func_SearchDocGiaByMaDocGia]";
+            SqlCommand cmmd = new SqlCommand("SELECT " + funcName + " (@MaDocGia)", conn.GetSqlConnection());
+            cmmd.Parameters.AddWithValue("@MaDocGia", maDocGia);
+            conn.openConnection();
+            int result = (int)cmmd.ExecuteScalar();
+            if (result == 0)
+            {
+                return false;
+            }
+            return true;
+        }
+        public bool themPhieuMuonTra(PhieuMuonTra phieuMuonTra)
+        {
+            SqlCommand cmmd = new SqlCommand("InsertPhieuMuonTra", conn.GetSqlConnection());
+            cmmd.CommandType = CommandType.StoredProcedure;
+            cmmd.Parameters.Add("@MaNV", SqlDbType.NVarChar).Value = phieuMuonTra.MaNV;
+            cmmd.Parameters.Add("@MaDocGia", SqlDbType.NVarChar).Value = phieuMuonTra.MaDocGia;
+            cmmd.Parameters.Add("@HanTra", SqlDbType.DateTime).Value = phieuMuonTra.HanTra;
+            conn.openConnection();
+            if (cmmd.ExecuteNonQuery() > 0)
+            {
+                conn.closeConnection();
+                return true;
+            }
+            else
+            {
+                conn.closeConnection();
+                return false;
+            }
+        }
+        public bool XoaPhieuMuonTra(string maPMT)
+        {
+            using (SqlConnection connection = conn.GetSqlConnection())
+            {
+                try
+                {
+                    conn.openConnection();
+                    using (SqlCommand command = new SqlCommand("DeletePhieuMuonTra", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@mapmt", maPMT);
+                        int rowsAffected = command.ExecuteNonQuery();
+                        return true;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi khi xóa phiếu mượn trả: " + ex.Message, "Lỗi");
+                    return false;
+                }
+                finally
+                {
+                    conn.closeConnection();
+                }
+            }
+        }
     }
 }
