@@ -80,6 +80,7 @@ namespace Quan_Li_Thu_Vien
                 MessageBox.Show("Đăng nhập thành công");
                 LoginInfo.Username = txtTenDangNhap.Text;
                 string query = "SELECT tk.MaNV, nv.MaTo FROM TaiKhoan tk INNER JOIN "+Role+" nv ON tk.MaNV = nv.MaNV WHERE tk.Username = @username";
+                
                 SqlCommand cmdGetMaNV = new SqlCommand(query, conn.GetSqlConnection());
                 cmdGetMaNV.Parameters.AddWithValue("@username", tk);
                 string maNV = dta["MaNV"].ToString();
