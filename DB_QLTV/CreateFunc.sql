@@ -197,63 +197,47 @@ GO
 --Kết thúc hàm tự động thêm mã nhà cung cấp
 
 --Tự động tăng Mã phiếu nhập
-CREATE FUNCTION func_Auto_PhieuNhapID()
+CREATE FUNCTION func_Auto_PhieuMuonTraID()
 RETURNS NVARCHAR(10)
 AS
 BEGIN
-	DECLARE @id_next VARCHAR(10)
-	DECLARE @max INT
-	DECLARE @object VARCHAR(2)
-	BEGIN
-		SET @object = 'PN'
-	END
-	SELECT @max = COUNT(MaPhieuNhap) FROM [PhieuNhap]
-	SET @id_next = @object + RIGHT('0' + CAST(@max AS nvarchar(10)), 3)
-	-- Kiểm tra id đã tồn tại chưa
-	WHILE(EXISTS(SELECT MaPhieuNhap FROM [PhieuNhap] WHERE MaPhieuNhap = @id_next))
-	BEGIN
-		SET @max = @max + 1
-		SET @id_next = @object + RIGHT('0' + CAST(@max AS nvarchar(10)), 3)
-	END
-		RETURN @id_next
+    DECLARE @id_next VARCHAR(10)
+    DECLARE @max INT
+    DECLARE @object VARCHAR(2)
+    
+    SET @object = 'MT'
+    
+    SELECT @max = ISNULL(MAX(CAST(SUBSTRING(MaPhieuMuonTra, 3, LEN(MaPhieuMuonTra) - 2) AS INT)), 0) 
+    FROM PhieuMuonTra
+
+    SET @id_next = @object + RIGHT('00' + CAST((@max + 1) AS nvarchar(10)), 3)
+
+    RETURN @id_next
 END
 GO
 --Kết thúc hàm tự động thêm mã nhà phiếu nhập
-
---Bắt đầu hàm danh sách nhân viên theo tổ
-CREATE FUNCTION [dbo].[func_NhanVienTheoTo] (@string NVARCHAR(50))
-RETURNS @NVList TABLE (MaNV NVARCHAR(10), TenNV NVARCHAR(50), GioiTinh CHAR(1), DiaChi NVARCHAR(255), SDT NVARCHAR(10), TenTo NVARCHAR(50))
-AS BEGIN
-	INSERT INTO @NVList SELECT MaNV, TenNV, GioiTinh, DiaChi, SDT, nt.TenTo
-	FROM dbo.NhanVien nv INNER JOIN NhomTo nt ON nv.MaTo = nt.MaTo
-	WHERE nv.MaTo = @string
-	RETURN
-END
---Kết thúc hàm nhân viên theo tổ
 	
 -- Tự động tăng thêm Mã Phiếu Mượn Trả khi thêm Phiếu Mượn Trả
 CREATE FUNCTION func_Auto_PhieuMuonTraID()
 RETURNS NVARCHAR(10)
 AS
 BEGIN
-	DECLARE @id_next VARCHAR(10)
-	DECLARE @max INT
-	DECLARE @object VARCHAR(2)
-	BEGIN
-		SET @object = 'MT'
-	END
-	SELECT @max = COUNT(MaPhieuMuonTra) FROM [PhieuMuonTra]
-	SET @id_next = @object + RIGHT('00' + CAST(@max AS nvarchar(10)), 3)
-	-- Kiểm tra id đã tồn tại chưa
-	WHILE(EXISTS(SELECT MaPhieuMuonTra FROM [PhieuMuonTra] WHERE MaPhieuMuonTra = @id_next))
-	BEGIN
-		SET @max = @max + 1
-		SET @id_next = @object + RIGHT('0' + CAST(@max AS nvarchar(10)), 3)
-	END
-		RETURN @id_next
+    DECLARE @id_next VARCHAR(10)
+    DECLARE @max INT
+    DECLARE @object VARCHAR(2)
+    
+    SET @object = 'MT'
+    
+    SELECT @max = ISNULL(CAST(RIGHT(MAX(MaPhieuMuonTra), 4) AS INT), 0) 
+    FROM PhieuMuonTra
+
+    SET @id_next = @object + RIGHT('0000' + CAST((@max + 1) AS nvarchar(10)), 4)
+
+    RETURN @id_next
 END
 GO
 --Kết thúc hàm tự động thêm Phiếu Mượn Trả
+	
 -- Tự động tăng thêm Mã Phiếu Phạt khi thêm Phiếu Phạt
 CREATE FUNCTION func_Auto_PhieuPhatID()
 RETURNS NVARCHAR(10)
@@ -277,29 +261,6 @@ BEGIN
 END
 GO
 --Kết thúc hàm tự động thêm Phiếu Phạt
--- Tự động tăng thêm Mã Tổ khi thêm Tổ
-CREATE FUNCTION func_Auto_ToID()
-RETURNS NVARCHAR(10)
-AS
-BEGIN
-	DECLARE @id_next VARCHAR(10)
-	DECLARE @max INT
-	DECLARE @object VARCHAR(2)
-	BEGIN
-		SET @object = 'TO'
-	END
-	SELECT @max = COUNT(MaTo) FROM [NhomTo]
-	SET @id_next = @object + RIGHT('0' + CAST(@max AS nvarchar(10)), 2)
-	-- Kiểm tra id đã tồn tại chưa
-	WHILE(EXISTS(SELECT MaTo FROM [NhomTo] WHERE MaTo = @id_next))
-	BEGIN
-		SET @max = @max + 1
-		SET @id_next = @object + RIGHT('0' + CAST(@max AS nvarchar(10)), 3)
-	END
-		RETURN @id_next
-END
-GO
---Kết thúc hàm tự động thêm Tổ
 
 --Bắt đầu hàm tìm sách mượn theo ngày
 CREATE FUNCTION [dbo].[func_CategorizeBookByDate](@NgayBD datetime, @NgayKT datetime)
@@ -510,3 +471,19 @@ BEGIN
 	RETURN
 END
 --Kết thúc tên các loại sách
+--Tìm kiếm độc giả theo mã độc giả
+CREATE FUNCTION [dbo].[func_SearchDocGiabyMaDocGia](@MaDocGia nvarchar(10))
+RETURNS INT
+AS
+BEGIN
+	DECLARE @MaDocGiaCount INT
+
+	SELECT @MaDocGiaCount = COUNT(*)
+	FROM DocGia
+	WHERE @MaDocGia = MaDocGia
+
+	IF(@MaDocGiaCount > 0)
+		RETURN 1
+	RETURN 0
+--End Tìm kiếm độc giả theo mã độc giả
+END
