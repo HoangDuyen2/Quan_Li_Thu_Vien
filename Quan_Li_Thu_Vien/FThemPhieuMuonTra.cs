@@ -21,7 +21,7 @@ namespace Quan_Li_Thu_Vien
         MuonTraSachController muonTraSachController = new MuonTraSachController();
         private void FThemPhieuMuonTra_Load(object sender, EventArgs e)
         {
-            txtMaPMT.Enabled = false;
+
         }
         private void btnOK_Click(object sender, EventArgs e)
         {
@@ -68,8 +68,19 @@ namespace Quan_Li_Thu_Vien
         private void btnExit_Click(object sender, EventArgs e)
         {
             FDanhSachPhieuMuonTra fDanhSachPhieuMuonTra = new FDanhSachPhieuMuonTra();
-            this.Hide();
+            this.Close();
             fDanhSachPhieuMuonTra.ShowDialog();
+            this.Show();
+        }
+
+        private void txtMaDocGia_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FThemPhieuMuonTra_Load_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

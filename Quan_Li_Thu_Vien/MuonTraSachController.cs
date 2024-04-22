@@ -91,13 +91,33 @@ namespace Quan_Li_Thu_Vien
             }
             return true;
         }
+        public bool suaPhieuMuonTra(PhieuMuonTra phieuMuonTra)
+        {
+            SqlCommand cmmd = new SqlCommand("UpdatePhieuMuonTra", conn.GetSqlConnection());
+            cmmd.CommandType = CommandType.StoredProcedure;
+            cmmd.Parameters.Add("@MaPhieuMuonTra", SqlDbType.NVarChar).Value = phieuMuonTra.MaPhieuMuonTra;
+            cmmd.Parameters.Add("@MaDocGia", SqlDbType.NVarChar).Value = phieuMuonTra.MaDocGia;
+            cmmd.Parameters.Add("@HanTra", SqlDbType.Date).Value = phieuMuonTra.HanTra;
+            conn.openConnection();
+            if (cmmd.ExecuteNonQuery() > 0)
+            {
+                conn.closeConnection();
+                return true;
+            }
+            else
+            {
+                conn.closeConnection();
+                return false;
+            }
+        }
+
         public bool themPhieuMuonTra(PhieuMuonTra phieuMuonTra)
         {
             SqlCommand cmmd = new SqlCommand("InsertPhieuMuonTra", conn.GetSqlConnection());
             cmmd.CommandType = CommandType.StoredProcedure;
             cmmd.Parameters.Add("@MaNV", SqlDbType.NVarChar).Value = phieuMuonTra.MaNV;
             cmmd.Parameters.Add("@MaDocGia", SqlDbType.NVarChar).Value = phieuMuonTra.MaDocGia;
-            cmmd.Parameters.Add("@HanTra", SqlDbType.DateTime).Value = phieuMuonTra.HanTra;
+            cmmd.Parameters.Add("@HanTra", SqlDbType.Date).Value = phieuMuonTra.HanTra;
             conn.openConnection();
             if (cmmd.ExecuteNonQuery() > 0)
             {
@@ -135,6 +155,16 @@ namespace Quan_Li_Thu_Vien
                     conn.closeConnection();
                 }
             }
+        }
+        public DataTable timKiemPhieuMuonTra(string tenDocGia)
+        {
+            string funcName = "func_SearchPMTByTenDG";
+            SqlCommand command = new SqlCommand("Select * from " + funcName + " (@ReaderName)", conn.GetSqlConnection());
+            command.Parameters.Add("@ReaderName", SqlDbType.NVarChar).Value = tenDocGia;
+            DataTable table = new DataTable();
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            adapter.Fill(table);
+            return table;
         }
     }
 }

@@ -322,6 +322,12 @@
     <Compile Include="FormDangNhap.Designer.cs">
       <DependentUpon>FormDangNhap.cs</DependentUpon>
     </Compile>
+    <Compile Include="FSuaPhieuMuonTra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FSuaPhieuMuonTra.Designer.cs">
+      <DependentUpon>FSuaPhieuMuonTra.cs</DependentUpon>
+    </Compile>
     <Compile Include="FThemPhieuMuonTra.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -465,6 +471,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormDangNhap.resx">
       <DependentUpon>FormDangNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FSuaPhieuMuonTra.resx">
+      <DependentUpon>FSuaPhieuMuonTra.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FThemPhieuMuonTra.resx">
       <DependentUpon>FThemPhieuMuonTra.cs</DependentUpon>

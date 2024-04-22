@@ -142,35 +142,6 @@ END
 GO
 --Kết thúc hàm tự động thêm mã loại sách
 
---Tự động tăng Mã đọc giả
-CREATE FUNCTION func_Auto_DocGiaID(@role TINYINT)
-RETURNS NVARCHAR(10)
-AS
-BEGIN
-	DECLARE @id_next VARCHAR(10)
-	DECLARE @max INT
-	DECLARE @object VARCHAR(2)
-	IF @role = N'SV'
-		BEGIN
-			SET @object = 'SV'
-		END
-		ELSE
-			BEGIN
-				SET @object = 'GV'
-			END
-		SELECT @max = COUNT(MaLoaiDG) FROM dbo.DocGia WHERE MaLoaiDG = @role
-	SET @id_next = @object + RIGHT('0' + CAST(@max AS nvarchar(10)), 3)
-	-- Kiểm tra id đã tồn tại chưa
-	WHILE(EXISTS(SELECT MaDocGia FROM [DocGia] WHERE MaDocGia = @id_next))
-	BEGIN
-		SET @max = @max + 1
-		SET @id_next = @object + RIGHT('0' + CAST(@max AS nvarchar(10)), 3)
-	END
-		RETURN @id_next
-END
-GO
---Kết thúc hàm tự động thêm mã độc giả
-
 
 --Tự động tăng Mã nhà cung cấp khi cung cấp sách
 CREATE FUNCTION func_Auto_CungCapID()
@@ -487,3 +458,32 @@ BEGIN
 	RETURN 0
 --End Tìm kiếm độc giả theo mã độc giả
 END
+--Tìm kiếm Phiếu mượn trả theo tên độc giả
+CREATE FUNCTION func_SearchPMTByTenDG
+(
+    @ReaderName NVARCHAR(50)
+)
+RETURNS @BookLoansList TABLE
+(
+    MaPhieuMuonTra NVARCHAR(10),
+    TenNV NVARCHAR(255),
+    TenDocGia NVARCHAR(255),
+    NgayMuon DATE,
+    HanTra DATE
+)
+AS
+BEGIN
+    INSERT INTO @BookLoansList
+    SELECT
+        pm.MaPhieuMuonTra,
+        nv.TenNV,
+        dg.TenDocGia,
+        pm.NgayMuon,
+        pm.HanTra
+    FROM PhieuMuonTra pm
+    INNER JOIN DocGia dg ON pm.MaDocGia = dg.MaDocGia
+    INNER JOIN ThongTinNhanVien nv ON pm.MaNV = nv.MaNV
+    WHERE dg.TenDocGia LIKE N'%' + @ReaderName + '%'
+    RETURN
+END
+--END Tìm kiếm Phiếu mượn trả theo tên độc giả

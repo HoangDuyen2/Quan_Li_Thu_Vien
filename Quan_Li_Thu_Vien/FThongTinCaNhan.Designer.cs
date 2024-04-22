@@ -40,9 +40,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txtHoVaTen = new System.Windows.Forms.TextBox();
+            this.picboxThongTinCaNhan = new System.Windows.Forms.PictureBox();
             this.lblHoVaTen = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.picboxThongTinCaNhan = new System.Windows.Forms.PictureBox();
+            this.btnExit = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
             this.txtGioiTinh = new System.Windows.Forms.TextBox();
             this.lblGioiTinh = new System.Windows.Forms.Label();
@@ -62,8 +63,8 @@
             this.panel14.SuspendLayout();
             this.panel13.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picboxThongTinCaNhan)).BeginInit();
+            this.panel7.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel9.SuspendLayout();
@@ -76,13 +77,15 @@
             this.panel15.Controls.Add(this.txtNgayTaoNV);
             this.panel15.Controls.Add(this.lblNgayTao);
             this.panel15.Location = new System.Drawing.Point(3, 560);
+            this.panel15.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(510, 48);
+            this.panel15.Size = new System.Drawing.Size(509, 48);
             this.panel15.TabIndex = 44;
             // 
             // txtNgayTaoNV
             // 
             this.txtNgayTaoNV.Location = new System.Drawing.Point(200, 12);
+            this.txtNgayTaoNV.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNgayTaoNV.Name = "txtNgayTaoNV";
             this.txtNgayTaoNV.Size = new System.Drawing.Size(307, 22);
             this.txtNgayTaoNV.TabIndex = 1;
@@ -101,14 +104,16 @@
             // 
             this.panel14.Controls.Add(this.txtMaNV);
             this.panel14.Controls.Add(this.lblMaNV);
-            this.panel14.Location = new System.Drawing.Point(2, 127);
+            this.panel14.Location = new System.Drawing.Point(3, 127);
+            this.panel14.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(510, 48);
+            this.panel14.Size = new System.Drawing.Size(509, 48);
             this.panel14.TabIndex = 45;
             // 
             // txtMaNV
             // 
             this.txtMaNV.Location = new System.Drawing.Point(200, 12);
+            this.txtMaNV.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtMaNV.Name = "txtMaNV";
             this.txtMaNV.Size = new System.Drawing.Size(307, 22);
             this.txtMaNV.TabIndex = 1;
@@ -128,13 +133,15 @@
             this.panel13.Controls.Add(this.txtEmail);
             this.panel13.Controls.Add(this.label1);
             this.panel13.Location = new System.Drawing.Point(3, 506);
+            this.panel13.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(510, 48);
+            this.panel13.Size = new System.Drawing.Size(509, 48);
             this.panel13.TabIndex = 43;
             // 
             // txtEmail
             // 
             this.txtEmail.Location = new System.Drawing.Point(200, 12);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(307, 22);
             this.txtEmail.TabIndex = 1;
@@ -152,18 +159,32 @@
             // panel2
             // 
             this.panel2.Controls.Add(this.txtHoVaTen);
+            this.panel2.Controls.Add(this.picboxThongTinCaNhan);
             this.panel2.Controls.Add(this.lblHoVaTen);
-            this.panel2.Location = new System.Drawing.Point(2, 182);
+            this.panel2.Location = new System.Drawing.Point(3, 182);
+            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(510, 48);
+            this.panel2.Size = new System.Drawing.Size(509, 48);
             this.panel2.TabIndex = 42;
             // 
             // txtHoVaTen
             // 
             this.txtHoVaTen.Location = new System.Drawing.Point(200, 12);
+            this.txtHoVaTen.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtHoVaTen.Name = "txtHoVaTen";
             this.txtHoVaTen.Size = new System.Drawing.Size(307, 22);
             this.txtHoVaTen.TabIndex = 1;
+            // 
+            // picboxThongTinCaNhan
+            // 
+            this.picboxThongTinCaNhan.Image = ((System.Drawing.Image)(resources.GetObject("picboxThongTinCaNhan.Image")));
+            this.picboxThongTinCaNhan.Location = new System.Drawing.Point(348, -100);
+            this.picboxThongTinCaNhan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.picboxThongTinCaNhan.Name = "picboxThongTinCaNhan";
+            this.picboxThongTinCaNhan.Size = new System.Drawing.Size(149, 113);
+            this.picboxThongTinCaNhan.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picboxThongTinCaNhan.TabIndex = 0;
+            this.picboxThongTinCaNhan.TabStop = false;
             // 
             // lblHoVaTen
             // 
@@ -177,34 +198,41 @@
             // 
             // panel7
             // 
-            this.panel7.Controls.Add(this.picboxThongTinCaNhan);
-            this.panel7.Location = new System.Drawing.Point(2, 1);
+            this.panel7.Controls.Add(this.btnExit);
+            this.panel7.Location = new System.Drawing.Point(3, 1);
+            this.panel7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(509, 120);
+            this.panel7.Size = new System.Drawing.Size(509, 121);
             this.panel7.TabIndex = 41;
             // 
-            // picboxThongTinCaNhan
+            // btnExit
             // 
-            this.picboxThongTinCaNhan.Image = ((System.Drawing.Image)(resources.GetObject("picboxThongTinCaNhan.Image")));
-            this.picboxThongTinCaNhan.Location = new System.Drawing.Point(183, 3);
-            this.picboxThongTinCaNhan.Name = "picboxThongTinCaNhan";
-            this.picboxThongTinCaNhan.Size = new System.Drawing.Size(150, 113);
-            this.picboxThongTinCaNhan.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picboxThongTinCaNhan.TabIndex = 0;
-            this.picboxThongTinCaNhan.TabStop = false;
+            this.btnExit.BackColor = System.Drawing.Color.Red;
+            this.btnExit.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.ForeColor = System.Drawing.Color.White;
+            this.btnExit.Location = new System.Drawing.Point(388, 32);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(109, 44);
+            this.btnExit.TabIndex = 2;
+            this.btnExit.Text = "Exit";
+            this.btnExit.UseVisualStyleBackColor = false;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // panel6
             // 
             this.panel6.Controls.Add(this.txtGioiTinh);
             this.panel6.Controls.Add(this.lblGioiTinh);
             this.panel6.Location = new System.Drawing.Point(3, 236);
+            this.panel6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(510, 48);
+            this.panel6.Size = new System.Drawing.Size(509, 48);
             this.panel6.TabIndex = 40;
             // 
             // txtGioiTinh
             // 
             this.txtGioiTinh.Location = new System.Drawing.Point(200, 12);
+            this.txtGioiTinh.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtGioiTinh.Name = "txtGioiTinh";
             this.txtGioiTinh.Size = new System.Drawing.Size(307, 22);
             this.txtGioiTinh.TabIndex = 1;
@@ -224,13 +252,15 @@
             this.panel8.Controls.Add(this.txtNgaySinh);
             this.panel8.Controls.Add(this.lblNgaySinh);
             this.panel8.Location = new System.Drawing.Point(3, 290);
+            this.panel8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(510, 48);
+            this.panel8.Size = new System.Drawing.Size(509, 48);
             this.panel8.TabIndex = 39;
             // 
             // txtNgaySinh
             // 
             this.txtNgaySinh.Location = new System.Drawing.Point(199, 12);
+            this.txtNgaySinh.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNgaySinh.Name = "txtNgaySinh";
             this.txtNgaySinh.Size = new System.Drawing.Size(307, 22);
             this.txtNgaySinh.TabIndex = 2;
@@ -250,13 +280,15 @@
             this.panel9.Controls.Add(this.txtLuong);
             this.panel9.Controls.Add(this.lblLuong);
             this.panel9.Location = new System.Drawing.Point(3, 398);
+            this.panel9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(510, 48);
+            this.panel9.Size = new System.Drawing.Size(509, 48);
             this.panel9.TabIndex = 38;
             // 
             // txtLuong
             // 
             this.txtLuong.Location = new System.Drawing.Point(200, 12);
+            this.txtLuong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtLuong.Name = "txtLuong";
             this.txtLuong.Size = new System.Drawing.Size(307, 22);
             this.txtLuong.TabIndex = 1;
@@ -275,14 +307,16 @@
             // 
             this.panel10.Controls.Add(this.txtDiaChi);
             this.panel10.Controls.Add(this.lblDiaChi);
-            this.panel10.Location = new System.Drawing.Point(3, 344);
+            this.panel10.Location = new System.Drawing.Point(3, 345);
+            this.panel10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(510, 48);
+            this.panel10.Size = new System.Drawing.Size(509, 48);
             this.panel10.TabIndex = 37;
             // 
             // txtDiaChi
             // 
             this.txtDiaChi.Location = new System.Drawing.Point(200, 12);
+            this.txtDiaChi.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtDiaChi.Name = "txtDiaChi";
             this.txtDiaChi.Size = new System.Drawing.Size(307, 22);
             this.txtDiaChi.TabIndex = 1;
@@ -302,13 +336,15 @@
             this.panel11.Controls.Add(this.txtSoDienThoai);
             this.panel11.Controls.Add(this.lblDienThoai);
             this.panel11.Location = new System.Drawing.Point(1, 452);
+            this.panel11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(510, 48);
+            this.panel11.Size = new System.Drawing.Size(509, 48);
             this.panel11.TabIndex = 36;
             // 
             // txtSoDienThoai
             // 
             this.txtSoDienThoai.Location = new System.Drawing.Point(200, 12);
+            this.txtSoDienThoai.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSoDienThoai.Name = "txtSoDienThoai";
             this.txtSoDienThoai.Size = new System.Drawing.Size(307, 22);
             this.txtSoDienThoai.TabIndex = 1;
@@ -327,7 +363,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(514, 610);
+            this.ClientSize = new System.Drawing.Size(515, 610);
             this.Controls.Add(this.panel15);
             this.Controls.Add(this.panel14);
             this.Controls.Add(this.panel13);
@@ -338,6 +374,8 @@
             this.Controls.Add(this.panel9);
             this.Controls.Add(this.panel10);
             this.Controls.Add(this.panel11);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FThongTinCaNhan";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FThongTinCaNhan";
@@ -350,8 +388,8 @@
             this.panel13.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.panel7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picboxThongTinCaNhan)).EndInit();
+            this.panel7.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             this.panel8.ResumeLayout(false);
@@ -397,5 +435,6 @@
         private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.TextBox txtSoDienThoai;
         private System.Windows.Forms.Label lblDienThoai;
+        private System.Windows.Forms.Button btnExit;
     }
 }

@@ -121,6 +121,7 @@
             this.txtTenSach.Name = "txtTenSach";
             this.txtTenSach.Size = new System.Drawing.Size(258, 30);
             this.txtTenSach.TabIndex = 7;
+            this.txtTenSach.TextChanged += new System.EventHandler(this.txtTenSach_TextChanged);
             // 
             // lbTenSach
             // 
@@ -133,6 +134,7 @@
             this.lbTenSach.Size = new System.Drawing.Size(98, 25);
             this.lbTenSach.TabIndex = 6;
             this.lbTenSach.Text = "Tên Sách";
+            this.lbTenSach.Click += new System.EventHandler(this.lbTenSach_Click);
             // 
             // lbDanhSachCacCuonSach
             // 

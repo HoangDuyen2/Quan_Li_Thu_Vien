@@ -35,7 +35,7 @@ namespace Quan_Li_Thu_Vien
         private void btnThem_Click(object sender, EventArgs e)
         {
             FThemPhieuMuonTra fThemPhieuMuonTra = new FThemPhieuMuonTra();
-            this.Hide();
+            this.Close();
             fThemPhieuMuonTra.ShowDialog();
             this.Show();
         }
@@ -51,7 +51,7 @@ namespace Quan_Li_Thu_Vien
         private void btnXoa_Click(object sender, EventArgs e)
         {
             // Kiểm tra xem đã chọn mã phiếu mượn trả hay chưa
-/*            if (!string.IsNullOrEmpty(maPMT))
+            if (!string.IsNullOrEmpty(maPMT))
             {
                 // Gọi stored procedure DeletePhieuMuonTra để xóa phiếu mượn trả
                 bool isDeleted = dspmt.XoaPhieuMuonTra(maPMT);
@@ -61,6 +61,11 @@ namespace Quan_Li_Thu_Vien
                 {
                     // Xóa thành công
                     MessageBox.Show("Xóa phiếu mượn trả thành công", "Thông báo");
+                    FDanhSachPhieuMuonTra danhSachPhieuMuonTra = new FDanhSachPhieuMuonTra();
+                    this.Hide();
+                    this.Close();
+                    danhSachPhieuMuonTra.ShowDialog();
+                    this.Show();
                 }
                 else
                 {
@@ -71,7 +76,35 @@ namespace Quan_Li_Thu_Vien
             else
             {
                 MessageBox.Show("Vui lòng chọn một phiếu mượn trả để xóa", "Thông báo");
-            }*/
+            }
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+            FSuaPhieuMuonTra fSuaPhieuMuonTra = new FSuaPhieuMuonTra();
+            this.Close();
+            fSuaPhieuMuonTra.ShowDialog();
+            this.Show();
+        }
+
+        private void btnTimKiem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                dtgvPhieuMuonTra.DataSource = dspmt.timKiemPhieuMuonTra(txtTenDocGia.Text);
+                dtgvPhieuMuonTra.RowHeadersVisible = false;
+                dtgvPhieuMuonTra.BackgroundColor = Color.White;
+                dtgvPhieuMuonTra.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            }
+            catch
+            {
+                MessageBox.Show("Không truy xuất được dữ liệu", "Lỗi");
+            }
         }
     }
 }
