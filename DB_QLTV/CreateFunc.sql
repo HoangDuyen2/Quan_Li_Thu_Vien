@@ -487,3 +487,35 @@ BEGIN
     RETURN
 END
 --END Tìm kiếm Phiếu mượn trả theo tên độc giả
+
+--Tìm kiếm nhà cung cấp theo tên nhà cung cấp
+CREATE FUNCTION [dbo].[func_SearchTenNCCByName](@TenNhaCungCap nvarchar(50))
+RETURNS INT
+AS
+BEGIN
+	DECLARE @TenNCCCount INT
+	SELECT @TenNCCCount = COUNT(*)
+	FROM CungCap
+	WHERE TenNhaCC = @TenNhaCungCap;
+	
+	IF(@TenNCCCount > 0)
+		RETURN 1
+	RETURN 0
+END
+--Kết thúc tìm kiếm nhà cung cấp theo tên nhà cung cấp
+
+--Tìm kiếm sách theo tên sách
+CREATE FUNCTION [dbo].[func_SearchTenSachByName](@TenSach nvarchar(50))
+RETURNS INT
+AS
+BEGIN
+	DECLARE @TenSachCount INT
+	SELECT @TenSachCount = COUNT(*)
+	FROM Sach
+	WHERE TenSach = @TenSach;
+	
+	IF(@TenSachCount > 0)
+		RETURN 1
+	RETURN 0
+END
+--Kết thúc tìm kiếm theo tên
