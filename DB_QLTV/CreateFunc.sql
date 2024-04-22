@@ -531,7 +531,7 @@ RETURN (
     WHERE TenDocGia LIKE '%' + @TenDocGia + '%'
 );
 --Kết thúc tìm kiếm DocGia theo TenDocGia
---Tìm kiếm PhieuPhat theo MaSach
+--Tìm kiếm PhieuPhat theo TenSach
 CREATE FUNCTION SearchPhieuPhatByTenSach
 (
     @TenSach nvarchar(50)
@@ -546,4 +546,4 @@ RETURN (
     INNER JOIN Sach s ON s.MaSach = pp.MaSach
      WHERE TenSach LIKE '%' + @TenSach + '%'
 );
--Kết thúc Tìm kiếm PhieuPhat theo MaSach
+-Kết thúc Tìm kiếm PhieuPhat theo TenSach
