@@ -615,3 +615,57 @@ SELECT *
   WHERE MaPhieuMuonTra= @mapmt
 END
 --End Xem CTPMT
+
+	    
+--Insert DocGia
+CREATE PROCEDURE InsertDocGia
+    @MaDocGia NVARCHAR(10),
+    @TenDocGia NVARCHAR(50),
+    @Email NVARCHAR(50),
+    @SoDienThoai NVARCHAR(20),
+    @GioiTinh NCHAR(1),
+    @MaLoaiDG NVARCHAR(10),
+AS
+BEGIN
+    SET NOCOUNT ON;
+    DECLARE @NgayTao DATE = CAST(GETDATE() AS DATE);
+
+    -- Kiểm tra email
+    IF NOT EXISTS (SELECT 1 FROM DocGia WHERE Email = @Email)
+    BEGIN
+        -- Kiểm tra số điện thoại
+        IF NOT EXISTS (SELECT 1 FROM DocGia WHERE SoDienThoai = @SoDienThoai)
+        BEGIN
+            -- Kiểm tra mã loại độc giả
+            IF @MaLoaiDG IN ('GV', 'SV')
+            BEGIN
+                -- Kiểm tra giới tính
+                IF @GioiTinh IN ('F', 'M')
+                BEGIN
+                    -- Thêm độc giả mới
+                    INSERT INTO DocGia (MaDocGia, TenDocGia, Email, SoDienThoai, GioiTinh, MaLoaiDG, NgayTao)
+                    VALUES (@MaDocGia, @TenDocGia, @Email, @SoDienThoai, @GioiTinh, @MaLoaiDG, @NgayTao);
+
+                    SELECT @MaDocGia AS MaDocGia;
+                END
+                ELSE
+                BEGIN
+                    RAISERROR('Giới tính không hợp lệ. Vui lòng nhập "F" hoặc "M".', 16, 1);
+                END
+            END
+            ELSE
+            BEGIN
+                RAISERROR('Mã loại độc giả không hợp lệ. Vui lòng nhập "LDG001" hoặc "LDG002".', 16, 1);
+            END
+        END
+        ELSE
+        BEGIN
+            RAISERROR('Số điện thoại đã tồn tại.', 16, 1);
+        END
+    END
+    ELSE
+    BEGIN
+        RAISERROR('Email đã tồn tại.', 16, 1);
+    END
+END
+--End Insert DocGia
