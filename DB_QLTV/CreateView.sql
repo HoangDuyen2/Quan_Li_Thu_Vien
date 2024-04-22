@@ -182,3 +182,10 @@ FROM
 INNER JOIN
     CungCap CC ON PN.MaNhaCC = CC.MaNhaCC
 --Kết thúc view phiếu nhập
+
+--View Chi tiết phiếu mượn trả
+CREATE VIEW ChiTietPhieuMuonTra AS
+SELECT pmt.MaPhieuMuonTra, s.TenSach, pmt.TinhTrang, pmt.NgayTra
+FROM PhieuMuonTra pmt
+JOIN Sach s ON pmt.MaSach = s.MaSach;
+--End View Chi tiết phiếu mượn trả
