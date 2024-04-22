@@ -422,43 +422,6 @@ BEGIN
 END;
 --Kiểm tra phiếu phạt khi trả sách 
 
-
-
---Bắt đầu trigger NgayTao trong bảng DocGia
-CREATE TRIGGER trg_Inserted_Updated_DocGia
-ON dbo.DocGia
-FOR INSERT, UPDATE
-AS
-DECLARE @NgayTao DATETIME
-DECLARE @MaDocGiaID NVARCHAR(10)
-DECLARE @MaLoaiDocGia NVARCHAR(10)
-BEGIN
-	IF TRIGGER_NESTLEVEL() > 1
-    RETURN
-
-	SELECT @MaDocGiaID = Inserted.MaDocGia, @NgayTao = Inserted.NgayTao, @MaLoaiDocGia = inserted.MaLoaiDG
-	FROM Inserted
-    -- Inserted
-	IF (@NgayTao IS NULL)
-	BEGIN
-        -- Tự động tạo ngày tạo
-		SET @NgayTao = GETDATE()
-		UPDATE DocGia SET NgayTao = @NgayTao WHERE MaDocGia = @MaDocGiaID
-
-        -- Tự động tạo ID
-	    SET @MaDocGiaID = dbo.func_Auto_DocGiaID(@MaLoaiDocGia)
-	    UPDATE [DocGia] SET MaDocGia = @MaDocGiaID WHERE MaDocGia = 'XX000'
-	END
-    -- Updated
-	ELSE
-	BEGIN
-        -- Tự động tạo ngày cập nhật
-		SET @NgayTao = GETDATE()
-		UPDATE dbo.DocGia SET NgayTao = @NgayTao WHERE MaDocGia = @MaDocGiaID
-	END
-END
-GO
-
 --Bắt đầu trigger NCC trong bảng CungCap
 CREATE TRIGGER trg_Inserted_Updated_CungCap
 ON dbo.CungCap
