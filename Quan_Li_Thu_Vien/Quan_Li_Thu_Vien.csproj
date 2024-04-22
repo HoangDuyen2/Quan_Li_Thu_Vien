@@ -328,6 +328,12 @@
     <Compile Include="FSuaPhieuMuonTra.Designer.cs">
       <DependentUpon>FSuaPhieuMuonTra.cs</DependentUpon>
     </Compile>
+    <Compile Include="FSuaPhieuPhat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FSuaPhieuPhat.Designer.cs">
+      <DependentUpon>FSuaPhieuPhat.cs</DependentUpon>
+    </Compile>
     <Compile Include="FThemPhieuMuonTra.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -339,6 +345,12 @@
     </Compile>
     <Compile Include="FThemPhieuNhap.Designer.cs">
       <DependentUpon>FThemPhieuNhap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FThemPhieuPhat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FThemPhieuPhat.Designer.cs">
+      <DependentUpon>FThemPhieuPhat.cs</DependentUpon>
     </Compile>
     <Compile Include="FThemSach.cs">
       <SubType>Form</SubType>
@@ -476,11 +488,17 @@
     <EmbeddedResource Include="FSuaPhieuMuonTra.resx">
       <DependentUpon>FSuaPhieuMuonTra.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FSuaPhieuPhat.resx">
+      <DependentUpon>FSuaPhieuPhat.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FThemPhieuMuonTra.resx">
       <DependentUpon>FThemPhieuMuonTra.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FThemPhieuNhap.resx">
       <DependentUpon>FThemPhieuNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FThemPhieuPhat.resx">
+      <DependentUpon>FThemPhieuPhat.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FThemSach.resx">
       <DependentUpon>FThemSach.cs</DependentUpon>

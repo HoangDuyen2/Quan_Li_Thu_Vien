@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             this.panelNen = new System.Windows.Forms.Panel();
+            this.btnTimKiem = new System.Windows.Forms.Button();
+            this.txtTenDocGia = new System.Windows.Forms.TextBox();
+            this.lbTenSach = new System.Windows.Forms.Label();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.lbDanhSachCacCuonSach = new System.Windows.Forms.Label();
             this.dtgvPhieuMuonTra = new System.Windows.Forms.DataGridView();
-            this.btnTimKiem = new System.Windows.Forms.Button();
-            this.txtTenDocGia = new System.Windows.Forms.TextBox();
-            this.lbTenSach = new System.Windows.Forms.Label();
             this.panelNen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvPhieuMuonTra)).BeginInit();
             this.SuspendLayout();
@@ -59,6 +59,37 @@
             this.panelNen.Name = "panelNen";
             this.panelNen.Size = new System.Drawing.Size(1355, 650);
             this.panelNen.TabIndex = 3;
+            // 
+            // btnTimKiem
+            // 
+            this.btnTimKiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTimKiem.Location = new System.Drawing.Point(1204, 49);
+            this.btnTimKiem.Name = "btnTimKiem";
+            this.btnTimKiem.Size = new System.Drawing.Size(109, 36);
+            this.btnTimKiem.TabIndex = 11;
+            this.btnTimKiem.Text = "Tìm kiếm";
+            this.btnTimKiem.UseVisualStyleBackColor = true;
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
+            // 
+            // txtTenDocGia
+            // 
+            this.txtTenDocGia.Location = new System.Drawing.Point(926, 54);
+            this.txtTenDocGia.Multiline = true;
+            this.txtTenDocGia.Name = "txtTenDocGia";
+            this.txtTenDocGia.Size = new System.Drawing.Size(258, 30);
+            this.txtTenDocGia.TabIndex = 10;
+            // 
+            // lbTenSach
+            // 
+            this.lbTenSach.AutoSize = true;
+            this.lbTenSach.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.lbTenSach.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTenSach.ForeColor = System.Drawing.Color.DarkBlue;
+            this.lbTenSach.Location = new System.Drawing.Point(785, 55);
+            this.lbTenSach.Name = "lbTenSach";
+            this.lbTenSach.Size = new System.Drawing.Size(122, 25);
+            this.lbTenSach.TabIndex = 9;
+            this.lbTenSach.Text = "Tên Độc Giả";
             // 
             // btnSua
             // 
@@ -139,37 +170,6 @@
             this.dtgvPhieuMuonTra.Size = new System.Drawing.Size(1352, 549);
             this.dtgvPhieuMuonTra.TabIndex = 0;
             this.dtgvPhieuMuonTra.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvPhieuMuonTra_CellClick);
-            // 
-            // btnTimKiem
-            // 
-            this.btnTimKiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTimKiem.Location = new System.Drawing.Point(1204, 49);
-            this.btnTimKiem.Name = "btnTimKiem";
-            this.btnTimKiem.Size = new System.Drawing.Size(109, 36);
-            this.btnTimKiem.TabIndex = 11;
-            this.btnTimKiem.Text = "Tìm kiếm";
-            this.btnTimKiem.UseVisualStyleBackColor = true;
-            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
-            // 
-            // txtTenDocGia
-            // 
-            this.txtTenDocGia.Location = new System.Drawing.Point(926, 54);
-            this.txtTenDocGia.Multiline = true;
-            this.txtTenDocGia.Name = "txtTenDocGia";
-            this.txtTenDocGia.Size = new System.Drawing.Size(258, 30);
-            this.txtTenDocGia.TabIndex = 10;
-            // 
-            // lbTenSach
-            // 
-            this.lbTenSach.AutoSize = true;
-            this.lbTenSach.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.lbTenSach.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTenSach.ForeColor = System.Drawing.Color.DarkBlue;
-            this.lbTenSach.Location = new System.Drawing.Point(785, 55);
-            this.lbTenSach.Name = "lbTenSach";
-            this.lbTenSach.Size = new System.Drawing.Size(122, 25);
-            this.lbTenSach.TabIndex = 9;
-            this.lbTenSach.Text = "Tên Độc Giả";
             // 
             // FDanhSachPhieuMuonTra
             // 

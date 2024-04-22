@@ -39,7 +39,7 @@
             this.lbMaDocGia = new System.Windows.Forms.Label();
             this.lbMaNhanVien = new System.Windows.Forms.Label();
             this.lbMaPhieuMT = new System.Windows.Forms.Label();
-            this.lbThongTinCuonSach = new System.Windows.Forms.Label();
+            this.lbThongTinPhieuMuonTra = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -165,17 +165,17 @@
             this.lbMaPhieuMT.TabIndex = 29;
             this.lbMaPhieuMT.Text = "Mã Phiếu Mượn Trả";
             // 
-            // lbThongTinCuonSach
+            // lbThongTinPhieuMuonTra
             // 
-            this.lbThongTinCuonSach.AutoSize = true;
-            this.lbThongTinCuonSach.BackColor = System.Drawing.Color.Transparent;
-            this.lbThongTinCuonSach.Font = new System.Drawing.Font("Microsoft YaHei UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbThongTinCuonSach.ForeColor = System.Drawing.Color.Blue;
-            this.lbThongTinCuonSach.Location = new System.Drawing.Point(78, 22);
-            this.lbThongTinCuonSach.Name = "lbThongTinCuonSach";
-            this.lbThongTinCuonSach.Size = new System.Drawing.Size(470, 44);
-            this.lbThongTinCuonSach.TabIndex = 28;
-            this.lbThongTinCuonSach.Text = "Thông Tin Phiếu Mượn Trả";
+            this.lbThongTinPhieuMuonTra.AutoSize = true;
+            this.lbThongTinPhieuMuonTra.BackColor = System.Drawing.Color.Transparent;
+            this.lbThongTinPhieuMuonTra.Font = new System.Drawing.Font("Microsoft YaHei UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbThongTinPhieuMuonTra.ForeColor = System.Drawing.Color.Blue;
+            this.lbThongTinPhieuMuonTra.Location = new System.Drawing.Point(78, 22);
+            this.lbThongTinPhieuMuonTra.Name = "lbThongTinPhieuMuonTra";
+            this.lbThongTinPhieuMuonTra.Size = new System.Drawing.Size(470, 44);
+            this.lbThongTinPhieuMuonTra.TabIndex = 28;
+            this.lbThongTinPhieuMuonTra.Text = "Thông Tin Phiếu Mượn Trả";
             // 
             // btnExit
             // 
@@ -207,7 +207,7 @@
             this.Controls.Add(this.lbMaDocGia);
             this.Controls.Add(this.lbMaNhanVien);
             this.Controls.Add(this.lbMaPhieuMT);
-            this.Controls.Add(this.lbThongTinCuonSach);
+            this.Controls.Add(this.lbThongTinPhieuMuonTra);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FThemPhieuMuonTra";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -230,7 +230,7 @@
         private System.Windows.Forms.Label lbMaDocGia;
         private System.Windows.Forms.Label lbMaNhanVien;
         private System.Windows.Forms.Label lbMaPhieuMT;
-        private System.Windows.Forms.Label lbThongTinCuonSach;
+        private System.Windows.Forms.Label lbThongTinPhieuMuonTra;
         private System.Windows.Forms.Button btnExit;
     }
 }

@@ -31,6 +31,10 @@
             this.panelNen = new System.Windows.Forms.Panel();
             this.lbDanhSachPhieuPhat = new System.Windows.Forms.Label();
             this.dtgvPhieuPhat = new System.Windows.Forms.DataGridView();
+            this.btnThem = new System.Windows.Forms.Button();
+            this.btnSua = new System.Windows.Forms.Button();
+            this.btnXoa = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
             this.panelNen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvPhieuPhat)).BeginInit();
             this.SuspendLayout();
@@ -38,12 +42,16 @@
             // panelNen
             // 
             this.panelNen.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panelNen.Controls.Add(this.btnExit);
+            this.panelNen.Controls.Add(this.btnXoa);
+            this.panelNen.Controls.Add(this.btnSua);
+            this.panelNen.Controls.Add(this.btnThem);
             this.panelNen.Controls.Add(this.lbDanhSachPhieuPhat);
             this.panelNen.Controls.Add(this.dtgvPhieuPhat);
             this.panelNen.Location = new System.Drawing.Point(1, 2);
-            this.panelNen.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelNen.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelNen.Name = "panelNen";
-            this.panelNen.Size = new System.Drawing.Size(1016, 528);
+            this.panelNen.Size = new System.Drawing.Size(1355, 650);
             this.panelNen.TabIndex = 5;
             // 
             // lbDanhSachPhieuPhat
@@ -51,33 +59,86 @@
             this.lbDanhSachPhieuPhat.AutoSize = true;
             this.lbDanhSachPhieuPhat.Font = new System.Drawing.Font("Microsoft YaHei UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbDanhSachPhieuPhat.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lbDanhSachPhieuPhat.Location = new System.Drawing.Point(4, 0);
-            this.lbDanhSachPhieuPhat.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbDanhSachPhieuPhat.Location = new System.Drawing.Point(5, 0);
             this.lbDanhSachPhieuPhat.Name = "lbDanhSachPhieuPhat";
-            this.lbDanhSachPhieuPhat.Size = new System.Drawing.Size(255, 30);
+            this.lbDanhSachPhieuPhat.Size = new System.Drawing.Size(324, 37);
             this.lbDanhSachPhieuPhat.TabIndex = 1;
             this.lbDanhSachPhieuPhat.Text = "Danh Sách Phiếu Phạt";
             // 
             // dtgvPhieuPhat
             // 
             this.dtgvPhieuPhat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvPhieuPhat.Location = new System.Drawing.Point(0, 80);
-            this.dtgvPhieuPhat.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtgvPhieuPhat.Location = new System.Drawing.Point(0, 98);
+            this.dtgvPhieuPhat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtgvPhieuPhat.Name = "dtgvPhieuPhat";
             this.dtgvPhieuPhat.ReadOnly = true;
             this.dtgvPhieuPhat.RowHeadersWidth = 51;
             this.dtgvPhieuPhat.RowTemplate.Height = 24;
-            this.dtgvPhieuPhat.Size = new System.Drawing.Size(1014, 446);
+            this.dtgvPhieuPhat.Size = new System.Drawing.Size(1352, 549);
             this.dtgvPhieuPhat.TabIndex = 0;
+            // 
+            // btnThem
+            // 
+            this.btnThem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btnThem.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThem.ForeColor = System.Drawing.Color.White;
+            this.btnThem.Location = new System.Drawing.Point(762, 603);
+            this.btnThem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.Size = new System.Drawing.Size(144, 44);
+            this.btnThem.TabIndex = 5;
+            this.btnThem.Text = "Thêm";
+            this.btnThem.UseVisualStyleBackColor = false;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
+            // 
+            // btnSua
+            // 
+            this.btnSua.BackColor = System.Drawing.Color.DarkOrange;
+            this.btnSua.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSua.ForeColor = System.Drawing.Color.White;
+            this.btnSua.Location = new System.Drawing.Point(912, 603);
+            this.btnSua.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSua.Name = "btnSua";
+            this.btnSua.Size = new System.Drawing.Size(144, 44);
+            this.btnSua.TabIndex = 7;
+            this.btnSua.Text = "Sửa";
+            this.btnSua.UseVisualStyleBackColor = false;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
+            // 
+            // btnXoa
+            // 
+            this.btnXoa.BackColor = System.Drawing.Color.Red;
+            this.btnXoa.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXoa.ForeColor = System.Drawing.Color.White;
+            this.btnXoa.Location = new System.Drawing.Point(1062, 603);
+            this.btnXoa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(144, 44);
+            this.btnXoa.TabIndex = 8;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.UseVisualStyleBackColor = false;
+            // 
+            // btnExit
+            // 
+            this.btnExit.BackColor = System.Drawing.Color.Red;
+            this.btnExit.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.ForeColor = System.Drawing.Color.White;
+            this.btnExit.Location = new System.Drawing.Point(1243, 606);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(109, 44);
+            this.btnExit.TabIndex = 9;
+            this.btnExit.Text = "Exit";
+            this.btnExit.UseVisualStyleBackColor = false;
             // 
             // FDanhSachPhieuPhat
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1018, 531);
+            this.ClientSize = new System.Drawing.Size(1357, 654);
             this.Controls.Add(this.panelNen);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FDanhSachPhieuPhat";
             this.Text = "FDanhSachPhieuPhat";
             this.Load += new System.EventHandler(this.FDanhSachPhieuPhat_Load);
@@ -93,5 +154,9 @@
         private System.Windows.Forms.Panel panelNen;
         private System.Windows.Forms.Label lbDanhSachPhieuPhat;
         private System.Windows.Forms.DataGridView dtgvPhieuPhat;
+        private System.Windows.Forms.Button btnThem;
+        private System.Windows.Forms.Button btnSua;
+        private System.Windows.Forms.Button btnXoa;
+        private System.Windows.Forms.Button btnExit;
     }
 }

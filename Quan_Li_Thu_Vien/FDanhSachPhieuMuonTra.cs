@@ -62,7 +62,6 @@ namespace Quan_Li_Thu_Vien
                     // Xóa thành công
                     MessageBox.Show("Xóa phiếu mượn trả thành công", "Thông báo");
                     FDanhSachPhieuMuonTra danhSachPhieuMuonTra = new FDanhSachPhieuMuonTra();
-                    this.Hide();
                     this.Close();
                     danhSachPhieuMuonTra.ShowDialog();
                     this.Show();
