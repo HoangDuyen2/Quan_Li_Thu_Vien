@@ -107,9 +107,7 @@ SELECT
     PN.MaPhieuNhap,
     PN.NgayNhap,
     PN.GiaTriDonHang,
-    PN.MaNhaCC,
     CC.TenNhaCC, -- Lấy tên nhà cung cấp từ bảng CungCap
-    CT.MaSach,
     S.TenSach, -- Lấy tên sách từ bảng Sach
     CT.DonGia,
     CT.SL
@@ -171,3 +169,16 @@ inner join PhieuMuonTra mt on pp.MaPhieuMuonTra=mt.MaPhieuMuonTra
 inner join DocGia dg on mt.MaDocGia=dg.MaDocGia
 inner join Sach s on s.MaSach=pp.MaSach
 --Kết thúc View phiếu phạt
+
+--View Phiếu nhập
+CREATE VIEW ViewPhieuNhap AS
+SELECT 
+    PN.MaPhieuNhap,
+    PN.NgayNhap,
+    PN.GiaTriDonHang,
+    CC.TenNhaCC -- Lấy tên nhà cung cấp từ bảng CungCap
+FROM 
+    PhieuNhap PN
+INNER JOIN
+    CungCap CC ON PN.MaNhaCC = CC.MaNhaCC
+--Kết thúc view phiếu nhập
