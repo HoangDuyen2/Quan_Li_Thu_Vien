@@ -226,6 +226,12 @@
     <Compile Include="FDanhSachCacTacGia.Designer.cs">
       <DependentUpon>FDanhSachCacTacGia.cs</DependentUpon>
     </Compile>
+    <Compile Include="FDanhSachChiTietPhieuNhap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FDanhSachChiTietPhieuNhap.Designer.cs">
+      <DependentUpon>FDanhSachChiTietPhieuNhap.cs</DependentUpon>
+    </Compile>
     <Compile Include="FDanhSachDocGia.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -321,6 +327,18 @@
     </Compile>
     <Compile Include="FormDangNhap.Designer.cs">
       <DependentUpon>FormDangNhap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FPhieuNhap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FPhieuNhap.Designer.cs">
+      <DependentUpon>FPhieuNhap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FSuaChiTietPhieuNhap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FSuaChiTietPhieuNhap.Designer.cs">
+      <DependentUpon>FSuaChiTietPhieuNhap.cs</DependentUpon>
     </Compile>
     <Compile Include="FSuaPhieuMuonTra.cs">
       <SubType>Form</SubType>
@@ -430,11 +448,17 @@
     <EmbeddedResource Include="FDanhSachCacTacGia.resx">
       <DependentUpon>FDanhSachCacTacGia.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FDanhSachChiTietPhieuNhap.resx">
+      <DependentUpon>FDanhSachChiTietPhieuNhap.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FDanhSachDocGia.resx">
       <DependentUpon>FDanhSachDocGia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FDanhSachDocGiaViPham.resx">
       <DependentUpon>FDanhSachDocGiaViPham.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FDanhSachNhaCungCap.resx">
+      <DependentUpon>FDanhSachNhaCungCap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FDanhSachNhanVien.resx">
       <DependentUpon>FDanhSachNhanVien.cs</DependentUpon>
@@ -471,6 +495,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormDangNhap.resx">
       <DependentUpon>FormDangNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FPhieuNhap.resx">
+      <DependentUpon>FPhieuNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FSuaChiTietPhieuNhap.resx">
+      <DependentUpon>FSuaChiTietPhieuNhap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FSuaPhieuMuonTra.resx">
       <DependentUpon>FSuaPhieuMuonTra.cs</DependentUpon>

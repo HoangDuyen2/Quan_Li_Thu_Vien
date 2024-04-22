@@ -85,15 +85,16 @@ namespace Quan_Li_Thu_Vien
                 cmdGetMaNV.Parameters.AddWithValue("@username", tk);
                 string maNV = dta["MaNV"].ToString();
                 string maTo = dta["MaTo"].ToString();
+                LoginInfo.maTo = maTo;
                 if (Role == "NhanVien")
                 {
-                    //if(maTo == "T001")
-                    //{
-                    //    FTrangChuToNhapSach_NhanVien fTrangChuToNhapSach_NhanVien = new FTrangChuToNhapSach_NhanVien();
-                   //     this.Hide();
-                  //      fTrangChuToNhapSach_NhanVien.ShowDialog();
-                 //       this.Show();
-                 //   }
+                    if(maTo == "TO01")
+                    {
+                        FTrangChuToNhapSach_NhanVien fTrangChuToNhapSach_NhanVien = new FTrangChuToNhapSach_NhanVien();
+                        this.Hide();
+                        fTrangChuToNhapSach_NhanVien.ShowDialog();
+                        this.Show();
+                    }
                     if (maTo == "TO02")
                     {
                         FTrangChuToMuonSach_NhanVien fTrangChuToMuonSach_NhanVien = new FTrangChuToMuonSach_NhanVien();
@@ -114,13 +115,14 @@ namespace Quan_Li_Thu_Vien
                 }
                 if (Role == "ToTruong")
                 {
-                   // if(maTo == "T001")
-                    //{
-                        //FTrangChuToNhapSach_ToTruong fTrangChuToNhapSach_ToTruong = new FTrangChuToNhapSach_ToTruong();
-                      //  this.Hide();
-                    //    fTrangChuToNhapSach_ToTruong.ShowDialog();
-                       // this.Show();
-                   // }
+                    if(maTo == "TO01")
+                    {
+                        FTrangChuToNhapSach_ToTruongcs fTrangChuToNhapSach_ToTruong = new FTrangChuToNhapSach_ToTruongcs();
+                        this.Hide();
+                        fTrangChuToNhapSach_ToTruong.ShowDialog();
+                        this.Show();
+
+                    }
                     if (maTo == "TO02")
                     {
                         FTrangChuToMuonSach_ToTruong fTrangChuToMuonSach_ToTruong = new FTrangChuToMuonSach_ToTruong();

@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             this.panelNen = new System.Windows.Forms.Panel();
+            this.dtgvPhieuNhap = new System.Windows.Forms.DataGridView();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panelNen.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvPhieuNhap)).BeginInit();
             this.SuspendLayout();
             // 
             // panelNen
             // 
             this.panelNen.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panelNen.Controls.Add(this.dataGridView1);
+            this.panelNen.Controls.Add(this.dtgvPhieuNhap);
             this.panelNen.Controls.Add(this.btnExit);
             this.panelNen.Controls.Add(this.btnThem);
             this.panelNen.Controls.Add(this.label1);
@@ -48,6 +48,18 @@
             this.panelNen.Name = "panelNen";
             this.panelNen.Size = new System.Drawing.Size(1356, 694);
             this.panelNen.TabIndex = 4;
+            // 
+            // dtgvPhieuNhap
+            // 
+            this.dtgvPhieuNhap.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgvPhieuNhap.Location = new System.Drawing.Point(0, 98);
+            this.dtgvPhieuNhap.Name = "dtgvPhieuNhap";
+            this.dtgvPhieuNhap.ReadOnly = true;
+            this.dtgvPhieuNhap.RowHeadersWidth = 51;
+            this.dtgvPhieuNhap.RowTemplate.Height = 24;
+            this.dtgvPhieuNhap.Size = new System.Drawing.Size(1355, 549);
+            this.dtgvPhieuNhap.TabIndex = 6;
+            this.dtgvPhieuNhap.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // btnExit
             // 
@@ -73,6 +85,7 @@
             this.btnThem.TabIndex = 4;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = false;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // label1
             // 
@@ -84,17 +97,6 @@
             this.label1.Size = new System.Drawing.Size(337, 37);
             this.label1.TabIndex = 1;
             this.label1.Text = "Danh Sách Phiếu Nhập";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 98);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1355, 549);
-            this.dataGridView1.TabIndex = 6;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // FDanhSachPhieuNhap
             // 
@@ -109,7 +111,7 @@
             this.Load += new System.EventHandler(this.FDanhSachPhieuNhap_Load);
             this.panelNen.ResumeLayout(false);
             this.panelNen.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvPhieuNhap)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -117,7 +119,7 @@
         #endregion
 
         private System.Windows.Forms.Panel panelNen;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dtgvPhieuNhap;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.Label label1;

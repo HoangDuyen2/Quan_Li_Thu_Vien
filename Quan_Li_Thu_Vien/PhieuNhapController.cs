@@ -12,18 +12,35 @@ namespace Quan_Li_Thu_Vien
     public class PhieuNhapController
     {
         DBConnection conn = new DBConnection();
-
-        public bool taoPhieuNhap(PhieuNhap pn)
+        public bool ThemPhieuNhap(PhieuNhap pn)
         {
-            SqlCommand command = new SqlCommand("pro_InsertPhieunhapChitietphieunhap", conn.GetSqlConnection());
+            SqlCommand cmmd = new SqlCommand("InsertPhieuNhap",conn.GetSqlConnection());
+            cmmd.CommandType = CommandType.StoredProcedure;
+            string ngayNhap = pn.NgayNhap.ToString("yyyy-MM-dd");
+            cmmd.Parameters.Add("@NgayNhap",SqlDbType.Date).Value = ngayNhap;
+            cmmd.Parameters.Add("@GiaTriDonHang", SqlDbType.Int).Value = pn.GiaTri;
+            cmmd.Parameters.Add("@TenNhaCC", SqlDbType.NVarChar).Value = pn.TenNCC;
+            conn.openConnection();
+            if(cmmd.ExecuteNonQuery() >0)
+            {
+                conn.closeConnection();
+                return true;
+            }
+            else
+            {
+                conn.closeConnection( );
+                return false;
+            }
+        }
+        public bool suaChiTietPhieuNhap(PhieuNhap pn,int SLCu)
+        {
+            SqlCommand command = new SqlCommand("UpdateChiTietPhieuNhap", conn.GetSqlConnection());
             command.CommandType = CommandType.StoredProcedure;
-            command.Parameters.Add("@ngayNhap", SqlDbType.Date).Value = pn.NgayNhap;
-            command.Parameters.Add("@giaTriDonHang", SqlDbType.Float).Value = pn.GiaTri;
-            command.Parameters.Add("@TenNhaCC", SqlDbType.NVarChar).Value = pn.TenNCC;
-            command.Parameters.Add("@tenSach", SqlDbType.NVarChar).Value = pn.TenSach;
-            command.Parameters.Add("@donGia", SqlDbType.Float).Value = pn.DonGia;
-            command.Parameters.Add("@soLuong", SqlDbType.Int).Value = pn.SoLuong;
-            command.Parameters.Add("@maNV", SqlDbType.NVarChar).Value = pn.MaNV;
+            command.Parameters.Add("@MaPhieuNhap", SqlDbType.NVarChar).Value = pn.MaPhieuNhap;
+            command.Parameters.Add("@TenSach", SqlDbType.NVarChar).Value = pn.TenSach;
+            command.Parameters.Add("@DonGia", SqlDbType.Float).Value = pn.DonGia;
+            command.Parameters.Add("@SL", SqlDbType.Int).Value = pn.SoLuong;
+            command.Parameters.Add("@SLCu", SqlDbType.Int).Value = SLCu;
             conn.openConnection();
             if (command.ExecuteNonQuery() > 0)
             {
@@ -36,8 +53,35 @@ namespace Quan_Li_Thu_Vien
                 return false;
             }
         }
-
+        public bool themChiTietPhieuNhap(PhieuNhap pn)
+        {
+            SqlCommand cmmd = new SqlCommand("InsertChiTietPhieuNhap",conn.GetSqlConnection());
+            cmmd.CommandType = CommandType.StoredProcedure;
+            cmmd.Parameters.Add("@MaPhieuNhap",SqlDbType.NVarChar).Value =pn.MaPhieuNhap;
+            cmmd.Parameters.Add("@TenSach",SqlDbType.NVarChar).Value =pn.TenSach;
+            cmmd.Parameters.Add("@DonGia",SqlDbType.Int).Value =pn.DonGia;
+            cmmd.Parameters.Add("@SL",SqlDbType.Int).Value =pn.SoLuong;
+            conn.openConnection();
+            if(cmmd.ExecuteNonQuery() > 0)
+            {
+                conn.closeConnection();
+                return true;
+            }
+            else
+            {
+                conn.closeConnection();
+                return false;
+            }
+        }
         public DataTable DSPhieuNhap()
+        {
+            SqlCommand cmd = new SqlCommand("SELECT * FROM ViewPhieuNhap", conn.GetSqlConnection());
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataTable dataTable = new DataTable();
+            adapter.Fill(dataTable);
+            return dataTable;
+        }
+        public DataTable DSChiTietPhieuNhap()
         {
             SqlCommand cmd = new SqlCommand("SELECT * FROM ViewPhieuNhapChiTiet", conn.GetSqlConnection());
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
@@ -86,7 +130,7 @@ namespace Quan_Li_Thu_Vien
         }
         public bool checkTenNCC(string tenNCC)
         {
-            SqlCommand cmmd = new SqlCommand("SELECT * FROM func_SearchTenNCCByName(@TenNhaCungCap)", conn.GetSqlConnection());
+            SqlCommand cmmd = new SqlCommand("SELECT [dbo].[func_SearchTenNCCByName] (@TenNhaCungCap)", conn.GetSqlConnection());
             cmmd.Parameters.Add("@TenNhaCungCap",SqlDbType.NVarChar).Value = tenNCC;
             SqlDataAdapter adapter = new SqlDataAdapter(cmmd);
             conn.openConnection();
@@ -105,7 +149,7 @@ namespace Quan_Li_Thu_Vien
 
         public bool checkTenSach(string tenSach)
         {
-            SqlCommand cmmd = new SqlCommand("SELECT * FROM func_SearchTenSachByName(@TenSach)",conn.GetSqlConnection());
+            SqlCommand cmmd = new SqlCommand("SELECT [dbo].[func_SearchTenSachByName] (@TenSach)",conn.GetSqlConnection());
             cmmd.Parameters.Add("@TenSach",SqlDbType.NVarChar).Value = tenSach;
             SqlDataAdapter adapter = new SqlDataAdapter(cmmd);
             conn.openConnection();

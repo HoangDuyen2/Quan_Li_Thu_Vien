@@ -27,10 +27,10 @@ namespace Quan_Li_Thu_Vien
         {
             try
             {
-                dataGridView1.DataSource = phieuNhapController.DSPhieuNhap();
-                dataGridView1.RowHeadersVisible = false;
-                dataGridView1.BackgroundColor = Color.White;
-                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dtgvPhieuNhap.DataSource = phieuNhapController.DSPhieuNhap();
+                dtgvPhieuNhap.RowHeadersVisible = false;
+                dtgvPhieuNhap.BackgroundColor = Color.White;
+                dtgvPhieuNhap.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
             catch
             {
@@ -43,17 +43,20 @@ namespace Quan_Li_Thu_Vien
             if (e.RowIndex >= 0)
             {
                 //Lưu lại dòng dữ liệu vừa kích chọn
-                DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
+                DataGridViewRow row = this.dtgvPhieuNhap.Rows[e.RowIndex];
                 //Đưa dữ liệu vào textbox
-                int sl, dongia;
-                if (int.TryParse(row.Cells["Sl"].Value.ToString(), out sl))
-                    sl = 0;
-                if (int.TryParse(row.Cells["DonGia"].Value.ToString(), out dongia))
-                    dongia = 0;
-                PhieuNhap phieuNhap = new PhieuNhap(row.Cells["MaPhieuNhap"].Value.ToString(), row.Cells["NgayNhap"].Value.ToString(), row.Cells["TenNhaCC"].Value.ToString(),
-                    row.Cells["TenSach"].Value.ToString(), dongia, sl, row.Cells["TenNV"].Value.ToString());
+                float giatri;
+
+                if (!float.TryParse(row.Cells["GiaTriDonHang"].Value.ToString(), out giatri))
+                    giatri = 0;
+                DateTime dateTime;
+                if (!DateTime.TryParse(row.Cells["NgayNhap"].Value.ToString(), out dateTime))
+                    dateTime = DateTime.MinValue;
+                PhieuNhap phieuNhap = new PhieuNhap(row.Cells["MaPhieuNhap"].Value.ToString(), dateTime, giatri, row.Cells["TenNhaCC"].Value.ToString(),
+                    null, 0,0);
                 // Thêm logic xử lý khi cell được click sau khi áp dụng bộ lọc
-                FChiTietPhieNhap fChiTietPhieNhap = new FChiTietPhieNhap(phieuNhap);
+                FPhieuNhap fChiTietPhieNhap = new FPhieuNhap(phieuNhap);
+                this.Hide();
                 fChiTietPhieNhap.ShowDialog();
             }
         }
@@ -61,6 +64,13 @@ namespace Quan_Li_Thu_Vien
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            FThemPhieuNhap themPhieuNhap = new FThemPhieuNhap();
+            this.Hide();
+            themPhieuNhap.ShowDialog();
         }
     }
 }

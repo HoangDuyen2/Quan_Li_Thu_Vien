@@ -46,5 +46,11 @@ namespace Quan_Li_Thu_Vien
             FDanhSachNhaCungCap danhSachNhaCungCap = new FDanhSachNhaCungCap();
             danhSachNhaCungCap.ShowDialog();
         }
+
+        private void btnDSCTPN_Click(object sender, EventArgs e)
+        {
+            FDanhSachChiTietPhieuNhap chiTietPhieuNhap = new FDanhSachChiTietPhieuNhap();
+            chiTietPhieuNhap.ShowDialog();
+        }
     }
 }

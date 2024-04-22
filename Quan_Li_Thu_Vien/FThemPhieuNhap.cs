@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.IdentityModel.Abstractions;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,44 +14,60 @@ namespace Quan_Li_Thu_Vien
 {
     public partial class FThemPhieuNhap : Form
     {
-
+        PhieuNhap phieuNhap1 = new PhieuNhap();
         PhieuNhapController phieuNhapController = new PhieuNhapController();
         public FThemPhieuNhap()
         {
             InitializeComponent();
         }
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
+        private void btnOK_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void textBox7_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btn_tao_phieu_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(ngayNhap.Text) || string.IsNullOrEmpty(giaTri.Text) || string.IsNullOrEmpty(maNcc.Text) ||
-                string.IsNullOrEmpty(tenSach.Text) || string.IsNullOrEmpty(donGia.Text) ||
-                string.IsNullOrEmpty(soLuong.Text) || string.IsNullOrEmpty(maNv.Text))
+            if (string.IsNullOrEmpty(txtNCC.Text))
             {
                 MessageBox.Show("Không để trống các trường.", "Thông báo");
                 return;
             }
-            PhieuNhap phieuNhap = new PhieuNhap(DateTime.Parse(ngayNhap.Text), float.Parse(giaTri.Text), maNcc.Text, tenSach.Text,
-                float.Parse(donGia.Text), int.Parse(soLuong.Text), maNv.Text);
-            if (phieuNhapController.taoPhieuNhap(phieuNhap))
+            float giaTri;
+            if (!float.TryParse(txtGiaTriDonHang.Text, out giaTri))
+
+                MessageBox.Show("Giá trị đơn hàng lỗi", "Thông báo");
+            DateTime dateTime;
+            if (!DateTime.TryParse(txtNgayNhap.Text, out dateTime))
+                dateTime = DateTime.MinValue;
+            phieuNhap1.NgayNhap = dateTime;
+            phieuNhap1.MaPhieuNhap = txtMaPhieuNhap.Text;
+            phieuNhap1.GiaTri = giaTri;
+            phieuNhap1.TenNCC = txtNCC.Text;
+            PhieuNhap phieuNhap = new PhieuNhap(txtMaPhieuNhap.Text, dateTime, giaTri, txtNCC.Text, "", 0, 0);
+            if (phieuNhapController.ThemPhieuNhap(phieuNhap))
             {
                 MessageBox.Show("Thực thi dữ liệu thành công", "Thông báo");
+                
             }
             else
-            { 
-                MessageBox.Show("Thực thi dữ liệu thất bại", "Sách không tồn tại vui lòng nhập đầu sách");
-                FThemSach fThemSach = new FThemSach();
-                fThemSach.ShowDialog();
+            {
+                MessageBox.Show("Thực thi dữ liệu thất bại", "Thông báo");
             }
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            FDanhSachPhieuNhap fDanhSachPhieuNhap = new FDanhSachPhieuNhap();
+            this.Hide();
+            fDanhSachPhieuNhap.ShowDialog();
+        }
+
+        private void FThemPhieuNhap_Load(object sender, EventArgs e)
+        {
+            string ngayNhap;
+            DateTime dateTime = DateTime.Now;
+            ngayNhap = dateTime.ToShortDateString();
+            txtNgayNhap.Text = ngayNhap;
+        }
+
+        private void btnThemChiTiet_Click(object sender, EventArgs e)
+        {
 
         }
     }

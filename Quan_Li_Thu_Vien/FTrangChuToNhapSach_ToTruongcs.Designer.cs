@@ -36,6 +36,7 @@
             this.btnDSCacSach = new System.Windows.Forms.Button();
             this.btnDSNCC = new System.Windows.Forms.Button();
             this.btnDSPhieuNhap = new System.Windows.Forms.Button();
+            this.btnDSCTPN = new System.Windows.Forms.Button();
             this.panelNen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxNen)).BeginInit();
             this.panelMucLuc.SuspendLayout();
@@ -63,6 +64,7 @@
             // panelMucLuc
             // 
             this.panelMucLuc.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panelMucLuc.Controls.Add(this.btnDSCTPN);
             this.panelMucLuc.Controls.Add(this.btnXemNhanVienTrongTo);
             this.panelMucLuc.Controls.Add(this.btnThongTinCaNhan);
             this.panelMucLuc.Controls.Add(this.btnDSCacSach);
@@ -78,7 +80,7 @@
             // 
             this.btnXemNhanVienTrongTo.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnXemNhanVienTrongTo.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXemNhanVienTrongTo.Location = new System.Drawing.Point(-4, 200);
+            this.btnXemNhanVienTrongTo.Location = new System.Drawing.Point(-2, 268);
             this.btnXemNhanVienTrongTo.Name = "btnXemNhanVienTrongTo";
             this.btnXemNhanVienTrongTo.Size = new System.Drawing.Size(214, 65);
             this.btnXemNhanVienTrongTo.TabIndex = 14;
@@ -90,7 +92,7 @@
             // 
             this.btnThongTinCaNhan.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnThongTinCaNhan.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThongTinCaNhan.Location = new System.Drawing.Point(-2, 268);
+            this.btnThongTinCaNhan.Location = new System.Drawing.Point(0, 336);
             this.btnThongTinCaNhan.Name = "btnThongTinCaNhan";
             this.btnThongTinCaNhan.Size = new System.Drawing.Size(214, 65);
             this.btnThongTinCaNhan.TabIndex = 12;
@@ -102,7 +104,7 @@
             // 
             this.btnDSCacSach.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnDSCacSach.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDSCacSach.Location = new System.Drawing.Point(-4, 66);
+            this.btnDSCacSach.Location = new System.Drawing.Point(-2, 134);
             this.btnDSCacSach.Name = "btnDSCacSach";
             this.btnDSCacSach.Size = new System.Drawing.Size(214, 65);
             this.btnDSCacSach.TabIndex = 10;
@@ -114,7 +116,7 @@
             // 
             this.btnDSNCC.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnDSNCC.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDSNCC.Location = new System.Drawing.Point(-4, 132);
+            this.btnDSNCC.Location = new System.Drawing.Point(-2, 200);
             this.btnDSNCC.Name = "btnDSNCC";
             this.btnDSNCC.Size = new System.Drawing.Size(214, 65);
             this.btnDSNCC.TabIndex = 9;
@@ -133,6 +135,18 @@
             this.btnDSPhieuNhap.Text = "Danh sách phiếu nhập";
             this.btnDSPhieuNhap.UseVisualStyleBackColor = false;
             this.btnDSPhieuNhap.Click += new System.EventHandler(this.btnDSPhieuNhap_Click);
+            // 
+            // btnDSCTPN
+            // 
+            this.btnDSCTPN.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnDSCTPN.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDSCTPN.Location = new System.Drawing.Point(-2, 67);
+            this.btnDSCTPN.Name = "btnDSCTPN";
+            this.btnDSCTPN.Size = new System.Drawing.Size(214, 65);
+            this.btnDSCTPN.TabIndex = 15;
+            this.btnDSCTPN.Text = "Danh sách chi tiết phiếu nhập";
+            this.btnDSCTPN.UseVisualStyleBackColor = false;
+            this.btnDSCTPN.Click += new System.EventHandler(this.btnDSCTPN_Click);
             // 
             // FTrangChuToNhapSach_ToTruongcs
             // 
@@ -160,5 +174,6 @@
         private System.Windows.Forms.Button btnDSCacSach;
         private System.Windows.Forms.Button btnDSNCC;
         private System.Windows.Forms.Button btnDSPhieuNhap;
+        private System.Windows.Forms.Button btnDSCTPN;
     }
 }
