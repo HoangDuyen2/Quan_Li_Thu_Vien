@@ -532,7 +532,7 @@ RETURN (
 );
 --Kết thúc tìm kiếm DocGia theo TenDocGia
 --Tìm kiếm PhieuPhat theo MaSach
-CREATE FUNCTION SearchPhieuPhatByMaSach
+CREATE FUNCTION SearchPhieuPhatByTenSach
 (
     @TenSach nvarchar(50)
 )
