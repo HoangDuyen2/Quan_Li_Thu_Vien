@@ -14,7 +14,7 @@ namespace Quan_Li_Thu_Vien
     public partial class FDanhSachDocGia : Form
     {
         DBConnection conn = new DBConnection();
-        MuonTraSachController dsdg = new MuonTraSachController();
+        DocGiaController dsdg = new DocGiaController();
         private string maDocGia;
 
         public FDanhSachDocGia()

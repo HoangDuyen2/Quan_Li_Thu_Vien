@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace Quan_Li_Thu_Vien
 {
@@ -64,6 +65,31 @@ namespace Quan_Li_Thu_Vien
             adapter.Fill(dataTable);
             return dataTable;
         }
-
+        public bool XoaDocGia(string maDocGia)
+        {
+            using (SqlConnection connection = conn.GetSqlConnection())
+            {
+                try
+                {
+                    conn.openConnection();
+                    using (SqlCommand command = new SqlCommand("", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@", maDocGia);
+                        int rowsAffected = command.ExecuteNonQuery();
+                        return true;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi khi xóa độc giả: " + ex.Message, "Lỗi");
+                    return false;
+                }
+                finally
+                {
+                    conn.closeConnection();
+                }
+            }
+        }
     }
 }
