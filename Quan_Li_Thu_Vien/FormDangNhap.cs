@@ -114,7 +114,7 @@ namespace Quan_Li_Thu_Vien
                 }
                 if (Role == "ToTruong")
                 {
-                    if(maTo == "T001")
+                    if(maTo == "TO01")
                     {
                         FTrangChuToNhapSach_ToTruong fTrangChuToNhapSach_ToTruong = new FTrangChuToNhapSach_ToTruong();
                         this.Hide();
