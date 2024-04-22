@@ -13,19 +13,21 @@ namespace Quan_Li_Thu_Vien
     public partial class FDanhSachNhanVien : Form
     {
         SachController dsnv = new SachController();
+        public string maTo;
         public FDanhSachNhanVien()
         {
             InitializeComponent();
         }
         private void FDanhSachNhanVien_Load(object sender, EventArgs e)
         {
+            maTo = LoginInfo.maTo;
             LoadData();
         }
         public void LoadData()
         {
             try
             {
-                dtgvNV.DataSource = dsnv.DSNhanVienTrongTo();
+                MessageBox.Show(maTo);
                 dtgvNV.RowHeadersVisible = false;
                 dtgvNV.BackgroundColor = Color.White;
                 dtgvNV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;

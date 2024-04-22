@@ -54,11 +54,11 @@ namespace Quan_Li_Thu_Vien
             adapter.Fill(dataTable);
             return dataTable;
         }
-        public DataTable DSNhanVienTrongTo()
+        public DataTable DSNhanVienTrongTo(string maTo)
         {
-            SqlCommand command = new SqlCommand("proc_NhanVienTheoTo", conn.GetSqlConnection());
+            SqlCommand command = new SqlCommand("NhanVienTheoTo", conn.GetSqlConnection());
             command.CommandType = CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("@MaTo", "TO01");
+            command.Parameters.Add("@MaTo", SqlDbType.NVarChar).Value = maTo;
             DataTable table = new DataTable();
             using (SqlDataAdapter adapter = new SqlDataAdapter(command))
             {

@@ -12,6 +12,11 @@ namespace Quan_Li_Thu_Vien
 {
     public partial class FThemSach : Form
     {
+        string tenCuonSach;
+        public FThemSach(string tensach) : this()
+        {
+            tenCuonSach = tensach;
+        }
         public FThemSach()
         {
             InitializeComponent();
@@ -20,6 +25,8 @@ namespace Quan_Li_Thu_Vien
         private void FThemSach_Load(object sender, EventArgs e)
         {
             txtMaSach.Enabled = false;
+            if(tenCuonSach != "")
+                txtTenSach.Text = tenCuonSach;
         }
         #region Các button
         private void btnOK_Click(object sender, EventArgs e)

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Quan_Li_Thu_Vien
 {
-    public partial class FTrangChuToNhapSach_NhanVien : Form
+    public partial class FDanhSachNhaCungCap : Form
     {
-        public FTrangChuToNhapSach_NhanVien()
+        public FDanhSachNhaCungCap()
         {
             InitializeComponent();
         }

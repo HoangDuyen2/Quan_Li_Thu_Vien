@@ -166,6 +166,12 @@
     <Compile Include="FChiTietNXB.Designer.cs">
       <DependentUpon>FChiTietNXB.cs</DependentUpon>
     </Compile>
+    <Compile Include="FChiTietPhieNhap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FChiTietPhieNhap.Designer.cs">
+      <DependentUpon>FChiTietPhieNhap.cs</DependentUpon>
+    </Compile>
     <Compile Include="FChiTietSach.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -232,6 +238,12 @@
     <Compile Include="FDanhSachDocGiaViPham.Designer.cs">
       <DependentUpon>FDanhSachDocGiaViPham.cs</DependentUpon>
     </Compile>
+    <Compile Include="FDanhSachNhaCungCap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FDanhSachNhaCungCap.Designer.cs">
+      <DependentUpon>FDanhSachNhaCungCap.cs</DependentUpon>
+    </Compile>
     <Compile Include="FDanhSachNhanVien.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -285,6 +297,12 @@
     </Compile>
     <Compile Include="FNewLoaiSach.Designer.cs">
       <DependentUpon>FNewLoaiSach.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FNewNCC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FNewNCC.Designer.cs">
+      <DependentUpon>FNewNCC.cs</DependentUpon>
     </Compile>
     <Compile Include="FNewNV.cs">
       <SubType>Form</SubType>
@@ -346,11 +364,11 @@
     <Compile Include="FTrangChuToNhapSach_NhanVien.Designer.cs">
       <DependentUpon>FTrangChuToNhapSach_NhanVien.cs</DependentUpon>
     </Compile>
-    <Compile Include="FTrangChuToNhapSach_ToTruong.cs">
+    <Compile Include="FTrangChuToNhapSach_ToTruongcs.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FTrangChuToNhapSach_ToTruong.Designer.cs">
-      <DependentUpon>FTrangChuToNhapSach_ToTruong.cs</DependentUpon>
+    <Compile Include="FTrangChuToNhapSach_ToTruongcs.Designer.cs">
+      <DependentUpon>FTrangChuToNhapSach_ToTruongcs.cs</DependentUpon>
     </Compile>
     <Compile Include="FTrangChuToSach_NhanVien.cs">
       <SubType>Form</SubType>
@@ -376,6 +394,9 @@
     <Compile Include="Sach.cs" />
     <Compile Include="SachController.cs" />
     <Compile Include="TacGia.cs" />
+    <EmbeddedResource Include="FChiTietPhieNhap.resx">
+      <DependentUpon>FChiTietPhieNhap.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FChiTietSach.resx">
       <DependentUpon>FChiTietSach.cs</DependentUpon>
     </EmbeddedResource>
@@ -436,6 +457,9 @@
     <EmbeddedResource Include="FNewLoaiSach.resx">
       <DependentUpon>FNewLoaiSach.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FNewNCC.resx">
+      <DependentUpon>FNewNCC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FNewNXB.resx">
       <DependentUpon>FNewNXB.cs</DependentUpon>
     </EmbeddedResource>
@@ -459,6 +483,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FTrangChuToMuonSach_ToTruong.resx">
       <DependentUpon>FTrangChuToMuonSach_ToTruong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FTrangChuToNhapSach_ToTruongcs.resx">
+      <DependentUpon>FTrangChuToNhapSach_ToTruongcs.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FTrangChuToSach_NhanVien.resx">
       <DependentUpon>FTrangChuToSach_NhanVien.cs</DependentUpon>

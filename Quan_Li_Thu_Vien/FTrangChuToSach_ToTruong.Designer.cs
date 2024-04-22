@@ -126,6 +126,7 @@ namespace Quan_Li_Thu_Vien
             this.btnDanhSachSachDangMuon.TabIndex = 10;
             this.btnDanhSachSachDangMuon.Text = "     Danh sách sách      đang mượn";
             this.btnDanhSachSachDangMuon.UseVisualStyleBackColor = false;
+            this.btnDanhSachSachDangMuon.Click += new System.EventHandler(this.btnDanhSachSachDangMuon_Click);
             // 
             // btnDanhSachCacSachBiHu
             // 
@@ -137,6 +138,7 @@ namespace Quan_Li_Thu_Vien
             this.btnDanhSachCacSachBiHu.TabIndex = 9;
             this.btnDanhSachCacSachBiHu.Text = "     Danh sách sách      bị hư";
             this.btnDanhSachCacSachBiHu.UseVisualStyleBackColor = false;
+            this.btnDanhSachCacSachBiHu.Click += new System.EventHandler(this.btnDanhSachCacSachBiHu_Click);
             // 
             // btnXemDSSach
             // 
@@ -148,6 +150,7 @@ namespace Quan_Li_Thu_Vien
             this.btnXemDSSach.TabIndex = 8;
             this.btnXemDSSach.Text = "Danh sách các sách";
             this.btnXemDSSach.UseVisualStyleBackColor = false;
+            this.btnXemDSSach.Click += new System.EventHandler(this.btnXemDSSach_Click);
             // 
             // btnDSNhanVien
             // 
