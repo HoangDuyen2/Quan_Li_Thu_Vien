@@ -526,8 +526,8 @@ RETURN (
     INNER JOIN Sach s ON s.MaSach = pp.MaSach
      WHERE TenSach LIKE '%' + @TenSach + '%'
 );
--Kết thúc Tìm kiếm PhieuPhat theo TenSach
--auto ID độc giả
+--Kết thúc Tìm kiếm PhieuPhat theo TenSach
+--auto ID độc giả
 CREATE FUNCTION func_Auto_DocGiaID()
 RETURNS NVARCHAR(10)
 AS
