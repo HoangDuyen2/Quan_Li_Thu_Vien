@@ -527,3 +527,31 @@ RETURN (
      WHERE TenSach LIKE '%' + @TenSach + '%'
 );
 -Kết thúc Tìm kiếm PhieuPhat theo TenSach
+-auto ID độc giả
+CREATE FUNCTION func_Auto_DocGiaID()
+RETURNS NVARCHAR(10)
+AS
+BEGIN
+    DECLARE @id_next VARCHAR(10)
+    DECLARE @max INT
+    DECLARE @object VARCHAR(2)
+
+    BEGIN
+        SET @object = 'DG'
+    END
+
+    SELECT @max = COUNT(MaDocGia) FROM DocGia
+
+    SET @id_next = @object + RIGHT('000' + CAST(@max + 1 AS nvarchar(10)), 3)
+
+    -- Kiểm tra id đã tồn tại chưa
+    WHILE(EXISTS(SELECT MaDocGia FROM DocGia WHERE MaDocGia = @id_next))
+    BEGIN
+        SET @max = @max + 1
+        SET @id_next = @object + RIGHT('000' + CAST(@max + 1 AS nvarchar(10)), 3)
+    END
+
+    RETURN @id_next
+END
+GO
+--End auto ID độc giả
