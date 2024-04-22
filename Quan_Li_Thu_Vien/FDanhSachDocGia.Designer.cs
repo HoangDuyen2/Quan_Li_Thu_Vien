@@ -176,6 +176,7 @@
             this.ClientSize = new System.Drawing.Size(1353, 653);
             this.Controls.Add(this.panelNen);
             this.Name = "FDanhSachDocGia";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FDanhSachDocGia";
             this.Load += new System.EventHandler(this.FDanhSachDocGia_Load);
             this.panelNen.ResumeLayout(false);
