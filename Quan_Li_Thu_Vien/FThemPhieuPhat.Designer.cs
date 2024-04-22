@@ -208,6 +208,7 @@
             this.Controls.Add(this.lbMaPhieuPhat);
             this.Controls.Add(this.lbThongTinPhieuPhat);
             this.Name = "FThemPhieuPhat";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FThemPhieuPhat";
             this.Load += new System.EventHandler(this.FThemPhieuPhat_Load);
             this.ResumeLayout(false);
