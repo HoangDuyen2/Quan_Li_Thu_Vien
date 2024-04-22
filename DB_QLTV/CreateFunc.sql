@@ -142,35 +142,6 @@ END
 GO
 --Kết thúc hàm tự động thêm mã loại sách
 
---Tự động tăng Mã đọc giả
-CREATE FUNCTION func_Auto_DocGiaID(@role TINYINT)
-RETURNS NVARCHAR(10)
-AS
-BEGIN
-	DECLARE @id_next VARCHAR(10)
-	DECLARE @max INT
-	DECLARE @object VARCHAR(2)
-	IF @role = N'SV'
-		BEGIN
-			SET @object = 'SV'
-		END
-		ELSE
-			BEGIN
-				SET @object = 'GV'
-			END
-		SELECT @max = COUNT(MaLoaiDG) FROM dbo.DocGia WHERE MaLoaiDG = @role
-	SET @id_next = @object + RIGHT('0' + CAST(@max AS nvarchar(10)), 3)
-	-- Kiểm tra id đã tồn tại chưa
-	WHILE(EXISTS(SELECT MaDocGia FROM [DocGia] WHERE MaDocGia = @id_next))
-	BEGIN
-		SET @max = @max + 1
-		SET @id_next = @object + RIGHT('0' + CAST(@max AS nvarchar(10)), 3)
-	END
-		RETURN @id_next
-END
-GO
---Kết thúc hàm tự động thêm mã độc giả
-
 
 --Tự động tăng Mã nhà cung cấp khi cung cấp sách
 CREATE FUNCTION func_Auto_CungCapID()
