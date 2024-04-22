@@ -463,3 +463,54 @@ BEGIN
 END
 --End Delete PMT
 
+--Thêm nhà cung cấp
+CREATE PROCEDURE [dbo].[pro_InsertNCC] 
+    @TenNCC nvarchar(50),
+    @DiaChi nvarchar(255),
+    @SDT nvarchar(11)
+AS
+BEGIN
+    BEGIN TRANSACTION Tran_InsertNCC
+    BEGIN TRY
+        DECLARE @LastID NVARCHAR(10)
+        SELECT @LastID = MAX(MaNhaCC) FROM dbo.CungCap
+
+        DECLARE @NextID NVARCHAR(10)
+		SET @NextID = LEFT(@LastID, LEN(@LastID) - 3) + RIGHT('000' + CAST(CAST(RIGHT(@LastID, 3) AS INT) + 1 AS NVARCHAR), 3);
+
+        INSERT INTO dbo.CungCap(MaNhaCC, TenNhaCC, DiaChi, SoDienThoai)
+        VALUES (@NextID, @TenNCC, @DiaChi, @SDT)
+        
+        COMMIT TRANSACTION Tran_InsertNCC
+    END TRY
+    BEGIN CATCH
+        DECLARE @err NVARCHAR(MAX)
+        SELECT @err = N'Lỗi: ' + ERROR_MESSAGE()
+        RAISERROR(@err, 16, 1)
+        ROLLBACK TRANSACTION Tran_InsertNCC
+    END CATCH
+END
+--Kết thúc thêm nhà cung cấp
+
+--Sửa nhà cung cấp
+CREATE PROCEDURE pro_UpdateNCC (@MaNCC nvarchar(10),
+								@TenNCC nvarchar(50),
+								@DiaChi nvarchar(255),
+								@SDT nvarchar(11))
+AS
+BEGIN
+	BEGIN TRANSACTION Tran_UpdateNCC
+	BEGIN TRY
+		UPDATE dbo.CungCap SET TenNhaCC = @TenNCC,
+						   DiaChi = @DiaChi,
+						   SoDienThoai = @SDT
+						WHERE MaNhaCC = @MaNCC
+
+		COMMIT TRANSACTION Tran_UpdateNCC
+	END TRY
+	BEGIN CATCH
+		PRINT('Cập nhật không thành công')
+		ROLLBACK TRANSACTION Tran_UpdateNCC
+	END CATCH
+END
+--Kết thúc sửa nhà cung cấp

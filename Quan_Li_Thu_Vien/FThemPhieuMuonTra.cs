@@ -14,11 +14,11 @@ namespace Quan_Li_Thu_Vien
     public partial class FThemPhieuMuonTra : Form
     {
         DBConnection conn = new DBConnection();
+        MuonTraSachController muonTraSachController = new MuonTraSachController();
         public FThemPhieuMuonTra()
         {
             InitializeComponent();
         }
-        MuonTraSachController muonTraSachController = new MuonTraSachController();
         private void FThemPhieuMuonTra_Load(object sender, EventArgs e)
         {
 
@@ -74,11 +74,6 @@ namespace Quan_Li_Thu_Vien
         }
 
         private void txtMaDocGia_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void FThemPhieuMuonTra_Load_1(object sender, EventArgs e)
         {
 
         }

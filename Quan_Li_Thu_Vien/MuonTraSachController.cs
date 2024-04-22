@@ -156,11 +156,47 @@ namespace Quan_Li_Thu_Vien
                 }
             }
         }
+        public bool XoaPhieuPhat(string maPhieuPhat)
+        {
+            using (SqlConnection connection = conn.GetSqlConnection())
+            {
+                try
+                {
+                    conn.openConnection();
+                    using (SqlCommand command = new SqlCommand("DeletePhieuPhat", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@maphieuphat", maPhieuPhat);
+                        int rowsAffected = command.ExecuteNonQuery();
+                        return true;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi khi xóa phiếu phạt: " + ex.Message, "Lỗi");
+                    return false;
+                }
+                finally
+                {
+                    conn.closeConnection();
+                }
+            }
+        }
         public DataTable timKiemPhieuMuonTra(string tenDocGia)
         {
             string funcName = "func_SearchPMTByTenDG";
             SqlCommand command = new SqlCommand("Select * from " + funcName + " (@ReaderName)", conn.GetSqlConnection());
             command.Parameters.Add("@ReaderName", SqlDbType.NVarChar).Value = tenDocGia;
+            DataTable table = new DataTable();
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            adapter.Fill(table);
+            return table;
+        }
+        public DataTable timKiemPhieuPhat(string MaSach)
+        {
+            string funcName = "";
+            SqlCommand command = new SqlCommand("Select * from " + funcName + " (@)", conn.GetSqlConnection());
+            command.Parameters.Add("@", SqlDbType.NVarChar).Value = MaSach;
             DataTable table = new DataTable();
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             adapter.Fill(table);
