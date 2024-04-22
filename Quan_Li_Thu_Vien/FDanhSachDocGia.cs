@@ -40,10 +40,26 @@ namespace Quan_Li_Thu_Vien
                 maDocGia = dtgvDocGia.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
             }
         }
-
+        private void btnTimKiem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                dtgvDocGia.DataSource = dsdg.timKiemDocGia(txtTenDocGia.Text);
+                dtgvDocGia.RowHeadersVisible = false;
+                dtgvDocGia.BackgroundColor = Color.White;
+                dtgvDocGia.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            }
+            catch
+            {
+                MessageBox.Show("Không truy xuất được dữ liệu", "Lỗi");
+            }
+        }
         private void btnThem_Click(object sender, EventArgs e)
         {
-
+            FThemDocGia fThemDocGia = new FThemDocGia();
+            this.Close();
+            fThemDocGia.ShowDialog();
+            this.Show();
         }
         private void btnXoa_Click(object sender, EventArgs e)
         {
@@ -71,7 +87,10 @@ namespace Quan_Li_Thu_Vien
         }
         private void btnSua_Click(object sender, EventArgs e)
         {
-
+            FSuaDocGia fSuaDocGia = new FSuaDocGia();
+            this.Close();
+            fSuaDocGia.ShowDialog();
+            this.Show();
         }
 
         private void btnExit_Click(object sender, EventArgs e)

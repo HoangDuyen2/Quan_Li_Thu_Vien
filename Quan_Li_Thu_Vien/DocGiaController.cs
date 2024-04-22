@@ -91,5 +91,15 @@ namespace Quan_Li_Thu_Vien
                 }
             }
         }
+        public DataTable timKiemDocGia(string tenDocGia)
+        {
+            string funcName = "";
+            SqlCommand command = new SqlCommand("Select * from " + funcName + " (@)", conn.GetSqlConnection());
+            command.Parameters.Add("@", SqlDbType.NVarChar).Value = tenDocGia;
+            DataTable table = new DataTable();
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            adapter.Fill(table);
+            return table;
+        }
     }
 }
