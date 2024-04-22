@@ -519,3 +519,15 @@ BEGIN
 	RETURN 0
 END
 --Kết thúc tìm kiếm theo tên
+--Tìm kiếm DocGia ten TenDocGia
+CREATE FUNCTION func_SearchDocGiaByTenDocGia(
+    @TenDocGia VARCHAR(255)
+)
+RETURNS TABLE
+AS
+RETURN (
+    SELECT *
+    FROM DocGia
+    WHERE TenDocGia LIKE '%' + @TenDocGia + '%'
+);
+--Kết thúc tìm kiếm DocGia ten TenDocGia
