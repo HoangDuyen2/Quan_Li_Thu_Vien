@@ -47,7 +47,27 @@ namespace Quan_Li_Thu_Vien
         }
         private void btnXoa_Click(object sender, EventArgs e)
         {
+            if (!string.IsNullOrEmpty(maDocGia))
+            {
+                bool isDeleted = dsdg.XoaDocGia(maDocGia);
 
+                if (isDeleted)
+                {
+                    MessageBox.Show("Xóa phiếu mượn trả thành công", "Thông báo");
+                    FDanhSachDocGia danhSachDocGia = new FDanhSachDocGia();
+                    this.Close();
+                    danhSachDocGia.ShowDialog();
+                    this.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Xóa độc giả không thành công", "Lỗi");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một độc giả để xóa", "Thông báo");
+            }
         }
         private void btnSua_Click(object sender, EventArgs e)
         {
