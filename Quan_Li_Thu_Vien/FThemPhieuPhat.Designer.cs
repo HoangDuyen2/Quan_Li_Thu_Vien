@@ -54,6 +54,7 @@
             this.btnExit.TabIndex = 61;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = false;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // btnOK
             // 
@@ -208,6 +209,7 @@
             this.Controls.Add(this.lbThongTinPhieuPhat);
             this.Name = "FThemPhieuPhat";
             this.Text = "FThemPhieuPhat";
+            this.Load += new System.EventHandler(this.FThemPhieuPhat_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

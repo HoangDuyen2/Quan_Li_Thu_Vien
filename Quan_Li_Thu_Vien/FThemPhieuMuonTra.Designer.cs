@@ -212,7 +212,6 @@
             this.Name = "FThemPhieuMuonTra";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FThemPhieuMuonTra";
-            this.Load += new System.EventHandler(this.FThemPhieuMuonTra_Load_1);
             this.ResumeLayout(false);
             this.PerformLayout();
 
