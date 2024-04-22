@@ -35,7 +35,7 @@ namespace Quan_Li_Thu_Vien
         private void btnThem_Click(object sender, EventArgs e)
         {
             FThemPhieuPhat fThemPhieuPhat = new FThemPhieuPhat();
-            this.Hide();
+            this.Close();
             fThemPhieuPhat.ShowDialog();
             this.Show();
         }
@@ -43,7 +43,7 @@ namespace Quan_Li_Thu_Vien
         private void btnSua_Click(object sender, EventArgs e)
         {
             FSuaPhieuPhat fSuaPhieuPhat = new FSuaPhieuPhat();
-            this.Hide();
+            this.Close();
             fSuaPhieuPhat.ShowDialog();
             this.Show();
         }
