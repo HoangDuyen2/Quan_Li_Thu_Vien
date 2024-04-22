@@ -557,7 +557,7 @@ BEGIN
     SET @MaPhieuPhat = dbo.func_Auto_PhieuPhatID()
     SET @NgayXuatPhieu = CAST(GETDATE() AS DATE)
 
-    IF EXISTS (SELECT 1 FROM ChiTietPhieuMuonTra WHERE PhieuMuonTra = @MaPhieuMuonTra AND MaSach = @MaSach)
+    IF EXISTS (SELECT 1 FROM ChiTietPhieuMuonTra WHERE MaPhieuMuonTra = @MaPhieuMuonTra AND MaSach = @MaSach)
     BEGIN
         INSERT INTO PhieuPhat (MaPhieuPhat, MaPhieuMuonTra, MaSach, NgayXuatPhieu, TongTien)
         VALUES (@MaPhieuPhat, @MaPhieuMuonTra, @MaSach, @NgayXuatPhieu, 0)
