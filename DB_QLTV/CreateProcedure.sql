@@ -669,3 +669,68 @@ BEGIN
     END
 END
 --End Insert DocGia
+
+--Update DocGia
+CREATE PROCEDURE UpdateDocGia
+    @MaDocGia NVARCHAR(10),
+    @TenDocGia NVARCHAR(50),
+    @Email NVARCHAR(50),
+    @SoDienThoai NVARCHAR(20),
+    @GioiTinh NCHAR(1),
+    @MaLoaiDG NVARCHAR(10)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    -- Kiểm tra độc giả có tồn tại không
+    IF EXISTS (SELECT 1 FROM DocGia WHERE MaDocGia = @MaDocGia)
+    BEGIN
+        -- Kiểm tra email
+        IF NOT EXISTS (SELECT 1 FROM DocGia WHERE Email = @Email AND MaDocGia <> @MaDocGia)
+        BEGIN
+            -- Kiểm tra số điện thoại
+            IF NOT EXISTS (SELECT 1 FROM DocGia WHERE SoDienThoai = @SoDienThoai AND MaDocGia <> @MaDocGia)
+            BEGIN
+                -- Kiểm tra mã loại độc giả
+                IF @MaLoaiDG IN ('LDG001', 'LDG002')
+                BEGIN
+                    -- Kiểm tra giới tính
+                    IF @GioiTinh IN ('F', 'M')
+                    BEGIN
+                        -- Cập nhật thông tin độc giả
+                        UPDATE DocGia
+                        SET TenDocGia = @TenDocGia,
+                            Email = @Email,
+                            SoDienThoai = @SoDienThoai,
+                            GioiTinh = @GioiTinh,
+                            MaLoaiDG = @MaLoaiDG
+                        WHERE MaDocGia = @MaDocGia;
+
+                        SELECT 1 AS Success;
+                    END
+                    ELSE
+                    BEGIN
+                        RAISERROR('Giới tính không hợp lệ. Vui lòng nhập "F" hoặc "M".', 16, 1);
+                    END
+                END
+                ELSE
+                BEGIN
+                    RAISERROR('Mã loại độc giả không hợp lệ. Vui lòng nhập "LDG001" hoặc "LDG002".', 16, 1);
+                END
+            END
+            ELSE
+            BEGIN
+                RAISERROR('Số điện thoại đã tồn tại.', 16, 1);
+            END
+        END
+        ELSE
+        BEGIN
+            RAISERROR('Email đã tồn tại.', 16, 1);
+        END
+    END
+    ELSE
+    BEGIN
+        RAISERROR('Mã độc giả không tồn tại.', 16, 1);
+    END
+END
+--End Update DocGia
