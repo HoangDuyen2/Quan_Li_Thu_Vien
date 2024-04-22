@@ -618,17 +618,35 @@ END
 
 	    
 --Insert DocGia
+CREATE FUNCTION GetNextDocGiaID()
+RETURNS NVARCHAR(10)
+AS
+BEGIN
+    DECLARE @NewID NVARCHAR(10)
+    DECLARE @MaxID INT
+    
+    SELECT @MaxID = MAX(CAST(SUBSTRING(MaDocGia, 4, 3) AS INT)) FROM DocGia
+    
+    IF @MaxID IS NULL
+        SET @NewID = 'DG001'
+    ELSE
+        SET @NewID = 'DG' + RIGHT('000' + CAST(@MaxID + 1 AS VARCHAR(3)), 3)
+    
+    RETURN @NewID
+END
+
 CREATE PROCEDURE InsertDocGia
-    @MaDocGia NVARCHAR(10),
     @TenDocGia NVARCHAR(50),
     @Email NVARCHAR(50),
     @SoDienThoai NVARCHAR(20),
     @GioiTinh NCHAR(1),
-    @MaLoaiDG NVARCHAR(10),
+    @MaLoaiDG NVARCHAR(10)
 AS
 BEGIN
     SET NOCOUNT ON;
+
     DECLARE @NgayTao DATE = CAST(GETDATE() AS DATE);
+    DECLARE @MaDocGia NVARCHAR(10) = func_Auto_DocGiaID();
 
     -- Kiểm tra email
     IF NOT EXISTS (SELECT 1 FROM DocGia WHERE Email = @Email)
@@ -637,7 +655,7 @@ BEGIN
         IF NOT EXISTS (SELECT 1 FROM DocGia WHERE SoDienThoai = @SoDienThoai)
         BEGIN
             -- Kiểm tra mã loại độc giả
-            IF @MaLoaiDG IN ('GV', 'SV')
+            IF @MaLoaiDG IN ('SV', 'GV')
             BEGIN
                 -- Kiểm tra giới tính
                 IF @GioiTinh IN ('F', 'M')
@@ -692,7 +710,7 @@ BEGIN
             IF NOT EXISTS (SELECT 1 FROM DocGia WHERE SoDienThoai = @SoDienThoai AND MaDocGia <> @MaDocGia)
             BEGIN
                 -- Kiểm tra mã loại độc giả
-                IF @MaLoaiDG IN ('LDG001', 'LDG002')
+                IF @MaLoaiDG IN ('SV', 'GV')
                 BEGIN
                     -- Kiểm tra giới tính
                     IF @GioiTinh IN ('F', 'M')
