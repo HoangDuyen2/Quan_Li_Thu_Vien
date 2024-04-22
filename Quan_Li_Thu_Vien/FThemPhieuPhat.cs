@@ -24,10 +24,6 @@ namespace Quan_Li_Thu_Vien
         {
 
         }
-        private void btnOK_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnExit_Click(object sender, EventArgs e)
         {

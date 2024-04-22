@@ -54,6 +54,7 @@
             this.btnExit.TabIndex = 61;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = false;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // btnOK
             // 
@@ -206,6 +207,7 @@
             this.Controls.Add(this.lbMaPhieuMT);
             this.Controls.Add(this.lbThongTinCuonSach);
             this.Name = "FSuaPhieuMuonTra";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FSuaPhieuMuonTra";
             this.Load += new System.EventHandler(this.FSuaPhieuMuonTra_Load);
             this.ResumeLayout(false);

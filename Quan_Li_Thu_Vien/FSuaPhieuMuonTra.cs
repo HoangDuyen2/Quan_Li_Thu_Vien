@@ -44,5 +44,13 @@ namespace Quan_Li_Thu_Vien
             fDanhSachPhieuMuonTra.ShowDialog();
             this.Show();
         }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            FDanhSachPhieuMuonTra fDanhSachPhieuMuonTra = new FDanhSachPhieuMuonTra();
+            this.Close();
+            fDanhSachPhieuMuonTra.ShowDialog();
+            this.Show();
+        }
     }
 }

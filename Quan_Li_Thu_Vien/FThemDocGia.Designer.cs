@@ -229,6 +229,7 @@
             this.Controls.Add(this.lblMaDocGia);
             this.Controls.Add(this.lblThongTinPhieuMuonTra);
             this.Name = "FThemDocGia";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FThemDocGia";
             this.ResumeLayout(false);
             this.PerformLayout();

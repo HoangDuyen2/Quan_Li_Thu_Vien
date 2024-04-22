@@ -515,6 +515,9 @@
     <EmbeddedResource Include="FNewNCC.resx">
       <DependentUpon>FNewNCC.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FNewNV.resx">
+      <DependentUpon>FNewNV.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FNewNXB.resx">
       <DependentUpon>FNewNXB.cs</DependentUpon>
     </EmbeddedResource>
