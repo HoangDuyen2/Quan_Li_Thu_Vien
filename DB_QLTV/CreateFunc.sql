@@ -544,6 +544,6 @@ RETURN (
     INNER JOIN PhieuMuonTra mt ON pp.MaPhieuMuonTra = mt.MaPhieuMuonTra
     INNER JOIN DocGia dg ON mt.MaDocGia = dg.MaDocGia
     INNER JOIN Sach s ON s.MaSach = pp.MaSach
-    WHERE s.MaSach = @MaSach
+    WHERE s.TenSach = @TenSach
 );
 -Kết thúc Tìm kiếm PhieuPhat theo MaSach
