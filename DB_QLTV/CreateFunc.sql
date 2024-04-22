@@ -519,7 +519,7 @@ BEGIN
 	RETURN 0
 END
 --Kết thúc tìm kiếm theo tên
---Tìm kiếm DocGia ten TenDocGia
+--Tìm kiếm DocGia theo TenDocGia
 CREATE FUNCTION func_SearchDocGiaByTenDocGia(
     @TenDocGia VARCHAR(255)
 )
@@ -530,4 +530,20 @@ RETURN (
     FROM DocGia
     WHERE TenDocGia LIKE '%' + @TenDocGia + '%'
 );
---Kết thúc tìm kiếm DocGia ten TenDocGia
+--Kết thúc tìm kiếm DocGia theo TenDocGia
+--Tìm kiếm PhieuPhat theo MaSach
+CREATE FUNCTION SearchPhieuPhatByMaSach
+(
+    @MaSach nvarchar(10)
+)
+RETURNS TABLE
+AS
+RETURN (
+    SELECT pp.MaPhieuPhat, mt.MaPhieuMuonTra, dg.TenDocGia, s.TenSach, pp.TongTien
+    FROM PhieuPhat pp
+    INNER JOIN PhieuMuonTra mt ON pp.MaPhieuMuonTra = mt.MaPhieuMuonTra
+    INNER JOIN DocGia dg ON mt.MaDocGia = dg.MaDocGia
+    INNER JOIN Sach s ON s.MaSach = pp.MaSach
+    WHERE s.MaSach = @MaSach
+);
+-Kết thúc Tìm kiếm PhieuPhat theo MaSach
