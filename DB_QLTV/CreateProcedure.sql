@@ -618,22 +618,6 @@ END
 
 	    
 --Insert DocGia
-CREATE FUNCTION GetNextDocGiaID()
-RETURNS NVARCHAR(10)
-AS
-BEGIN
-    DECLARE @NewID NVARCHAR(10)
-    DECLARE @MaxID INT
-    
-    SELECT @MaxID = MAX(CAST(SUBSTRING(MaDocGia, 4, 3) AS INT)) FROM DocGia
-    
-    IF @MaxID IS NULL
-        SET @NewID = 'DG001'
-    ELSE
-        SET @NewID = 'DG' + RIGHT('000' + CAST(@MaxID + 1 AS VARCHAR(3)), 3)
-    
-    RETURN @NewID
-END
 
 CREATE PROCEDURE InsertDocGia
     @TenDocGia NVARCHAR(50),
