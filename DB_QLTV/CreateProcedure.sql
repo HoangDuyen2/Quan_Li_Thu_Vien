@@ -570,3 +570,48 @@ BEGIN
 END
 GO
 --End Insert PhieuPhat
+
+--Đã trả Chi tiết Phiếu mượn trả	    
+CREATE PROCEDURE DaTraChiTietPhieuMuonTra
+    @MaPhieuMuonTra VARCHAR(20),
+    @TenSach VARCHAR(100)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DECLARE @MaSach VARCHAR(20)
+    DECLARE @NgayTra DATE
+
+    SELECT @MaSach = MaSach
+    FROM ChiTietPhieuMuonTra
+    WHERE MaPhieuMuonTra = @MaPhieuMuonTra
+      AND MaSach IN (SELECT MaSach FROM Sach WHERE TenSach = @TenSach)
+
+    SET @NgayTra = CAST(GETDATE() AS DATE)
+
+    IF @MaSach IS NOT NULL
+    BEGIN
+        UPDATE ChiTietPhieuMuonTra
+        SET TinhTrang = 'Đã trả',
+            NgayTra = @NgayTra
+        WHERE MaPhieuMuonTra = @MaPhieuMuonTra
+          AND MaSach = @MaSach
+    END
+    ELSE
+    BEGIN
+        RAISERROR('Không tìm thấy mã sách tương ứng với tên sách đã nhập.', 16, 1)
+        RETURN
+    END
+END
+GO
+--End Đã trả Chi tiết Phiếu mượn trả	   
+--Xem CTPMT
+Create procedure XemCTPMTtheomaPMT
+@mapmt nvarchar(10)
+AS
+BEGIN
+SELECT *
+  FROM [QL_ThuVien].[dbo].[ChiTietPhieuMuonTra]
+  WHERE MaPhieuMuonTra= @mapmt
+END
+--End Xem CTPMT
