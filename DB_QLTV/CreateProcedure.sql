@@ -514,3 +514,91 @@ BEGIN
 	END CATCH
 END
 --Kết thúc sửa nhà cung cấp
+
+--Thêm Phiếu nhập
+CREATE Procedure InsertPhieuNhap(
+    @NgayNhap DATE,
+    @GiaTriDonHang INT,
+	@TenNhaCC NVARCHAR(50)
+)
+AS
+BEGIN
+    BEGIN TRANSACTION Tran_InsertPhieuNhap
+	BEGIN TRY
+		DECLARE @MaNCC NVARCHAR(10)
+		SELECT @MaNCC = MaNhaCC FROM CungCap WHERE TenNhaCC = @TenNhaCC
+
+		DECLARE @LastID NVARCHAR(10)
+        SELECT @LastID = MAX(MaPhieuNhap) FROM dbo.PhieuNhap
+
+        DECLARE @NextID NVARCHAR(10)
+		SET @NextID = LEFT(@LastID, LEN(@LastID) - 3) + RIGHT('000' + CAST(CAST(RIGHT(@LastID, 3) AS INT) + 1 AS NVARCHAR), 3);
+
+		INSERT INTO dbo.PhieuNhap(MaPhieuNhap, NgayNhap, GiaTriDonHang, MaNhaCC, NgayTao)
+		VALUES (@NextID, @NgayNhap, @GiaTriDonHang, @MaNCC,GETDATE())
+
+		COMMIT TRANSACTION Tran_InsertPhieuNhap
+    END TRY
+	BEGIN CATCH
+		ROLLBACK TRANSACTION Tran_InsertPhieuNhap
+		PRINT('Thêm không thành công!')
+	END CATCH
+END
+--Kết thúc thêm phiếu nhập
+
+--Thêm chi tiết phiếu nhập
+CREATE Procedure InsertChiTietPhieuNhap(
+    @MaPhieuNhap NVARCHAR(10),
+	@TenSach NVARCHAR(50),
+    @DonGia INT,
+	@SL INT
+)
+AS
+BEGIN
+    BEGIN TRANSACTION Tran_InsertChiTietPhieuNhap
+	BEGIN TRY
+		DECLARE @MaSach NVARCHAR(10)
+		SELECT @MaSach = MaSach FROM Sach WHERE TenSach = @TenSach
+
+		INSERT INTO dbo.ChiTietPhieuNhap(MaPhieuNhap, MaSach, DonGia, SL)
+		VALUES (@MaPhieuNhap, @MaSach, @DonGia, @SL)
+
+		COMMIT TRANSACTION Tran_InsertChiTietPhieuNhap
+    END TRY
+	BEGIN CATCH
+		ROLLBACK TRANSACTION Tran_InsertChiTietPhieuNhap
+		PRINT('Thêm không thành công!')
+	END CATCH
+END
+--Kết thúc thêm chi tiết phiếu nhập
+
+--Sửa chi tiết phiếu nhập
+CREATE Procedure UpdateChiTietPhieuNhap(
+    @MaPhieuNhap NVARCHAR(10),
+	@TenSach NVARCHAR(50),
+    @DonGia INT,
+	@SLCu INT,
+	@SL INT
+)
+AS
+BEGIN
+    BEGIN TRANSACTION Tran_UpdateChiTietPhieuNhap
+	BEGIN TRY
+		DECLARE @MaSach NVARCHAR(10)
+		SELECT @MaSach = MaSach FROM Sach WHERE TenSach = @TenSach
+
+		UPDATE dbo.ChiTietPhieuNhap SET DonGia = @DonGia,
+						   SL = @SL
+						WHERE MaPhieuNhap = @MaPhieuNhap AND MaSach = @MaSach
+		UPDATE dbo.Sach SET SoLuongSach = SoLuongSach - @SLCu + @SL,
+							SoLuongTon = SoLuongTon - @SLCu + @SL
+						WHERE MaSach = @MaSach
+
+		COMMIT TRANSACTION Tran_UpdateChiTietPhieuNhap
+    END TRY
+	BEGIN CATCH
+		ROLLBACK TRANSACTION Tran_UpdateChiTietPhieuNhap
+		PRINT('Thêm không thành công!')
+	END CATCH
+END
+--Kết thúc cập nhật chi tiết phiếu nhập
