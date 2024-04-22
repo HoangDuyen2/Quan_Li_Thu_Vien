@@ -534,7 +534,7 @@ RETURN (
 --Tìm kiếm PhieuPhat theo MaSach
 CREATE FUNCTION SearchPhieuPhatByMaSach
 (
-    @MaSach nvarchar(10)
+    @TenSach nvarchar(10)
 )
 RETURNS TABLE
 AS
