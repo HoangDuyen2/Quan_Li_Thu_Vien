@@ -167,26 +167,6 @@ END
 GO
 --Kết thúc hàm tự động thêm mã nhà cung cấp
 
---Tự động tăng Mã phiếu nhập
-CREATE FUNCTION func_Auto_PhieuMuonTraID()
-RETURNS NVARCHAR(10)
-AS
-BEGIN
-    DECLARE @id_next VARCHAR(10)
-    DECLARE @max INT
-    DECLARE @object VARCHAR(2)
-    
-    SET @object = 'MT'
-    
-    SELECT @max = ISNULL(MAX(CAST(SUBSTRING(MaPhieuMuonTra, 3, LEN(MaPhieuMuonTra) - 2) AS INT)), 0) 
-    FROM PhieuMuonTra
-
-    SET @id_next = @object + RIGHT('00' + CAST((@max + 1) AS nvarchar(10)), 3)
-
-    RETURN @id_next
-END
-GO
---Kết thúc hàm tự động thêm mã nhà phiếu nhập
 	
 -- Tự động tăng thêm Mã Phiếu Mượn Trả khi thêm Phiếu Mượn Trả
 CREATE FUNCTION func_Auto_PhieuMuonTraID()
