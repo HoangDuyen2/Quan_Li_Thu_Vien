@@ -16,5 +16,13 @@ namespace Quan_Li_Thu_Vien
         {
             InitializeComponent();
         }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            FDanhSachPhieuPhat fDanhSachPhieuPhat = new FDanhSachPhieuPhat();
+            this.Close();
+            fDanhSachPhieuPhat.ShowDialog();
+            this.Show();
+        }
     }
 }

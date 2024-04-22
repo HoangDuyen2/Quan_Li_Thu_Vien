@@ -54,10 +54,10 @@
             this.panelNen.Controls.Add(this.btnThem);
             this.panelNen.Controls.Add(this.lbDanhSachPhieuPhat);
             this.panelNen.Controls.Add(this.dtgvPhieuPhat);
-            this.panelNen.Location = new System.Drawing.Point(1, 2);
+            this.panelNen.Location = new System.Drawing.Point(-1, 2);
             this.panelNen.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelNen.Name = "panelNen";
-            this.panelNen.Size = new System.Drawing.Size(1355, 650);
+            this.panelNen.Size = new System.Drawing.Size(1357, 693);
             this.panelNen.TabIndex = 5;
             // 
             // btnTimKiem
@@ -96,7 +96,7 @@
             this.btnExit.BackColor = System.Drawing.Color.Red;
             this.btnExit.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExit.ForeColor = System.Drawing.Color.White;
-            this.btnExit.Location = new System.Drawing.Point(1243, 606);
+            this.btnExit.Location = new System.Drawing.Point(1248, 649);
             this.btnExit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(109, 44);
@@ -110,7 +110,7 @@
             this.btnXoa.BackColor = System.Drawing.Color.Red;
             this.btnXoa.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnXoa.ForeColor = System.Drawing.Color.White;
-            this.btnXoa.Location = new System.Drawing.Point(1062, 603);
+            this.btnXoa.Location = new System.Drawing.Point(1062, 647);
             this.btnXoa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(144, 44);
@@ -124,7 +124,7 @@
             this.btnSua.BackColor = System.Drawing.Color.DarkOrange;
             this.btnSua.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSua.ForeColor = System.Drawing.Color.White;
-            this.btnSua.Location = new System.Drawing.Point(912, 603);
+            this.btnSua.Location = new System.Drawing.Point(912, 647);
             this.btnSua.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(144, 44);
@@ -138,7 +138,7 @@
             this.btnThem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.btnThem.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThem.ForeColor = System.Drawing.Color.White;
-            this.btnThem.Location = new System.Drawing.Point(762, 603);
+            this.btnThem.Location = new System.Drawing.Point(762, 647);
             this.btnThem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(144, 44);
@@ -161,13 +161,13 @@
             // dtgvPhieuPhat
             // 
             this.dtgvPhieuPhat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvPhieuPhat.Location = new System.Drawing.Point(0, 98);
+            this.dtgvPhieuPhat.Location = new System.Drawing.Point(2, 102);
             this.dtgvPhieuPhat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtgvPhieuPhat.Name = "dtgvPhieuPhat";
             this.dtgvPhieuPhat.ReadOnly = true;
             this.dtgvPhieuPhat.RowHeadersWidth = 51;
             this.dtgvPhieuPhat.RowTemplate.Height = 24;
-            this.dtgvPhieuPhat.Size = new System.Drawing.Size(1352, 549);
+            this.dtgvPhieuPhat.Size = new System.Drawing.Size(1355, 589);
             this.dtgvPhieuPhat.TabIndex = 0;
             this.dtgvPhieuPhat.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvPhieuPhat_CellClick);
             // 
@@ -175,7 +175,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1357, 654);
+            this.ClientSize = new System.Drawing.Size(1357, 693);
             this.Controls.Add(this.panelNen);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);

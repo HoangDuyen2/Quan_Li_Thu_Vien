@@ -32,19 +32,33 @@ namespace Quan_Li_Thu_Vien
         {
             LoadData();
         }
-        private void btnThem_Click(object sender, EventArgs e)
-        {
-            FThemPhieuMuonTra fThemPhieuMuonTra = new FThemPhieuMuonTra();
-            this.Close();
-            fThemPhieuMuonTra.ShowDialog();
-            this.Show();
-        }
         private void dtgvPhieuMuonTra_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && dtgvPhieuMuonTra.Columns[e.ColumnIndex].Name == "MaPhieuMuonTra")
             {
                 maPMT = dtgvPhieuMuonTra.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
             }
+        }
+        private void btnTimKiem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                dtgvPhieuMuonTra.DataSource = dspmt.timKiemPhieuMuonTra(txtTenDocGia.Text);
+                dtgvPhieuMuonTra.RowHeadersVisible = false;
+                dtgvPhieuMuonTra.BackgroundColor = Color.White;
+                dtgvPhieuMuonTra.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            }
+            catch
+            {
+                MessageBox.Show("Không truy xuất được dữ liệu", "Lỗi");
+            }
+        }
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            FThemPhieuMuonTra fThemPhieuMuonTra = new FThemPhieuMuonTra();
+            this.Close();
+            fThemPhieuMuonTra.ShowDialog();
+            this.Show();
         }
         private void btnXoa_Click(object sender, EventArgs e)
         {
@@ -70,12 +84,6 @@ namespace Quan_Li_Thu_Vien
                 MessageBox.Show("Vui lòng chọn một phiếu mượn trả để xóa", "Thông báo");
             }
         }
-
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void btnSua_Click(object sender, EventArgs e)
         {
             FSuaPhieuMuonTra fSuaPhieuMuonTra = new FSuaPhieuMuonTra();
@@ -84,19 +92,9 @@ namespace Quan_Li_Thu_Vien
             this.Show();
         }
 
-        private void btnTimKiem_Click(object sender, EventArgs e)
+        private void btnExit_Click(object sender, EventArgs e)
         {
-            try
-            {
-                dtgvPhieuMuonTra.DataSource = dspmt.timKiemPhieuMuonTra(txtTenDocGia.Text);
-                dtgvPhieuMuonTra.RowHeadersVisible = false;
-                dtgvPhieuMuonTra.BackgroundColor = Color.White;
-                dtgvPhieuMuonTra.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            }
-            catch
-            {
-                MessageBox.Show("Không truy xuất được dữ liệu", "Lỗi");
-            }
+            this.Close();
         }
     }
 }
