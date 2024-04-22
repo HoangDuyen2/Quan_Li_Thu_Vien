@@ -543,3 +543,30 @@ BEGIN
 	END CATCH
 END
 --Kết thúc cập nhật chi tiết phiếu nhập
+
+--Insert PhieuPhat
+CREATE PROCEDURE InsertPhieuPhat
+    @MaPhieuMuonTra VARCHAR(20),
+    @MaSach VARCHAR(20)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DECLARE @MaPhieuPhat VARCHAR(20)
+    DECLARE @NgayXuatPhieu DATE
+    SET @MaPhieuPhat = dbo.func_Auto_PhieuPhatID()
+    SET @NgayXuatPhieu = CAST(GETDATE() AS DATE)
+
+    IF EXISTS (SELECT 1 FROM ChiTietPhieuMuonTra WHERE PhieuMuonTra = @MaPhieuMuonTra AND MaSach = @MaSach)
+    BEGIN
+        INSERT INTO PhieuPhat (MaPhieuPhat, MaPhieuMuonTra, MaSach, NgayXuatPhieu, TongTien)
+        VALUES (@MaPhieuPhat, @MaPhieuMuonTra, @MaSach, @NgayXuatPhieu, 0)
+    END
+    ELSE
+    BEGIN
+        RAISERROR('Mã sách không tồn tại trong phiếu mượn trả.', 16, 1)
+        RETURN
+    END
+END
+GO
+--End Insert PhieuPhat
