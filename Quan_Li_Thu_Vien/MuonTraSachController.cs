@@ -139,7 +139,7 @@ namespace Quan_Li_Thu_Vien
         }
         public bool themPhieuPhat(PhieuPhat phieuPhat)
         {
-            SqlCommand cmmd = new SqlCommand("", conn.GetSqlConnection());
+            SqlCommand cmmd = new SqlCommand("InsertPhieuPhat", conn.GetSqlConnection());
             cmmd.CommandType = CommandType.StoredProcedure;
             cmmd.Parameters.Add("@MaPhieuMuonTra", SqlDbType.NVarChar).Value = phieuPhat.MaPhieuMuonTra;
             cmmd.Parameters.Add("@MaSach", SqlDbType.NVarChar).Value = phieuPhat.MaSach;

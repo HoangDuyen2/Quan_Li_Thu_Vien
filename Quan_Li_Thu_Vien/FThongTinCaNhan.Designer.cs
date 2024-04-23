@@ -159,7 +159,6 @@
             // panel2
             // 
             this.panel2.Controls.Add(this.txtHoVaTen);
-            this.panel2.Controls.Add(this.picboxThongTinCaNhan);
             this.panel2.Controls.Add(this.lblHoVaTen);
             this.panel2.Location = new System.Drawing.Point(3, 182);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -178,7 +177,7 @@
             // picboxThongTinCaNhan
             // 
             this.picboxThongTinCaNhan.Image = ((System.Drawing.Image)(resources.GetObject("picboxThongTinCaNhan.Image")));
-            this.picboxThongTinCaNhan.Location = new System.Drawing.Point(348, -100);
+            this.picboxThongTinCaNhan.Location = new System.Drawing.Point(3, 2);
             this.picboxThongTinCaNhan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.picboxThongTinCaNhan.Name = "picboxThongTinCaNhan";
             this.picboxThongTinCaNhan.Size = new System.Drawing.Size(149, 113);
@@ -199,6 +198,7 @@
             // panel7
             // 
             this.panel7.Controls.Add(this.btnExit);
+            this.panel7.Controls.Add(this.picboxThongTinCaNhan);
             this.panel7.Location = new System.Drawing.Point(3, 1);
             this.panel7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel7.Name = "panel7";
@@ -210,7 +210,7 @@
             this.btnExit.BackColor = System.Drawing.Color.Red;
             this.btnExit.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExit.ForeColor = System.Drawing.Color.White;
-            this.btnExit.Location = new System.Drawing.Point(388, 32);
+            this.btnExit.Location = new System.Drawing.Point(391, 10);
             this.btnExit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(109, 44);
