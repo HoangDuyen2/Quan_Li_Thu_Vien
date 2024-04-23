@@ -679,6 +679,20 @@ ORDER BY MaNV DESC
 END
 --End Insert NhanVien
 
+--Insert TaiKhoan
+CREATE PROCEDURE InsertTaiKhoan
+    @Username NVARCHAR(50),
+    @PasswordUser NVARCHAR(100),
+    @MaNV NVARCHAR(10)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    INSERT INTO TaiKhoan (Username, PasswordUser, MaNV)
+    VALUES (@Username, @PasswordUser, @MaNV)
+END
+--End Insert TaiKhoan
+
 --Insert ChiTietPhieuPhat
 CREATE PROCEDURE InsertChiTietPhieuPhat
     @MaPhieuPhat NVARCHAR(10),
