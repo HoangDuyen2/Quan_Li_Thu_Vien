@@ -661,7 +661,7 @@ BEGIN
         THROW
     END CATCH
 END
---End Insert InsertNhanVienvaNhanVien
+--End Insert InsertThongTinNhanVienvaNhanVien
 
 --Insert TaiKhoan
 CREATE PROCEDURE InsertTaiKhoan
