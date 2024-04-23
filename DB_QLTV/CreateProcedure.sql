@@ -247,7 +247,7 @@ END
 --kết thúc thêm đọc giả
 
 --bắt đầu sửa độc giả mới
-CREATE PROCEDURE UpdateDocGia
+CREATE PROCEDURE sp_UpdateDocGia
     @MaDocGia NVARCHAR(10),
     @TenDocGia NVARCHAR(50),
     @Email NVARCHAR(50),
