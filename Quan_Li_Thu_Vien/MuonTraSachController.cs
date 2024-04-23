@@ -141,8 +141,8 @@ namespace Quan_Li_Thu_Vien
         {
             SqlCommand cmmd = new SqlCommand("InsertPhieuPhat", conn.GetSqlConnection());
             cmmd.CommandType = CommandType.StoredProcedure;
-            cmmd.Parameters.Add("@MaPhieuMuonTra", SqlDbType.NVarChar).Value = phieuPhat.MaPhieuMuonTra;
-            cmmd.Parameters.Add("@MaSach", SqlDbType.NVarChar).Value = phieuPhat.MaSach;
+            cmmd.Parameters.AddWithValue("@MaPhieuMuonTra", phieuPhat.MaPhieuMuonTra);
+            cmmd.Parameters.AddWithValue("@MaSach",phieuPhat.MaSach);
             conn.openConnection();
             if (cmmd.ExecuteNonQuery() > 0)
             {

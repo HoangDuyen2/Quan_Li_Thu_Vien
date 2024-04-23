@@ -14,7 +14,7 @@ namespace Quan_Li_Thu_Vien
         DBConnection conn = new DBConnection();
         public bool themDocGia(DocGia dg)
         {
-            SqlCommand command = new SqlCommand("pro_InsertDocGia", conn.GetSqlConnection());
+            SqlCommand command = new SqlCommand("InsertDocGia", conn.GetSqlConnection());
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.Add("@TenDocGia", SqlDbType.NVarChar).Value = dg.TenDocGia;
             command.Parameters.Add("@Email", SqlDbType.Char).Value = dg.Email;
@@ -36,7 +36,7 @@ namespace Quan_Li_Thu_Vien
 
         public bool suaDocGia(DocGia dg)
         {
-            SqlCommand command = new SqlCommand("", conn.GetSqlConnection());
+            SqlCommand command = new SqlCommand("UpdateDocGia", conn.GetSqlConnection());
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.Add("@MaDocGia", SqlDbType.NVarChar).Value = dg.MaDocGia;
             command.Parameters.Add("@TenDocGia", SqlDbType.NVarChar).Value = dg.TenDocGia;
@@ -72,10 +72,10 @@ namespace Quan_Li_Thu_Vien
                 try
                 {
                     conn.openConnection();
-                    using (SqlCommand command = new SqlCommand("", connection))
+                    using (SqlCommand command = new SqlCommand("DeleteDocGia", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.AddWithValue("@", maDocGia);
+                        command.Parameters.AddWithValue("@MaDocGia", maDocGia);
                         int rowsAffected = command.ExecuteNonQuery();
                         return true;
                     }

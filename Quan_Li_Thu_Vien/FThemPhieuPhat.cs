@@ -42,10 +42,10 @@ namespace Quan_Li_Thu_Vien
             }
             if (txtMaPhieuMuonTra.Text != "" && txtMaSach.Text != "")
             {
-                if (int.TryParse(txtTongTien.Text, out int tongTien))
+                if (int.TryParse("0", out int tongTien))
                 {
                     PhieuPhat phieuPhat = new PhieuPhat(txtMaPhieuPhat.Text, txtMaPhieuMuonTra.Text, txtMaSach.Text, txtNgayXuatPhieu.Text, tongTien);
-                    if (muonTraSachController.themPhieuPhat(phieuPhat))
+                    if (muonTraSachController.themPhieuPhat(phieuPhat))//LỖI THÔNG BÁO
                     {
                         MessageBox.Show("Thực thi dữ liệu thành công", "Thông báo");
                     }
