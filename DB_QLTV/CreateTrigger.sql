@@ -491,5 +491,52 @@ BEGIN
 END
 GO
 
+--trigger docgia
+CREATE TRIGGER DocGia_UpdateTrigger
+ON DocGia
+AFTER INSERT, UPDATE
+AS
+BEGIN
+    DECLARE @Email NVARCHAR(50), @SoDienThoai NVARCHAR(20), @MaLoaiDG NVARCHAR(10), @GioiTinh NCHAR(1);
+
+    IF EXISTS(SELECT * FROM inserted)
+    BEGIN
+        SELECT @Email = Email, @SoDienThoai = SoDienThoai, @MaLoaiDG = MaLoaiDG, @GioiTinh = GioiTinh
+        FROM inserted;
+
+        -- Kiểm tra email
+        IF EXISTS (SELECT 1 FROM DocGia WHERE Email = @Email AND MaDocGia NOT IN (SELECT MaDocGia FROM inserted))
+        BEGIN
+            RAISERROR('Email đã tồn tại.', 16, 1);
+            ROLLBACK;
+            RETURN;
+        END
+
+        -- Kiểm tra số điện thoại
+        IF EXISTS (SELECT 1 FROM DocGia WHERE SoDienThoai = @SoDienThoai AND MaDocGia NOT IN (SELECT MaDocGia FROM inserted))
+        BEGIN
+            RAISERROR('Số điện thoại đã tồn tại.', 16, 1);
+            ROLLBACK;
+            RETURN;
+        END
+
+        -- Kiểm tra mã loại độc giả
+        IF @MaLoaiDG NOT IN ('SV', 'GV')
+        BEGIN
+            RAISERROR('Mã loại độc giả không hợp lệ. Vui lòng nhập "SV" hoặc "GV".', 16, 1);
+            ROLLBACK;
+            RETURN;
+        END
+
+        -- Kiểm tra giới tính
+        IF @GioiTinh NOT IN ('F', 'M')
+        BEGIN
+            RAISERROR('Giới tính không hợp lệ. Vui lòng nhập "F" hoặc "M".', 16, 1);
+            ROLLBACK;
+            RETURN;
+        END
+    END
+END
+--end trigger docgia
 //
 
