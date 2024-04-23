@@ -532,16 +532,23 @@ CREATE FUNCTION func_Auto_DocGiaID()
 RETURNS NVARCHAR(10)
 AS
 BEGIN
-    DECLARE @NewID NVARCHAR(10)
-    DECLARE @MaxID INT
-    
-    SELECT @MaxID = MAX(CAST(SUBSTRING(MaDocGia, 4, 3) AS INT)) FROM DocGia
-    
-    IF @MaxID IS NULL
-        SET @NewID = 'DG001'
-    ELSE
-        SET @NewID = 'DG' + RIGHT('000' + CAST(@MaxID + 1 AS VARCHAR(3)), 3)
-    
-    RETURN @NewID
+    DECLARE @id_next NVARCHAR(10)
+    DECLARE @max INT
+    DECLARE @object NVARCHAR(2)
+    SET @object = 'DG'
+
+    SELECT @max = ISNULL(MAX(RIGHT(MaDocGia, 3)), 0) FROM [DocGia]
+    SET @id_next = @object + RIGHT('00' + CAST(@max + 1 AS NVARCHAR(3)), 3)
+
+    -- Kiểm tra id đã tồn tại chưa
+    WHILE(EXISTS(SELECT MaDocGia FROM [DocGia] WHERE MaDocGia = @id_next))
+    BEGIN
+        SET @max = @max + 1
+        SET @id_next = @object + RIGHT('00' + CAST(@max + 1 AS NVARCHAR(3)), 3)
+    END
+
+    RETURN @id_next
 END
+GO
+
 --End auto ID độc giả
