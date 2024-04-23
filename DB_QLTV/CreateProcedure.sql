@@ -663,3 +663,15 @@ INSERT INTO ThongTinNhanVien (MaNV, TenNV, GioiTinh, NgaySinh, DiaChi, SDT, Luon
 VALUES (@MaNV, @TenNV, @GioiTinh, @NgaySinh, @DiaChi, @SDT, @Luong, @Email, @NgayTao)
 END
 --End Insert ThongTinNhanVien
+--Insert NhanVien
+CREATE PROCEDURE InsertNhanVien
+    @MaNV NVARCHAR(10),
+    @MaTo NVARCHAR(10)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    INSERT INTO NhanVien (MaNV, MaTo)
+    VALUES (@MaNV, @MaTo)
+END
+--End Insert NhanVien
