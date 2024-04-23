@@ -657,7 +657,7 @@ BEGIN
             END
             ELSE
             BEGIN
-                RAISERROR('Mã loại độc giả không hợp lệ. Vui lòng nhập "LDG001" hoặc "LDG002".', 16, 1);
+                RAISERROR('Mã loại độc giả không hợp lệ. Vui lòng nhập "SV" hoặc "GV".', 16, 1);
             END
         END
         ELSE
@@ -717,7 +717,7 @@ BEGIN
                 END
                 ELSE
                 BEGIN
-                    RAISERROR('Mã loại độc giả không hợp lệ. Vui lòng nhập "LDG001" hoặc "LDG002".', 16, 1);
+                    RAISERROR('Mã loại độc giả không hợp lệ. Vui lòng nhập "SV" hoặc "GV".', 16, 1);
                 END
             END
             ELSE
