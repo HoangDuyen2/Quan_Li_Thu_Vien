@@ -550,7 +550,7 @@ GO
 --Đã trả Chi tiết Phiếu mượn trả	    
 CREATE PROCEDURE DaTraChiTietPhieuMuonTra
     @MaPhieuMuonTra VARCHAR(20),
-    @TenSach VARCHAR(100)
+    @MaSach VARCHAR(100)
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -638,3 +638,16 @@ BEGIN
     VALUES (@MaPhieuMuonTra, @MaSach, @TinhTrang, @NgayTra)
 END
 --End insert CTPMT
+
+--Del CTPMT
+CREATE PROCEDURE DeleteChiTietPhieuMuonTra
+    @MaPhieuMuonTra NVARCHAR(10),
+    @MaSach NVARCHAR(10)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DELETE FROM ChiTietPhieuMuonTra
+    WHERE MaPhieuMuonTra = @MaPhieuMuonTra AND MaSach = @MaSach
+END
+--End Del CTPMT
