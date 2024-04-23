@@ -653,12 +653,12 @@ CREATE PROCEDURE InsertThongTinNhanVien
 @DiaChi NVARCHAR(200),
 @SDT NVARCHAR(20),
 @Luong DECIMAL(18,2),
-@Email NVARCHAR(50),
+@Email NVARCHAR(50)
 AS
 BEGIN
 SET NOCOUNT ON;
-Declare @MaNV NVARCHAR(10)=func_Auto_NhanVienID()
-@NgayTao Date=Getdate()
+Declare @MaNV NVARCHAR(10)=dbo.func_Auto_NhanVienID(),
+	@NgayTao Date=Getdate()
 INSERT INTO ThongTinNhanVien (MaNV, TenNV, GioiTinh, NgaySinh, DiaChi, SDT, Luong, Email, NgayTao)
 VALUES (@MaNV, @TenNV, @GioiTinh, @NgaySinh, @DiaChi, @SDT, @Luong, @Email, @NgayTao)
 END
