@@ -37,8 +37,6 @@ namespace Quan_Li_Thu_Vien
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && dtgvPhieuMuonTra.Columns[e.ColumnIndex].Name == "MaPhieuMuonTra")
             {
                 maPMT = dtgvPhieuMuonTra.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
-                FChiTietPhieuMuonTra fChiTietPhieuMuonTra = new FChiTietPhieuMuonTra();
-                fChiTietPhieuMuonTra.SetMaPMT(maPMT);
             }
         }
         private void btnTimKiem_Click(object sender, EventArgs e)
@@ -102,6 +100,7 @@ namespace Quan_Li_Thu_Vien
         private void btnChiTietPhieuMuonTra_Click(object sender, EventArgs e)
         {
             FChiTietPhieuMuonTra fChiTietPhieuMuonTra = new FChiTietPhieuMuonTra();
+            fChiTietPhieuMuonTra.SetMaPMT(maPMT);
             this.Close();
             fChiTietPhieuMuonTra.ShowDialog();
             this.Show();

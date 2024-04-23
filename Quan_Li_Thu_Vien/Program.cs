@@ -16,7 +16,7 @@ namespace Quan_Li_Thu_Vien
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormDangNhap());
+            Application.Run(new FDanhSachNhanVien());
         }
     }
 }

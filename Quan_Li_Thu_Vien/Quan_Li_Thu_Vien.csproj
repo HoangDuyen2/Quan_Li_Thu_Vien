@@ -443,6 +443,9 @@
     <Compile Include="Sach.cs" />
     <Compile Include="SachController.cs" />
     <Compile Include="TacGia.cs" />
+    <EmbeddedResource Include="FChiTietNV.resx">
+      <DependentUpon>FChiTietNV.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FChiTietPhieNhap.resx">
       <DependentUpon>FChiTietPhieNhap.cs</DependentUpon>
     </EmbeddedResource>
