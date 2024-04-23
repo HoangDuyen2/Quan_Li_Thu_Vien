@@ -267,6 +267,24 @@ BEGIN
     WHERE MaDocGia = @MaDocGia;
 END
 --kết thúc sửa đọc giả
+
+--Xóa DocGia
+CREATE PROCEDURE sDeleteDocGia
+    @MaDocGia NVARCHAR(10)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    -- Delete related records from PhieuMuonTra table
+    DELETE FROM PhieuMuonTra
+    WHERE MaDocGia = @MaDocGia;
+
+    -- Delete record from DocGia table
+    DELETE FROM DocGia
+    WHERE MaDocGia = @MaDocGia;
+END
+--End xóa DocGia
+	
 --Tìm kiếm nhân viên theo tổ
 CREATE PROCEDURE NhanVienTheoTo
     @MaTo nvarchar(10)
