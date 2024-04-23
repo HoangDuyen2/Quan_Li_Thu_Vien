@@ -1,28 +1,4 @@
---Bắt đầu thêm nhân viên mới
-CREATE PROCEDURE InsertStaff (@MaNV nvarchar(10);
-								@TenNV nvarchar(50),
-								@GioiTinh nvarchar(1),
-								@NgaySinh DATETIME,
-								@DiaChi nvarchar(255),
-								@Luong int,
-								@SDT varchar(10),
-								@Email varchar(50))
-AS
-BEGIN
-	BEGIN TRANSACTION Tran_InsertStaff
-	BEGIN TRY
 
-		INSERT INTO dbo.ThongTinNhanVien(TenNV, GioiTinh, NgaySinh, DiaChi, Luong, SDT, Email)
-		VALUES (@TenNV, @GioiTinh, @NgaySinh, @DiaChi, @Luong, @SDT, @Email)
-		COMMIT TRANSACTION Tran_InsertStaff
-    END TRY
-	BEGIN CATCH
-		PRINT('Thêm không thành công!')
-		COMMIT TRANSACTION Tran_InsertStaff
-	END CATCH
-END
-GO
---Kết thúc Procedure thêm nhân viên mới
 	
 --Bắt đầu sửa nhân viên mới
 CREATE PROCEDURE UpdateStaff (@TenNV nvarchar(32),
@@ -645,39 +621,47 @@ BEGIN
 END
 --End Del CTPMT
 
---Insert ThongTinNhanVien
-CREATE PROCEDURE InsertThongTinNhanVien
-@TenNV NVARCHAR(50),
-@GioiTinh NCHAR(1),
-@NgaySinh DATE,
-@DiaChi NVARCHAR(200),
-@SDT NVARCHAR(20),
-@Luong DECIMAL(18,2),
-@Email NVARCHAR(50)
-AS
-BEGIN
-SET NOCOUNT ON;
-Declare @MaNV NVARCHAR(10)=dbo.func_Auto_NhanVienID(),
-	@NgayTao Date=Getdate()
-INSERT INTO ThongTinNhanVien (MaNV, TenNV, GioiTinh, NgaySinh, DiaChi, SDT, Luong, Email, NgayTao)
-VALUES (@MaNV, @TenNV, @GioiTinh, @NgaySinh, @DiaChi, @SDT, @Luong, @Email, @NgayTao)
-END
---End Insert ThongTinNhanVien
---Insert NhanVien
-CREATE PROCEDURE InsertNhanVien
+--Insert ThongTinNhanVienvaNhanVien
+CREATE PROCEDURE InsertNhanVienvaNhanVien
+    @TenNV NVARCHAR(50),
+    @GioiTinh NCHAR(1),
+    @NgaySinh DATE,
+    @DiaChi NVARCHAR(200),
+    @SDT NVARCHAR(20),
+    @Luong DECIMAL(18,2),
+    @Email NVARCHAR(50),
     @MaTo NVARCHAR(10)
 AS
 BEGIN
     SET NOCOUNT ON;
-DECLARE @MaNVMoiNhat NVARCHAR(10)
 
-SELECT TOP 1 @MaNVMoiNhat = MaNV
-FROM ThongTinNhanVien
-ORDER BY MaNV DESC
-    INSERT INTO NhanVien (MaNV, MaTo)
-    VALUES ( @MaNVMoiNhat, @MaTo)
+    BEGIN TRANSACTION
+
+    BEGIN TRY
+        -- Kiểm tra MaTo có nằm trong bảng NhomTo hay không
+        IF NOT EXISTS (SELECT 1 FROM NhomTo WHERE MaTo = @MaTo)
+        BEGIN
+            RAISERROR('Mã tổ không hợp lệ. Vui lòng kiểm tra lại.', 16, 1)
+            RETURN
+        END
+
+        DECLARE @MaNV NVARCHAR(10) = dbo.func_Auto_NhanVienID()
+        DECLARE @NgayTao DATE = GETDATE()
+
+        INSERT INTO ThongTinNhanVien (MaNV, TenNV, GioiTinh, NgaySinh, DiaChi, SDT, Luong, Email, NgayTao)
+        VALUES (@MaNV, @TenNV, @GioiTinh, @NgaySinh, @DiaChi, @SDT, @Luong, @Email, @NgayTao)
+
+        INSERT INTO NhanVien (MaNV, MaTo)
+        VALUES (@MaNV, @MaTo)
+
+        COMMIT TRANSACTION
+    END TRY
+    BEGIN CATCH
+        ROLLBACK TRANSACTION
+        THROW
+    END CATCH
 END
---End Insert NhanVien
+--End Insert InsertNhanVienvaNhanVien
 
 --Insert TaiKhoan
 CREATE PROCEDURE InsertTaiKhoan
