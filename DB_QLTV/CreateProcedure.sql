@@ -225,90 +225,48 @@ END
 --Kết thúc sửa nhà xuất bản
 
 --bắt đầu thêm độc giả mới
-CREATE PROCEDURE InsertDocGia (
-  @TenDocGia NVARCHAR(255) NOT NULL,
-  @Email CHAR(50) NOT NULL,
-  @SoDienThoai CHAR(10) NOT NULL,
-  @GioiTinh NVARCHAR(1) NOT NULL,
-  @MaLoaiDG NVARCHAR(10)
-)
+CREATE PROCEDURE InsertDocGia
+    @TenDocGia NVARCHAR(50),
+    @Email NVARCHAR(50),
+    @SoDienThoai NVARCHAR(20),
+    @GioiTinh NCHAR(1),
+    @MaLoaiDG NVARCHAR(10)
 AS
 BEGIN
-  -- Begin transaction
-  BEGIN TRANSACTION Tran_InsertDocGia;
+    SET NOCOUNT ON;
 
-  BEGIN TRY
-    -- Check if MaLoaiDG exists
-    IF NOT EXISTS (SELECT 1 FROM LoaiDocGia WHERE MaLoaiDG = @MaLoaiDG)
-    BEGIN
-      PRINT('MaLoaiDG does not exist!');
-      THROW TRAN EXCEPT; -- Throw an exception within CATCH block
-    END
+    DECLARE @NgayTao DATE = CAST(GETDATE() AS DATE);
+    DECLARE @MaDocGia NVARCHAR(10) = [dbo].func_Auto_DocGiaID();
 
-    -- Insert DocGia
-    INSERT INTO DocGia (TenDocGia, Email, SoDienThoai, GioiTinh, NgayTao, MaLoaiDG)
-      VALUES (@TenDocGia, @Email, @SoDienThoai, @GioiTinh, GETDATE(), @MaLoaiDG);
+    -- Thêm độc giả mới
+    INSERT INTO DocGia (MaDocGia, TenDocGia, Email, SoDienThoai, GioiTinh, MaLoaiDG, NgayTao)
+    VALUES (@MaDocGia, @TenDocGia, @Email, @SoDienThoai, @GioiTinh, @MaLoaiDG, @NgayTao);
 
-    -- Commit transaction if successful
-    COMMIT TRANSACTION Tran_InsertDocGia;
-  END TRY
-
-  BEGIN CATCH
-    -- Handle errors here
-    DECLARE @err NVARCHAR(MAX);
-    SELECT @err = N'Lỗi: ' + ERROR_MESSAGE();
-    RAISERROR (@err, 16, 1);
-
-    -- Rollback transaction on error
-    ROLLBACK TRANSACTION Tran_InsertDocGia;
-  END CATCH
+    SELECT @MaDocGia AS MaDocGia;
 END
-
-
 --kết thúc thêm đọc giả
 
-
-CREATE PROCEDURE UpdateDocGia (
-  @MaDocGia NVARCHAR(10),
-  @TenDocGia NVARCHAR(255),
-  @Email CHAR(50),
-  @SoDienThoai CHAR(10),
-  @GioiTinh NVARCHAR(1),
-  @MaLoaiDG NVARCHAR(10)
-)
+--bắt đầu sửa độc giả mới
+CREATE PROCEDURE sp_UpdateDocGia
+    @MaDocGia NVARCHAR(10),
+    @TenDocGia NVARCHAR(50),
+    @Email NVARCHAR(50),
+    @SoDienThoai NVARCHAR(20),
+    @GioiTinh NCHAR(1),
+    @MaLoaiDG NVARCHAR(10)
 AS
 BEGIN
-    -- Wrap the update statement in a transaction for data integrity
-    BEGIN TRANSACTION Tran_UpdateDocGia
+    SET NOCOUNT ON;
 
-    BEGIN TRY
-        -- Check if DocGia record exists before updating
-        IF NOT EXISTS (SELECT 1 FROM DocGia WHERE MaDocGia = @MaDocGia)
-        BEGIN
-            PRINT('MaDocGia does not exist!');
-            THROW 51000, 'MaDocGia does not exist!', 1; -- Raise a custom error to rollback the transaction
-        END
-
-        -- Update the DocGia record
-        UPDATE DocGia
-        SET TenDocGia = @TenDocGia,
-            Email = @Email,
-            SoDienThoai = @SoDienThoai,
-            GioiTinh = @GioiTinh,
-            MaLoaiDG = @MaLoaiDG
-        WHERE MaDocGia = @MaDocGia;
-
-        COMMIT TRANSACTION Tran_UpdateDocGia
-    END TRY
-
-    BEGIN CATCH
-        DECLARE @err NVARCHAR(MAX);
-        SELECT @err = N'Lỗi: ' + ERROR_MESSAGE();
-        RAISERROR (@err, 16, 1);
-        ROLLBACK TRANSACTION Tran_UpdateDocGia;
-    END CATCH
-END;
-
+    UPDATE DocGia
+    SET TenDocGia = @TenDocGia,
+        Email = @Email,
+        SoDienThoai = @SoDienThoai,
+        GioiTinh = @GioiTinh,
+        MaLoaiDG = @MaLoaiDG
+    WHERE MaDocGia = @MaDocGia;
+END
+--kết thúc sửa đọc giả
 --Tìm kiếm nhân viên theo tổ
 CREATE PROCEDURE NhanVienTheoTo
     @MaTo nvarchar(10)
