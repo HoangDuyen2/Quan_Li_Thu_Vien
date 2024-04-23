@@ -623,3 +623,18 @@ BEGIN
     END CATCH;
 END
 -- End DeletePhieuPhat
+
+--insert CTPMT
+CREATE PROCEDURE InsertChiTietPhieuMuonTra
+    @MaPhieuMuonTra NVARCHAR(10),
+    @MaSach NVARCHAR(10),
+    @TinhTrang NVARCHAR(50) = N'Chưa trả',
+    @NgayTra DATE = GETDATE()
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    INSERT INTO ChiTietPhieuMuonTra (MaPhieuMuonTra, MaSach, TinhTrang, NgayTra)
+    VALUES (@MaPhieuMuonTra, @MaSach, @TinhTrang, @NgayTra)
+END
+--End insert CTPMT
