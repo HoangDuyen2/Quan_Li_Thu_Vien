@@ -540,3 +540,28 @@ END
 --end trigger docgia
 //
 
+--trigger chi tiết Phiếu Phạt
+CREATE TRIGGER TRG_InsertChiTietPhieuPhat
+ON ChiTietPhieuPhat
+FOR INSERT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DECLARE @MaPhieuPhat NVARCHAR(10)
+    DECLARE @LoaiPhat NVARCHAR(50)
+    DECLARE @TienPhat DECIMAL(18,2)
+
+    SELECT @MaPhieuPhat = i.MaPhieuPhat, 
+           @LoaiPhat = i.LoaiPhat
+    FROM inserted i
+
+    SELECT @TienPhat = TienPhat 
+    FROM Phat
+    WHERE LoaiPhat = @LoaiPhat
+
+    UPDATE PhieuPhat
+    SET TongTien = TongTien + @TienPhat
+    WHERE MaPhieuPhat = @MaPhieuPhat
+END
+--End trigger chitietPhieuPhat
