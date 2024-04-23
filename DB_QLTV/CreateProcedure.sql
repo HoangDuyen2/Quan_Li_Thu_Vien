@@ -554,14 +554,7 @@ CREATE PROCEDURE DaTraChiTietPhieuMuonTra
 AS
 BEGIN
     SET NOCOUNT ON;
-
-    DECLARE @MaSach VARCHAR(20)
     DECLARE @NgayTra DATE
-
-    SELECT @MaSach = MaSach
-    FROM ChiTietPhieuMuonTra
-    WHERE MaPhieuMuonTra = @MaPhieuMuonTra
-      AND MaSach IN (SELECT MaSach FROM Sach WHERE TenSach = @TenSach)
 
     SET @NgayTra = CAST(GETDATE() AS DATE)
 
@@ -575,7 +568,7 @@ BEGIN
     END
     ELSE
     BEGIN
-        RAISERROR('Không tìm thấy mã sách tương ứng với tên sách đã nhập.', 16, 1)
+        RAISERROR('Không tìm thấy mã sách đã nhập trong PMT này', 16, 1)
         RETURN
     END
 END
