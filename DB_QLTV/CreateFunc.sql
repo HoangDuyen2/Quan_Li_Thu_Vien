@@ -552,3 +552,15 @@ END
 GO
 
 --End auto ID độc giả
+--Search Nhân Viên theo tên
+CREATE FUNCTION func_SearchNhanVienByTen(
+    @TenNV NVARCHAR(255)
+)
+RETURNS TABLE
+AS
+RETURN (
+    SELECT *
+    FROM ThongTinNhanVien
+    WHERE TenNV LIKE '%' + @TenNV + '%'
+)
+--End --Search Nhân Viên theo tên
