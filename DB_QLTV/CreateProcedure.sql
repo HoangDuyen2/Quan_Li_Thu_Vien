@@ -644,3 +644,22 @@ BEGIN
     WHERE MaPhieuMuonTra = @MaPhieuMuonTra AND MaSach = @MaSach
 END
 --End Del CTPMT
+
+--Insert ThongTinNhanVien
+CREATE PROCEDURE InsertThongTinNhanVien
+@TenNV NVARCHAR(50),
+@GioiTinh NCHAR(1),
+@NgaySinh DATE,
+@DiaChi NVARCHAR(200),
+@SDT NVARCHAR(20),
+@Luong DECIMAL(18,2),
+@Email NVARCHAR(50),
+AS
+BEGIN
+SET NOCOUNT ON;
+Declare @MaNV NVARCHAR(10)=func_Auto_NhanVienID()
+@NgayTao Date=Getdate()
+INSERT INTO ThongTinNhanVien (MaNV, TenNV, GioiTinh, NgaySinh, DiaChi, SDT, Luong, Email, NgayTao)
+VALUES (@MaNV, @TenNV, @GioiTinh, @NgaySinh, @DiaChi, @SDT, @Luong, @Email, @NgayTao)
+END
+--End Insert ThongTinNhanVien
