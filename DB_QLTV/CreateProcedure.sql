@@ -736,3 +736,27 @@ BEGIN
     END
 END
 --End Update DocGia
+--DeletePhieuPhat
+CREATE PROCEDURE DeletePhieuPhat
+    @MaPhieuPhat NVARCHAR(10)
+AS
+BEGIN
+    BEGIN TRY
+        BEGIN TRANSACTION;
+
+        -- Xóa dữ liệu từ bảng ChiTietPhieuPhat
+        DELETE FROM ChiTietPhieuPhat WHERE MaPhieuPhat = @MaPhieuPhat;
+
+        -- Xóa dữ liệu từ bảng PhieuPhat
+        DELETE FROM PhieuPhat WHERE MaPhieuPhat = @MaPhieuPhat;
+
+        COMMIT;
+    END TRY
+    BEGIN CATCH
+        IF @@TRANCOUNT > 0
+            ROLLBACK;
+
+        THROW;
+    END CATCH;
+END
+-- End DeletePhieuPhat
