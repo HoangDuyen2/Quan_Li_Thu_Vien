@@ -543,3 +543,196 @@ BEGIN
 	END CATCH
 END
 --Kết thúc cập nhật chi tiết phiếu nhập
+
+--Insert PhieuPhat
+CREATE PROCEDURE InsertPhieuPhat
+    @MaPhieuMuonTra VARCHAR(20),
+    @MaSach VARCHAR(20)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DECLARE @MaPhieuPhat VARCHAR(20)
+    DECLARE @NgayXuatPhieu DATE
+    SET @MaPhieuPhat = dbo.func_Auto_PhieuPhatID()
+    SET @NgayXuatPhieu = CAST(GETDATE() AS DATE)
+
+    IF EXISTS (SELECT 1 FROM ChiTietPhieuMuonTra WHERE MaPhieuMuonTra = @MaPhieuMuonTra AND MaSach = @MaSach)
+    BEGIN
+        INSERT INTO PhieuPhat (MaPhieuPhat, MaPhieuMuonTra, MaSach, NgayXuatPhieu, TongTien)
+        VALUES (@MaPhieuPhat, @MaPhieuMuonTra, @MaSach, @NgayXuatPhieu, 0)
+    END
+    ELSE
+    BEGIN
+        RAISERROR('Mã sách không tồn tại trong phiếu mượn trả.', 16, 1)
+        RETURN
+    END
+END
+GO
+--End Insert PhieuPhat
+
+--Đã trả Chi tiết Phiếu mượn trả	    
+CREATE PROCEDURE DaTraChiTietPhieuMuonTra
+    @MaPhieuMuonTra VARCHAR(20),
+    @TenSach VARCHAR(100)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DECLARE @MaSach VARCHAR(20)
+    DECLARE @NgayTra DATE
+
+    SELECT @MaSach = MaSach
+    FROM ChiTietPhieuMuonTra
+    WHERE MaPhieuMuonTra = @MaPhieuMuonTra
+      AND MaSach IN (SELECT MaSach FROM Sach WHERE TenSach = @TenSach)
+
+    SET @NgayTra = CAST(GETDATE() AS DATE)
+
+    IF @MaSach IS NOT NULL
+    BEGIN
+        UPDATE ChiTietPhieuMuonTra
+        SET TinhTrang = 'Đã trả',
+            NgayTra = @NgayTra
+        WHERE MaPhieuMuonTra = @MaPhieuMuonTra
+          AND MaSach = @MaSach
+    END
+    ELSE
+    BEGIN
+        RAISERROR('Không tìm thấy mã sách tương ứng với tên sách đã nhập.', 16, 1)
+        RETURN
+    END
+END
+GO
+--End Đã trả Chi tiết Phiếu mượn trả	   
+--Xem CTPMT
+Create procedure XemCTPMTtheomaPMT
+@mapmt nvarchar(10)
+AS
+BEGIN
+SELECT *
+  FROM [QL_ThuVien].[dbo].[ChiTietPhieuMuonTra]
+  WHERE MaPhieuMuonTra= @mapmt
+END
+--End Xem CTPMT
+
+	    
+--Insert DocGia
+
+CREATE PROCEDURE InsertDocGia
+    @TenDocGia NVARCHAR(50),
+    @Email NVARCHAR(50),
+    @SoDienThoai NVARCHAR(20),
+    @GioiTinh NCHAR(1),
+    @MaLoaiDG NVARCHAR(10)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DECLARE @NgayTao DATE = CAST(GETDATE() AS DATE);
+    DECLARE @MaDocGia NVARCHAR(10) = func_Auto_DocGiaID();
+
+    -- Kiểm tra email
+    IF NOT EXISTS (SELECT 1 FROM DocGia WHERE Email = @Email)
+    BEGIN
+        -- Kiểm tra số điện thoại
+        IF NOT EXISTS (SELECT 1 FROM DocGia WHERE SoDienThoai = @SoDienThoai)
+        BEGIN
+            -- Kiểm tra mã loại độc giả
+            IF @MaLoaiDG IN ('SV', 'GV')
+            BEGIN
+                -- Kiểm tra giới tính
+                IF @GioiTinh IN ('F', 'M')
+                BEGIN
+                    -- Thêm độc giả mới
+                    INSERT INTO DocGia (MaDocGia, TenDocGia, Email, SoDienThoai, GioiTinh, MaLoaiDG, NgayTao)
+                    VALUES (@MaDocGia, @TenDocGia, @Email, @SoDienThoai, @GioiTinh, @MaLoaiDG, @NgayTao);
+
+                    SELECT @MaDocGia AS MaDocGia;
+                END
+                ELSE
+                BEGIN
+                    RAISERROR('Giới tính không hợp lệ. Vui lòng nhập "F" hoặc "M".', 16, 1);
+                END
+            END
+            ELSE
+            BEGIN
+                RAISERROR('Mã loại độc giả không hợp lệ. Vui lòng nhập "LDG001" hoặc "LDG002".', 16, 1);
+            END
+        END
+        ELSE
+        BEGIN
+            RAISERROR('Số điện thoại đã tồn tại.', 16, 1);
+        END
+    END
+    ELSE
+    BEGIN
+        RAISERROR('Email đã tồn tại.', 16, 1);
+    END
+END
+--End Insert DocGia
+
+--Update DocGia
+CREATE PROCEDURE UpdateDocGia
+    @MaDocGia NVARCHAR(10),
+    @TenDocGia NVARCHAR(50),
+    @Email NVARCHAR(50),
+    @SoDienThoai NVARCHAR(20),
+    @GioiTinh NCHAR(1),
+    @MaLoaiDG NVARCHAR(10)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    -- Kiểm tra độc giả có tồn tại không
+    IF EXISTS (SELECT 1 FROM DocGia WHERE MaDocGia = @MaDocGia)
+    BEGIN
+        -- Kiểm tra email
+        IF NOT EXISTS (SELECT 1 FROM DocGia WHERE Email = @Email AND MaDocGia <> @MaDocGia)
+        BEGIN
+            -- Kiểm tra số điện thoại
+            IF NOT EXISTS (SELECT 1 FROM DocGia WHERE SoDienThoai = @SoDienThoai AND MaDocGia <> @MaDocGia)
+            BEGIN
+                -- Kiểm tra mã loại độc giả
+                IF @MaLoaiDG IN ('SV', 'GV')
+                BEGIN
+                    -- Kiểm tra giới tính
+                    IF @GioiTinh IN ('F', 'M')
+                    BEGIN
+                        -- Cập nhật thông tin độc giả
+                        UPDATE DocGia
+                        SET TenDocGia = @TenDocGia,
+                            Email = @Email,
+                            SoDienThoai = @SoDienThoai,
+                            GioiTinh = @GioiTinh,
+                            MaLoaiDG = @MaLoaiDG
+                        WHERE MaDocGia = @MaDocGia;
+
+                        SELECT 1 AS Success;
+                    END
+                    ELSE
+                    BEGIN
+                        RAISERROR('Giới tính không hợp lệ. Vui lòng nhập "F" hoặc "M".', 16, 1);
+                    END
+                END
+                ELSE
+                BEGIN
+                    RAISERROR('Mã loại độc giả không hợp lệ. Vui lòng nhập "LDG001" hoặc "LDG002".', 16, 1);
+                END
+            END
+            ELSE
+            BEGIN
+                RAISERROR('Số điện thoại đã tồn tại.', 16, 1);
+            END
+        END
+        ELSE
+        BEGIN
+            RAISERROR('Email đã tồn tại.', 16, 1);
+        END
+    END
+    ELSE
+    BEGIN
+        RAISERROR('Mã độc giả không tồn tại.', 16, 1);
+    END
+END
+--End Update DocGia

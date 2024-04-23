@@ -167,26 +167,6 @@ END
 GO
 --Kết thúc hàm tự động thêm mã nhà cung cấp
 
---Tự động tăng Mã phiếu nhập
-CREATE FUNCTION func_Auto_PhieuMuonTraID()
-RETURNS NVARCHAR(10)
-AS
-BEGIN
-    DECLARE @id_next VARCHAR(10)
-    DECLARE @max INT
-    DECLARE @object VARCHAR(2)
-    
-    SET @object = 'MT'
-    
-    SELECT @max = ISNULL(MAX(CAST(SUBSTRING(MaPhieuMuonTra, 3, LEN(MaPhieuMuonTra) - 2) AS INT)), 0) 
-    FROM PhieuMuonTra
-
-    SET @id_next = @object + RIGHT('00' + CAST((@max + 1) AS nvarchar(10)), 3)
-
-    RETURN @id_next
-END
-GO
---Kết thúc hàm tự động thêm mã nhà phiếu nhập
 	
 -- Tự động tăng thêm Mã Phiếu Mượn Trả khi thêm Phiếu Mượn Trả
 CREATE FUNCTION func_Auto_PhieuMuonTraID()
@@ -519,3 +499,49 @@ BEGIN
 	RETURN 0
 END
 --Kết thúc tìm kiếm theo tên
+--Tìm kiếm DocGia theo TenDocGia
+CREATE FUNCTION func_SearchDocGiaByTenDocGia(
+    @TenDocGia VARCHAR(255)
+)
+RETURNS TABLE
+AS
+RETURN (
+    SELECT *
+    FROM DocGia
+    WHERE TenDocGia LIKE '%' + @TenDocGia + '%'
+);
+--Kết thúc tìm kiếm DocGia theo TenDocGia
+--Tìm kiếm PhieuPhat theo TenSach
+CREATE FUNCTION SearchPhieuPhatByTenSach
+(
+    @TenSach nvarchar(50)
+)
+RETURNS TABLE
+AS
+RETURN (
+    SELECT pp.MaPhieuPhat, mt.MaPhieuMuonTra, dg.TenDocGia, s.TenSach, pp.TongTien
+    FROM PhieuPhat pp
+    INNER JOIN PhieuMuonTra mt ON pp.MaPhieuMuonTra = mt.MaPhieuMuonTra
+    INNER JOIN DocGia dg ON mt.MaDocGia = dg.MaDocGia
+    INNER JOIN Sach s ON s.MaSach = pp.MaSach
+     WHERE TenSach LIKE '%' + @TenSach + '%'
+);
+--Kết thúc Tìm kiếm PhieuPhat theo TenSach
+--auto ID độc giả
+CREATE FUNCTION func_Auto_DocGiaID()
+RETURNS NVARCHAR(10)
+AS
+BEGIN
+    DECLARE @NewID NVARCHAR(10)
+    DECLARE @MaxID INT
+    
+    SELECT @MaxID = MAX(CAST(SUBSTRING(MaDocGia, 4, 3) AS INT)) FROM DocGia
+    
+    IF @MaxID IS NULL
+        SET @NewID = 'DG001'
+    ELSE
+        SET @NewID = 'DG' + RIGHT('000' + CAST(@MaxID + 1 AS VARCHAR(3)), 3)
+    
+    RETURN @NewID
+END
+--End auto ID độc giả
