@@ -39,10 +39,6 @@ namespace Quan_Li_Thu_Vien
                 }
                 else MessageBox.Show("Thực thi dữ liệu thất bại", "Lỗi");
             }
-            FDanhSachPhieuMuonTra fDanhSachPhieuMuonTra = new FDanhSachPhieuMuonTra();
-            this.Close();
-            fDanhSachPhieuMuonTra.ShowDialog();
-            this.Show();
         }
 
         private void btnExit_Click(object sender, EventArgs e)

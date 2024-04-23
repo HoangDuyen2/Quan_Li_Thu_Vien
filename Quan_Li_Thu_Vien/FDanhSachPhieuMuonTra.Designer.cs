@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panelNen = new System.Windows.Forms.Panel();
+            this.btnChiTietPhieuMuonTra = new System.Windows.Forms.Button();
             this.btnTimKiem = new System.Windows.Forms.Button();
             this.txtTenDocGia = new System.Windows.Forms.TextBox();
             this.lbTenSach = new System.Windows.Forms.Label();
@@ -45,6 +46,7 @@
             // panelNen
             // 
             this.panelNen.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panelNen.Controls.Add(this.btnChiTietPhieuMuonTra);
             this.panelNen.Controls.Add(this.btnTimKiem);
             this.panelNen.Controls.Add(this.txtTenDocGia);
             this.panelNen.Controls.Add(this.lbTenSach);
@@ -59,6 +61,20 @@
             this.panelNen.Name = "panelNen";
             this.panelNen.Size = new System.Drawing.Size(1355, 650);
             this.panelNen.TabIndex = 3;
+            // 
+            // btnChiTietPhieuMuonTra
+            // 
+            this.btnChiTietPhieuMuonTra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btnChiTietPhieuMuonTra.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChiTietPhieuMuonTra.ForeColor = System.Drawing.Color.White;
+            this.btnChiTietPhieuMuonTra.Location = new System.Drawing.Point(0, 606);
+            this.btnChiTietPhieuMuonTra.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnChiTietPhieuMuonTra.Name = "btnChiTietPhieuMuonTra";
+            this.btnChiTietPhieuMuonTra.Size = new System.Drawing.Size(320, 44);
+            this.btnChiTietPhieuMuonTra.TabIndex = 12;
+            this.btnChiTietPhieuMuonTra.Text = "Chi Tiết Mượn Trả";
+            this.btnChiTietPhieuMuonTra.UseVisualStyleBackColor = false;
+            this.btnChiTietPhieuMuonTra.Click += new System.EventHandler(this.btnChiTietPhieuMuonTra_Click);
             // 
             // btnTimKiem
             // 
@@ -201,5 +217,6 @@
         private System.Windows.Forms.Button btnTimKiem;
         private System.Windows.Forms.TextBox txtTenDocGia;
         private System.Windows.Forms.Label lbTenSach;
+        private System.Windows.Forms.Button btnChiTietPhieuMuonTra;
     }
 }

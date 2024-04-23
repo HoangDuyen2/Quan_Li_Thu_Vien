@@ -34,9 +34,9 @@ namespace Quan_Li_Thu_Vien
             }
         }
 
-        public bool capnhatDocGia(DocGia dg)
+        public bool suaDocGia(DocGia dg)
         {
-            SqlCommand command = new SqlCommand("pro_UpdateDocGia", conn.GetSqlConnection());
+            SqlCommand command = new SqlCommand("", conn.GetSqlConnection());
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.Add("@MaDocGia", SqlDbType.NVarChar).Value = dg.MaDocGia;
             command.Parameters.Add("@TenDocGia", SqlDbType.NVarChar).Value = dg.TenDocGia;
@@ -93,9 +93,9 @@ namespace Quan_Li_Thu_Vien
         }
         public DataTable timKiemDocGia(string tenDocGia)
         {
-            string funcName = "";
-            SqlCommand command = new SqlCommand("Select * from " + funcName + " (@)", conn.GetSqlConnection());
-            command.Parameters.Add("@", SqlDbType.NVarChar).Value = tenDocGia;
+            string funcName = "func_SearchDocGiaByTenDocGia";
+            SqlCommand command = new SqlCommand("Select * from " + funcName + " (@TenDocGia)", conn.GetSqlConnection());
+            command.Parameters.Add("@TenDocGia", SqlDbType.NVarChar).Value = tenDocGia;
             DataTable table = new DataTable();
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             adapter.Fill(table);
