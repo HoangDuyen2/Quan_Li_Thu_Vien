@@ -269,7 +269,7 @@ END
 --kết thúc sửa đọc giả
 
 --Xóa DocGia
-CREATE PROCEDURE sDeleteDocGia
+CREATE PROCEDURE DeleteDocGia
     @MaDocGia NVARCHAR(10)
 AS
 BEGIN
