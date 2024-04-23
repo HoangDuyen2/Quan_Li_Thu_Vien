@@ -206,3 +206,12 @@ SELECT
 FROM 
     ThongTinNhanVien
 -- End View ThongTinNhanVien
+-- View ChiTietPhieuPhat
+CREATE VIEW ChiTietPhieuPhatView
+AS
+SELECT
+    MaPhieuPhat,
+    LoaiPhat
+FROM
+    ChiTietPhieuPhat
+--End View ChiTietPhieuPhat
