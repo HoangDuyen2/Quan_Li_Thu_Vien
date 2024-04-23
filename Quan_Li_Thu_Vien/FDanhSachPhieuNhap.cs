@@ -72,5 +72,24 @@ namespace Quan_Li_Thu_Vien
             this.Hide();
             themPhieuNhap.ShowDialog();
         }
+
+        private void btnTimKiem_Click(object sender, EventArgs e)
+        {
+            if (txtTenNCC.Text != "")
+            {
+                try
+                {
+                    dtgvPhieuNhap.DataSource = phieuNhapController.timKiemNCCTheoTen(txtTenNCC.Text);
+                    dtgvPhieuNhap.RowHeadersVisible = false;
+                    dtgvPhieuNhap.BackgroundColor = Color.White;
+                    dtgvPhieuNhap.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                }
+                catch
+                {
+                    MessageBox.Show("Không truy xuất được dữ liệu", "Lỗi");
+                }
+            }
+            else LoadData();
+        }
     }
 }

@@ -82,7 +82,7 @@ namespace Quan_Li_Thu_Vien
             if (txtNCC.Text != "")
                 checkTenNCC(txtNCC.Text);
             LoadPhieuNhap();
-            if (nhapController.suaChiTietPhieuNhap(phieuNhap, SLCu))
+            if (nhapController.suaPhieuNhap(phieuNhap))
             {
                 MessageBox.Show("Thực thi dữ liệu thành công", "Thông báo");
             }
@@ -115,15 +115,15 @@ namespace Quan_Li_Thu_Vien
                 }
             }
         }
-
-
-        #endregion
-
         private void btnThemChiTiet_Click(object sender, EventArgs e)
         {
             LoadPhieuNhap();
             FChiTietPhieNhap fChiTietPhieNhap = new FChiTietPhieNhap(phieuNhap);
             fChiTietPhieNhap.ShowDialog();
         }
+
+        #endregion
+
+
     }
 }

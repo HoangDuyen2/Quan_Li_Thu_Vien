@@ -6,12 +6,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using Quan_Li_Thu_Vien;
+using System.Data.Common;
 
 namespace Quan_Li_Thu_Vien
 {
     public class PhieuNhapController
     {
         DBConnection conn = new DBConnection();
+        #region Thêm, sửa, tìm kiếm theo tên phiếu nhập
         public bool ThemPhieuNhap(PhieuNhap pn)
         {
             SqlCommand cmmd = new SqlCommand("InsertPhieuNhap",conn.GetSqlConnection());
@@ -32,6 +34,36 @@ namespace Quan_Li_Thu_Vien
                 return false;
             }
         }
+        public bool suaPhieuNhap(PhieuNhap pn)
+        {
+            SqlCommand cmmd = new SqlCommand("UpdatePhieuNhap",conn.GetSqlConnection());
+            cmmd.CommandType = CommandType.StoredProcedure;
+            cmmd.Parameters.Add("@MaPhieuNhap", SqlDbType.NVarChar).Value = pn.MaPhieuNhap;
+            cmmd.Parameters.Add("@NgayNhap", SqlDbType.DateTime).Value = pn.NgayNhap;
+            cmmd.Parameters.Add("@GiaTriDonHang", SqlDbType.Float).Value = pn.GiaTri;
+            cmmd.Parameters.Add("@TenNCC", SqlDbType.NVarChar).Value = pn.TenNCC;
+            conn.openConnection( );
+            if(cmmd.ExecuteNonQuery() > 0)
+            {
+                conn.closeConnection() ;
+                return true;
+            }
+            else
+            {
+                conn.closeConnection();
+                return false;
+            }
+        }
+        public DataTable timKiemNCCTheoTen(string tenNCC)
+        {
+            SqlCommand cmmd = new SqlCommand("SELECT * FROM func_SearchNCCName (@TenNCC)", conn.GetSqlConnection());
+            cmmd.Parameters.Add("@TenNCC", SqlDbType.NVarChar).Value = tenNCC;
+            SqlDataAdapter adapter = new SqlDataAdapter(cmmd);
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
+            return dt;
+        }
+        #endregion
         public bool suaChiTietPhieuNhap(PhieuNhap pn,int SLCu)
         {
             SqlCommand command = new SqlCommand("UpdateChiTietPhieuNhap", conn.GetSqlConnection());

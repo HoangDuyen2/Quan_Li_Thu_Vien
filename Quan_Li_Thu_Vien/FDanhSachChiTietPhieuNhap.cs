@@ -27,9 +27,9 @@ namespace Quan_Li_Thu_Vien
                 //Đưa dữ liệu vào textbox
                 float donGia;
                 int sl;
-                if (float.TryParse(row.Cells["DonGia"].Value.ToString(), out donGia))
+                if (!float.TryParse(row.Cells["DonGia"].Value.ToString(), out donGia))
                     donGia = 0;
-                if (int.TryParse(row.Cells["SL"].Value.ToString(), out sl))
+                if (!int.TryParse(row.Cells["SL"].Value.ToString(), out sl))
                     sl = 0;
                 DateTime dateTime;
                 if (!DateTime.TryParse(row.Cells["NgayNhap"].Value.ToString(), out dateTime))

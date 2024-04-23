@@ -137,12 +137,12 @@
             // dtgvPhieuNhap
             // 
             this.dtgvPhieuNhap.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvPhieuNhap.Location = new System.Drawing.Point(-179, 97);
+            this.dtgvPhieuNhap.Location = new System.Drawing.Point(2, 99);
             this.dtgvPhieuNhap.Name = "dtgvPhieuNhap";
             this.dtgvPhieuNhap.ReadOnly = true;
             this.dtgvPhieuNhap.RowHeadersWidth = 51;
             this.dtgvPhieuNhap.RowTemplate.Height = 24;
-            this.dtgvPhieuNhap.Size = new System.Drawing.Size(1535, 549);
+            this.dtgvPhieuNhap.Size = new System.Drawing.Size(1353, 549);
             this.dtgvPhieuNhap.TabIndex = 0;
             this.dtgvPhieuNhap.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvPhieuNhap_CellContentClick);
             // 

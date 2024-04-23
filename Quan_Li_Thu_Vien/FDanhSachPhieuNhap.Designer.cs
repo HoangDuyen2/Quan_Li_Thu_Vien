@@ -33,6 +33,9 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnTimKiem = new System.Windows.Forms.Button();
+            this.txtTenNCC = new System.Windows.Forms.TextBox();
+            this.lbTenNCC = new System.Windows.Forms.Label();
             this.panelNen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvPhieuNhap)).BeginInit();
             this.SuspendLayout();
@@ -40,6 +43,9 @@
             // panelNen
             // 
             this.panelNen.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panelNen.Controls.Add(this.btnTimKiem);
+            this.panelNen.Controls.Add(this.txtTenNCC);
+            this.panelNen.Controls.Add(this.lbTenNCC);
             this.panelNen.Controls.Add(this.dtgvPhieuNhap);
             this.panelNen.Controls.Add(this.btnExit);
             this.panelNen.Controls.Add(this.btnThem);
@@ -98,6 +104,37 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Danh Sách Phiếu Nhập";
             // 
+            // btnTimKiem
+            // 
+            this.btnTimKiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTimKiem.Location = new System.Drawing.Point(1193, 46);
+            this.btnTimKiem.Name = "btnTimKiem";
+            this.btnTimKiem.Size = new System.Drawing.Size(109, 36);
+            this.btnTimKiem.TabIndex = 17;
+            this.btnTimKiem.Text = "Tìm kiếm";
+            this.btnTimKiem.UseVisualStyleBackColor = true;
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
+            // 
+            // txtTenNCC
+            // 
+            this.txtTenNCC.Location = new System.Drawing.Point(915, 51);
+            this.txtTenNCC.Multiline = true;
+            this.txtTenNCC.Name = "txtTenNCC";
+            this.txtTenNCC.Size = new System.Drawing.Size(258, 30);
+            this.txtTenNCC.TabIndex = 16;
+            // 
+            // lbTenNCC
+            // 
+            this.lbTenNCC.AutoSize = true;
+            this.lbTenNCC.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.lbTenNCC.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTenNCC.ForeColor = System.Drawing.Color.DarkBlue;
+            this.lbTenNCC.Location = new System.Drawing.Point(716, 52);
+            this.lbTenNCC.Name = "lbTenNCC";
+            this.lbTenNCC.Size = new System.Drawing.Size(173, 25);
+            this.lbTenNCC.TabIndex = 15;
+            this.lbTenNCC.Text = "Tên Nhà cung cấp";
+            // 
             // FDanhSachPhieuNhap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -123,5 +160,8 @@
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnTimKiem;
+        private System.Windows.Forms.TextBox txtTenNCC;
+        private System.Windows.Forms.Label lbTenNCC;
     }
 }

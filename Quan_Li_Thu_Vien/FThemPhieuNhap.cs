@@ -28,9 +28,24 @@ namespace Quan_Li_Thu_Vien
                 MessageBox.Show("Không để trống các trường.", "Thông báo");
                 return;
             }
+
+            if (checkTenNCC(txtNCC.Text)){
+                LoadPhieuNhap();
+                if (phieuNhapController.ThemPhieuNhap(phieuNhap1))
+                {
+                    MessageBox.Show("Thực thi dữ liệu thành công", "Thông báo");
+                }
+                else
+                {
+                    MessageBox.Show("Thực thi dữ liệu thất bại", "Thông báo");
+                }
+            }
+            else return;
+        }
+        public void LoadPhieuNhap()
+        {
             float giaTri;
             if (!float.TryParse(txtGiaTriDonHang.Text, out giaTri))
-
                 MessageBox.Show("Giá trị đơn hàng lỗi", "Thông báo");
             DateTime dateTime;
             if (!DateTime.TryParse(txtNgayNhap.Text, out dateTime))
@@ -39,16 +54,6 @@ namespace Quan_Li_Thu_Vien
             phieuNhap1.MaPhieuNhap = txtMaPhieuNhap.Text;
             phieuNhap1.GiaTri = giaTri;
             phieuNhap1.TenNCC = txtNCC.Text;
-            PhieuNhap phieuNhap = new PhieuNhap(txtMaPhieuNhap.Text, dateTime, giaTri, txtNCC.Text, "", 0, 0);
-            if (phieuNhapController.ThemPhieuNhap(phieuNhap))
-            {
-                MessageBox.Show("Thực thi dữ liệu thành công", "Thông báo");
-                
-            }
-            else
-            {
-                MessageBox.Show("Thực thi dữ liệu thất bại", "Thông báo");
-            }
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -65,10 +70,28 @@ namespace Quan_Li_Thu_Vien
             ngayNhap = dateTime.ToShortDateString();
             txtNgayNhap.Text = ngayNhap;
         }
-
-        private void btnThemChiTiet_Click(object sender, EventArgs e)
+        #region Các check khi thêm, sửa
+        public bool checkTenNCC(string tenNCC)
         {
-
+            if (phieuNhapController.checkTenNCC(tenNCC) == false)
+            {
+                DialogResult result1 = MessageBox.Show("Tên nhà cung cấp bạn nhập không có trong danh sách nhà cung cấp. Bạn có muốn thêm nhà cung cấp này vào danh sách?", "Warning", MessageBoxButtons.YesNo);
+                if (result1 == DialogResult.Yes)
+                {
+                    FNewNCC newNCC = new FNewNCC(tenNCC);
+                    newNCC.ShowDialog();
+                }
+                else
+                {
+                    FDanhSachNhaCungCap dsNCC = new FDanhSachNhaCungCap();
+                    dsNCC.ShowDialog();
+                }
+                return false;
+            }
+            return true;
         }
+
+
+        #endregion
     }
 }
