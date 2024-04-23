@@ -526,4 +526,22 @@ RETURN (
     INNER JOIN Sach s ON s.MaSach = pp.MaSach
      WHERE TenSach LIKE '%' + @TenSach + '%'
 );
--Kết thúc Tìm kiếm PhieuPhat theo TenSach
+--Kết thúc Tìm kiếm PhieuPhat theo TenSach
+--auto ID độc giả
+CREATE FUNCTION func_Auto_DocGiaID()
+RETURNS NVARCHAR(10)
+AS
+BEGIN
+    DECLARE @NewID NVARCHAR(10)
+    DECLARE @MaxID INT
+    
+    SELECT @MaxID = MAX(CAST(SUBSTRING(MaDocGia, 4, 3) AS INT)) FROM DocGia
+    
+    IF @MaxID IS NULL
+        SET @NewID = 'DG001'
+    ELSE
+        SET @NewID = 'DG' + RIGHT('000' + CAST(@MaxID + 1 AS VARCHAR(3)), 3)
+    
+    RETURN @NewID
+END
+--End auto ID độc giả

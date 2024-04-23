@@ -13,7 +13,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Windows.Forms;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace Quan_Li_Thu_Vien
 {
@@ -24,6 +23,14 @@ namespace Quan_Li_Thu_Vien
         public DataTable DSPhieuMuonTra()
         {
             SqlCommand cmd = new SqlCommand("SELECT * FROM MuonTraView", conn.GetSqlConnection());
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataTable dataTable = new DataTable();
+            adapter.Fill(dataTable);
+            return dataTable;
+        }
+        public DataTable DSChiTietPhieuMuonTra(string maPMT)
+        {
+            SqlCommand cmd = new SqlCommand("EXEC XemCTPMTtheoMaPMT @mapmt = '" + maPMT + "'", conn.GetSqlConnection());
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
             DataTable dataTable = new DataTable();
             adapter.Fill(dataTable);
@@ -130,6 +137,24 @@ namespace Quan_Li_Thu_Vien
                 return false;
             }
         }
+        public bool themPhieuPhat(PhieuPhat phieuPhat)
+        {
+            SqlCommand cmmd = new SqlCommand("InsertPhieuPhat", conn.GetSqlConnection());
+            cmmd.CommandType = CommandType.StoredProcedure;
+            cmmd.Parameters.Add("@MaPhieuMuonTra", SqlDbType.NVarChar).Value = phieuPhat.MaPhieuMuonTra;
+            cmmd.Parameters.Add("@MaSach", SqlDbType.NVarChar).Value = phieuPhat.MaSach;
+            conn.openConnection();
+            if (cmmd.ExecuteNonQuery() > 0)
+            {
+                conn.closeConnection();
+                return true;
+            }
+            else
+            {
+                conn.closeConnection();
+                return false;
+            }
+        }
         public bool XoaPhieuMuonTra(string maPMT)
         {
             using (SqlConnection connection = conn.GetSqlConnection())
@@ -194,9 +219,9 @@ namespace Quan_Li_Thu_Vien
         }
         public DataTable timKiemPhieuPhat(string MaSach)
         {
-            string funcName = "";
-            SqlCommand command = new SqlCommand("Select * from " + funcName + " (@)", conn.GetSqlConnection());
-            command.Parameters.Add("@", SqlDbType.NVarChar).Value = MaSach;
+            string funcName = "SearchPhieuPhatByTenSach";
+            SqlCommand command = new SqlCommand("Select * from " + funcName + " (@TenSach)", conn.GetSqlConnection());
+            command.Parameters.Add("@TenSach", SqlDbType.NVarChar).Value = MaSach;
             DataTable table = new DataTable();
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             adapter.Fill(table);

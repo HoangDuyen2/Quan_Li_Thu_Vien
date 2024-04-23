@@ -40,14 +40,6 @@ namespace Quan_Li_Thu_Vien
             this.Show();
         }
 
-        private void btnSua_Click(object sender, EventArgs e)
-        {
-            FSuaPhieuPhat fSuaPhieuPhat = new FSuaPhieuPhat();
-            this.Close();
-            fSuaPhieuPhat.ShowDialog();
-            this.Show();
-        }
-
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();

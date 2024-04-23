@@ -557,7 +557,7 @@ BEGIN
     SET @MaPhieuPhat = dbo.func_Auto_PhieuPhatID()
     SET @NgayXuatPhieu = CAST(GETDATE() AS DATE)
 
-    IF EXISTS (SELECT 1 FROM ChiTietPhieuMuonTra WHERE PhieuMuonTra = @MaPhieuMuonTra AND MaSach = @MaSach)
+    IF EXISTS (SELECT 1 FROM ChiTietPhieuMuonTra WHERE MaPhieuMuonTra = @MaPhieuMuonTra AND MaSach = @MaSach)
     BEGIN
         INSERT INTO PhieuPhat (MaPhieuPhat, MaPhieuMuonTra, MaSach, NgayXuatPhieu, TongTien)
         VALUES (@MaPhieuPhat, @MaPhieuMuonTra, @MaSach, @NgayXuatPhieu, 0)
@@ -614,4 +614,36 @@ SELECT *
   FROM [QL_ThuVien].[dbo].[ChiTietPhieuMuonTra]
   WHERE MaPhieuMuonTra= @mapmt
 END
---End Xem CTPMT
+--End Xem CTPMT	   
+	    
+--Insert DocGia
+***
+--End Insert DocGia
+	    
+--Update DocGia
+***
+--End Update DocGia
+--DeletePhieuPhat
+CREATE PROCEDURE DeletePhieuPhat
+    @MaPhieuPhat NVARCHAR(10)
+AS
+BEGIN
+    BEGIN TRY
+        BEGIN TRANSACTION;
+
+        -- Xóa dữ liệu từ bảng ChiTietPhieuPhat
+        DELETE FROM ChiTietPhieuPhat WHERE MaPhieuPhat = @MaPhieuPhat;
+
+        -- Xóa dữ liệu từ bảng PhieuPhat
+        DELETE FROM PhieuPhat WHERE MaPhieuPhat = @MaPhieuPhat;
+
+        COMMIT;
+    END TRY
+    BEGIN CATCH
+        IF @@TRANCOUNT > 0
+            ROLLBACK;
+
+        THROW;
+    END CATCH;
+END
+-- End DeletePhieuPhat

@@ -67,9 +67,11 @@
             this.btnOK.TabIndex = 60;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = false;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // txtTongTien
             // 
+            this.txtTongTien.Enabled = false;
             this.txtTongTien.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTongTien.Location = new System.Drawing.Point(314, 497);
             this.txtTongTien.Multiline = true;
@@ -110,7 +112,6 @@
             // 
             // txtMaPhieuMuonTra
             // 
-            this.txtMaPhieuMuonTra.Enabled = false;
             this.txtMaPhieuMuonTra.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMaPhieuMuonTra.Location = new System.Drawing.Point(314, 202);
             this.txtMaPhieuMuonTra.Multiline = true;

@@ -32,5 +32,33 @@ namespace Quan_Li_Thu_Vien
             fDanhSachPhieuPhat.ShowDialog();
             this.Show();
         }
+
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtMaPhieuMuonTra.Text) || string.IsNullOrEmpty(txtMaSach.Text))
+            {
+                MessageBox.Show("Không để trống các trường.", "Thông báo");
+                return;
+            }
+            if (txtMaPhieuMuonTra.Text != "" && txtMaSach.Text != "")
+            {
+                if (int.TryParse(txtTongTien.Text, out int tongTien))
+                {
+                    PhieuPhat phieuPhat = new PhieuPhat(txtMaPhieuPhat.Text, txtMaPhieuMuonTra.Text, txtMaSach.Text, txtNgayXuatPhieu.Text, tongTien);
+                    if (muonTraSachController.themPhieuPhat(phieuPhat))
+                    {
+                        MessageBox.Show("Thực thi dữ liệu thành công", "Thông báo");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Thực thi dữ liệu thất bại", "Lỗi");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Vui lòng nhập một giá trị số nguyên hợp lệ cho Tổng tiền.", "Lỗi");
+                }
+            }
+        }
     }
 }

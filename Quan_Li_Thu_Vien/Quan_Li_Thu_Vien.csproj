@@ -172,6 +172,12 @@
     <Compile Include="FChiTietPhieNhap.Designer.cs">
       <DependentUpon>FChiTietPhieNhap.cs</DependentUpon>
     </Compile>
+    <Compile Include="FChiTietPhieuMuonTra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FChiTietPhieuMuonTra.Designer.cs">
+      <DependentUpon>FChiTietPhieuMuonTra.cs</DependentUpon>
+    </Compile>
     <Compile Include="FChiTietSach.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -352,12 +358,6 @@
     <Compile Include="FSuaPhieuMuonTra.Designer.cs">
       <DependentUpon>FSuaPhieuMuonTra.cs</DependentUpon>
     </Compile>
-    <Compile Include="FSuaPhieuPhat.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FSuaPhieuPhat.Designer.cs">
-      <DependentUpon>FSuaPhieuPhat.cs</DependentUpon>
-    </Compile>
     <Compile Include="FThemDocGia.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -445,6 +445,9 @@
     <Compile Include="TacGia.cs" />
     <EmbeddedResource Include="FChiTietPhieNhap.resx">
       <DependentUpon>FChiTietPhieNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FChiTietPhieuMuonTra.resx">
+      <DependentUpon>FChiTietPhieuMuonTra.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FChiTietSach.resx">
       <DependentUpon>FChiTietSach.cs</DependentUpon>
@@ -535,9 +538,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FSuaPhieuMuonTra.resx">
       <DependentUpon>FSuaPhieuMuonTra.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FSuaPhieuPhat.resx">
-      <DependentUpon>FSuaPhieuPhat.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FThemDocGia.resx">
       <DependentUpon>FThemDocGia.cs</DependentUpon>
