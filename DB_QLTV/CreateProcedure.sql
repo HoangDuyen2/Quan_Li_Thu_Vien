@@ -678,3 +678,23 @@ ORDER BY MaNV DESC
     VALUES ( @MaNVMoiNhat, @MaTo)
 END
 --End Insert NhanVien
+
+--Insert ChiTietPhieuPhat
+CREATE PROCEDURE InsertChiTietPhieuPhat
+    @MaPhieuPhat NVARCHAR(10),
+    @LoaiPhat NVARCHAR(50)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    IF @LoaiPhat IN (N'Hư hỏng', N'Trễ hạn', N'Mất sách')
+    BEGIN
+        INSERT INTO ChiTietPhieuPhat (MaPhieuPhat, LoaiPhat)
+        VALUES (@MaPhieuPhat, @LoaiPhat)
+    END
+    ELSE
+    BEGIN
+        RAISERROR('Loại phạt không hợp lệ. Vui lòng chọn một trong các loại: Hư hỏng, Trễ hạn, Mất sách.', 16, 1)
+    END
+END
+--End Insert ChiTietPhieuPhat
