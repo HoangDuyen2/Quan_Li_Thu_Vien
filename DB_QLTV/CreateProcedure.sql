@@ -665,13 +665,16 @@ END
 --End Insert ThongTinNhanVien
 --Insert NhanVien
 CREATE PROCEDURE InsertNhanVien
-    @MaNV NVARCHAR(10),
     @MaTo NVARCHAR(10)
 AS
 BEGIN
     SET NOCOUNT ON;
+DECLARE @MaNVMoiNhat NVARCHAR(10)
 
+SELECT TOP 1 @MaNVMoiNhat = MaNV
+FROM ThongTinNhanVien
+ORDER BY MaNV DESC
     INSERT INTO NhanVien (MaNV, MaTo)
-    VALUES (@MaNV, @MaTo)
+    VALUES ( @MaNVMoiNhat, @MaTo)
 END
 --End Insert NhanVien
