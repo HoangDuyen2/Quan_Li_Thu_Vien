@@ -577,15 +577,23 @@ CREATE PROCEDURE UpdateDocGia
     @MaLoaiDG NVARCHAR(10)
 AS
 BEGIN
-    SET NOCOUNT ON;
 
-    UPDATE DocGia
-    SET TenDocGia = @TenDocGia,
-        Email = @Email,
-        SoDienThoai = @SoDienThoai,
-        GioiTinh = @GioiTinh,
-        MaLoaiDG = @MaLoaiDG
-    WHERE MaDocGia = @MaDocGia;
+	BEGIN TRANSACTION Tran_UpdateDocGia
+	BEGIN TRY
+	UPDATE DocGia
+		SET TenDocGia = @TenDocGia,
+			Email = @Email,
+			SoDienThoai = @SoDienThoai,
+			GioiTinh = @GioiTinh,
+			MaLoaiDG = @MaLoaiDG
+		WHERE MaDocGia = @MaDocGia;
+
+		COMMIT TRANSACTION Tran_UpdateDocGia
+	END TRY
+	BEGIN CATCH
+		PRINT('Cập nhật không thành công')
+		ROLLBACK TRANSACTION Tran_UpdateDocGia
+	END CATCH
 END
 --kết thúc sửa đọc giả
 
@@ -594,15 +602,22 @@ CREATE PROCEDURE DeleteDocGia
     @MaDocGia NVARCHAR(10)
 AS
 BEGIN
-    SET NOCOUNT ON;
-
-    -- Delete related records from PhieuMuonTra table
+	BEGIN TRANSACTION Tran_DeleteDocGia
+	BEGIN TRY
+	-- Delete related records from PhieuMuonTra table
     DELETE FROM PhieuMuonTra
     WHERE MaDocGia = @MaDocGia;
 
     -- Delete record from DocGia table
     DELETE FROM DocGia
     WHERE MaDocGia = @MaDocGia;
+
+		COMMIT TRANSACTION Tran_DeleteDocGia
+	END TRY
+	BEGIN CATCH
+		PRINT('Cập nhật không thành công')
+		ROLLBACK TRANSACTION Tran_DeleteDocGia
+	END CATCH
 END
 --End xóa DocGia
 	
@@ -628,6 +643,7 @@ BEGIN
 END
 GO
 -- End Tìm kiếm nhân viên theo tổ
+	
 --Insert PMT
 CREATE Procedure InsertPhieuMuonTra(
     @MaNV VARCHAR(10),
@@ -639,16 +655,15 @@ BEGIN
     -- Kiểm tra mã nhân viên và mã độc giả đã tồn tại chưa
 	 DECLARE @newID NVARCHAR(10)
         SET @newID = dbo.func_Auto_PhieuMuonTraID()
-	DECLARE @CurrentDate DATE
-	SET @CurrentDate = CAST(GETDATE() AS DATE)
     IF NOT EXISTS (SELECT 1 FROM NhanVien WHERE MaNV = @MaNV)
         RETURN 'Mã nhân viên không tồn tại'
     IF NOT EXISTS (SELECT 1 FROM DocGia WHERE MaDocGia = @MaDocGia)
         RETURN 'Mã độc giả không tồn tại'
     INSERT INTO PhieuMuonTra (MaPhieuMuonTra,MaNV, MaDocGia,NgayMuon, HanTra)
-    VALUES (@newID,@MaNV, @MaDocGia,@CurrentDate, @HanTra)
+    VALUES (@newID,@MaNV, @MaDocGia,GETDATE(), @HanTra)
 END
---END Insert PhieuMuonTra
+--END Insert ChiTietPhieuMuonTra
+
 --Update PMT
 CREATE Procedure UpdatePhieuMuonTra(
     @MaPhieuMuonTra nvarchar(10),
@@ -701,25 +716,16 @@ BEGIN
 END
 --End Delete PMT
 
-
-
-
-
-
-
-
-
-
-
 --Insert PhieuPhat
 CREATE PROCEDURE InsertPhieuPhat
     @MaPhieuMuonTra VARCHAR(20),
     @MaSach VARCHAR(20)
 AS
 BEGIN
-    SET NOCOUNT ON;
 
-    DECLARE @MaPhieuPhat VARCHAR(20)
+	BEGIN TRANSACTION Tran_InsertPhieuPhat
+	BEGIN TRY
+		DECLARE @MaPhieuPhat VARCHAR(20)
     DECLARE @NgayXuatPhieu DATE
     SET @MaPhieuPhat = dbo.func_Auto_PhieuPhatID()
     SET @NgayXuatPhieu = CAST(GETDATE() AS DATE)
@@ -734,8 +740,14 @@ BEGIN
         RAISERROR('Mã sách không tồn tại trong phiếu mượn trả.', 16, 1)
         RETURN
     END
+
+		COMMIT TRANSACTION Tran_InsertPhieuPhat
+    END TRY
+	BEGIN CATCH
+		ROLLBACK TRANSACTION Tran_InsertPhieuPhat
+		PRINT('Thêm không thành công!')
+	END CATCH
 END
-GO
 --End Insert PhieuPhat
 
 --Đã trả Chi tiết Phiếu mượn trả	    
@@ -764,25 +776,8 @@ BEGIN
     END
 END
 GO
---End Đã trả Chi tiết Phiếu mượn trả	   
---Xem CTPMT
-Create procedure XemCTPMTtheomaPMT
-@mapmt nvarchar(10)
-AS
-BEGIN
-SELECT *
-  FROM [QL_ThuVien].[dbo].[ChiTietPhieuMuonTra]
-  WHERE MaPhieuMuonTra= @mapmt
-END
---End Xem CTPMT	   
+--End Đã trả Chi tiết Phiếu mượn trả	
 	    
---Insert DocGia
-***
---End Insert DocGia
-	    
---Update DocGia
-***
---End Update DocGia
 --DeletePhieuPhat
 CREATE PROCEDURE DeletePhieuPhat
     @MaPhieuPhat NVARCHAR(10)
@@ -824,16 +819,38 @@ END
 --Kết thúc thêm chi tiết phiếu mượn trả
 
 --Del CTPMT
-CREATE PROCEDURE DeleteChiTietPhieuMuonTra
-    @MaPhieuMuonTra NVARCHAR(10),
-    @MaSach NVARCHAR(10)
+--Delete PMT
+CREATE PROCEDURE DeletePhieuMuonTra
+    @mapmt nvarchar(10)
 AS
 BEGIN
     SET NOCOUNT ON;
 
+    BEGIN TRANSACTION;
+
+    -- Xóa các bản ghi liên quan trong bảng ChiTietPhieuPhat
+    DELETE FROM ChiTietPhieuPhat
+    WHERE MaPhieuPhat IN (
+        SELECT MaPhieuPhat
+        FROM PhieuPhat
+        WHERE MaPhieuMuonTra = @mapmt
+    );
+
+    -- Xóa các bản ghi liên quan trong bảng PhieuPhat
+    DELETE FROM PhieuPhat
+    WHERE MaPhieuMuonTra = @mapmt;
+
+    -- Xóa các bản ghi liên quan trong bảng ChiTietPhieuMuonTra
     DELETE FROM ChiTietPhieuMuonTra
-    WHERE MaPhieuMuonTra = @MaPhieuMuonTra AND MaSach = @MaSach
+    WHERE MaPhieuMuonTra = @mapmt;
+
+    -- Xóa bản ghi trong bảng PhieuMuonTra
+    DELETE FROM PhieuMuonTra
+    WHERE MaPhieuMuonTra = @mapmt;
+
+    COMMIT TRANSACTION;
 END
+--End Delete PMT
 --End Del CTPMT
 
 --Insert ThongTinNhanVienvaNhanVien
@@ -898,9 +915,9 @@ CREATE PROCEDURE InsertChiTietPhieuPhat
     @LoaiPhat NVARCHAR(50)
 AS
 BEGIN
-    SET NOCOUNT ON;
-
-    IF @LoaiPhat IN (N'Hư hỏng', N'Trễ hạn', N'Mất sách')
+ BEGIN TRANSACTION Tran_InsertDocGia
+	BEGIN TRY
+		IF @LoaiPhat IN (N'Hư hỏng', N'Trễ hạn', N'Mất sách')
     BEGIN
         INSERT INTO ChiTietPhieuPhat (MaPhieuPhat, LoaiPhat)
         VALUES (@MaPhieuPhat, @LoaiPhat)
@@ -909,5 +926,13 @@ BEGIN
     BEGIN
         RAISERROR('Loại phạt không hợp lệ. Vui lòng chọn một trong các loại: Hư hỏng, Trễ hạn, Mất sách.', 16, 1)
     END
+
+		COMMIT TRANSACTION Tran_InsertDocGia
+    END TRY
+	BEGIN CATCH
+		ROLLBACK TRANSACTION Tran_InsertDocGia
+		PRINT('Thêm không thành công!')
+	END CATCH
+    
 END
 --End Insert ChiTietPhieuPhat
