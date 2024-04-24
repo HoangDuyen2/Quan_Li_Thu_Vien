@@ -540,13 +540,13 @@ BEGIN
     SET @object = 'DG'
 
     SELECT @max = ISNULL(MAX(RIGHT(MaDocGia, 3)), 0) FROM [DocGia]
-    SET @id_next = @object + RIGHT('00' + CAST(@max + 1 AS NVARCHAR(3)), 3)
+    SET @id_next = @object + RIGHT('000' + CAST(@max + 1 AS NVARCHAR(3)), 3)
 
     -- Kiểm tra id đã tồn tại chưa
     WHILE(EXISTS(SELECT MaDocGia FROM [DocGia] WHERE MaDocGia = @id_next))
     BEGIN
         SET @max = @max + 1
-        SET @id_next = @object + RIGHT('00' + CAST(@max + 1 AS NVARCHAR(3)), 3)
+        SET @id_next = @object + RIGHT('000' + CAST(@max + 1 AS NVARCHAR(3)), 3)
     END
 
     RETURN @id_next
