@@ -38,6 +38,7 @@
             this.btnSua = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
+            this.btnThemTaiKhoanNhanVienMoiTao = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvNV)).BeginInit();
             this.panelNen.SuspendLayout();
             this.SuspendLayout();
@@ -135,6 +136,7 @@
             this.btnSua.TabIndex = 20;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = false;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // btnXoa
             // 
@@ -148,6 +150,7 @@
             this.btnXoa.TabIndex = 21;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = false;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnExit
             // 
@@ -163,11 +166,26 @@
             this.btnExit.UseVisualStyleBackColor = false;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
+            // btnThemTaiKhoanNhanVienMoiTao
+            // 
+            this.btnThemTaiKhoanNhanVienMoiTao.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btnThemTaiKhoanNhanVienMoiTao.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThemTaiKhoanNhanVienMoiTao.ForeColor = System.Drawing.Color.White;
+            this.btnThemTaiKhoanNhanVienMoiTao.Location = new System.Drawing.Point(2, 644);
+            this.btnThemTaiKhoanNhanVienMoiTao.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnThemTaiKhoanNhanVienMoiTao.Name = "btnThemTaiKhoanNhanVienMoiTao";
+            this.btnThemTaiKhoanNhanVienMoiTao.Size = new System.Drawing.Size(388, 44);
+            this.btnThemTaiKhoanNhanVienMoiTao.TabIndex = 21;
+            this.btnThemTaiKhoanNhanVienMoiTao.Text = "Thêm Tài Khoản Nhân Viên Mới Tạo";
+            this.btnThemTaiKhoanNhanVienMoiTao.UseVisualStyleBackColor = false;
+            this.btnThemTaiKhoanNhanVienMoiTao.Click += new System.EventHandler(this.btnThemTaiKhoanNhanVienMoiTao_Click);
+            // 
             // FDanhSachNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1353, 690);
+            this.Controls.Add(this.btnThemTaiKhoanNhanVienMoiTao);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnSua);
@@ -196,5 +214,6 @@
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Button btnThemTaiKhoanNhanVienMoiTao;
     }
 }

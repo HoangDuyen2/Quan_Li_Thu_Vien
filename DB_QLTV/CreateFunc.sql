@@ -1,27 +1,5 @@
---Tự động tăng mã nhân viên khi thêm nhân viên
-CREATE FUNCTION func_Auto_NhanVienID()
-RETURNS NVARCHAR(10)
-AS
-BEGIN
-	DECLARE @id_next VARCHAR(10)
-	DECLARE @max INT
-	DECLARE @object VARCHAR(2)
-	BEGIN
-		SET @object = 'NV'
-	END
-	SELECT @max = COUNT(MaNV) FROM [ThongTinNhanVien]
-	SET @id_next = @object + RIGHT('0' + CAST(@max AS nvarchar(10)), 3)
-	-- Kiểm tra id đã tồn tại chưa
-	WHILE(EXISTS(SELECT MaNV FROM [ThongTinNhanVien] WHERE MaNV = @id_next))
-	BEGIN
-		SET @max = @max + 1
-		SET @id_next = @object + RIGHT('0' + CAST(@max AS nvarchar(10)), 3)
-	END
-		RETURN @id_next
-END
-GO
---Kết thúc hàm Tự động tăng mã nhân viên khi thêm nhân viên
-
+--Tổ sách
+--Tạo mã tự động
 -- Tự động tăng thêm Mã sách khi thêm sách
 CREATE FUNCTION func_Auto_bookID()
 RETURNS NVARCHAR(10)
@@ -45,6 +23,7 @@ BEGIN
 END
 GO
 --Kết thúc hàm tự động thêm sách
+
 
 --Tự động thêm mã ngôn ngữ khi thêm ngôn ngữ mới
 CREATE FUNCTION func_Auto_LanguageID()
@@ -141,78 +120,9 @@ BEGIN
 END
 GO
 --Kết thúc hàm tự động thêm mã loại sách
+--Kết thúc tạo mã tự động
 
-
---Tự động tăng Mã nhà cung cấp khi cung cấp sách
-CREATE FUNCTION func_Auto_CungCapID()
-RETURNS NVARCHAR(10)
-AS
-BEGIN
-	DECLARE @id_next VARCHAR(10)
-	DECLARE @max INT
-	DECLARE @object VARCHAR(2)
-	BEGIN
-		SET @object = 'NCC'
-	END
-	SELECT @max = COUNT(MaNhaCC) FROM [CungCap]
-	SET @id_next = @object + RIGHT('0' + CAST(@max AS nvarchar(10)), 3)
-	-- Kiểm tra id đã tồn tại chưa
-	WHILE(EXISTS(SELECT MaNhaCC FROM [CungCap] WHERE MaNhaCC = @id_next))
-	BEGIN
-		SET @max = @max + 1
-		SET @id_next = @object + RIGHT('0' + CAST(@max AS nvarchar(10)), 3)
-	END
-		RETURN @id_next
-END
-GO
---Kết thúc hàm tự động thêm mã nhà cung cấp
-
-	
--- Tự động tăng thêm Mã Phiếu Mượn Trả khi thêm Phiếu Mượn Trả
-CREATE FUNCTION func_Auto_PhieuMuonTraID()
-RETURNS NVARCHAR(10)
-AS
-BEGIN
-    DECLARE @id_next VARCHAR(10)
-    DECLARE @max INT
-    DECLARE @object VARCHAR(2)
-    
-    SET @object = 'MT'
-    
-    SELECT @max = ISNULL(CAST(RIGHT(MAX(MaPhieuMuonTra), 4) AS INT), 0) 
-    FROM PhieuMuonTra
-
-    SET @id_next = @object + RIGHT('0000' + CAST((@max + 1) AS nvarchar(10)), 4)
-
-    RETURN @id_next
-END
-GO
---Kết thúc hàm tự động thêm Phiếu Mượn Trả
-	
--- Tự động tăng thêm Mã Phiếu Phạt khi thêm Phiếu Phạt
-CREATE FUNCTION func_Auto_PhieuPhatID()
-RETURNS NVARCHAR(10)
-AS
-BEGIN
-	DECLARE @id_next VARCHAR(10)
-	DECLARE @max INT
-	DECLARE @object VARCHAR(2)
-	BEGIN
-		SET @object = 'PP'
-	END
-	SELECT @max = COUNT(MaPhieuPhat) FROM [PhieuPhat]
-	SET @id_next = @object + RIGHT('00' + CAST(@max AS nvarchar(10)), 3)
-	-- Kiểm tra id đã tồn tại chưa
-	WHILE(EXISTS(SELECT MaPhieuPhat FROM [PhieuPhat] WHERE MaPhieuPhat = @id_next))
-	BEGIN
-		SET @max = @max + 1
-		SET @id_next = @object + RIGHT('0' + CAST(@max AS nvarchar(10)), 3)
-	END
-		RETURN @id_next
-END
-GO
---Kết thúc hàm tự động thêm Phiếu Phạt
-
+--Tìm kiếm trong tổ sách
 --Bắt đầu hàm tìm sách mượn theo ngày
 CREATE FUNCTION [dbo].[func_CategorizeBookByDate](@NgayBD datetime, @NgayKT datetime)
 RETURNS @Book TABLE(MaSach nvarchar(10), TenSach nvarchar(255), TenLoaiSach nvarchar(50), TenNXB nvarchar(255), TenNgonNgu nvarchar(50), NamXB int,
@@ -422,6 +332,7 @@ BEGIN
 	RETURN
 END
 --Kết thúc tên các loại sách
+
 --Tìm kiếm độc giả theo mã độc giả
 CREATE FUNCTION [dbo].[func_SearchDocGiabyMaDocGia](@MaDocGia nvarchar(10))
 RETURNS INT
@@ -436,38 +347,36 @@ BEGIN
 	IF(@MaDocGiaCount > 0)
 		RETURN 1
 	RETURN 0
---End Tìm kiếm độc giả theo mã độc giả
 END
---Tìm kiếm Phiếu mượn trả theo tên độc giả
-CREATE FUNCTION func_SearchPMTByTenDG
-(
-    @ReaderName NVARCHAR(50)
-)
-RETURNS @BookLoansList TABLE
-(
-    MaPhieuMuonTra NVARCHAR(10),
-    TenNV NVARCHAR(255),
-    TenDocGia NVARCHAR(255),
-    NgayMuon DATE,
-    HanTra DATE
-)
+--End Tìm kiếm độc giả theo mã độc giả
+--Kết thúc tổ Sách
+
+--Tổ nhập sách
+--Tạo mã tự động
+--Tự động tăng Mã nhà cung cấp khi cung cấp sách
+CREATE FUNCTION func_Auto_CungCapID()
+RETURNS NVARCHAR(10)
 AS
 BEGIN
-    INSERT INTO @BookLoansList
-    SELECT
-        pm.MaPhieuMuonTra,
-        nv.TenNV,
-        dg.TenDocGia,
-        pm.NgayMuon,
-        pm.HanTra
-    FROM PhieuMuonTra pm
-    INNER JOIN DocGia dg ON pm.MaDocGia = dg.MaDocGia
-    INNER JOIN ThongTinNhanVien nv ON pm.MaNV = nv.MaNV
-    WHERE dg.TenDocGia LIKE N'%' + @ReaderName + '%'
-    RETURN
+	DECLARE @id_next VARCHAR(10)
+	DECLARE @max INT
+	DECLARE @object VARCHAR(2)
+	BEGIN
+		SET @object = 'NCC'
+	END
+	SELECT @max = COUNT(MaNhaCC) FROM [CungCap]
+	SET @id_next = @object + RIGHT('0' + CAST(@max AS nvarchar(10)), 3)
+	-- Kiểm tra id đã tồn tại chưa
+	WHILE(EXISTS(SELECT MaNhaCC FROM [CungCap] WHERE MaNhaCC = @id_next))
+	BEGIN
+		SET @max = @max + 1
+		SET @id_next = @object + RIGHT('0' + CAST(@max AS nvarchar(10)), 3)
+	END
+		RETURN @id_next
 END
---END Tìm kiếm Phiếu mượn trả theo tên độc giả
-
+GO
+--Kết thúc hàm tự động thêm mã nhà cung cấp
+--Tìm kiếm trong tổ nhập sách
 --Tìm kiếm nhà cung cấp theo tên nhà cung cấp
 CREATE FUNCTION [dbo].[func_SearchTenNCCByName](@TenNhaCungCap nvarchar(50))
 RETURNS INT
@@ -499,34 +408,127 @@ BEGIN
 	RETURN 0
 END
 --Kết thúc tìm kiếm theo tên
---Tìm kiếm DocGia theo TenDocGia
-CREATE FUNCTION func_SearchDocGiaByTenDocGia(
-    @TenDocGia VARCHAR(255)
-)
-RETURNS TABLE
+
+--Bắt đầu tìm kiếm phiếu nhập theo ngày phiếu nhập
+CREATE FUNCTION [dbo].[func_CategorizeChiTietPhieuNhapByDate](@NgayBD datetime, @NgayKT datetime)
+RETURNS @PhieuNhap TABLE(MaPhieuNhap nvarchar(10), NgayNhap datetime, GiaTriDonHang int, TenNCC nvarchar(255), TenSach nvarchar(50), DonGia int,SoLuong int)
 AS
-RETURN (
-    SELECT *
-    FROM DocGia
-    WHERE TenDocGia LIKE '%' + @TenDocGia + '%'
-);
---Kết thúc tìm kiếm DocGia theo TenDocGia
---Tìm kiếm PhieuPhat theo TenSach
-CREATE FUNCTION SearchPhieuPhatByTenSach
-(
-    @TenSach nvarchar(50)
-)
-RETURNS TABLE
+BEGIN
+	DECLARE @NgayBD_NoTime datetime = CONVERT(DATE, @NgayBD);
+    DECLARE @NgayKT_NoTime datetime = CONVERT(DATE, @NgayKT);
+
+	INSERT @PhieuNhap
+	SELECT ctpn.MaPhieuNhap, NgayNhap, GiaTriDonHang, TenNhaCC, TenSach, DonGia, SL
+	FROM ChiTietPhieuNhap ctpn
+	INNER JOIN Sach s ON s.MaSach = ctpn.MaSach
+	INNER JOIN PhieuNhap pn ON pn.MaPhieuNhap = ctpn.MaPhieuNhap
+	INNER JOIN CungCap cc ON cc.MaNhaCC = pn.MaNhaCC
+	WHERE CONVERT(DATE,pn.NgayNhap) BETWEEN @NgayBD_NoTime AND @NgayKT_NoTime
+	RETURN
+END
+--Kết thúc tìm kiếm phiếu nhập theo ngày nhập phiếu
+
+--Bắt đầu tìm kiếm tên phiếu nhập trong bảng phiếu nhập
+CREATE FUNCTION [dbo].[func_SearchNCCNameTablePhieuNhap] (@TenNCC NVARCHAR(50))
+RETURNS @NCCList TABLE(MaPhieuNhap NVARCHAR(10), NgayNhap datetime, GiaTriDonHang INT, TenNCC NVARCHAR(50))
 AS
-RETURN (
-    SELECT pp.MaPhieuPhat, mt.MaPhieuMuonTra, dg.TenDocGia, s.TenSach, pp.TongTien
-    FROM PhieuPhat pp
-    INNER JOIN PhieuMuonTra mt ON pp.MaPhieuMuonTra = mt.MaPhieuMuonTra
-    INNER JOIN DocGia dg ON mt.MaDocGia = dg.MaDocGia
-    INNER JOIN Sach s ON s.MaSach = pp.MaSach
-     WHERE TenSach LIKE '%' + @TenSach + '%'
-);
---Kết thúc Tìm kiếm PhieuPhat theo TenSach
+BEGIN
+	INSERT @NCCList
+	SELECT MaPhieuNhap, NgayNhap, GiaTriDonHang, cc.TenNhaCC
+	FROM CungCap cc INNER JOIN PhieuNhap pn ON cc.MaNhaCC = pn.MaNhaCC
+    WHERE TenNhaCC LIKE N'%' + @TenNCC + '%'
+	RETURN
+END
+--Kết thúc tìm kiếm tên phiếu nhập trong bảng phiếu nhập
+
+--Bắt đầu tìm kiếm tên nhà cung cấp theo tên nhà cung cấp
+CREATE FUNCTION [dbo].[func_SearchTenNCCByName](@TenNhaCungCap nvarchar(50))
+RETURNS INT
+AS
+BEGIN
+	DECLARE @TenNCCCount INT
+	SELECT @TenNCCCount = COUNT(*)
+	FROM CungCap
+	WHERE TenNhaCC = @TenNhaCungCap;
+	
+	IF(@TenNCCCount > 0)
+		RETURN 1
+	RETURN 0
+END
+--Kết thúc tìm kiếm tên nhà cung cấp theo tên nhà cung cấp
+--Kết thúc tổ nhập sách
+
+--Tổ Mượn trả
+--Tự động tạo mã
+--Tự động tăng mã nhân viên khi thêm nhân viên
+CREATE FUNCTION func_Auto_NhanVienID()
+RETURNS NVARCHAR(10)
+AS
+BEGIN
+	DECLARE @id_next VARCHAR(10)
+	DECLARE @max INT
+	DECLARE @object VARCHAR(2)
+	BEGIN
+		SET @object = 'NV'
+	END
+	SELECT @max = COUNT(MaNV) FROM [ThongTinNhanVien]
+	SET @id_next = @object + RIGHT('0' + CAST(@max AS nvarchar(10)), 3)
+	-- Kiểm tra id đã tồn tại chưa
+	WHILE(EXISTS(SELECT MaNV FROM [ThongTinNhanVien] WHERE MaNV = @id_next))
+	BEGIN
+		SET @max = @max + 1
+		SET @id_next = @object + RIGHT('0' + CAST(@max AS nvarchar(10)), 3)
+	END
+		RETURN @id_next
+END
+GO
+--Kết thúc hàm Tự động tăng mã nhân viên khi thêm nhân viên
+
+-- Tự động tăng thêm Mã Phiếu Mượn Trả khi thêm Phiếu Mượn Trả
+CREATE FUNCTION func_Auto_PhieuMuonTraID()
+RETURNS NVARCHAR(10)
+AS
+BEGIN
+    DECLARE @id_next VARCHAR(10)
+    DECLARE @max INT
+    DECLARE @object VARCHAR(2)
+    
+    SET @object = 'MT'
+    
+    SELECT @max = ISNULL(CAST(RIGHT(MAX(MaPhieuMuonTra), 4) AS INT), 0) 
+    FROM PhieuMuonTra
+
+    SET @id_next = @object + RIGHT('0000' + CAST((@max + 1) AS nvarchar(10)), 4)
+
+    RETURN @id_next
+END
+GO
+--Kết thúc hàm tự động thêm Phiếu Mượn Trả
+	
+-- Tự động tăng thêm Mã Phiếu Phạt khi thêm Phiếu Phạt
+CREATE FUNCTION func_Auto_PhieuPhatID()
+RETURNS NVARCHAR(10)
+AS
+BEGIN
+	DECLARE @id_next VARCHAR(10)
+	DECLARE @max INT
+	DECLARE @object VARCHAR(2)
+	BEGIN
+		SET @object = 'PP'
+	END
+	SELECT @max = COUNT(MaPhieuPhat) FROM [PhieuPhat]
+	SET @id_next = @object + RIGHT('00' + CAST(@max AS nvarchar(10)), 3)
+	-- Kiểm tra id đã tồn tại chưa
+	WHILE(EXISTS(SELECT MaPhieuPhat FROM [PhieuPhat] WHERE MaPhieuPhat = @id_next))
+	BEGIN
+		SET @max = @max + 1
+		SET @id_next = @object + RIGHT('0' + CAST(@max AS nvarchar(10)), 3)
+	END
+		RETURN @id_next
+END
+GO
+--Kết thúc hàm tự động thêm Phiếu Phạt
+
 --auto ID độc giả
 CREATE FUNCTION func_Auto_DocGiaID()
 RETURNS NVARCHAR(10)
@@ -550,8 +552,70 @@ BEGIN
     RETURN @id_next
 END
 GO
-
 --End auto ID độc giả
+--Kết thúc tạo độc giả
+
+--Tìm kiếm trong tổ Mượn trả
+--Tìm kiếm Phiếu mượn trả theo tên độc giả
+CREATE FUNCTION func_SearchPMTByTenDG
+(
+    @ReaderName NVARCHAR(50)
+)
+RETURNS @BookLoansList TABLE
+(
+    MaPhieuMuonTra NVARCHAR(10),
+    TenNV NVARCHAR(255),
+    TenDocGia NVARCHAR(255),
+    NgayMuon DATE,
+    HanTra DATE
+)
+AS
+BEGIN
+    INSERT INTO @BookLoansList
+    SELECT
+        pm.MaPhieuMuonTra,
+        nv.TenNV,
+        dg.TenDocGia,
+        pm.NgayMuon,
+        pm.HanTra
+    FROM PhieuMuonTra pm
+    INNER JOIN DocGia dg ON pm.MaDocGia = dg.MaDocGia
+    INNER JOIN ThongTinNhanVien nv ON pm.MaNV = nv.MaNV
+    WHERE dg.TenDocGia LIKE N'%' + @ReaderName + '%'
+    RETURN
+END
+--END Tìm kiếm Phiếu mượn trả theo tên độc giả
+
+--Tìm kiếm DocGia theo TenDocGia
+CREATE FUNCTION func_SearchDocGiaByTenDocGia(
+    @TenDocGia VARCHAR(255)
+)
+RETURNS TABLE
+AS
+RETURN (
+    SELECT *
+    FROM DocGia
+    WHERE TenDocGia LIKE '%' + @TenDocGia + '%'
+);
+--Kết thúc tìm kiếm DocGia theo TenDocGia
+
+--Tìm kiếm PhieuPhat theo TenSach
+CREATE FUNCTION SearchPhieuPhatByTenSach
+(
+    @TenSach nvarchar(50)
+)
+RETURNS TABLE
+AS
+RETURN (
+    SELECT pp.MaPhieuPhat, mt.MaPhieuMuonTra, dg.TenDocGia, s.TenSach, pp.TongTien
+    FROM PhieuPhat pp
+    INNER JOIN PhieuMuonTra mt ON pp.MaPhieuMuonTra = mt.MaPhieuMuonTra
+    INNER JOIN DocGia dg ON mt.MaDocGia = dg.MaDocGia
+    INNER JOIN Sach s ON s.MaSach = pp.MaSach
+     WHERE TenSach LIKE '%' + @TenSach + '%'
+);
+--Kết thúc Tìm kiếm PhieuPhat theo TenSach
+
 --Search Nhân Viên theo tên
 CREATE FUNCTION func_SearchNhanVienByTen(
     @TenNV NVARCHAR(255)
@@ -564,3 +628,4 @@ RETURN (
     WHERE TenNV LIKE '%' + @TenNV + '%'
 )
 --End --Search Nhân Viên theo tên
+--Kết thúc tổ Mượn trả

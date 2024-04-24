@@ -178,6 +178,12 @@
     <Compile Include="FChiTietPhieuMuonTra.Designer.cs">
       <DependentUpon>FChiTietPhieuMuonTra.cs</DependentUpon>
     </Compile>
+    <Compile Include="FChiTietPhieuPhat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FChiTietPhieuPhat.Designer.cs">
+      <DependentUpon>FChiTietPhieuPhat.cs</DependentUpon>
+    </Compile>
     <Compile Include="FChiTietSach.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -352,6 +358,12 @@
     <Compile Include="FSuaDocGia.Designer.cs">
       <DependentUpon>FSuaDocGia.cs</DependentUpon>
     </Compile>
+    <Compile Include="FSuaNhanVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FSuaNhanVien.Designer.cs">
+      <DependentUpon>FSuaNhanVien.cs</DependentUpon>
+    </Compile>
     <Compile Include="FSuaPhieuMuonTra.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -387,6 +399,12 @@
     </Compile>
     <Compile Include="FThemSach.Designer.cs">
       <DependentUpon>FThemSach.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FThemTaiKhoanMoiTao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FThemTaiKhoanMoiTao.Designer.cs">
+      <DependentUpon>FThemTaiKhoanMoiTao.cs</DependentUpon>
     </Compile>
     <Compile Include="FThongTinCaNhan.cs">
       <SubType>Form</SubType>
@@ -444,6 +462,7 @@
     <Compile Include="Sach.cs" />
     <Compile Include="SachController.cs" />
     <Compile Include="TacGia.cs" />
+    <Compile Include="TaiKhoan.cs" />
     <EmbeddedResource Include="FChiTietNCC.resx">
       <DependentUpon>FChiTietNCC.cs</DependentUpon>
     </EmbeddedResource>
@@ -455,6 +474,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FChiTietPhieuMuonTra.resx">
       <DependentUpon>FChiTietPhieuMuonTra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FChiTietPhieuPhat.resx">
+      <DependentUpon>FChiTietPhieuPhat.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FChiTietSach.resx">
       <DependentUpon>FChiTietSach.cs</DependentUpon>
@@ -543,6 +565,9 @@
     <EmbeddedResource Include="FSuaDocGia.resx">
       <DependentUpon>FSuaDocGia.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FSuaNhanVien.resx">
+      <DependentUpon>FSuaNhanVien.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FSuaPhieuMuonTra.resx">
       <DependentUpon>FSuaPhieuMuonTra.cs</DependentUpon>
     </EmbeddedResource>
@@ -560,6 +585,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FThemSach.resx">
       <DependentUpon>FThemSach.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FThemTaiKhoanMoiTao.resx">
+      <DependentUpon>FThemTaiKhoanMoiTao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FThongTinCaNhan.resx">
       <DependentUpon>FThongTinCaNhan.cs</DependentUpon>

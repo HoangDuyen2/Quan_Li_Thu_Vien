@@ -36,6 +36,22 @@ namespace Quan_Li_Thu_Vien
             adapter.Fill(dataTable);
             return dataTable;
         }
+        public DataTable DSChiTietPhieuPhat(string maPhieuPhat)
+        {
+            SqlCommand cmd = new SqlCommand("EXEC XemCTPPtheoMaPP @mapp = '" + maPhieuPhat + "'", conn.GetSqlConnection());
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataTable dataTable = new DataTable();
+            adapter.Fill(dataTable);
+            return dataTable;
+        }
+        public DataTable DSTenCacLoaiPhat()
+        {
+            SqlCommand cmmd = new SqlCommand("SELECT LoaiPhat FROM Phat", conn.GetSqlConnection());
+            SqlDataAdapter adapter = new SqlDataAdapter(cmmd);
+            DataTable table = new DataTable();
+            adapter.Fill(table);
+            return table;
+        }
         public DataTable DSNhanVien()
         {
             SqlCommand cmd = new SqlCommand("SELECT * FROM ThongTinNhanVienView", conn.GetSqlConnection());
@@ -263,6 +279,73 @@ namespace Quan_Li_Thu_Vien
             cmmd.Parameters.AddWithValue("@Luong", person.Luong);
             cmmd.Parameters.AddWithValue("@Email", person.Email);
             cmmd.Parameters.AddWithValue("@MaTo", maTo);
+            conn.openConnection();
+            if (cmmd.ExecuteNonQuery() > 0)
+            {
+                conn.closeConnection();
+                return true;
+            }
+            else
+            {
+                conn.closeConnection();
+                return false;
+            }
+        }
+        public bool suaThongTinNhanVien(Person person)
+        {
+            SqlCommand cmmd = new SqlCommand("UpdateStaff", conn.GetSqlConnection());
+            cmmd.CommandType = CommandType.StoredProcedure;
+            cmmd.Parameters.AddWithValue("@TenNV", person.TenNguoi);
+            cmmd.Parameters.AddWithValue("@GioiTinh", person.GioiTinh);
+            cmmd.Parameters.AddWithValue("@NgaySinh", person.NgaySinh1);
+            cmmd.Parameters.AddWithValue("@DiaChi", person.DiaChi);
+            cmmd.Parameters.AddWithValue("@SDT", person.SDT1);
+            cmmd.Parameters.AddWithValue("@Email", person.Email);
+            conn.openConnection();
+            if (cmmd.ExecuteNonQuery() > 0)
+            {
+                conn.closeConnection();
+                return true;
+            }
+            else
+            {
+                conn.closeConnection();
+                return false;
+            }
+        }
+        public bool xoaThongTinNhanVien(string maNV)
+        {
+            using (SqlConnection connection = conn.GetSqlConnection())
+            {
+                try
+                {
+                    conn.openConnection();
+                    using (SqlCommand command = new SqlCommand("DeleteEmployee", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@maNV", maNV);
+                        int rowsAffected = command.ExecuteNonQuery();
+                        return true;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi khi xóa phiếu phạt: " + ex.Message, "Lỗi");
+                    return false;
+                }
+                finally
+                {
+                    conn.closeConnection();
+                }
+            }
+        }
+        public bool themTaiKhoanNhanVien(TaiKhoan taikhoan)
+        {
+            SqlCommand cmmd = new SqlCommand("InsertTaiKhoan", conn.GetSqlConnection());
+            cmmd.CommandType = CommandType.StoredProcedure;
+            cmmd.Parameters.AddWithValue("@Username", taikhoan.Username);
+            cmmd.Parameters.AddWithValue("@PasswordUser", taikhoan.PasswordUser);
+            cmmd.Parameters.AddWithValue("@MaNV", taikhoan.MaNV);
             conn.openConnection();
             if (cmmd.ExecuteNonQuery() > 0)
             {
