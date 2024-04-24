@@ -1,34 +1,4 @@
-
-	
---Bắt đầu sửa nhân viên mới
-CREATE PROCEDURE UpdateStaff (@TenNV nvarchar(32),
-								@GioiTinh nvarchar(1),
-								@NgaySinh DATETIME,
-								@DiaChi nvarchar(255),
-								@SDT varchar(10),
-								@Email varchar(50),
-AS
-BEGIN
-	BEGIN TRANSACTION Tran_UpdateStaff
-	BEGIN TRY
-		UPDATE dbo.ThongTinNhanVien SET TenNV = @TenNV,
-					GioiTinh = @GioiTinh,
-					NgaySinh = @NgaySinh,
-					DiaChi = @DiaChi,
-					SDT = @SDT,
-					Email = @Email,
-
-		WHERE MaNV = @MaNV
-		COMMIT TRANSACTION Tran_UpdateStaff
-	END TRY
-	BEGIN CATCH
-		PRINT('Sửa không thành công')
-		ROLLBACK TRANSACTION Tran_UpdateStaff
-	END CATCH
-END
-GO
---Kết Thúc Procedure sửa nhân viên
-
+--Tổ Sách
 --Bắt đầu thêm Sách mới
 CREATE PROCEDURE InsertBook (@TenSach nvarchar(50),
 								@TenNXB nvarchar(50),
@@ -177,6 +147,35 @@ BEGIN
 END
 --Kết thúc sửa tác giả
 
+--Bắt đầu thêm nhà xuất bản
+CREATE PROCEDURE [dbo].[pro_InsertNXB] 
+    @TenNXB nvarchar(50),
+    @DiaChi nvarchar(255),
+    @SDT nvarchar(11)
+AS
+BEGIN
+    BEGIN TRANSACTION Tran_InsertNXB
+    BEGIN TRY
+        DECLARE @LastID NVARCHAR(10)
+        SELECT @LastID = MAX(MaNXB) FROM dbo.NXB
+
+        DECLARE @NextID NVARCHAR(10)
+		SET @NextID = LEFT(@LastID, LEN(@LastID) - 3) + RIGHT('000' + CAST(CAST(RIGHT(@LastID, 3) AS INT) + 1 AS NVARCHAR), 3);
+
+        INSERT INTO dbo.NXB(MaNXB, TenNXB, DiaChi, SDT)
+        VALUES (@NextID, @TenNXB, @DiaChi, @SDT)
+        
+        COMMIT TRANSACTION Tran_InsertNXB
+    END TRY
+    BEGIN CATCH
+        DECLARE @err NVARCHAR(MAX)
+        SELECT @err = N'Lỗi: ' + ERROR_MESSAGE()
+        RAISERROR(@err, 16, 1)
+        ROLLBACK TRANSACTION Tran_InsertNXB
+    END CATCH
+END
+--Kết thúc thêm nhà xuất bản
+
 --Bắt đầu sửa nhà xuất bản
 CREATE PROCEDURE pro_UpdateNXB (@MaNXB nvarchar(10),
 								@TenNXB nvarchar(50),
@@ -199,6 +198,356 @@ BEGIN
 	END CATCH
 END
 --Kết thúc sửa nhà xuất bản
+
+--Bắt đầu thêm Ngôn ngữ
+CREATE PROCEDURE [dbo].[pro_InsertNgonNgu] 
+    @TenNN nvarchar(50)
+AS
+BEGIN
+    BEGIN TRANSACTION Tran_InsertNgonNgu
+    BEGIN TRY
+        DECLARE @LastID NVARCHAR(10)
+        SELECT @LastID = MAX(MaNgonNgu) FROM dbo.NgonNgu
+
+        DECLARE @NextID NVARCHAR(10)
+		SET @NextID = LEFT(@LastID, LEN(@LastID) - 3) + RIGHT('000' + CAST(CAST(RIGHT(@LastID, 3) AS INT) + 1 AS NVARCHAR), 3);
+
+        INSERT INTO dbo.NgonNgu(MaNgonNgu, TenNgonNgu)
+        VALUES (@NextID, @TenNN)
+        
+        COMMIT TRANSACTION Tran_InsertNgonNgu
+    END TRY
+    BEGIN CATCH
+        DECLARE @err NVARCHAR(MAX)
+        SELECT @err = N'Lỗi: ' + ERROR_MESSAGE()
+        RAISERROR(@err, 16, 1)
+        ROLLBACK TRANSACTION Tran_InsertNgonNgu
+    END CATCH
+END
+--Kết thúc thêm ngôn ngữ
+
+--Bắt đầu thêm loại sách
+CREATE PROCEDURE [dbo].[pro_InsertLoaiSach] 
+    @TenLS nvarchar(50)
+AS
+BEGIN
+    BEGIN TRANSACTION Tran_InsertLoaiSach
+    BEGIN TRY
+        DECLARE @LastID NVARCHAR(10)
+        SELECT @LastID = MAX(MaLoaiSach) FROM dbo.LoaiSach
+
+        DECLARE @NextID NVARCHAR(10)
+		SET @NextID = LEFT(@LastID, LEN(@LastID) - 3) + RIGHT('000' + CAST(CAST(RIGHT(@LastID, 3) AS INT) + 1 AS NVARCHAR), 3);
+
+        INSERT INTO dbo.LoaiSach(MaLoaiSach, TenLoaiSach)
+        VALUES (@NextID, @TenLS)
+        
+        COMMIT TRANSACTION Tran_InsertLoaiSach
+    END TRY
+    BEGIN CATCH
+        DECLARE @err NVARCHAR(MAX)
+        SELECT @err = N'Lỗi: ' + ERROR_MESSAGE()
+        RAISERROR(@err, 16, 1)
+        ROLLBACK TRANSACTION Tran_InsertLoaiSach
+    END CATCH
+END
+--Kết thúc thêm loại sách
+--Kết thúc tổ Sách
+
+--Tổ nhập sách
+--Thêm nhà cung cấp
+CREATE PROCEDURE [dbo].[pro_InsertNCC] 
+    @TenNCC nvarchar(50),
+    @DiaChi nvarchar(255),
+    @SDT nvarchar(11)
+AS
+BEGIN
+    BEGIN TRANSACTION Tran_InsertNCC
+    BEGIN TRY
+        DECLARE @LastID NVARCHAR(10)
+        SELECT @LastID = MAX(MaNhaCC) FROM dbo.CungCap
+
+        DECLARE @NextID NVARCHAR(10)
+		SET @NextID = LEFT(@LastID, LEN(@LastID) - 3) + RIGHT('000' + CAST(CAST(RIGHT(@LastID, 3) AS INT) + 1 AS NVARCHAR), 3);
+
+        INSERT INTO dbo.CungCap(MaNhaCC, TenNhaCC, DiaChi, SoDienThoai)
+        VALUES (@NextID, @TenNCC, @DiaChi, @SDT)
+        
+        COMMIT TRANSACTION Tran_InsertNCC
+    END TRY
+    BEGIN CATCH
+        DECLARE @err NVARCHAR(MAX)
+        SELECT @err = N'Lỗi: ' + ERROR_MESSAGE()
+        RAISERROR(@err, 16, 1)
+        ROLLBACK TRANSACTION Tran_InsertNCC
+    END CATCH
+END
+--Kết thúc thêm nhà cung cấp
+
+--Sửa nhà cung cấp
+CREATE PROCEDURE pro_UpdateNCC (@MaNCC nvarchar(10),
+								@TenNCC nvarchar(50),
+								@DiaChi nvarchar(255),
+								@SDT nvarchar(11))
+AS
+BEGIN
+	BEGIN TRANSACTION Tran_UpdateNCC
+	BEGIN TRY
+		UPDATE dbo.CungCap SET TenNhaCC = @TenNCC,
+						   DiaChi = @DiaChi,
+						   SoDienThoai = @SDT
+						WHERE MaNhaCC = @MaNCC
+
+		COMMIT TRANSACTION Tran_UpdateNCC
+	END TRY
+	BEGIN CATCH
+		PRINT('Cập nhật không thành công')
+		ROLLBACK TRANSACTION Tran_UpdateNCC
+	END CATCH
+END
+--Kết thúc sửa nhà cung cấp
+
+--Thêm Phiếu nhập
+CREATE Procedure InsertPhieuNhap(
+    @NgayNhap DATE,
+    @GiaTriDonHang INT,
+	@TenNhaCC NVARCHAR(50)
+)
+AS
+BEGIN
+    BEGIN TRANSACTION Tran_InsertPhieuNhap
+	BEGIN TRY
+		DECLARE @MaNCC NVARCHAR(10)
+		SELECT @MaNCC = MaNhaCC FROM CungCap WHERE TenNhaCC = @TenNhaCC
+
+		DECLARE @LastID NVARCHAR(10)
+        SELECT @LastID = MAX(MaPhieuNhap) FROM dbo.PhieuNhap
+
+        DECLARE @NextID NVARCHAR(10)
+		SET @NextID = LEFT(@LastID, LEN(@LastID) - 3) + RIGHT('000' + CAST(CAST(RIGHT(@LastID, 3) AS INT) + 1 AS NVARCHAR), 3);
+
+		INSERT INTO dbo.PhieuNhap(MaPhieuNhap, NgayNhap, GiaTriDonHang, MaNhaCC, NgayTao)
+		VALUES (@NextID, @NgayNhap, @GiaTriDonHang, @MaNCC,GETDATE())
+
+		COMMIT TRANSACTION Tran_InsertPhieuNhap
+    END TRY
+	BEGIN CATCH
+		ROLLBACK TRANSACTION Tran_InsertPhieuNhap
+		PRINT('Thêm không thành công!')
+	END CATCH
+END
+--Kết thúc thêm phiếu nhập
+
+--Bắt đầu sửa phiếu nhập
+CREATE Procedure UpdatePhieuNhap(
+    @MaPhieuNhap NVARCHAR(10),
+	@NgayNhap DATETIME,
+    @GiaTriDonHang FLOAT,
+	@TenNCC NVARCHAR(50)
+)
+AS
+BEGIN
+    BEGIN TRANSACTION Tran_UpdatePhieuNhap
+	BEGIN TRY
+		DECLARE @MaNCC NVARCHAR(10)
+		SELECT @MaNCC = MaNhaCC FROM CungCap WHERE TenNhaCC = @TenNCC
+
+		UPDATE dbo.PhieuNhap SET MaNhaCC = @MaNCC
+						WHERE MaPhieuNhap = @MaPhieuNhap
+
+		COMMIT TRANSACTION Tran_UpdatePhieuNhap
+    END TRY
+	BEGIN CATCH
+		ROLLBACK TRANSACTION Tran_UpdatePhieuNhap
+		PRINT('Thêm không thành công!')
+	END CATCH
+END			
+--Kết thúc sửa phiếu nhập
+
+--Bắt đầu xóa phiếu nhập
+CREATE PROCEDURE [dbo].[proc_xoaPhieuNhap]
+    @MaPhieuNhap NVARCHAR(10)
+AS
+BEGIN
+    BEGIN TRANSACTION;
+    BEGIN TRY
+        DECLARE @SoPhieu INT, @i INT;
+        SELECT @SoPhieu = COUNT(MaSach)
+        FROM ChiTietPhieuNhap
+        WHERE MaPhieuNhap = @MaPhieuNhap;
+        
+        SET @i = 1;
+        WHILE @i <= @SoPhieu
+        BEGIN
+            DECLARE @MaSach NVARCHAR(10);
+            SELECT TOP 1 @MaSach = MaSach
+            FROM ChiTietPhieuNhap
+            WHERE MaPhieuNhap = @MaPhieuNhap
+
+            DECLARE @SL INT;
+            SELECT @SL = SL
+            FROM ChiTietPhieuNhap
+            WHERE MaPhieuNhap = @MaPhieuNhap AND MaSach = @MaSach;
+
+            UPDATE dbo.Sach
+            SET SoLuongTon = SoLuongTon - @SL,
+                SoLuongSach = SoLuongSach - @SL
+            WHERE MaSach = @MaSach;
+
+            DELETE FROM dbo.ChiTietPhieuNhap
+            WHERE MaPhieuNhap = @MaPhieuNhap AND MaSach = @MaSach;
+
+            SET @i = @i + 1;
+        END
+
+        DELETE FROM dbo.PhieuNhap
+        WHERE MaPhieuNhap = @MaPhieuNhap;
+
+        COMMIT TRANSACTION;
+    END TRY
+    BEGIN CATCH
+        ROLLBACK;
+        DECLARE @err NVARCHAR(MAX);
+        SELECT @err = N'Lỗi: ' + ERROR_MESSAGE();
+        RAISERROR(@err, 16, 1);
+    END CATCH
+END
+--Kết thúc xóa phiếu nhập
+
+--Thêm chi tiết phiếu nhập
+CREATE Procedure InsertChiTietPhieuNhap(
+    @MaPhieuNhap NVARCHAR(10),
+	@TenSach NVARCHAR(50),
+    @DonGia INT,
+	@SL INT
+)
+AS
+BEGIN
+    BEGIN TRANSACTION Tran_InsertChiTietPhieuNhap
+	BEGIN TRY
+		DECLARE @MaSach NVARCHAR(10)
+		SELECT @MaSach = MaSach FROM Sach WHERE TenSach = @TenSach
+
+		INSERT INTO dbo.ChiTietPhieuNhap(MaPhieuNhap, MaSach, DonGia, SL)
+		VALUES (@MaPhieuNhap, @MaSach, @DonGia, @SL)
+
+		COMMIT TRANSACTION Tran_InsertChiTietPhieuNhap
+    END TRY
+	BEGIN CATCH
+		ROLLBACK TRANSACTION Tran_InsertChiTietPhieuNhap
+		PRINT('Thêm không thành công!')
+	END CATCH
+END
+--Kết thúc thêm chi tiết phiếu nhập
+
+--Sửa chi tiết phiếu nhập
+CREATE Procedure UpdateChiTietPhieuNhap(
+    @MaPhieuNhap NVARCHAR(10),
+	@TenSach NVARCHAR(50),
+    @DonGia INT,
+	@SLCu INT,
+	@SL INT
+)
+AS
+BEGIN
+    BEGIN TRANSACTION Tran_UpdateChiTietPhieuNhap
+	BEGIN TRY
+		DECLARE @MaSach NVARCHAR(10)
+		SELECT @MaSach = MaSach FROM Sach WHERE TenSach = @TenSach
+
+		UPDATE dbo.ChiTietPhieuNhap SET DonGia = @DonGia,
+						   SL = @SL
+						WHERE MaPhieuNhap = @MaPhieuNhap AND MaSach = @MaSach
+		UPDATE dbo.Sach SET SoLuongSach = SoLuongSach - @SLCu + @SL,
+							SoLuongTon = SoLuongTon - @SLCu + @SL
+						WHERE MaSach = @MaSach
+
+		COMMIT TRANSACTION Tran_UpdateChiTietPhieuNhap
+    END TRY
+	BEGIN CATCH
+		ROLLBACK TRANSACTION Tran_UpdateChiTietPhieuNhap
+		PRINT('Thêm không thành công!')
+	END CATCH
+END
+--Kết thúc cập nhật chi tiết phiếu nhập
+
+--Bắt đầu xóa chi tiết phiếu nhập
+CREATE PROCEDURE [dbo].[proc_xoaChiTietPhieuNhap](
+	@MaPhieuNhap NVARCHAR(10),
+	@TenSach NVARCHAR(50))
+AS
+BEGIN
+	BEGIN TRANSACTION
+	BEGIN TRY
+		DECLARE @MaSach NVARCHAR(10)
+		SELECT @MaSach = MaSach FROM Sach WHERE TenSach = @TenSach
+
+		DECLARE @SL FLOAT, @DonGia FLOAT
+		SELECT @SL = SL, @DonGia = DonGia FROM ChiTietPhieuNhap WHERE MaSach = @MaSach AND MaPhieuNhap = @MaPhieuNhap
+
+		IF (@SL * @DonGia <= (SELECT GiaTriDonHang FROM dbo.PhieuNhap WHERE MaPhieuNhap = @MaPhieuNhap))
+		BEGIN
+			UPDATE dbo.PhieuNhap  SET GiaTriDonHang = GiaTriDonHang - (@SL * @DonGia) WHERE MaPhieuNhap = @MaPhieuNhap
+			UPDATE dbo.Sach SET SoLuongTon = SoLuongTon - @SL, SoLuongSach = SoLuongSach - @SL WHERE MaSach = @MaSach
+			DELETE FROM dbo.ChiTietPhieuNhap WHERE MaPhieuNhap = @MaPhieuNhap AND MaSach = @MaSach
+		END
+		ELSE
+		BEGIN
+			RAISERROR ('Giá trị GiaTriDonHang không thể âm.', 16, 1)
+		END
+
+		COMMIT TRAN
+	END TRY
+	BEGIN CATCH
+		ROLLBACK
+		DECLARE @err NVARCHAR(MAX)
+		SELECT @err = N'Lỗi: ' + ERROR_MESSAGE()
+		RAISERROR(@err, 16, 1)
+	END CATCH
+END
+--Kết thúc xóa chi tiết phiếu nhập
+--Kết thúc tổ Nhập sách
+
+--Tổ Sách
+	    
+--Bắt đầu sửa nhân viên mới
+CREATE PROCEDURE UpdateStaff (@TenNV nvarchar(32),
+								@GioiTinh nvarchar(1),
+								@NgaySinh DATETIME,
+								@DiaChi nvarchar(255),
+								@SDT varchar(10),
+								@Email varchar(50),
+AS
+BEGIN
+	BEGIN TRANSACTION Tran_UpdateStaff
+	BEGIN TRY
+		UPDATE dbo.ThongTinNhanVien SET TenNV = @TenNV,
+					GioiTinh = @GioiTinh,
+					NgaySinh = @NgaySinh,
+					DiaChi = @DiaChi,
+					SDT = @SDT,
+					Email = @Email,
+
+		WHERE MaNV = @MaNV
+		COMMIT TRANSACTION Tran_UpdateStaff
+	END TRY
+	BEGIN CATCH
+		PRINT('Sửa không thành công')
+		ROLLBACK TRANSACTION Tran_UpdateStaff
+	END CATCH
+END
+GO
+--Kết Thúc Procedure sửa nhân viên
+
+
+
+
+
+
+
+
+
+
 
 --bắt đầu thêm độc giả mới
 CREATE PROCEDURE InsertDocGia
@@ -356,145 +705,15 @@ BEGIN
 END
 --End Delete PMT
 
---Thêm nhà cung cấp
-CREATE PROCEDURE [dbo].[pro_InsertNCC] 
-    @TenNCC nvarchar(50),
-    @DiaChi nvarchar(255),
-    @SDT nvarchar(11)
-AS
-BEGIN
-    BEGIN TRANSACTION Tran_InsertNCC
-    BEGIN TRY
-        DECLARE @LastID NVARCHAR(10)
-        SELECT @LastID = MAX(MaNhaCC) FROM dbo.CungCap
 
-        DECLARE @NextID NVARCHAR(10)
-		SET @NextID = LEFT(@LastID, LEN(@LastID) - 3) + RIGHT('000' + CAST(CAST(RIGHT(@LastID, 3) AS INT) + 1 AS NVARCHAR), 3);
 
-        INSERT INTO dbo.CungCap(MaNhaCC, TenNhaCC, DiaChi, SoDienThoai)
-        VALUES (@NextID, @TenNCC, @DiaChi, @SDT)
-        
-        COMMIT TRANSACTION Tran_InsertNCC
-    END TRY
-    BEGIN CATCH
-        DECLARE @err NVARCHAR(MAX)
-        SELECT @err = N'Lỗi: ' + ERROR_MESSAGE()
-        RAISERROR(@err, 16, 1)
-        ROLLBACK TRANSACTION Tran_InsertNCC
-    END CATCH
-END
---Kết thúc thêm nhà cung cấp
 
---Sửa nhà cung cấp
-CREATE PROCEDURE pro_UpdateNCC (@MaNCC nvarchar(10),
-								@TenNCC nvarchar(50),
-								@DiaChi nvarchar(255),
-								@SDT nvarchar(11))
-AS
-BEGIN
-	BEGIN TRANSACTION Tran_UpdateNCC
-	BEGIN TRY
-		UPDATE dbo.CungCap SET TenNhaCC = @TenNCC,
-						   DiaChi = @DiaChi,
-						   SoDienThoai = @SDT
-						WHERE MaNhaCC = @MaNCC
 
-		COMMIT TRANSACTION Tran_UpdateNCC
-	END TRY
-	BEGIN CATCH
-		PRINT('Cập nhật không thành công')
-		ROLLBACK TRANSACTION Tran_UpdateNCC
-	END CATCH
-END
---Kết thúc sửa nhà cung cấp
 
---Thêm Phiếu nhập
-CREATE Procedure InsertPhieuNhap(
-    @NgayNhap DATE,
-    @GiaTriDonHang INT,
-	@TenNhaCC NVARCHAR(50)
-)
-AS
-BEGIN
-    BEGIN TRANSACTION Tran_InsertPhieuNhap
-	BEGIN TRY
-		DECLARE @MaNCC NVARCHAR(10)
-		SELECT @MaNCC = MaNhaCC FROM CungCap WHERE TenNhaCC = @TenNhaCC
 
-		DECLARE @LastID NVARCHAR(10)
-        SELECT @LastID = MAX(MaPhieuNhap) FROM dbo.PhieuNhap
 
-        DECLARE @NextID NVARCHAR(10)
-		SET @NextID = LEFT(@LastID, LEN(@LastID) - 3) + RIGHT('000' + CAST(CAST(RIGHT(@LastID, 3) AS INT) + 1 AS NVARCHAR), 3);
 
-		INSERT INTO dbo.PhieuNhap(MaPhieuNhap, NgayNhap, GiaTriDonHang, MaNhaCC, NgayTao)
-		VALUES (@NextID, @NgayNhap, @GiaTriDonHang, @MaNCC,GETDATE())
 
-		COMMIT TRANSACTION Tran_InsertPhieuNhap
-    END TRY
-	BEGIN CATCH
-		ROLLBACK TRANSACTION Tran_InsertPhieuNhap
-		PRINT('Thêm không thành công!')
-	END CATCH
-END
---Kết thúc thêm phiếu nhập
-
---Thêm chi tiết phiếu nhập
-CREATE Procedure InsertChiTietPhieuNhap(
-    @MaPhieuNhap NVARCHAR(10),
-	@TenSach NVARCHAR(50),
-    @DonGia INT,
-	@SL INT
-)
-AS
-BEGIN
-    BEGIN TRANSACTION Tran_InsertChiTietPhieuNhap
-	BEGIN TRY
-		DECLARE @MaSach NVARCHAR(10)
-		SELECT @MaSach = MaSach FROM Sach WHERE TenSach = @TenSach
-
-		INSERT INTO dbo.ChiTietPhieuNhap(MaPhieuNhap, MaSach, DonGia, SL)
-		VALUES (@MaPhieuNhap, @MaSach, @DonGia, @SL)
-
-		COMMIT TRANSACTION Tran_InsertChiTietPhieuNhap
-    END TRY
-	BEGIN CATCH
-		ROLLBACK TRANSACTION Tran_InsertChiTietPhieuNhap
-		PRINT('Thêm không thành công!')
-	END CATCH
-END
---Kết thúc thêm chi tiết phiếu nhập
-
---Sửa chi tiết phiếu nhập
-CREATE Procedure UpdateChiTietPhieuNhap(
-    @MaPhieuNhap NVARCHAR(10),
-	@TenSach NVARCHAR(50),
-    @DonGia INT,
-	@SLCu INT,
-	@SL INT
-)
-AS
-BEGIN
-    BEGIN TRANSACTION Tran_UpdateChiTietPhieuNhap
-	BEGIN TRY
-		DECLARE @MaSach NVARCHAR(10)
-		SELECT @MaSach = MaSach FROM Sach WHERE TenSach = @TenSach
-
-		UPDATE dbo.ChiTietPhieuNhap SET DonGia = @DonGia,
-						   SL = @SL
-						WHERE MaPhieuNhap = @MaPhieuNhap AND MaSach = @MaSach
-		UPDATE dbo.Sach SET SoLuongSach = SoLuongSach - @SLCu + @SL,
-							SoLuongTon = SoLuongTon - @SLCu + @SL
-						WHERE MaSach = @MaSach
-
-		COMMIT TRANSACTION Tran_UpdateChiTietPhieuNhap
-    END TRY
-	BEGIN CATCH
-		ROLLBACK TRANSACTION Tran_UpdateChiTietPhieuNhap
-		PRINT('Thêm không thành công!')
-	END CATCH
-END
---Kết thúc cập nhật chi tiết phiếu nhập
 
 --Insert PhieuPhat
 CREATE PROCEDURE InsertPhieuPhat
