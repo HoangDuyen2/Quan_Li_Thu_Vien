@@ -352,6 +352,12 @@
     <Compile Include="FSuaDocGia.Designer.cs">
       <DependentUpon>FSuaDocGia.cs</DependentUpon>
     </Compile>
+    <Compile Include="FSuaNhanVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FSuaNhanVien.Designer.cs">
+      <DependentUpon>FSuaNhanVien.cs</DependentUpon>
+    </Compile>
     <Compile Include="FSuaPhieuMuonTra.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -450,10 +456,9 @@
     <EmbeddedResource Include="FChiTietNXB.resx">
       <DependentUpon>FChiTietNXB.cs</DependentUpon>
     </EmbeddedResource>
-	  <EmbeddedResource Include="FChiTietNV.resx">
-		  <DependentUpon>FChiTietNV.cs</DependentUpon>
-	  </EmbeddedResource>
-	  
+    <EmbeddedResource Include="FChiTietNV.resx">
+      <DependentUpon>FChiTietNV.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FChiTietPhieNhap.resx">
       <DependentUpon>FChiTietPhieNhap.cs</DependentUpon>
     </EmbeddedResource>
@@ -546,6 +551,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FSuaDocGia.resx">
       <DependentUpon>FSuaDocGia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FSuaNhanVien.resx">
+      <DependentUpon>FSuaNhanVien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FSuaPhieuMuonTra.resx">
       <DependentUpon>FSuaPhieuMuonTra.cs</DependentUpon>

@@ -65,5 +65,13 @@ namespace Quan_Li_Thu_Vien
             this.Show();
             this.Close();
         }
+
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+            FSuaNhanVien fSuaNhanVien = new FSuaNhanVien();
+            this.Close();
+            fSuaNhanVien.ShowDialog();
+            this.Show();
+        }
     }
 }
