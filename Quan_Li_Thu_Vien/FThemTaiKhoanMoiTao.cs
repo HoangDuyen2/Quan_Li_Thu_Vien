@@ -45,5 +45,13 @@ namespace Quan_Li_Thu_Vien
                 }
             }
         }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            FDanhSachNhanVien fDanhSachNhanVien = new FDanhSachNhanVien();
+            this.Close();
+            fDanhSachNhanVien.ShowDialog();
+            this.Show();
+        }
     }
 }

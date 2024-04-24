@@ -48,6 +48,7 @@
             this.btnExit.TabIndex = 118;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = false;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // btnOK
             // 
@@ -73,7 +74,6 @@
             // 
             // txtTaiKhoan
             // 
-            this.txtTaiKhoan.Enabled = false;
             this.txtTaiKhoan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTaiKhoan.Location = new System.Drawing.Point(311, 110);
             this.txtTaiKhoan.Multiline = true;
@@ -130,6 +130,7 @@
             this.Controls.Add(this.lblTenTaiKhoan);
             this.Controls.Add(this.lblThongTinTaiKhoan);
             this.Name = "FThemTaiKhoanMoiTao";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FThemTaiKhoanMoiTao";
             this.Load += new System.EventHandler(this.FThemTaiKhoanMoiTao_Load);
             this.ResumeLayout(false);

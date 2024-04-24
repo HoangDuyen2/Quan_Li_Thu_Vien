@@ -102,7 +102,7 @@ namespace Quan_Li_Thu_Vien
         {
             FThemTaiKhoanMoiTao fThemTaiKhoanMoiTao = new FThemTaiKhoanMoiTao();
             fThemTaiKhoanMoiTao.SetMaNV(maNV);
-            this.Close();
+            this.Hide();
             fThemTaiKhoanMoiTao.ShowDialog();
             this.Show();
         }

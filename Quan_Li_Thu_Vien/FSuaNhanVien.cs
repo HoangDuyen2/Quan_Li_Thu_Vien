@@ -40,5 +40,13 @@ namespace Quan_Li_Thu_Vien
                 else MessageBox.Show("Thực thi dữ liệu thất bại", "Lỗi");
             }
         }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            FDanhSachNhanVien fDanhSachNhanVien = new FDanhSachNhanVien();
+            this.Close();
+            fDanhSachNhanVien.ShowDialog();
+            this.Show();
+        }
     }
 }
