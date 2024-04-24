@@ -56,9 +56,8 @@ namespace Quan_Li_Thu_Vien
         private void btnThem_Click(object sender, EventArgs e)
         {
             FThemDocGia fThemDocGia = new FThemDocGia();
-            this.Close();
             fThemDocGia.ShowDialog();
-            this.Show();
+            FDanhSachDocGia_Load(sender, e);
         }
         private void btnXoa_Click(object sender, EventArgs e)
         {
@@ -68,9 +67,9 @@ namespace Quan_Li_Thu_Vien
 
                 if (isDeleted)
                 {
-                    MessageBox.Show("Xóa phiếu mượn trả thành công", "Thông báo");
+                    MessageBox.Show("Xóa độc giả thành công", "Thông báo");
                     FDanhSachDocGia danhSachDocGia = new FDanhSachDocGia();
-                    this.Close();
+                    this.Hide();
                     danhSachDocGia.ShowDialog();
                     this.Show();
                 }
@@ -83,13 +82,13 @@ namespace Quan_Li_Thu_Vien
             {
                 MessageBox.Show("Vui lòng chọn một độc giả để xóa", "Thông báo");
             }
+            FDanhSachDocGia_Load(sender, e);
         }
         private void btnSua_Click(object sender, EventArgs e)
         {
             FSuaDocGia fSuaDocGia = new FSuaDocGia();
-            this.Close();
             fSuaDocGia.ShowDialog();
-            this.Show();
+            FDanhSachDocGia_Load(sender, e);
         }
 
         private void btnExit_Click(object sender, EventArgs e)

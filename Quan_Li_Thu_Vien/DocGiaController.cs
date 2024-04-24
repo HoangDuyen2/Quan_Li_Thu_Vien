@@ -67,28 +67,19 @@ namespace Quan_Li_Thu_Vien
         }
         public bool XoaDocGia(string maDocGia)
         {
-            using (SqlConnection connection = conn.GetSqlConnection())
+            SqlCommand cmd = new SqlCommand("DeleteDocGia", conn.GetSqlConnection());
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@MaDocGia", SqlDbType.NVarChar).Value = maDocGia;
+            conn.openConnection();
+            if(cmd.ExecuteNonQuery() > 0)
             {
-                try
-                {
-                    conn.openConnection();
-                    using (SqlCommand command = new SqlCommand("DeleteDocGia", connection))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.AddWithValue("@MaDocGia", maDocGia);
-                        int rowsAffected = command.ExecuteNonQuery();
-                        return true;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Lỗi khi xóa độc giả: " + ex.Message, "Lỗi");
-                    return false;
-                }
-                finally
-                {
-                    conn.closeConnection();
-                }
+                conn.closeConnection();
+                return true;
+            }
+            else
+            {
+                conn.closeConnection();
+                return false;
             }
         }
         public DataTable timKiemDocGia(string tenDocGia)

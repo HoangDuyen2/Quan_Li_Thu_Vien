@@ -20,10 +20,7 @@ namespace Quan_Li_Thu_Vien
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            FDanhSachDocGia fDanhSachDocGia = new FDanhSachDocGia();
             this.Close();
-            fDanhSachDocGia.ShowDialog();
-            this.Show();
         }
 
         private void btnOK_Click(object sender, EventArgs e)

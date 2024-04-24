@@ -58,11 +58,7 @@ namespace Quan_Li_Thu_Vien
                     MessageBox.Show("Thực thi dữ liệu thành công", "Thông báo");
                 }
             }
-            FChiTietPhieuMuonTra fChiTietPhieuMuonTra = new FChiTietPhieuMuonTra();
-            fChiTietPhieuMuonTra.SetMaPMT(maPMT);
-            this.Close();
-            fChiTietPhieuMuonTra.ShowDialog();
-            this.Show();
+            FChiTietPhieuMuonTra_Load(sender,e);
         }
 
         private void btnDaTra_Click(object sender, EventArgs e)
@@ -79,11 +75,7 @@ namespace Quan_Li_Thu_Vien
                     MessageBox.Show("Thực thi dữ liệu thành công", "Thông báo");
                 }
             }
-            FChiTietPhieuMuonTra fChiTietPhieuMuonTra = new FChiTietPhieuMuonTra();
-            fChiTietPhieuMuonTra.SetMaPMT(maPMT);
-            this.Close();
-            fChiTietPhieuMuonTra.ShowDialog();
-            this.Show();
+            FChiTietPhieuMuonTra_Load(sender, e);
         }
     }
 }

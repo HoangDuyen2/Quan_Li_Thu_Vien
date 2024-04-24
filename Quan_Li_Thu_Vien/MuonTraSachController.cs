@@ -38,8 +38,9 @@ namespace Quan_Li_Thu_Vien
         }
         public DataTable DSChiTietPhieuPhat(string maPhieuPhat)
         {
-            SqlCommand cmd = new SqlCommand("EXEC XemCTPPtheoMaPP @mapp = '" + maPhieuPhat + "'", conn.GetSqlConnection());
-            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            SqlCommand cmmd = new SqlCommand("SELECT * FROM func_TimKiemTheoMaPhieuPhat(@MaPP)",conn.GetSqlConnection());
+            cmmd.Parameters.Add("@MaPP", SqlDbType.NVarChar).Value = maPhieuPhat;
+            SqlDataAdapter adapter = new SqlDataAdapter(cmmd);
             DataTable dataTable = new DataTable();
             adapter.Fill(dataTable);
             return dataTable;
@@ -121,6 +122,24 @@ namespace Quan_Li_Thu_Vien
                 return false;
             }
             return true;
+        }
+        public bool themChiTietPhieuPhat(string mapp, string tenPhat)
+        {
+            SqlCommand cmmd = new SqlCommand("InsertChiTietPhieuPhat", conn.GetSqlConnection());
+            cmmd.CommandType = CommandType.StoredProcedure;
+            cmmd.Parameters.Add("@MaPhieuPhat",SqlDbType.NVarChar).Value = mapp;
+            cmmd.Parameters.Add("@LoaiPhat", SqlDbType.NVarChar).Value = tenPhat;
+            conn.openConnection();
+            if(cmmd.ExecuteNonQuery() > 0)
+            {
+                conn.closeConnection();
+                return true;
+            }
+            else
+            {
+                conn.closeConnection();
+                return false;
+            }
         }
         public bool suaPhieuMuonTra(PhieuMuonTra phieuMuonTra)
         {
