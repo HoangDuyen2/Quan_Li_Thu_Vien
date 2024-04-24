@@ -44,6 +44,11 @@ namespace Quan_Li_Thu_Vien
                     MessageBox.Show("Thực thi dữ liệu thành công", "Thông báo");
                 }
             }
+            MessageBox.Show("Thực thi dữ liệu thành công", "Thông báo");
+            FDanhSachNhanVien fDanhSachNhanVien = new FDanhSachNhanVien();
+            this.Close();
+            fDanhSachNhanVien.ShowDialog();
+            this.Show();
         }
 
         private void btnExit_Click(object sender, EventArgs e)
