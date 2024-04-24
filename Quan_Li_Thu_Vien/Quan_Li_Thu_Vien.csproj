@@ -394,6 +394,12 @@
     <Compile Include="FThemSach.Designer.cs">
       <DependentUpon>FThemSach.cs</DependentUpon>
     </Compile>
+    <Compile Include="FThemTaiKhoanMoiTao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FThemTaiKhoanMoiTao.Designer.cs">
+      <DependentUpon>FThemTaiKhoanMoiTao.cs</DependentUpon>
+    </Compile>
     <Compile Include="FThongTinCaNhan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -450,14 +456,12 @@
     <Compile Include="Sach.cs" />
     <Compile Include="SachController.cs" />
     <Compile Include="TacGia.cs" />
+    <Compile Include="TaiKhoan.cs" />
     <EmbeddedResource Include="FChiTietNCC.resx">
       <DependentUpon>FChiTietNCC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FChiTietNXB.resx">
       <DependentUpon>FChiTietNXB.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FChiTietNV.resx">
-      <DependentUpon>FChiTietNV.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FChiTietPhieNhap.resx">
       <DependentUpon>FChiTietPhieNhap.cs</DependentUpon>
@@ -572,6 +576,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FThemSach.resx">
       <DependentUpon>FThemSach.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FThemTaiKhoanMoiTao.resx">
+      <DependentUpon>FThemTaiKhoanMoiTao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FThongTinCaNhan.resx">
       <DependentUpon>FThongTinCaNhan.cs</DependentUpon>

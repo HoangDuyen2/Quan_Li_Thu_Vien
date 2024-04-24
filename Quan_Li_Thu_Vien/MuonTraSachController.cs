@@ -284,9 +284,52 @@ namespace Quan_Li_Thu_Vien
             cmmd.Parameters.AddWithValue("@NgaySinh", person.NgaySinh1);
             cmmd.Parameters.AddWithValue("@DiaChi", person.DiaChi);
             cmmd.Parameters.AddWithValue("@SDT", person.SDT1);
-            cmmd.Parameters.AddWithValue("@Luong", person.Luong);
             cmmd.Parameters.AddWithValue("@Email", person.Email);
-            cmmd.Parameters.AddWithValue("@MaTo", maTo);
+            conn.openConnection();
+            if (cmmd.ExecuteNonQuery() > 0)
+            {
+                conn.closeConnection();
+                return true;
+            }
+            else
+            {
+                conn.closeConnection();
+                return false;
+            }
+        }
+        public bool xoaThongTinNhanVien(string maNV)
+        {
+            using (SqlConnection connection = conn.GetSqlConnection())
+            {
+                try
+                {
+                    conn.openConnection();
+                    using (SqlCommand command = new SqlCommand("DeleteThongTinNhanVien", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@maNV", maNV);
+                        int rowsAffected = command.ExecuteNonQuery();
+                        return true;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi khi xóa phiếu phạt: " + ex.Message, "Lỗi");
+                    return false;
+                }
+                finally
+                {
+                    conn.closeConnection();
+                }
+            }
+        }
+        public bool themTaiKhoanNhanVien(TaiKhoan taikhoan)
+        {
+            SqlCommand cmmd = new SqlCommand("InsertTaiKhoan", conn.GetSqlConnection());
+            cmmd.CommandType = CommandType.StoredProcedure;
+            cmmd.Parameters.AddWithValue("@Username", taikhoan.Username);
+            cmmd.Parameters.AddWithValue("@PasswordUser", taikhoan.PasswordUser);
+            cmmd.Parameters.AddWithValue("@MaNV", taikhoan.MaNV);
             conn.openConnection();
             if (cmmd.ExecuteNonQuery() > 0)
             {

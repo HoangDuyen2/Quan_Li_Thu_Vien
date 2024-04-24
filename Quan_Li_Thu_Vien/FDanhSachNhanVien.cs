@@ -73,5 +73,38 @@ namespace Quan_Li_Thu_Vien
             fSuaNhanVien.ShowDialog();
             this.Show();
         }
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(maNV))
+            {
+                bool isDeleted = dsnv.xoaThongTinNhanVien(maNV);
+
+                if (isDeleted)
+                {
+                    MessageBox.Show("Xóa nhân viên thành công", "Thông báo");
+                    FDanhSachNhanVien fDanhSachNhanVien = new FDanhSachNhanVien();
+                    this.Close();
+                    fDanhSachNhanVien.ShowDialog();
+                    this.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Xóa Nhân Viên không thành công", "Lỗi");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn nhân viên để xóa", "Thông báo");
+            }
+        }
+
+        private void btnThemTaiKhoanNhanVienMoiTao_Click(object sender, EventArgs e)
+        {
+            FThemTaiKhoanMoiTao fThemTaiKhoanMoiTao = new FThemTaiKhoanMoiTao();
+            fThemTaiKhoanMoiTao.SetMaNV(maNV);
+            this.Close();
+            fThemTaiKhoanMoiTao.ShowDialog();
+            this.Show();
+        }
     }
 }
