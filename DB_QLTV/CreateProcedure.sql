@@ -1,28 +1,4 @@
---Bắt đầu thêm nhân viên mới
-CREATE PROCEDURE InsertStaff (@MaNV nvarchar(10);
-								@TenNV nvarchar(50),
-								@GioiTinh nvarchar(1),
-								@NgaySinh DATETIME,
-								@DiaChi nvarchar(255),
-								@Luong int,
-								@SDT varchar(10),
-								@Email varchar(50))
-AS
-BEGIN
-	BEGIN TRANSACTION Tran_InsertStaff
-	BEGIN TRY
 
-		INSERT INTO dbo.ThongTinNhanVien(TenNV, GioiTinh, NgaySinh, DiaChi, Luong, SDT, Email)
-		VALUES (@TenNV, @GioiTinh, @NgaySinh, @DiaChi, @Luong, @SDT, @Email)
-		COMMIT TRANSACTION Tran_InsertStaff
-    END TRY
-	BEGIN CATCH
-		PRINT('Thêm không thành công!')
-		COMMIT TRANSACTION Tran_InsertStaff
-	END CATCH
-END
-GO
---Kết thúc Procedure thêm nhân viên mới
 	
 --Bắt đầu sửa nhân viên mới
 CREATE PROCEDURE UpdateStaff (@TenNV nvarchar(32),
@@ -644,3 +620,79 @@ BEGIN
     WHERE MaPhieuMuonTra = @MaPhieuMuonTra AND MaSach = @MaSach
 END
 --End Del CTPMT
+
+--Insert ThongTinNhanVienvaNhanVien
+CREATE PROCEDURE InsertNhanVienvaNhanVien
+    @TenNV NVARCHAR(50),
+    @GioiTinh NCHAR(1),
+    @NgaySinh DATE,
+    @DiaChi NVARCHAR(200),
+    @SDT NVARCHAR(20),
+    @Luong DECIMAL(18,2),
+    @Email NVARCHAR(50),
+    @MaTo NVARCHAR(10)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    BEGIN TRANSACTION
+
+    BEGIN TRY
+        -- Kiểm tra MaTo có nằm trong bảng NhomTo hay không
+        IF NOT EXISTS (SELECT 1 FROM NhomTo WHERE MaTo = @MaTo)
+        BEGIN
+            RAISERROR('Mã tổ không hợp lệ. Vui lòng kiểm tra lại.', 16, 1)
+            RETURN
+        END
+
+        DECLARE @MaNV NVARCHAR(10) = dbo.func_Auto_NhanVienID()
+        DECLARE @NgayTao DATE = GETDATE()
+
+        INSERT INTO ThongTinNhanVien (MaNV, TenNV, GioiTinh, NgaySinh, DiaChi, SDT, Luong, Email, NgayTao)
+        VALUES (@MaNV, @TenNV, @GioiTinh, @NgaySinh, @DiaChi, @SDT, @Luong, @Email, @NgayTao)
+
+        INSERT INTO NhanVien (MaNV, MaTo)
+        VALUES (@MaNV, @MaTo)
+
+        COMMIT TRANSACTION
+    END TRY
+    BEGIN CATCH
+        ROLLBACK TRANSACTION
+        THROW
+    END CATCH
+END
+--End Insert InsertThongTinNhanVienvaNhanVien
+
+--Insert TaiKhoan
+CREATE PROCEDURE InsertTaiKhoan
+    @Username NVARCHAR(50),
+    @PasswordUser NVARCHAR(100),
+    @MaNV NVARCHAR(10)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    INSERT INTO TaiKhoan (Username, PasswordUser, MaNV)
+    VALUES (@Username, @PasswordUser, @MaNV)
+END
+--End Insert TaiKhoan
+
+--Insert ChiTietPhieuPhat
+CREATE PROCEDURE InsertChiTietPhieuPhat
+    @MaPhieuPhat NVARCHAR(10),
+    @LoaiPhat NVARCHAR(50)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    IF @LoaiPhat IN (N'Hư hỏng', N'Trễ hạn', N'Mất sách')
+    BEGIN
+        INSERT INTO ChiTietPhieuPhat (MaPhieuPhat, LoaiPhat)
+        VALUES (@MaPhieuPhat, @LoaiPhat)
+    END
+    ELSE
+    BEGIN
+        RAISERROR('Loại phạt không hợp lệ. Vui lòng chọn một trong các loại: Hư hỏng, Trễ hạn, Mất sách.', 16, 1)
+    END
+END
+--End Insert ChiTietPhieuPhat

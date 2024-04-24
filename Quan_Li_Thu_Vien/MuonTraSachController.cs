@@ -36,6 +36,14 @@ namespace Quan_Li_Thu_Vien
             adapter.Fill(dataTable);
             return dataTable;
         }
+        public DataTable DSNhanVien()
+        {
+            SqlCommand cmd = new SqlCommand("SELECT * FROM ThongTinNhanVienView", conn.GetSqlConnection());
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataTable dataTable = new DataTable();
+            adapter.Fill(dataTable);
+            return dataTable;
+        }
         public DataTable DSDocGia()
         {
             SqlCommand cmd = new SqlCommand("SELECT * FROM DocGiaView", conn.GetSqlConnection());
@@ -137,6 +145,42 @@ namespace Quan_Li_Thu_Vien
                 return false;
             }
         }
+        public bool themChiTietPhieuMuonTra(string maPMT, string MaSach)
+        {
+            SqlCommand cmmd = new SqlCommand("InsertChiTietPhieuMuonTra", conn.GetSqlConnection());
+            cmmd.CommandType = CommandType.StoredProcedure;
+            cmmd.Parameters.AddWithValue("@MaPhieuMuonTra", maPMT);
+            cmmd.Parameters.AddWithValue("@MaSach", MaSach);
+            conn.openConnection();
+            if (cmmd.ExecuteNonQuery() > 0)
+            {
+                conn.closeConnection();
+                return true;
+            }
+            else
+            {
+                conn.closeConnection();
+                return false;
+            }
+        }
+        public bool daTraChiTietPhieuMuonTra(string maPMT, string MaSach)
+        {
+            SqlCommand cmmd = new SqlCommand("DaTraChiTietPhieuMuonTra", conn.GetSqlConnection());
+            cmmd.CommandType = CommandType.StoredProcedure;
+            cmmd.Parameters.AddWithValue("@MaPhieuMuonTra", maPMT);
+            cmmd.Parameters.AddWithValue("@MaSach", MaSach);
+            conn.openConnection();
+            if (cmmd.ExecuteNonQuery() > 0)
+            {
+                conn.closeConnection();
+                return true;
+            }
+            else
+            {
+                conn.closeConnection();
+                return false;
+            }
+        }
         public bool themPhieuPhat(PhieuPhat phieuPhat)
         {
             SqlCommand cmmd = new SqlCommand("InsertPhieuPhat", conn.GetSqlConnection());
@@ -207,6 +251,30 @@ namespace Quan_Li_Thu_Vien
                 }
             }
         }
+        public bool themThongTinNhanVien(Person person, string maTo)
+        {
+            SqlCommand cmmd = new SqlCommand("InsertThongTinNhanVienvaNhanVien", conn.GetSqlConnection());
+            cmmd.CommandType = CommandType.StoredProcedure;
+            cmmd.Parameters.AddWithValue("@TenNV", person.TenNguoi);
+            cmmd.Parameters.AddWithValue("@GioiTinh", person.GioiTinh);
+            cmmd.Parameters.AddWithValue("@NgaySinh", person.NgaySinh1);
+            cmmd.Parameters.AddWithValue("@DiaChi", person.DiaChi);
+            cmmd.Parameters.AddWithValue("@SDT", person.SDT1);
+            cmmd.Parameters.AddWithValue("@Luong", person.Luong);
+            cmmd.Parameters.AddWithValue("@Email", person.Email);
+            cmmd.Parameters.AddWithValue("@MaTo", maTo);
+            conn.openConnection();
+            if (cmmd.ExecuteNonQuery() > 0)
+            {
+                conn.closeConnection();
+                return true;
+            }
+            else
+            {
+                conn.closeConnection();
+                return false;
+            }
+        }
         public DataTable timKiemPhieuMuonTra(string tenDocGia)
         {
             string funcName = "func_SearchPMTByTenDG";
@@ -222,6 +290,16 @@ namespace Quan_Li_Thu_Vien
             string funcName = "SearchPhieuPhatByTenSach";
             SqlCommand command = new SqlCommand("Select * from " + funcName + " (@TenSach)", conn.GetSqlConnection());
             command.Parameters.Add("@TenSach", SqlDbType.NVarChar).Value = MaSach;
+            DataTable table = new DataTable();
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            adapter.Fill(table);
+            return table;
+        }
+        public DataTable timKiemNV(string tenNV)
+        {
+            string funcName = "func_SearchNhanVienByTen";
+            SqlCommand command = new SqlCommand("Select * from " + funcName + " (@TenNV)", conn.GetSqlConnection());
+            command.Parameters.Add("@TenNV", SqlDbType.NVarChar).Value = tenNV;
             DataTable table = new DataTable();
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             adapter.Fill(table);

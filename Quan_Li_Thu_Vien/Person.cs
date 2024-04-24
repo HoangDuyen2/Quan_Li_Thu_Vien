@@ -14,9 +14,9 @@ namespace Quan_Li_Thu_Vien
         private string NgaySinh;
         private string diaChi;
         private string SDT;
-        private double luong;
+        private int luong;
         private string email;
-        public Person(string maNguoi, string tenNguoi, string gioiTinh, string ngaySinh, string diaChi, string sDT, double luong,string email)
+        public Person(string maNguoi, string tenNguoi, string gioiTinh, string ngaySinh, string diaChi, string sDT, int luong,string email)
         {
             this.maNguoi = maNguoi;
             this.tenNguoi = tenNguoi;
@@ -34,7 +34,7 @@ namespace Quan_Li_Thu_Vien
         public string NgaySinh1 { get => NgaySinh; set => NgaySinh = value; }
         public string DiaChi { get => diaChi; set => diaChi = value; }
         public string SDT1 { get => SDT; set => SDT = value; }
-        public double Luong { get => luong; set => luong = value; }
+        public int Luong { get => luong; set => luong = value; }
         public string Email { get => email; set => email = value; }
     }
 }

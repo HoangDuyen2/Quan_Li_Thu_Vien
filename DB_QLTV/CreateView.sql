@@ -189,3 +189,29 @@ SELECT ctpmt.MaPhieuMuonTra, s.TenSach, ctpmt.TinhTrang, ctpmt.NgayTra
 FROM ChiTietPhieuMuonTra ctpmt
 JOIN Sach s ON ctpmt.MaSach = s.MaSach;
 --End View Chi tiết phiếu mượn trả
+
+-- View ThongTinNhanVien
+CREATE VIEW ThongTinNhanVienView
+AS
+SELECT 
+    MaNV,
+    TenNV, 
+    GioiTinh,
+    NgaySinh,
+    DiaChi,
+    SDT,
+    Luong,
+    Email,
+    NgayTao
+FROM 
+    ThongTinNhanVien
+-- End View ThongTinNhanVien
+-- View ChiTietPhieuPhat
+CREATE VIEW ChiTietPhieuPhatView
+AS
+SELECT
+    MaPhieuPhat,
+    LoaiPhat
+FROM
+    ChiTietPhieuPhat
+--End View ChiTietPhieuPhat

@@ -59,7 +59,7 @@
             this.panelNen.Location = new System.Drawing.Point(0, 0);
             this.panelNen.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelNen.Name = "panelNen";
-            this.panelNen.Size = new System.Drawing.Size(1355, 650);
+            this.panelNen.Size = new System.Drawing.Size(1355, 651);
             this.panelNen.TabIndex = 3;
             // 
             // btnChiTietPhieuMuonTra
