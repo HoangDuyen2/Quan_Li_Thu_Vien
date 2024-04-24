@@ -16,8 +16,6 @@ namespace Quan_Li_Thu_Vien
         public FDanhSachChiTietPhieuNhap()
         {
             InitializeComponent();
-            if (LoginInfo.Role == "ToTruong")
-                btnThem.Hide();
         }
 
         private void dtgvPhieuNhap_CellContentClick(object sender, DataGridViewCellEventArgs e)

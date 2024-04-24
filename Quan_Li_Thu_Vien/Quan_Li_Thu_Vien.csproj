@@ -450,10 +450,6 @@
     <EmbeddedResource Include="FChiTietNXB.resx">
       <DependentUpon>FChiTietNXB.cs</DependentUpon>
     </EmbeddedResource>
-	  <EmbeddedResource Include="FChiTietNV.resx">
-		  <DependentUpon>FChiTietNV.cs</DependentUpon>
-	  </EmbeddedResource>
-	  
     <EmbeddedResource Include="FChiTietPhieNhap.resx">
       <DependentUpon>FChiTietPhieNhap.cs</DependentUpon>
     </EmbeddedResource>
