@@ -17,23 +17,23 @@ CREATE TABLE ThongTinNhanVien(
 	CHECK(Email LIKE '%@%'),
 	NgayTao DATETIME
 )
-	--Tạo bảng Nhân viên
-	CREATE TABLE NhanVien(
+--Tạo bảng Nhân viên
+CREATE TABLE NhanVien(
 	MaNV nvarchar(10) NOT NULL FOREIGN KEY REFERENCES ThongTinNhanVien(MaNV),
 	MaTo nvarchar(10) NOT NULL FOREIGN KEY REFERENCES NhomTo(MaTo)
 	CONSTRAINT PK_NhanVien PRIMARY KEY (MaNV)
-	)
-	--Tạo bảng Tổ trưởng
-	CREATE TABLE ToTruong(
+)
+--Tạo bảng Tổ trưởng
+CREATE TABLE ToTruong(
 	MaNV nvarchar(10) NOT NULL FOREIGN KEY REFERENCES ThongTinNhanVien(MaNV),
 	MaTo nvarchar(10) NOT NULL FOREIGN KEY REFERENCES NhomTo(MaTo),
 	CONSTRAINT PK_ToTruong PRIMARY KEY (MaNV)
-	)
-	--Tạo bảng Người Quản Lí
-	CREATE TABLE NguoiQuanLi(
+)
+--Tạo bảng Người Quản Lí
+CREATE TABLE NguoiQuanLi(
 	MaNV nvarchar(10) NOT NULL FOREIGN KEY REFERENCES ThongTinNhanVien(MaNV)
 	CONSTRAINT PK_NguoiQuanLi PRIMARY KEY (MaNV)
-	)
+)
   --Tạo bảng Tài khoản
 CREATE TABLE TaiKhoan(
 	Username nvarchar(50) PRIMARY KEY,
@@ -137,7 +137,7 @@ CREATE TABLE ChiTietPhieuMuonTra (
 	CONSTRAINT PK_ChiTietPhieuMuonTra PRIMARY KEY (MaPhieuMuonTra, MaSach)
 )
 
-  --Tạo bảng Phạt
+--Tạo bảng Phạt
 CREATE TABLE Phat (
   LoaiPhat nvarchar(20) PRIMARY KEY, 
   TienPhat int NOT NULL
