@@ -458,8 +458,8 @@ END
 --Kết thúc tìm kiếm tên nhà cung cấp theo tên nhà cung cấp
 --Kết thúc tổ nhập sách
 
-
-		
+--Tổ Mượn trả
+--Tự động tạo mã
 --Tự động tăng mã nhân viên khi thêm nhân viên
 CREATE FUNCTION func_Auto_NhanVienID()
 RETURNS NVARCHAR(10)
@@ -484,18 +484,6 @@ END
 GO
 --Kết thúc hàm Tự động tăng mã nhân viên khi thêm nhân viên
 
-
-
-
-
-
-
-
-
-
-
-
-	
 -- Tự động tăng thêm Mã Phiếu Mượn Trả khi thêm Phiếu Mượn Trả
 CREATE FUNCTION func_Auto_PhieuMuonTraID()
 RETURNS NVARCHAR(10)
@@ -541,30 +529,33 @@ END
 GO
 --Kết thúc hàm tự động thêm Phiếu Phạt
 
+--auto ID độc giả
+CREATE FUNCTION func_Auto_DocGiaID()
+RETURNS NVARCHAR(10)
+AS
+BEGIN
+    DECLARE @id_next NVARCHAR(10)
+    DECLARE @max INT
+    DECLARE @object NVARCHAR(2)
+    SET @object = 'DG'
 
+    SELECT @max = ISNULL(MAX(RIGHT(MaDocGia, 3)), 0) FROM [DocGia]
+    SET @id_next = @object + RIGHT('00' + CAST(@max + 1 AS NVARCHAR(3)), 3)
 
+    -- Kiểm tra id đã tồn tại chưa
+    WHILE(EXISTS(SELECT MaDocGia FROM [DocGia] WHERE MaDocGia = @id_next))
+    BEGIN
+        SET @max = @max + 1
+        SET @id_next = @object + RIGHT('00' + CAST(@max + 1 AS NVARCHAR(3)), 3)
+    END
 
+    RETURN @id_next
+END
+GO
+--End auto ID độc giả
+--Kết thúc tạo độc giả
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+--Tìm kiếm trong tổ Mượn trả
 --Tìm kiếm Phiếu mượn trả theo tên độc giả
 CREATE FUNCTION func_SearchPMTByTenDG
 (
@@ -595,9 +586,6 @@ BEGIN
 END
 --END Tìm kiếm Phiếu mượn trả theo tên độc giả
 
-
-
-
 --Tìm kiếm DocGia theo TenDocGia
 CREATE FUNCTION func_SearchDocGiaByTenDocGia(
     @TenDocGia VARCHAR(255)
@@ -610,6 +598,7 @@ RETURN (
     WHERE TenDocGia LIKE '%' + @TenDocGia + '%'
 );
 --Kết thúc tìm kiếm DocGia theo TenDocGia
+
 --Tìm kiếm PhieuPhat theo TenSach
 CREATE FUNCTION SearchPhieuPhatByTenSach
 (
@@ -626,31 +615,7 @@ RETURN (
      WHERE TenSach LIKE '%' + @TenSach + '%'
 );
 --Kết thúc Tìm kiếm PhieuPhat theo TenSach
---auto ID độc giả
-CREATE FUNCTION func_Auto_DocGiaID()
-RETURNS NVARCHAR(10)
-AS
-BEGIN
-    DECLARE @id_next NVARCHAR(10)
-    DECLARE @max INT
-    DECLARE @object NVARCHAR(2)
-    SET @object = 'DG'
 
-    SELECT @max = ISNULL(MAX(RIGHT(MaDocGia, 3)), 0) FROM [DocGia]
-    SET @id_next = @object + RIGHT('00' + CAST(@max + 1 AS NVARCHAR(3)), 3)
-
-    -- Kiểm tra id đã tồn tại chưa
-    WHILE(EXISTS(SELECT MaDocGia FROM [DocGia] WHERE MaDocGia = @id_next))
-    BEGIN
-        SET @max = @max + 1
-        SET @id_next = @object + RIGHT('00' + CAST(@max + 1 AS NVARCHAR(3)), 3)
-    END
-
-    RETURN @id_next
-END
-GO
-
---End auto ID độc giả
 --Search Nhân Viên theo tên
 CREATE FUNCTION func_SearchNhanVienByTen(
     @TenNV NVARCHAR(255)
@@ -663,3 +628,4 @@ RETURN (
     WHERE TenNV LIKE '%' + @TenNV + '%'
 )
 --End --Search Nhân Viên theo tên
+--Kết thúc tổ Mượn trả
