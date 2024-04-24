@@ -539,16 +539,6 @@ END
 GO
 --Kết Thúc Procedure sửa nhân viên
 
-
-
-
-
-
-
-
-
-
-
 --bắt đầu thêm độc giả mới
 CREATE PROCEDURE InsertDocGia
     @TenDocGia NVARCHAR(50),
@@ -558,18 +548,24 @@ CREATE PROCEDURE InsertDocGia
     @MaLoaiDG NVARCHAR(10)
 AS
 BEGIN
-    SET NOCOUNT ON;
+    BEGIN TRANSACTION Tran_InsertDocGia
+	BEGIN TRY
+		DECLARE @NgayTao DATE = CAST(GETDATE() AS DATE);
+		DECLARE @MaDocGia NVARCHAR(10) = [dbo].func_Auto_DocGiaID();
 
-    DECLARE @NgayTao DATE = CAST(GETDATE() AS DATE);
-    DECLARE @MaDocGia NVARCHAR(10) = [dbo].func_Auto_DocGiaID();
+		-- Thêm độc giả mới
+		INSERT INTO DocGia (MaDocGia, TenDocGia, Email, SoDienThoai, GioiTinh, MaLoaiDG, NgayTao)
+		VALUES (@MaDocGia, @TenDocGia, @Email, @SoDienThoai, @GioiTinh, @MaLoaiDG, @NgayTao);
 
-    -- Thêm độc giả mới
-    INSERT INTO DocGia (MaDocGia, TenDocGia, Email, SoDienThoai, GioiTinh, MaLoaiDG, NgayTao)
-    VALUES (@MaDocGia, @TenDocGia, @Email, @SoDienThoai, @GioiTinh, @MaLoaiDG, @NgayTao);
-
-    SELECT @MaDocGia AS MaDocGia;
+		COMMIT TRANSACTION Tran_InsertDocGia
+    END TRY
+	BEGIN CATCH
+		ROLLBACK TRANSACTION Tran_InsertDocGia
+		PRINT('Thêm không thành công!')
+	END CATCH
 END
 --kết thúc thêm đọc giả
+
 
 --bắt đầu sửa độc giả mới
 CREATE PROCEDURE UpdateDocGia
@@ -812,20 +808,20 @@ BEGIN
 END
 -- End DeletePhieuPhat
 
---insert CTPMT
+--Thêm chi tiết phiếu mượn trả
 CREATE PROCEDURE InsertChiTietPhieuMuonTra
-    @MaPhieuMuonTra NVARCHAR(10),
-    @MaSach NVARCHAR(10),
-    @TinhTrang NVARCHAR(50) = N'Chưa trả',
-    @NgayTra DATE = GETDATE()
-AS
+    @MaPhieuMuonTra VARCHAR(20),
+    @MaSach VARCHAR(20) 
+	AS
 BEGIN
     SET NOCOUNT ON;
-
+	Declare
+	@TinhTrang NVARCHAR(50) = N'Chưa trả',
+    @NgayTra DATE = null
     INSERT INTO ChiTietPhieuMuonTra (MaPhieuMuonTra, MaSach, TinhTrang, NgayTra)
     VALUES (@MaPhieuMuonTra, @MaSach, @TinhTrang, @NgayTra)
 END
---End insert CTPMT
+--Kết thúc thêm chi tiết phiếu mượn trả
 
 --Del CTPMT
 CREATE PROCEDURE DeleteChiTietPhieuMuonTra
