@@ -14,11 +14,11 @@ namespace Quan_Li_Thu_Vien
     {
         PhieuNhap phieuNhap;
         PhieuNhapController nhapController = new PhieuNhapController();
-        int SLCu;
+
         public FChiTietPhieNhap(PhieuNhap phieu) : this()
         {
             phieuNhap = phieu;
-            SLCu = phieu.SoLuong;
+
         }
         public FChiTietPhieNhap()
         {
@@ -99,7 +99,7 @@ namespace Quan_Li_Thu_Vien
         }
         private void btnExit_Click_1(object sender, EventArgs e)
         {
-            FDanhSachPhieuNhap danhSachPhieuNhap = new FDanhSachPhieuNhap();
+            FDanhSachChiTietPhieuNhap danhSachPhieuNhap = new FDanhSachChiTietPhieuNhap();
             this.Hide();
             danhSachPhieuNhap.ShowDialog();
         }

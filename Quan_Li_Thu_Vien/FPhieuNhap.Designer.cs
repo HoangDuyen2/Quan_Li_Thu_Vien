@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panelBangThongTinSach = new System.Windows.Forms.Panel();
+            this.btnXoa = new System.Windows.Forms.Button();
+            this.btnThemChiTiet = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnChinhSua = new System.Windows.Forms.Button();
@@ -41,13 +43,13 @@
             this.lbTenNCC = new System.Windows.Forms.Label();
             this.lbMaSach = new System.Windows.Forms.Label();
             this.lbThongTinPhieuNhap = new System.Windows.Forms.Label();
-            this.btnThemChiTiet = new System.Windows.Forms.Button();
             this.panelBangThongTinSach.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelBangThongTinSach
             // 
             this.panelBangThongTinSach.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panelBangThongTinSach.Controls.Add(this.btnXoa);
             this.panelBangThongTinSach.Controls.Add(this.btnThemChiTiet);
             this.panelBangThongTinSach.Controls.Add(this.btnExit);
             this.panelBangThongTinSach.Controls.Add(this.btnOK);
@@ -67,12 +69,38 @@
             this.panelBangThongTinSach.Size = new System.Drawing.Size(1036, 637);
             this.panelBangThongTinSach.TabIndex = 6;
             // 
+            // btnXoa
+            // 
+            this.btnXoa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnXoa.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXoa.ForeColor = System.Drawing.Color.Black;
+            this.btnXoa.Location = new System.Drawing.Point(428, 581);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(136, 42);
+            this.btnXoa.TabIndex = 32;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.UseVisualStyleBackColor = false;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            // 
+            // btnThemChiTiet
+            // 
+            this.btnThemChiTiet.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnThemChiTiet.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThemChiTiet.ForeColor = System.Drawing.Color.Black;
+            this.btnThemChiTiet.Location = new System.Drawing.Point(259, 581);
+            this.btnThemChiTiet.Name = "btnThemChiTiet";
+            this.btnThemChiTiet.Size = new System.Drawing.Size(171, 42);
+            this.btnThemChiTiet.TabIndex = 31;
+            this.btnThemChiTiet.Text = "Thêm chi tiết";
+            this.btnThemChiTiet.UseVisualStyleBackColor = false;
+            this.btnThemChiTiet.Click += new System.EventHandler(this.btnThemChiTiet_Click);
+            // 
             // btnExit
             // 
             this.btnExit.BackColor = System.Drawing.Color.Red;
             this.btnExit.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExit.ForeColor = System.Drawing.Color.White;
-            this.btnExit.Location = new System.Drawing.Point(601, 581);
+            this.btnExit.Location = new System.Drawing.Point(695, 581);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(136, 42);
             this.btnExit.TabIndex = 27;
@@ -85,7 +113,7 @@
             this.btnOK.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnOK.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOK.ForeColor = System.Drawing.Color.Black;
-            this.btnOK.Location = new System.Drawing.Point(468, 581);
+            this.btnOK.Location = new System.Drawing.Point(562, 581);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(136, 42);
             this.btnOK.TabIndex = 26;
@@ -98,7 +126,7 @@
             this.btnChinhSua.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnChinhSua.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnChinhSua.ForeColor = System.Drawing.Color.Black;
-            this.btnChinhSua.Location = new System.Drawing.Point(468, 581);
+            this.btnChinhSua.Location = new System.Drawing.Point(562, 581);
             this.btnChinhSua.Name = "btnChinhSua";
             this.btnChinhSua.Size = new System.Drawing.Size(136, 42);
             this.btnChinhSua.TabIndex = 25;
@@ -206,19 +234,6 @@
             this.lbThongTinPhieuNhap.TabIndex = 3;
             this.lbThongTinPhieuNhap.Text = "Thông tin phiếu nhập";
             // 
-            // btnThemChiTiet
-            // 
-            this.btnThemChiTiet.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btnThemChiTiet.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThemChiTiet.ForeColor = System.Drawing.Color.Black;
-            this.btnThemChiTiet.Location = new System.Drawing.Point(298, 581);
-            this.btnThemChiTiet.Name = "btnThemChiTiet";
-            this.btnThemChiTiet.Size = new System.Drawing.Size(171, 42);
-            this.btnThemChiTiet.TabIndex = 31;
-            this.btnThemChiTiet.Text = "Thêm chi tiết";
-            this.btnThemChiTiet.UseVisualStyleBackColor = false;
-            this.btnThemChiTiet.Click += new System.EventHandler(this.btnThemChiTiet_Click);
-            // 
             // FPhieuNhap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -252,5 +267,6 @@
         private System.Windows.Forms.Label lbMaSach;
         private System.Windows.Forms.Label lbThongTinPhieuNhap;
         private System.Windows.Forms.Button btnThemChiTiet;
+        private System.Windows.Forms.Button btnXoa;
     }
 }

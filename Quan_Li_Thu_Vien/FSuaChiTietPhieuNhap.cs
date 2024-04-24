@@ -15,6 +15,7 @@ namespace Quan_Li_Thu_Vien
         PhieuNhap phieuNhap;
         PhieuNhapController nhapController = new PhieuNhapController();
         int SLCu;
+        float DonGiaCu;
         public FSuaChiTietPhieuNhap()
         {
             InitializeComponent();
@@ -24,6 +25,7 @@ namespace Quan_Li_Thu_Vien
         {
             phieuNhap = phieu;
             SLCu = phieu.SoLuong;
+            DonGiaCu = phieu.DonGia;
         }
         private void FSuaChiTietPhieuNhap_Load(object sender, EventArgs e)
         {
@@ -93,7 +95,7 @@ namespace Quan_Li_Thu_Vien
             if (txtTenSach.Text != "")
                 checkTenSach(txtTenSach.Text);
             LoadPhieuNhap();
-            if (nhapController.suaChiTietPhieuNhap(phieuNhap, SLCu))
+            if (nhapController.suaChiTietPhieuNhap(phieuNhap, SLCu,DonGiaCu))
             {
                 MessageBox.Show("Thực thi dữ liệu thành công", "Thông báo");
             }
@@ -139,9 +141,24 @@ namespace Quan_Li_Thu_Vien
             }
         }
 
+
+
         #endregion
 
-        
-
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa chi tiết phiếu nhập?", "Cảnh báo", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                if (nhapController.xoaChiTietPhieuNhap(phieuNhap.MaPhieuNhap, phieuNhap.TenSach))
+                {
+                    MessageBox.Show("Thực thi dữ liệu thành công", "Thông báo");
+                }
+                else
+                {
+                    MessageBox.Show("Thực thi dữ liệu thất bại", "Thông báo");
+                }
+            }
+        }
     }
 }

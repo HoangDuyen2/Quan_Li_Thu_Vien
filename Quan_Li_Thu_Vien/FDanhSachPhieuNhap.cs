@@ -16,6 +16,8 @@ namespace Quan_Li_Thu_Vien
         public FDanhSachPhieuNhap()
         {
             InitializeComponent();
+            if (LoginInfo.Role == "ToTruong")
+                btnThem.Hide();
         }
 
         private void FDanhSachPhieuNhap_Load(object sender, EventArgs e)

@@ -27,7 +27,7 @@ namespace Quan_Li_Thu_Vien
         {
             try
             {
-                MessageBox.Show(maTo);
+                dtgvNV.DataSource = dsnv.DSNhanVienTrongTo(maTo);
                 dtgvNV.RowHeadersVisible = false;
                 dtgvNV.BackgroundColor = Color.White;
                 dtgvNV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -67,9 +67,6 @@ namespace Quan_Li_Thu_Vien
                         row.Cells["GioiTinh"].Value.ToString(), row.Cells["NgaySinh"].Value.ToString(), row.Cells["DiaChi"].Value.ToString(),
                         row.Cells["SDT"].Value.ToString(), luong, row.Cells["Email"].Value.ToString());
                     // Thêm logic xử lý khi cell được click sau khi áp dụng bộ lọc
-                    FChiTietNV fChiTiet = new FChiTietNV(nv);
-                    this.Hide();
-                    fChiTiet.ShowDialog();
                 
             }
         }

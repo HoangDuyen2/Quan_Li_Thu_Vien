@@ -13,7 +13,7 @@ namespace Quan_Li_Thu_Vien
     public class PhieuNhapController
     {
         DBConnection conn = new DBConnection();
-        #region Thêm, sửa, tìm kiếm theo tên phiếu nhập
+        #region Thêm, sửa, xóa, tìm kiếm theo tên phiếu nhập
         public bool ThemPhieuNhap(PhieuNhap pn)
         {
             SqlCommand cmmd = new SqlCommand("InsertPhieuNhap",conn.GetSqlConnection());
@@ -54,9 +54,26 @@ namespace Quan_Li_Thu_Vien
                 return false;
             }
         }
+        public bool xoaPhieuNhap(string maPhieuNhap)
+        {
+            SqlCommand cmmd = new SqlCommand("proc_xoaPhieuNhap", conn.GetSqlConnection());
+            cmmd.CommandType= CommandType.StoredProcedure;
+            cmmd.Parameters.Add("@MaPhieuNhap",SqlDbType.NVarChar).Value = maPhieuNhap;
+            conn.openConnection();
+            if (cmmd.ExecuteNonQuery() > 0)
+            {
+                conn.closeConnection();
+                return true;
+            }
+            else
+            {
+                conn.closeConnection( );
+                return false;
+            }
+        }
         public DataTable timKiemNCCTheoTen(string tenNCC)
         {
-            SqlCommand cmmd = new SqlCommand("SELECT * FROM func_SearchNCCName (@TenNCC)", conn.GetSqlConnection());
+            SqlCommand cmmd = new SqlCommand("SELECT * FROM func_SearchNCCNameTablePhieuNhap (@TenNCC)", conn.GetSqlConnection());
             cmmd.Parameters.Add("@TenNCC", SqlDbType.NVarChar).Value = tenNCC;
             SqlDataAdapter adapter = new SqlDataAdapter(cmmd);
             DataTable dt = new DataTable();
@@ -64,7 +81,8 @@ namespace Quan_Li_Thu_Vien
             return dt;
         }
         #endregion
-        public bool suaChiTietPhieuNhap(PhieuNhap pn,int SLCu)
+        #region Thêm, sửa, xóa, tìm kiếm chi tiết phiếu nhập theo ngày nhập hàng
+        public bool suaChiTietPhieuNhap(PhieuNhap pn, int SLCu, float DongiaCu)
         {
             SqlCommand command = new SqlCommand("UpdateChiTietPhieuNhap", conn.GetSqlConnection());
             command.CommandType = CommandType.StoredProcedure;
@@ -73,6 +91,7 @@ namespace Quan_Li_Thu_Vien
             command.Parameters.Add("@DonGia", SqlDbType.Float).Value = pn.DonGia;
             command.Parameters.Add("@SL", SqlDbType.Int).Value = pn.SoLuong;
             command.Parameters.Add("@SLCu", SqlDbType.Int).Value = SLCu;
+            command.Parameters.Add("@DonGiaCu", SqlDbType.Int).Value = DongiaCu;
             conn.openConnection();
             if (command.ExecuteNonQuery() > 0)
             {
@@ -87,14 +106,14 @@ namespace Quan_Li_Thu_Vien
         }
         public bool themChiTietPhieuNhap(PhieuNhap pn)
         {
-            SqlCommand cmmd = new SqlCommand("InsertChiTietPhieuNhap",conn.GetSqlConnection());
+            SqlCommand cmmd = new SqlCommand("InsertChiTietPhieuNhap", conn.GetSqlConnection());
             cmmd.CommandType = CommandType.StoredProcedure;
-            cmmd.Parameters.Add("@MaPhieuNhap",SqlDbType.NVarChar).Value =pn.MaPhieuNhap;
-            cmmd.Parameters.Add("@TenSach",SqlDbType.NVarChar).Value =pn.TenSach;
-            cmmd.Parameters.Add("@DonGia",SqlDbType.Int).Value =pn.DonGia;
-            cmmd.Parameters.Add("@SL",SqlDbType.Int).Value =pn.SoLuong;
+            cmmd.Parameters.Add("@MaPhieuNhap", SqlDbType.NVarChar).Value = pn.MaPhieuNhap;
+            cmmd.Parameters.Add("@TenSach", SqlDbType.NVarChar).Value = pn.TenSach;
+            cmmd.Parameters.Add("@DonGia", SqlDbType.Int).Value = pn.DonGia;
+            cmmd.Parameters.Add("@SL", SqlDbType.Int).Value = pn.SoLuong;
             conn.openConnection();
-            if(cmmd.ExecuteNonQuery() > 0)
+            if (cmmd.ExecuteNonQuery() > 0)
             {
                 conn.closeConnection();
                 return true;
@@ -105,6 +124,39 @@ namespace Quan_Li_Thu_Vien
                 return false;
             }
         }
+        public bool xoaChiTietPhieuNhap(string maPhieuNhap, string tenSach)
+        {
+            SqlCommand cmmd = new SqlCommand("proc_xoaChiTietPhieuNhap", conn.GetSqlConnection());
+            cmmd.CommandType = CommandType.StoredProcedure;
+            cmmd.Parameters.Add("@MaPhieuNhap", SqlDbType.NVarChar).Value = maPhieuNhap;
+            cmmd.Parameters.Add("@TenSach", SqlDbType.NVarChar).Value = tenSach;
+            conn.openConnection();
+            if (cmmd.ExecuteNonQuery() > 0)
+            {
+                conn.closeConnection();
+                return true;
+            }
+            else
+            {
+                conn.closeConnection();
+                return false;
+            }
+        }
+        public DataTable timKiemTheoNgay(DateTime NgayDB, DateTime NgayKT)
+        {
+            SqlCommand cmmd = new SqlCommand("SELECT * FROM func_CategorizeChiTietPhieuNhapByDate(@NgayBD, @NgayKT)", conn.GetSqlConnection());
+            string NgayBDCovert = NgayDB.ToString("yyyy-MM-dd");
+            string NgayKTCovert = NgayKT.ToString("yyyy-MM-dd");
+            cmmd.Parameters.Add("@NgayBD", SqlDbType.DateTime).Value = NgayBDCovert;
+            cmmd.Parameters.Add("@NgayKT", SqlDbType.DateTime).Value = NgayKTCovert;
+
+            SqlDataAdapter adapter = new SqlDataAdapter(cmmd);
+            DataTable table = new DataTable();
+            adapter.Fill(table);
+            return table;
+        }
+        #endregion
+
         public DataTable DSPhieuNhap()
         {
             SqlCommand cmd = new SqlCommand("SELECT * FROM ViewPhieuNhap", conn.GetSqlConnection());
@@ -121,6 +173,15 @@ namespace Quan_Li_Thu_Vien
             adapter.Fill(dataTable);
             return dataTable;
         }
+        public DataTable DSNCC()
+        {
+            SqlCommand cmmd = new SqlCommand("SELECT * FROM NCCView",conn.GetSqlConnection());
+            SqlDataAdapter adapter = new SqlDataAdapter(cmmd);
+            DataTable dataTable = new DataTable();
+            adapter.Fill(dataTable);
+            return dataTable;
+        }
+        #region thêm, sửa nhà cung cấp tìm kiếm theo tên nhà cung cấp
         public bool ThemNhaCungCap(string TenNCC,string DiaChi,string SDT)
         {
             SqlCommand cmmd = new SqlCommand("pro_InsertNCC", conn.GetSqlConnection());
@@ -140,14 +201,14 @@ namespace Quan_Li_Thu_Vien
                 return false;
             }
         }
-        public bool suaNhaCungCap(string maNCC, string tenNCC, string DiaChi,string SDT)
+        public bool suaNhaCungCap(NCC ncc)
         {
-            SqlCommand cmmd = new SqlCommand("pro_UpdateNCC");
+            SqlCommand cmmd = new SqlCommand("pro_UpdateNCC",conn.GetSqlConnection());
             cmmd.CommandType = CommandType.StoredProcedure;
-            cmmd.Parameters.Add("@MaNCC",SqlDbType.NVarChar).Value = maNCC;
-            cmmd.Parameters.Add("@TenNCC",SqlDbType.NVarChar).Value = tenNCC;
-            cmmd.Parameters.Add("@DiaChi",SqlDbType.NVarChar).Value = DiaChi;
-            cmmd.Parameters.Add("@SDT",SqlDbType.NVarChar).Value = SDT;
+            cmmd.Parameters.Add("@MaNCC",SqlDbType.NVarChar).Value = ncc.MaNCC;
+            cmmd.Parameters.Add("@TenNCC",SqlDbType.NVarChar).Value = ncc.TenNCC;
+            cmmd.Parameters.Add("@DiaChi",SqlDbType.NVarChar).Value = ncc.DiaChi;
+            cmmd.Parameters.Add("@SDT",SqlDbType.NVarChar).Value = ncc.SDT;
             conn.openConnection();
             if(cmmd.ExecuteNonQuery() > 0)
             {
@@ -160,6 +221,8 @@ namespace Quan_Li_Thu_Vien
                 return false;
             }
         }
+        #endregion
+        #region Các check khi thêm phiếu nhập và chi tiết phiếu nhập
         public bool checkTenNCC(string tenNCC)
         {
             SqlCommand cmmd = new SqlCommand("SELECT [dbo].[func_SearchTenNCCByName] (@TenNhaCungCap)", conn.GetSqlConnection());
@@ -197,6 +260,7 @@ namespace Quan_Li_Thu_Vien
                 return false;
             }
         }
+        #endregion
     }
 
 

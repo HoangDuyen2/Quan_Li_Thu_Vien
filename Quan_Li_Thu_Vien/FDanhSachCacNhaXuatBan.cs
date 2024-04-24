@@ -16,6 +16,8 @@ namespace Quan_Li_Thu_Vien
         public FDanhSachCacNhaXuatBan()
         {
             InitializeComponent();
+            if (LoginInfo.Role == "ToTruong")
+                btnThem.Hide();
         }
         private void FDanhSachCacNhaXuatBan_Load(object sender, EventArgs e)
         {

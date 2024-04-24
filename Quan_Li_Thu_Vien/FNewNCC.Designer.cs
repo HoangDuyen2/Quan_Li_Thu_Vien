@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.panelBangThongTinSach = new System.Windows.Forms.Panel();
+            this.txtSDT = new System.Windows.Forms.TextBox();
+            this.txtDiaChi = new System.Windows.Forms.TextBox();
+            this.lbSDT = new System.Windows.Forms.Label();
+            this.lbDiaChi = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
             this.txtTenNCC = new System.Windows.Forms.TextBox();
@@ -36,10 +40,6 @@
             this.lbTenNCC = new System.Windows.Forms.Label();
             this.lbMaNCC = new System.Windows.Forms.Label();
             this.lbThongTinNCC = new System.Windows.Forms.Label();
-            this.txtSDT = new System.Windows.Forms.TextBox();
-            this.txtDiaChi = new System.Windows.Forms.TextBox();
-            this.lbSDT = new System.Windows.Forms.Label();
-            this.lbDiaChi = new System.Windows.Forms.Label();
             this.panelBangThongTinSach.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,6 +62,48 @@
             this.panelBangThongTinSach.Name = "panelBangThongTinSach";
             this.panelBangThongTinSach.Size = new System.Drawing.Size(1036, 638);
             this.panelBangThongTinSach.TabIndex = 8;
+            // 
+            // txtSDT
+            // 
+            this.txtSDT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSDT.Location = new System.Drawing.Point(498, 452);
+            this.txtSDT.Multiline = true;
+            this.txtSDT.Name = "txtSDT";
+            this.txtSDT.Size = new System.Drawing.Size(288, 30);
+            this.txtSDT.TabIndex = 31;
+            // 
+            // txtDiaChi
+            // 
+            this.txtDiaChi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDiaChi.Location = new System.Drawing.Point(498, 357);
+            this.txtDiaChi.Multiline = true;
+            this.txtDiaChi.Name = "txtDiaChi";
+            this.txtDiaChi.Size = new System.Drawing.Size(288, 30);
+            this.txtDiaChi.TabIndex = 30;
+            // 
+            // lbSDT
+            // 
+            this.lbSDT.AutoSize = true;
+            this.lbSDT.BackColor = System.Drawing.Color.Transparent;
+            this.lbSDT.Font = new System.Drawing.Font("Tahoma", 13.8F);
+            this.lbSDT.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbSDT.Location = new System.Drawing.Point(283, 452);
+            this.lbSDT.Name = "lbSDT";
+            this.lbSDT.Size = new System.Drawing.Size(144, 28);
+            this.lbSDT.TabIndex = 29;
+            this.lbSDT.Text = "Số điện thoại";
+            // 
+            // lbDiaChi
+            // 
+            this.lbDiaChi.AutoSize = true;
+            this.lbDiaChi.BackColor = System.Drawing.Color.Transparent;
+            this.lbDiaChi.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDiaChi.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbDiaChi.Location = new System.Drawing.Point(283, 359);
+            this.lbDiaChi.Name = "lbDiaChi";
+            this.lbDiaChi.Size = new System.Drawing.Size(81, 28);
+            this.lbDiaChi.TabIndex = 28;
+            this.lbDiaChi.Text = "Địa chỉ";
             // 
             // btnExit
             // 
@@ -144,49 +186,6 @@
             this.lbThongTinNCC.TabIndex = 3;
             this.lbThongTinNCC.Text = "Thông tin nhà cung cấp";
             // 
-            // txtSDT
-            // 
-            this.txtSDT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSDT.Location = new System.Drawing.Point(498, 452);
-            this.txtSDT.Multiline = true;
-            this.txtSDT.Name = "txtSDT";
-            this.txtSDT.Size = new System.Drawing.Size(288, 30);
-            this.txtSDT.TabIndex = 31;
-            // 
-            // txtDiaChi
-            // 
-            this.txtDiaChi.Enabled = false;
-            this.txtDiaChi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDiaChi.Location = new System.Drawing.Point(498, 357);
-            this.txtDiaChi.Multiline = true;
-            this.txtDiaChi.Name = "txtDiaChi";
-            this.txtDiaChi.Size = new System.Drawing.Size(288, 30);
-            this.txtDiaChi.TabIndex = 30;
-            // 
-            // lbSDT
-            // 
-            this.lbSDT.AutoSize = true;
-            this.lbSDT.BackColor = System.Drawing.Color.Transparent;
-            this.lbSDT.Font = new System.Drawing.Font("Tahoma", 13.8F);
-            this.lbSDT.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lbSDT.Location = new System.Drawing.Point(283, 452);
-            this.lbSDT.Name = "lbSDT";
-            this.lbSDT.Size = new System.Drawing.Size(144, 28);
-            this.lbSDT.TabIndex = 29;
-            this.lbSDT.Text = "Số điện thoại";
-            // 
-            // lbDiaChi
-            // 
-            this.lbDiaChi.AutoSize = true;
-            this.lbDiaChi.BackColor = System.Drawing.Color.Transparent;
-            this.lbDiaChi.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbDiaChi.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lbDiaChi.Location = new System.Drawing.Point(283, 359);
-            this.lbDiaChi.Name = "lbDiaChi";
-            this.lbDiaChi.Size = new System.Drawing.Size(81, 28);
-            this.lbDiaChi.TabIndex = 28;
-            this.lbDiaChi.Text = "Địa chỉ";
-            // 
             // FNewNCC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -195,6 +194,7 @@
             this.Controls.Add(this.panelBangThongTinSach);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FNewNCC";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FNewNCC";
             this.Load += new System.EventHandler(this.FNewNCC_Load);
             this.panelBangThongTinSach.ResumeLayout(false);

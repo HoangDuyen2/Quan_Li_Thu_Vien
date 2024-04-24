@@ -19,6 +19,8 @@ namespace Quan_Li_Thu_Vien
             InitializeComponent();
             LoadComboboxLoaiSach();
             LoadComboboxNgonNgu();
+            if (LoginInfo.Role == "ToTruong")
+                btnAdd.Hide();
         }
         #region LoadComboBox
         public void LoadComboboxLoaiSach()

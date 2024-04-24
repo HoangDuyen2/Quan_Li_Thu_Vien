@@ -16,6 +16,8 @@ namespace Quan_Li_Thu_Vien
         public FDanhSachChiTietPhieuNhap()
         {
             InitializeComponent();
+            if (LoginInfo.Role == "ToTruong")
+                btnThem.Hide();
         }
 
         private void dtgvPhieuNhap_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -64,6 +66,21 @@ namespace Quan_Li_Thu_Vien
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnTimKiem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                dtgvPhieuNhap.DataSource = nhapController.timKiemTheoNgay(dtBatDau.Value,dtKetThuc.Value);
+                dtgvPhieuNhap.RowHeadersVisible = false;
+                dtgvPhieuNhap.BackgroundColor = Color.White;
+                dtgvPhieuNhap.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            }
+            catch
+            {
+                MessageBox.Show("Không truy xuất được dữ liệu", "Lỗi");
+            }
         }
     }
 }

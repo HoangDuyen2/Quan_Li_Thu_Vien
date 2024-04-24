@@ -44,9 +44,7 @@ namespace Quan_Li_Thu_Vien
         }
         public void LoadPhieuNhap()
         {
-            float giaTri;
-            if (!float.TryParse(txtGiaTriDonHang.Text, out giaTri))
-                MessageBox.Show("Giá trị đơn hàng lỗi", "Thông báo");
+            float giaTri = 0;
             DateTime dateTime;
             if (!DateTime.TryParse(txtNgayNhap.Text, out dateTime))
                 dateTime = DateTime.MinValue;

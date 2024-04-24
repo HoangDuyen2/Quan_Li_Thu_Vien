@@ -17,8 +17,6 @@ namespace Quan_Li_Thu_Vien
             InitializeComponent();
         }
 
-
-
         private void btnDSTacGia_Click(object sender, EventArgs e)
         {
             FDanhSachCacTacGia dsTG = new FDanhSachCacTacGia();

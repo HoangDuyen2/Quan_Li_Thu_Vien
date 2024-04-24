@@ -86,6 +86,7 @@ namespace Quan_Li_Thu_Vien
                 string maNV = dta["MaNV"].ToString();
                 string maTo = dta["MaTo"].ToString();
                 LoginInfo.maTo = maTo;
+                LoginInfo.Role = Role;
                 if (Role == "NhanVien")
                 {
                     if(maTo == "TO01")

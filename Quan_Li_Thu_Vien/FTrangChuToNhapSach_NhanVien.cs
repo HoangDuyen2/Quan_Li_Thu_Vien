@@ -16,5 +16,35 @@ namespace Quan_Li_Thu_Vien
         {
             InitializeComponent();
         }
+
+        private void btnDSPhieuNhap_Click(object sender, EventArgs e)
+        {
+            FDanhSachPhieuNhap danhSachPhieuNhap = new FDanhSachPhieuNhap();
+            danhSachPhieuNhap.ShowDialog();
+        }
+
+        private void btnDSCTPN_Click(object sender, EventArgs e)
+        {
+            FDanhSachChiTietPhieuNhap fDanhSachChiTietPhieuNhap = new FDanhSachChiTietPhieuNhap();
+            fDanhSachChiTietPhieuNhap.ShowDialog();
+        }
+
+        private void btnDSCacSach_Click(object sender, EventArgs e)
+        {
+            FDanhSachCacSach fDanhSachCacSach = new FDanhSachCacSach();
+            fDanhSachCacSach.ShowDialog();
+        }
+
+        private void btnDSNCC_Click(object sender, EventArgs e)
+        {
+            FDanhSachNhaCungCap fDanhSachNhaCungCap = new FDanhSachNhaCungCap();
+            fDanhSachNhaCungCap.ShowDialog();
+        }
+
+        private void btnThongTinCaNhan_Click(object sender, EventArgs e)
+        {
+            FThongTinCaNhan fThongTinCaNhan = new FThongTinCaNhan();
+            fThongTinCaNhan.ShowDialog();
+        }
     }
 }

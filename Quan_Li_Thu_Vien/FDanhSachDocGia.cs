@@ -13,7 +13,6 @@ namespace Quan_Li_Thu_Vien
 {
     public partial class FDanhSachDocGia : Form
     {
-        DBConnection conn = new DBConnection();
         DocGiaController dsdg = new DocGiaController();
         private string maDocGia;
 

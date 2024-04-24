@@ -24,6 +24,8 @@ namespace Quan_Li_Thu_Vien
         public FPhieuNhap()
         {
             InitializeComponent();
+            if (LoginInfo.Role == "ToTruong")
+                btnThemChiTiet.Hide();
         }
         public void LoadData()
         {
@@ -47,7 +49,7 @@ namespace Quan_Li_Thu_Vien
                 dateTime = DateTime.MinValue;
             phieuNhap.NgayNhap = dateTime;
             int giatri;
-            if (!int.TryParse(txtGiaTriDonHang.Text, out giatri))
+            if (!int.TryParse(txtGiaTriDonHang.Text, out giatri)&& txtGiaTriDonHang.Text != "")
                 MessageBox.Show("Số lượng đơn giá không hợp lệ", "Thông báo");
             phieuNhap.GiaTri = giatri;
             phieuNhap.TenNCC = txtNCC.Text;
@@ -63,7 +65,6 @@ namespace Quan_Li_Thu_Vien
         public void TruyCap()
         {
             txtNCC.Enabled = true;
-            txtGiaTriDonHang.Enabled = true;
         }
         #endregion
         #region Các button
@@ -124,6 +125,20 @@ namespace Quan_Li_Thu_Vien
 
         #endregion
 
-
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa phiếu nhập?", "Cảnh báo", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                if (nhapController.xoaPhieuNhap(phieuNhap.MaPhieuNhap))
+                {
+                    MessageBox.Show("Thực thi dữ liệu thành công", "Thông báo");
+                }
+                else
+                {
+                    MessageBox.Show("Thực thi dữ liệu thất bại", "Thông báo");
+                }
+            }
+        }
     }
 }

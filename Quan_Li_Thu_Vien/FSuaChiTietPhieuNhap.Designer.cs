@@ -45,12 +45,14 @@
             this.lbTenSach = new System.Windows.Forms.Label();
             this.lbMaSach = new System.Windows.Forms.Label();
             this.lbThongTinCTPhieuNhap = new System.Windows.Forms.Label();
+            this.btnXoa = new System.Windows.Forms.Button();
             this.panelBangThongTinSach.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelBangThongTinSach
             // 
             this.panelBangThongTinSach.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panelBangThongTinSach.Controls.Add(this.btnXoa);
             this.panelBangThongTinSach.Controls.Add(this.btnExit);
             this.panelBangThongTinSach.Controls.Add(this.btnOK);
             this.panelBangThongTinSach.Controls.Add(this.btnChinhSua);
@@ -256,6 +258,19 @@
             this.lbThongTinCTPhieuNhap.TabIndex = 3;
             this.lbThongTinCTPhieuNhap.Text = "Sửa thông tin chi tiết phiếu nhập";
             // 
+            // btnXoa
+            // 
+            this.btnXoa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnXoa.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXoa.ForeColor = System.Drawing.Color.Black;
+            this.btnXoa.Location = new System.Drawing.Point(290, 583);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(136, 42);
+            this.btnXoa.TabIndex = 28;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.UseVisualStyleBackColor = false;
+            this.btnXoa.Click += new System.EventHandler(this.button1_Click);
+            // 
             // FSuaChiTietPhieuNhap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -292,5 +307,6 @@
         private System.Windows.Forms.Label lbTenSach;
         private System.Windows.Forms.Label lbMaSach;
         private System.Windows.Forms.Label lbThongTinCTPhieuNhap;
+        private System.Windows.Forms.Button btnXoa;
     }
 }

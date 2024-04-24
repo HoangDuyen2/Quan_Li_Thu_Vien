@@ -94,8 +94,9 @@
             // 
             // txtGiaTriDonHang
             // 
+            this.txtGiaTriDonHang.Enabled = false;
             this.txtGiaTriDonHang.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtGiaTriDonHang.Location = new System.Drawing.Point(487, 449);
+            this.txtGiaTriDonHang.Location = new System.Drawing.Point(487, 451);
             this.txtGiaTriDonHang.Multiline = true;
             this.txtGiaTriDonHang.Name = "txtGiaTriDonHang";
             this.txtGiaTriDonHang.Size = new System.Drawing.Size(288, 30);
