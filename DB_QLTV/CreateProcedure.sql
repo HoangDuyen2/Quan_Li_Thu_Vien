@@ -812,20 +812,20 @@ BEGIN
 END
 -- End DeletePhieuPhat
 
---insert CTPMT
+--Thêm chi tiết phiếu mượn trả
 CREATE PROCEDURE InsertChiTietPhieuMuonTra
-    @MaPhieuMuonTra NVARCHAR(10),
-    @MaSach NVARCHAR(10),
-    @TinhTrang NVARCHAR(50) = N'Chưa trả',
-    @NgayTra DATE = GETDATE()
-AS
+    @MaPhieuMuonTra VARCHAR(20),
+    @MaSach VARCHAR(20) 
+	AS
 BEGIN
     SET NOCOUNT ON;
-
+	Declare
+	@TinhTrang NVARCHAR(50) = N'Chưa trả',
+    @NgayTra DATE = null
     INSERT INTO ChiTietPhieuMuonTra (MaPhieuMuonTra, MaSach, TinhTrang, NgayTra)
     VALUES (@MaPhieuMuonTra, @MaSach, @TinhTrang, @NgayTra)
 END
---End insert CTPMT
+--Kết thúc thêm chi tiết phiếu mượn trả
 
 --Del CTPMT
 CREATE PROCEDURE DeleteChiTietPhieuMuonTra
