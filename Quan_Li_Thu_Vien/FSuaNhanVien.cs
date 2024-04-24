@@ -25,7 +25,7 @@ namespace Quan_Li_Thu_Vien
         }
         private void btnOK_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtTenNhanVien.Text) || string.IsNullOrEmpty(txtGioiTinh.Text) || string.IsNullOrEmpty(txtNgaySinh.Text) || string.IsNullOrEmpty(txtDiaChi.Text) || string.IsNullOrEmpty(txtSoDienThoai.Text) || string.IsNullOrEmpty(txtLuong.Text) || string.IsNullOrEmpty(txtEmail.Text) || string.IsNullOrEmpty(txtMaTo.Text))
+            if (string.IsNullOrEmpty(txtTenNhanVien.Text) || string.IsNullOrEmpty(txtGioiTinh.Text) || (string.IsNullOrEmpty(txtNgaySinh.Text)) || string.IsNullOrEmpty(txtDiaChi.Text) || string.IsNullOrEmpty(txtSoDienThoai.Text) || string.IsNullOrEmpty(txtLuong.Text) || string.IsNullOrEmpty(txtEmail.Text) || string.IsNullOrEmpty(txtMaTo.Text))
             {
                 MessageBox.Show("Không để trống các trường.", "Thông báo");
                 return;

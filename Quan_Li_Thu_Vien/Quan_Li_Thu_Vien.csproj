@@ -178,6 +178,12 @@
     <Compile Include="FChiTietPhieuMuonTra.Designer.cs">
       <DependentUpon>FChiTietPhieuMuonTra.cs</DependentUpon>
     </Compile>
+    <Compile Include="FChiTietPhieuPhat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FChiTietPhieuPhat.Designer.cs">
+      <DependentUpon>FChiTietPhieuPhat.cs</DependentUpon>
+    </Compile>
     <Compile Include="FChiTietSach.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -468,6 +474,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FChiTietPhieuMuonTra.resx">
       <DependentUpon>FChiTietPhieuMuonTra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FChiTietPhieuPhat.resx">
+      <DependentUpon>FChiTietPhieuPhat.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FChiTietSach.resx">
       <DependentUpon>FChiTietSach.cs</DependentUpon>

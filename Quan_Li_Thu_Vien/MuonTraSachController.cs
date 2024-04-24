@@ -304,7 +304,7 @@ namespace Quan_Li_Thu_Vien
                 try
                 {
                     conn.openConnection();
-                    using (SqlCommand command = new SqlCommand("DeleteThongTinNhanVien", connection))
+                    using (SqlCommand command = new SqlCommand("DeleteEmployee", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.AddWithValue("@maNV", maNV);

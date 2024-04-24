@@ -37,6 +37,7 @@
             this.btnThem = new System.Windows.Forms.Button();
             this.lbDanhSachPhieuPhat = new System.Windows.Forms.Label();
             this.dtgvPhieuPhat = new System.Windows.Forms.DataGridView();
+            this.btnChiTietMuonTra = new System.Windows.Forms.Button();
             this.panelNen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvPhieuPhat)).BeginInit();
             this.SuspendLayout();
@@ -44,6 +45,7 @@
             // panelNen
             // 
             this.panelNen.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panelNen.Controls.Add(this.btnChiTietMuonTra);
             this.panelNen.Controls.Add(this.btnTimKiem);
             this.panelNen.Controls.Add(this.txtMaSach);
             this.panelNen.Controls.Add(this.lbMaSach);
@@ -155,6 +157,20 @@
             this.dtgvPhieuPhat.TabIndex = 0;
             this.dtgvPhieuPhat.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvPhieuPhat_CellClick);
             // 
+            // btnChiTietMuonTra
+            // 
+            this.btnChiTietMuonTra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btnChiTietMuonTra.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChiTietMuonTra.ForeColor = System.Drawing.Color.White;
+            this.btnChiTietMuonTra.Location = new System.Drawing.Point(0, 647);
+            this.btnChiTietMuonTra.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnChiTietMuonTra.Name = "btnChiTietMuonTra";
+            this.btnChiTietMuonTra.Size = new System.Drawing.Size(320, 44);
+            this.btnChiTietMuonTra.TabIndex = 15;
+            this.btnChiTietMuonTra.Text = "Chi Tiết Mượn Trả";
+            this.btnChiTietMuonTra.UseVisualStyleBackColor = false;
+            this.btnChiTietMuonTra.Click += new System.EventHandler(this.btnChiTietMuonTra_Click);
+            // 
             // FDanhSachPhieuPhat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -185,5 +201,6 @@
         private System.Windows.Forms.Button btnTimKiem;
         private System.Windows.Forms.TextBox txtMaSach;
         private System.Windows.Forms.Label lbMaSach;
+        private System.Windows.Forms.Button btnChiTietMuonTra;
     }
 }
