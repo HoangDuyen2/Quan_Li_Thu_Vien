@@ -13,7 +13,6 @@ namespace Quan_Li_Thu_Vien
 {
     public partial class FDanhSachPhieuPhat : Form
     {
-        DBConnection conn = new DBConnection();
         MuonTraSachController dspp = new MuonTraSachController();
         private string maPhieuPhat;
         public FDanhSachPhieuPhat()
@@ -35,9 +34,8 @@ namespace Quan_Li_Thu_Vien
         private void btnThem_Click(object sender, EventArgs e)
         {
             FThemPhieuPhat fThemPhieuPhat = new FThemPhieuPhat();
-            this.Close();
+            this.Hide();
             fThemPhieuPhat.ShowDialog();
-            this.Show();
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -78,9 +76,8 @@ namespace Quan_Li_Thu_Vien
                 {
                     MessageBox.Show("Xóa phiếu phạt thành công", "Thông báo");
                     FDanhSachPhieuPhat danhSachPhieuPhat = new FDanhSachPhieuPhat();
-                    this.Close();
+                    this.Hide();
                     danhSachPhieuPhat.ShowDialog();
-                    this.Show();
                 }
                 else
                 {
@@ -97,9 +94,8 @@ namespace Quan_Li_Thu_Vien
         {
             FChiTietPhieuPhat fChiTietPhieuPhat = new FChiTietPhieuPhat();
             fChiTietPhieuPhat.SetMaPhieuPhat(maPhieuPhat);
-            this.Close();
+            this.Hide();
             fChiTietPhieuPhat.ShowDialog();
-            this.Show();
         }
     }
 }

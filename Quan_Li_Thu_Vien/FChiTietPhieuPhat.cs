@@ -13,7 +13,6 @@ namespace Quan_Li_Thu_Vien
 {
     public partial class FChiTietPhieuPhat : Form
     {
-        DBConnection conn = new DBConnection();
         MuonTraSachController dsctpp = new MuonTraSachController();
         private string maPhieuPhat;
         public FChiTietPhieuPhat()
@@ -41,19 +40,27 @@ namespace Quan_Li_Thu_Vien
         private void btnExit_Click(object sender, EventArgs e)
         {
             FDanhSachPhieuPhat fDanhSachPhieuPhat = new FDanhSachPhieuPhat();
-            this.Close();
+            this.Hide();
             fDanhSachPhieuPhat.ShowDialog();
-            this.Show();
         }
 
         private void comboBoxLoaiPhat_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (dsctpp.themChiTietPhieuPhat(maPhieuPhat, comboBoxLoaiPhat.Text))
+            {
+                MessageBox.Show("Thực thi dữ liệu thành công", "Thông báo");
+            }
+            else
+            {
+                MessageBox.Show("Thực thi dữ liệu thất bại", "Thông báo");
+            }
+            FChiTietPhieuPhat_Load(sender, e);
         }
         public void LoadComboboxLoaiPhat()
         {
             comboBoxLoaiPhat.DataSource = dsctpp.DSTenCacLoaiPhat();
             comboBoxLoaiPhat.DisplayMember = dsctpp.DSTenCacLoaiPhat().Columns[0].ToString();
         }
+
     }
 }

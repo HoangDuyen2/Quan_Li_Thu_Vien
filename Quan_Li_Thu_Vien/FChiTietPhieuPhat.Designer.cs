@@ -29,12 +29,11 @@
         private void InitializeComponent()
         {
             this.panelNen = new System.Windows.Forms.Panel();
-            this.btnThemMaPhieuPhat = new System.Windows.Forms.Button();
+            this.lbLoaiPhat = new System.Windows.Forms.Label();
+            this.comboBoxLoaiPhat = new System.Windows.Forms.ComboBox();
             this.btnExit = new System.Windows.Forms.Button();
             this.lbDanhSachChiTietPhieuPhat = new System.Windows.Forms.Label();
             this.dtgvChiTietPhieuPhat = new System.Windows.Forms.DataGridView();
-            this.lbLoaiPhat = new System.Windows.Forms.Label();
-            this.comboBoxLoaiPhat = new System.Windows.Forms.ComboBox();
             this.panelNen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvChiTietPhieuPhat)).BeginInit();
             this.SuspendLayout();
@@ -44,7 +43,6 @@
             this.panelNen.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panelNen.Controls.Add(this.lbLoaiPhat);
             this.panelNen.Controls.Add(this.comboBoxLoaiPhat);
-            this.panelNen.Controls.Add(this.btnThemMaPhieuPhat);
             this.panelNen.Controls.Add(this.btnExit);
             this.panelNen.Controls.Add(this.lbDanhSachChiTietPhieuPhat);
             this.panelNen.Controls.Add(this.dtgvChiTietPhieuPhat);
@@ -53,18 +51,26 @@
             this.panelNen.Size = new System.Drawing.Size(1042, 423);
             this.panelNen.TabIndex = 6;
             // 
-            // btnThemMaPhieuPhat
+            // lbLoaiPhat
             // 
-            this.btnThemMaPhieuPhat.BackColor = System.Drawing.Color.Goldenrod;
-            this.btnThemMaPhieuPhat.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThemMaPhieuPhat.ForeColor = System.Drawing.Color.White;
-            this.btnThemMaPhieuPhat.Location = new System.Drawing.Point(849, 266);
-            this.btnThemMaPhieuPhat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnThemMaPhieuPhat.Name = "btnThemMaPhieuPhat";
-            this.btnThemMaPhieuPhat.Size = new System.Drawing.Size(109, 44);
-            this.btnThemMaPhieuPhat.TabIndex = 10;
-            this.btnThemMaPhieuPhat.Text = "Thêm";
-            this.btnThemMaPhieuPhat.UseVisualStyleBackColor = false;
+            this.lbLoaiPhat.AutoSize = true;
+            this.lbLoaiPhat.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.lbLoaiPhat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbLoaiPhat.ForeColor = System.Drawing.Color.DarkBlue;
+            this.lbLoaiPhat.Location = new System.Drawing.Point(699, 82);
+            this.lbLoaiPhat.Name = "lbLoaiPhat";
+            this.lbLoaiPhat.Size = new System.Drawing.Size(94, 25);
+            this.lbLoaiPhat.TabIndex = 12;
+            this.lbLoaiPhat.Text = "Loại Phạt";
+            // 
+            // comboBoxLoaiPhat
+            // 
+            this.comboBoxLoaiPhat.FormattingEnabled = true;
+            this.comboBoxLoaiPhat.Location = new System.Drawing.Point(810, 84);
+            this.comboBoxLoaiPhat.Name = "comboBoxLoaiPhat";
+            this.comboBoxLoaiPhat.Size = new System.Drawing.Size(215, 24);
+            this.comboBoxLoaiPhat.TabIndex = 11;
+            this.comboBoxLoaiPhat.SelectedIndexChanged += new System.EventHandler(this.comboBoxLoaiPhat_SelectedIndexChanged);
             // 
             // btnExit
             // 
@@ -102,27 +108,6 @@
             this.dtgvChiTietPhieuPhat.Size = new System.Drawing.Size(681, 354);
             this.dtgvChiTietPhieuPhat.TabIndex = 0;
             // 
-            // lbLoaiPhat
-            // 
-            this.lbLoaiPhat.AutoSize = true;
-            this.lbLoaiPhat.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.lbLoaiPhat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbLoaiPhat.ForeColor = System.Drawing.Color.DarkBlue;
-            this.lbLoaiPhat.Location = new System.Drawing.Point(699, 82);
-            this.lbLoaiPhat.Name = "lbLoaiPhat";
-            this.lbLoaiPhat.Size = new System.Drawing.Size(94, 25);
-            this.lbLoaiPhat.TabIndex = 12;
-            this.lbLoaiPhat.Text = "Loại Phạt";
-            // 
-            // comboBoxLoaiPhat
-            // 
-            this.comboBoxLoaiPhat.FormattingEnabled = true;
-            this.comboBoxLoaiPhat.Location = new System.Drawing.Point(810, 84);
-            this.comboBoxLoaiPhat.Name = "comboBoxLoaiPhat";
-            this.comboBoxLoaiPhat.Size = new System.Drawing.Size(215, 24);
-            this.comboBoxLoaiPhat.TabIndex = 11;
-            this.comboBoxLoaiPhat.SelectedIndexChanged += new System.EventHandler(this.comboBoxLoaiPhat_SelectedIndexChanged);
-            // 
             // FChiTietPhieuPhat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -142,7 +127,6 @@
         #endregion
 
         private System.Windows.Forms.Panel panelNen;
-        private System.Windows.Forms.Button btnThemMaPhieuPhat;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Label lbDanhSachChiTietPhieuPhat;
         private System.Windows.Forms.DataGridView dtgvChiTietPhieuPhat;
