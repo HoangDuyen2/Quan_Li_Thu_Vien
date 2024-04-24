@@ -36,6 +36,22 @@ namespace Quan_Li_Thu_Vien
             adapter.Fill(dataTable);
             return dataTable;
         }
+        public DataTable DSChiTietPhieuPhat(string maPhieuPhat)
+        {
+            SqlCommand cmd = new SqlCommand("EXEC XemCTPPtheoMaPP @mapp = '" + maPhieuPhat + "'", conn.GetSqlConnection());
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataTable dataTable = new DataTable();
+            adapter.Fill(dataTable);
+            return dataTable;
+        }
+        public DataTable DSTenCacLoaiPhat()
+        {
+            SqlCommand cmmd = new SqlCommand("SELECT LoaiPhat FROM Phat", conn.GetSqlConnection());
+            SqlDataAdapter adapter = new SqlDataAdapter(cmmd);
+            DataTable table = new DataTable();
+            adapter.Fill(table);
+            return table;
+        }
         public DataTable DSNhanVien()
         {
             SqlCommand cmd = new SqlCommand("SELECT * FROM ThongTinNhanVienView", conn.GetSqlConnection());

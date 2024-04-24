@@ -93,9 +93,10 @@ namespace Quan_Li_Thu_Vien
             }
         }
 
-        private void btnChiTietMuonTra_Click(object sender, EventArgs e)
+        private void btnChiTietPhieuPhat_Click(object sender, EventArgs e)
         {
             FChiTietPhieuPhat fChiTietPhieuPhat = new FChiTietPhieuPhat();
+            fChiTietPhieuPhat.SetMaPhieuPhat(maPhieuPhat);
             this.Close();
             fChiTietPhieuPhat.ShowDialog();
             this.Show();
