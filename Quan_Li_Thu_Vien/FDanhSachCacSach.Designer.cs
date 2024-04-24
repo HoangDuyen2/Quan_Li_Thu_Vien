@@ -93,7 +93,6 @@
             this.lbLoaiSachSearch.Size = new System.Drawing.Size(96, 25);
             this.lbLoaiSachSearch.TabIndex = 10;
             this.lbLoaiSachSearch.Text = "Loại sách";
-            this.lbLoaiSachSearch.Click += new System.EventHandler(this.lbLoaiSachSearch_Click);
             // 
             // comboBoxLoaiSach
             // 

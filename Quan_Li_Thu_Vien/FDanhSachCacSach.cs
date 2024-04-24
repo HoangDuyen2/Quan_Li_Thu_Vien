@@ -146,10 +146,5 @@ namespace Quan_Li_Thu_Vien
         {
 
         }
-
-        private void lbLoaiSachSearch_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
