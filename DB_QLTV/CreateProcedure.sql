@@ -883,7 +883,7 @@ END
 --End Insert InsertThongTinNhanVienvaNhanVien
 
 --Insert TaiKhoan
-CREATE PROCEDURE InsertTaiKhoan
+CREATE PROCEDURE proc_InsertTaiKhoan
     @Username NVARCHAR(50),
     @PasswordUser NVARCHAR(100),
     @MaNV NVARCHAR(10)
@@ -891,11 +891,34 @@ AS
 BEGIN
     SET NOCOUNT ON;
 
-    INSERT INTO TaiKhoan (Username, PasswordUser, MaNV)
-    VALUES (@Username, @PasswordUser, @MaNV)
-END
---End Insert TaiKhoan
+    BEGIN TRANSACTION tran_CreateAccount
+    BEGIN TRY
+        IF @MaNV NOT IN (SELECT MaNV FROM NhanVien)
+        BEGIN
+            DECLARE @err nvarchar(MAX)
+            SELECT @err = N'Lỗi ' + 'Nhân viên có mã ' + @MaNV + ' không tồn tại'
+            RAISERROR (@err, 16, 1);
+            RETURN;
+        END;
+        
+        IF EXISTS (SELECT * FROM TaiKhoan WHERE Username = @Username)
+        BEGIN
+            RAISERROR ('Tài khoản đã tồn tại',16,1)
+            RETURN
+        END;
+        
+        INSERT INTO TaiKhoan (Username, PasswordUser, MaNV)
+        VALUES (@Username, @PasswordUser, @MaNV)
 
+        COMMIT TRANSACTION
+    END TRY
+    BEGIN CATCH
+        ROLLBACK TRANSACTION
+        THROW
+    END CATCH
+END
+
+--End Insert TaiKhoan
 --Insert ChiTietPhieuPhat
 CREATE PROCEDURE InsertChiTietPhieuPhat
     @MaPhieuPhat NVARCHAR(10),
@@ -915,3 +938,34 @@ BEGIN
     END
 END
 --End Insert ChiTietPhieuPhat
+
+-- Procedure tạo tài khoản nhân viên
+GO
+CREATE PROCEDURE proc_UpdateAccountEmpploye
+    @Username NVARCHAR(50),
+    @PasswordUser NVARCHAR(100),
+    @MaNV NVARCHAR(10)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    BEGIN TRANSACTION tran_CreateAccount
+    BEGIN TRY
+        IF EXISTS (SELECT * FROM TaiKhoan WHERE Username = @Username)
+        BEGIN
+            RAISERROR ('Tài khoản đã tồn tại',16,1)
+            RETURN
+        END;
+        
+        UPDATE TaiKhoan 
+        SET Username = @Username, PasswordUser = @PasswordUser, MaNV = @MaNV
+        WHERE Username = @Username
+
+        COMMIT TRANSACTION
+    END TRY
+    BEGIN CATCH
+        ROLLBACK TRANSACTION
+        THROW
+    END CATCH
+END
+
