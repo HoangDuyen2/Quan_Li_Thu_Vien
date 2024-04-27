@@ -14,7 +14,6 @@ namespace Quan_Li_Thu_Vien
 {
     public partial class FThemPhieuPhat : Form
     {
-        DBConnection conn = new DBConnection();
         MuonTraSachController muonTraSachController = new MuonTraSachController();
         public FThemPhieuPhat()
         {
@@ -27,10 +26,7 @@ namespace Quan_Li_Thu_Vien
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            FDanhSachPhieuPhat fDanhSachPhieuPhat = new FDanhSachPhieuPhat();
             this.Close();
-            fDanhSachPhieuPhat.ShowDialog();
-            this.Show();
         }
 
         private void btnOK_Click(object sender, EventArgs e)
@@ -40,24 +36,21 @@ namespace Quan_Li_Thu_Vien
                 MessageBox.Show("Không để trống các trường.", "Thông báo");
                 return;
             }
-            if (txtMaPhieuMuonTra.Text != "" && txtMaSach.Text != "")
+            if (muonTraSachController.checkTinhTrangCTPMT(txtMaPhieuMuonTra.Text, txtMaSach.Text))
             {
-                if (int.TryParse("0", out int tongTien))
+                PhieuPhat phieuPhat = new PhieuPhat(txtMaPhieuPhat.Text, txtMaPhieuMuonTra.Text, txtMaSach.Text, txtNgayXuatPhieu.Text, 0);
+                if (muonTraSachController.themPhieuPhat(phieuPhat))
                 {
-                    PhieuPhat phieuPhat = new PhieuPhat(txtMaPhieuPhat.Text, txtMaPhieuMuonTra.Text, txtMaSach.Text, txtNgayXuatPhieu.Text, tongTien);
-                    if (muonTraSachController.themPhieuPhat(phieuPhat))//LỖI THÔNG BÁO
-                    {
-                        MessageBox.Show("Thực thi dữ liệu thành công", "Thông báo");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Thực thi dữ liệu thất bại", "Lỗi");
-                    }
+                    MessageBox.Show("Thực thi dữ liệu thành công", "Thông báo");
                 }
                 else
                 {
-                    MessageBox.Show("Vui lòng nhập một giá trị số nguyên hợp lệ cho Tổng tiền.", "Lỗi");
+                    MessageBox.Show("Thực thi dữ liệu thất bại", "Lỗi");
                 }
+            }
+            else
+            {
+                MessageBox.Show("Phiếu mượn trả phải được trả trước khi tạo phiếu phạt", "Thông báo");
             }
         }
     }

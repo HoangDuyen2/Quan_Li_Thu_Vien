@@ -73,7 +73,6 @@ namespace Quan_Li_Thu_Vien
         {
             txtTenSach.Enabled = true;
             txtDonGia.Enabled = true;
-            txtNCC.Enabled = true;
             txtSoLuongSach.Enabled = true;
         }
         #endregion
@@ -104,9 +103,7 @@ namespace Quan_Li_Thu_Vien
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            FDanhSachChiTietPhieuNhap danhSachChiTietPhieuNhap = new FDanhSachChiTietPhieuNhap();
-            this.Hide();
-            danhSachChiTietPhieuNhap.ShowDialog();
+            this.Close();
         }
         #endregion
 
@@ -141,8 +138,6 @@ namespace Quan_Li_Thu_Vien
             }
         }
 
-
-
         #endregion
 
         private void button1_Click(object sender, EventArgs e)
@@ -153,6 +148,8 @@ namespace Quan_Li_Thu_Vien
                 if (nhapController.xoaChiTietPhieuNhap(phieuNhap.MaPhieuNhap, phieuNhap.TenSach))
                 {
                     MessageBox.Show("Thực thi dữ liệu thành công", "Thông báo");
+                    btnChinhSua.Hide();
+                    btnOK.Hide();
                 }
                 else
                 {

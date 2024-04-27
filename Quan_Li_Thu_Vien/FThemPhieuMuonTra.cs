@@ -17,13 +17,13 @@ namespace Quan_Li_Thu_Vien
         MuonTraSachController muonTraSachController = new MuonTraSachController();
         public FThemPhieuMuonTra()
         {
-            InitializeComponent();
+            InitializeComponent();    
         }
         private void FThemPhieuMuonTra_Load(object sender, EventArgs e)
         {
-
+            LoadData();
         }
-        private void btnOK_Click(object sender, EventArgs e)
+        public void LoadData()
         {
             string username = LoginInfo.Username;
 
@@ -35,25 +35,30 @@ namespace Quan_Li_Thu_Vien
             conn.openConnection();
             string maNV = cmmd.ExecuteScalar()?.ToString();
             conn.closeConnection();
-
             txtMaNV.Text = maNV;
+        }
 
-            if (string.IsNullOrEmpty(txtMaDocGia.Text) || string.IsNullOrEmpty(txtHanTra.Text))
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtMaDocGia.Text))
             {
                 MessageBox.Show("Không để trống các trường.", "Thông báo");
                 return;
             }
-            if (txtMaDocGia.Text != "" && txtHanTra.Text != "")
-                checkMaDocGia(txtMaDocGia.Text);
             if (checkMaDocGia(txtMaDocGia.Text) == true)
             {
-                PhieuMuonTra phieuMuonTra = new PhieuMuonTra(txtMaPMT.Text, txtMaNV.Text, txtMaDocGia.Text, txtNgayMuon.Text, txtHanTra.Text);
+                PhieuMuonTra phieuMuonTra = new PhieuMuonTra("", txtMaNV.Text, txtMaDocGia.Text, dtNgayMuon.Value.ToShortDateString(), null);
                 if (muonTraSachController.themPhieuMuonTra(phieuMuonTra))
                 {
                     MessageBox.Show("Thực thi dữ liệu thành công", "Thông báo");
                 }
                 else MessageBox.Show("Thực thi dữ liệu thất bại", "Lỗi");
             }
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
         public bool checkMaDocGia(string maDocGia)
         {
@@ -63,19 +68,6 @@ namespace Quan_Li_Thu_Vien
                 return false;
             }
             return true;
-        }
-
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            FDanhSachPhieuMuonTra fDanhSachPhieuMuonTra = new FDanhSachPhieuMuonTra();
-            this.Close();
-            fDanhSachPhieuMuonTra.ShowDialog();
-            this.Show();
-        }
-
-        private void txtMaDocGia_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

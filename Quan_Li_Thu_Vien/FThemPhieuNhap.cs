@@ -56,9 +56,7 @@ namespace Quan_Li_Thu_Vien
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            FDanhSachPhieuNhap fDanhSachPhieuNhap = new FDanhSachPhieuNhap();
-            this.Hide();
-            fDanhSachPhieuNhap.ShowDialog();
+            this.Close();
         }
 
         private void FThemPhieuNhap_Load(object sender, EventArgs e)

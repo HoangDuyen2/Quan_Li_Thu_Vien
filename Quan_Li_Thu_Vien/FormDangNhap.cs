@@ -18,28 +18,6 @@ namespace Quan_Li_Thu_Vien
         {
             InitializeComponent();
         }
-        private void radbtnNguoiQuanLy_CheckedChanged(object sender, EventArgs e)
-        {
-            if (radbtnNguoiQuanLy.Checked)
-            {
-
-            }
-        }
-
-        private void radbtnNhanVien_CheckedChanged(object sender, EventArgs e)
-        {
-            if (radbtnNhanVien.Checked)
-            {
-
-            }
-        }
-        private void radbtnToTruong_CheckedChanged(object sender, EventArgs e)
-        {
-            if (radbtnToTruong.Checked)
-            {
-
-            }
-        }
 
         private void FormDangNhap_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -84,12 +62,13 @@ namespace Quan_Li_Thu_Vien
                 SqlCommand cmdGetMaNV = new SqlCommand(query, conn.GetSqlConnection());
                 cmdGetMaNV.Parameters.AddWithValue("@username", tk);
                 string maNV = dta["MaNV"].ToString();
-                string maTo = dta["MaTo"].ToString();
-                LoginInfo.maTo = maTo;
+                
                 LoginInfo.Role = Role;
                 if (Role == "NhanVien")
                 {
-                    if(maTo == "TO01")
+                    string maTo = dta["MaTo"].ToString();
+                    LoginInfo.maTo = maTo;
+                    if (maTo == "TO01")
                     {
                         FTrangChuToNhapSach_NhanVien fTrangChuToNhapSach_NhanVien = new FTrangChuToNhapSach_NhanVien();
                         this.Hide();
@@ -116,7 +95,9 @@ namespace Quan_Li_Thu_Vien
                 }
                 if (Role == "ToTruong")
                 {
-                    if(maTo == "TO01")
+                    string maTo = dta["MaTo"].ToString();
+                    LoginInfo.maTo = maTo;
+                    if (maTo == "TO01")
                     {
                         FTrangChuToNhapSach_ToTruongcs fTrangChuToNhapSach_ToTruong = new FTrangChuToNhapSach_ToTruongcs();
                         this.Hide();
@@ -144,7 +125,8 @@ namespace Quan_Li_Thu_Vien
                 }
                 if(Role == "NguoiQuanLi")
                 {
-                    
+                    FManager fManager = new FManager();
+                    fManager.ShowDialog();
                 }
             }
             else

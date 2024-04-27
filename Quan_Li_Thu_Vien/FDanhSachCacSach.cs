@@ -120,8 +120,8 @@ namespace Quan_Li_Thu_Vien
                     row.Cells["SoLuongSach"].Value.ToString(), row.Cells["TenTG"].Value.ToString());
                 // Thêm logic xử lý khi cell được click sau khi áp dụng bộ lọc
                 FChiTietSach fChiTiet = new FChiTietSach(sach);
-                this.Hide();
                 fChiTiet.ShowDialog();
+                FDanhSachCacSach_Load(sender, e);
             }
             else
             {
@@ -132,19 +132,9 @@ namespace Quan_Li_Thu_Vien
         private void btnAdd_Click(object sender, EventArgs e)
         {
             FThemSach themSach = new FThemSach();
-            this.Hide();
             themSach.ShowDialog();
+            FDanhSachCacSach_Load(sender, e);
             
-        }
-
-        private void txtTenSach_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbTenSach_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -32,9 +32,7 @@ namespace Quan_Li_Thu_Vien
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            FDanhSachNhaCungCap dsNCC = new FDanhSachNhaCungCap();
-            this.Hide();
-            dsNCC.ShowDialog();
+            this.Close();
         }
 
         private void btnOK_Click(object sender, EventArgs e)

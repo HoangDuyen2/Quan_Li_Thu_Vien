@@ -43,7 +43,7 @@ namespace Quan_Li_Thu_Vien
             command.Parameters.Add("@Email", SqlDbType.Char).Value = dg.Email;
             command.Parameters.Add("@SoDienThoai", SqlDbType.Char).Value = dg.SoDienThoai;
             command.Parameters.Add("@GioiTinh", SqlDbType.NVarChar).Value = dg.GioiTinh;
-            command.Parameters.Add("@MaLoaiDG", SqlDbType.NVarChar).Value = dg.MaLoaiDG;
+            command.Parameters.Add("@TenLoaiDG", SqlDbType.NVarChar).Value = dg.MaLoaiDG;
             conn.openConnection();
             if (command.ExecuteNonQuery() > 0)
             {

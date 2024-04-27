@@ -13,7 +13,6 @@ namespace Quan_Li_Thu_Vien
 {
     public partial class FNewNV : Form
     {
-        DBConnection conn = new DBConnection();
         MuonTraSachController muonTraSachController = new MuonTraSachController();
         public FNewNV()
         {
@@ -21,31 +20,34 @@ namespace Quan_Li_Thu_Vien
         }
         private void FNewNV_Load(object sender, EventArgs e)
         {
-
+            txtMaTo.Text = LoginInfo.maTo;
         }
         private void btnOK_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtTenNhanVien.Text) || string.IsNullOrEmpty(txtGioiTinh.Text) || string.IsNullOrEmpty(txtNgaySinh.Text) || string.IsNullOrEmpty(txtDiaChi.Text) || string.IsNullOrEmpty(txtSoDienThoai.Text) || string.IsNullOrEmpty(txtLuong.Text) || string.IsNullOrEmpty(txtEmail.Text) || string.IsNullOrEmpty(txtMaTo.Text))
+            if (string.IsNullOrEmpty(txtTenNhanVien.Text) || string.IsNullOrEmpty(txtDiaChi.Text) || string.IsNullOrEmpty(txtSoDienThoai.Text)
+                || string.IsNullOrEmpty(txtLuong.Text) || string.IsNullOrEmpty(txtEmail.Text))
             {
                 MessageBox.Show("Không để trống các trường.", "Thông báo");
                 return;
             }
-            if (txtTenNhanVien.Text != "" && txtGioiTinh.Text != "" && txtNgaySinh.Text != "" && txtDiaChi.Text != "" && txtSoDienThoai.Text != "" && txtLuong.Text != "" && txtEmail.Text != "" && txtMaTo.Text != "")
+            string sex;
+            if (radiobtnNam.Checked)
+                sex = "M";
+            else sex = "F";
+            int luong;
+            if (!int.TryParse(txtLuong.Text, out luong))
+                MessageBox.Show("Lương nhập không hợp lệ, vui lòng nhập lại", "Thông báo");
+            Person person = new Person(txtMaNV.Text, txtTenNhanVien.Text, sex,dtNgaySinh.Value.ToShortDateString(),
+                txtDiaChi.Text, txtSoDienThoai.Text, luong, txtEmail.Text);
+            if (muonTraSachController.themThongTinNhanVien(person, LoginInfo.maTo))
             {
-                Person person = new Person(txtMaNV.Text, txtTenNhanVien.Text, txtGioiTinh.Text, txtNgaySinh.Text, txtDiaChi.Text, txtSoDienThoai.Text, int.Parse(txtLuong.Text), txtEmail.Text);
-                if (muonTraSachController.themThongTinNhanVien(person, txtMaTo.Text))
-                {
-                    MessageBox.Show("Thực thi dữ liệu thành công", "Thông báo");
-                }
+                MessageBox.Show("Thực thi dữ liệu thành công", "Thông báo");
             }
         }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            FDanhSachNhanVien fDanhSachNhanVien = new FDanhSachNhanVien();
             this.Close();
-            fDanhSachNhanVien.ShowDialog();
-            this.Show();
         }
     }
 }

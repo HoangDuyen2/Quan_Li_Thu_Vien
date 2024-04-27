@@ -32,12 +32,12 @@
             this.btnTimKiem = new System.Windows.Forms.Button();
             this.txtTenDocGia = new System.Windows.Forms.TextBox();
             this.lbTenSach = new System.Windows.Forms.Label();
-            this.btnExit = new System.Windows.Forms.Button();
-            this.btnXoa = new System.Windows.Forms.Button();
-            this.btnSua = new System.Windows.Forms.Button();
-            this.btnThem = new System.Windows.Forms.Button();
             this.lbDanhSachDocGia = new System.Windows.Forms.Label();
             this.dtgvDocGia = new System.Windows.Forms.DataGridView();
+            this.btnExit = new System.Windows.Forms.Button();
+            this.btnThem = new System.Windows.Forms.Button();
+            this.lbDocGia = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.panelNen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvDocGia)).BeginInit();
             this.SuspendLayout();
@@ -45,16 +45,14 @@
             // panelNen
             // 
             this.panelNen.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panelNen.Controls.Add(this.comboBox1);
+            this.panelNen.Controls.Add(this.lbDocGia);
             this.panelNen.Controls.Add(this.btnTimKiem);
             this.panelNen.Controls.Add(this.txtTenDocGia);
             this.panelNen.Controls.Add(this.lbTenSach);
-            this.panelNen.Controls.Add(this.btnExit);
-            this.panelNen.Controls.Add(this.btnXoa);
-            this.panelNen.Controls.Add(this.btnSua);
-            this.panelNen.Controls.Add(this.btnThem);
             this.panelNen.Controls.Add(this.lbDanhSachDocGia);
             this.panelNen.Controls.Add(this.dtgvDocGia);
-            this.panelNen.Location = new System.Drawing.Point(1, 3);
+            this.panelNen.Location = new System.Drawing.Point(1, 1);
             this.panelNen.Name = "panelNen";
             this.panelNen.Size = new System.Drawing.Size(1354, 650);
             this.panelNen.TabIndex = 4;
@@ -90,62 +88,6 @@
             this.lbTenSach.TabIndex = 12;
             this.lbTenSach.Text = "Tên Độc Giả";
             // 
-            // btnExit
-            // 
-            this.btnExit.BackColor = System.Drawing.Color.Red;
-            this.btnExit.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.ForeColor = System.Drawing.Color.White;
-            this.btnExit.Location = new System.Drawing.Point(1242, 606);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(109, 44);
-            this.btnExit.TabIndex = 9;
-            this.btnExit.Text = "Exit";
-            this.btnExit.UseVisualStyleBackColor = false;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
-            // 
-            // btnXoa
-            // 
-            this.btnXoa.BackColor = System.Drawing.Color.Red;
-            this.btnXoa.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXoa.ForeColor = System.Drawing.Color.White;
-            this.btnXoa.Location = new System.Drawing.Point(1061, 606);
-            this.btnXoa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(144, 44);
-            this.btnXoa.TabIndex = 8;
-            this.btnXoa.Text = "Xóa";
-            this.btnXoa.UseVisualStyleBackColor = false;
-            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
-            // 
-            // btnSua
-            // 
-            this.btnSua.BackColor = System.Drawing.Color.DarkOrange;
-            this.btnSua.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSua.ForeColor = System.Drawing.Color.White;
-            this.btnSua.Location = new System.Drawing.Point(911, 606);
-            this.btnSua.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(144, 44);
-            this.btnSua.TabIndex = 7;
-            this.btnSua.Text = "Sửa";
-            this.btnSua.UseVisualStyleBackColor = false;
-            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
-            // 
-            // btnThem
-            // 
-            this.btnThem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.btnThem.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThem.ForeColor = System.Drawing.Color.White;
-            this.btnThem.Location = new System.Drawing.Point(761, 606);
-            this.btnThem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(144, 44);
-            this.btnThem.TabIndex = 5;
-            this.btnThem.Text = "Thêm";
-            this.btnThem.UseVisualStyleBackColor = false;
-            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
-            // 
             // lbDanhSachDocGia
             // 
             this.lbDanhSachDocGia.AutoSize = true;
@@ -167,14 +109,69 @@
             this.dtgvDocGia.RowTemplate.Height = 24;
             this.dtgvDocGia.Size = new System.Drawing.Size(1352, 549);
             this.dtgvDocGia.TabIndex = 0;
-            this.dtgvDocGia.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvDocGia_CellClick);
+            this.dtgvDocGia.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvDocGia_CellContentClick);
+            // 
+            // btnExit
+            // 
+            this.btnExit.BackColor = System.Drawing.Color.Red;
+            this.btnExit.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.ForeColor = System.Drawing.Color.White;
+            this.btnExit.Location = new System.Drawing.Point(1246, 653);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(109, 44);
+            this.btnExit.TabIndex = 9;
+            this.btnExit.Text = "Exit";
+            this.btnExit.UseVisualStyleBackColor = false;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
+            // btnThem
+            // 
+            this.btnThem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btnThem.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThem.ForeColor = System.Drawing.Color.White;
+            this.btnThem.Location = new System.Drawing.Point(1102, 653);
+            this.btnThem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.Size = new System.Drawing.Size(144, 44);
+            this.btnThem.TabIndex = 5;
+            this.btnThem.Text = "Thêm";
+            this.btnThem.UseVisualStyleBackColor = false;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
+            // 
+            // lbDocGia
+            // 
+            this.lbDocGia.AutoSize = true;
+            this.lbDocGia.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.lbDocGia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDocGia.ForeColor = System.Drawing.Color.DarkBlue;
+            this.lbDocGia.Location = new System.Drawing.Point(517, 58);
+            this.lbDocGia.Name = "lbDocGia";
+            this.lbDocGia.Size = new System.Drawing.Size(82, 25);
+            this.lbDocGia.TabIndex = 15;
+            this.lbDocGia.Text = "Độc Giả";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Tất cả",
+            "Vi phạm"});
+            this.comboBox1.Location = new System.Drawing.Point(605, 59);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(173, 24);
+            this.comboBox1.TabIndex = 16;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // FDanhSachDocGia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1353, 653);
+            this.ClientSize = new System.Drawing.Size(1356, 694);
             this.Controls.Add(this.panelNen);
+            this.Controls.Add(this.btnThem);
+            this.Controls.Add(this.btnExit);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FDanhSachDocGia";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FDanhSachDocGia";
@@ -192,11 +189,11 @@
         private System.Windows.Forms.Label lbDanhSachDocGia;
         private System.Windows.Forms.DataGridView dtgvDocGia;
         private System.Windows.Forms.Button btnThem;
-        private System.Windows.Forms.Button btnSua;
-        private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnTimKiem;
         private System.Windows.Forms.TextBox txtTenDocGia;
         private System.Windows.Forms.Label lbTenSach;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label lbDocGia;
     }
 }

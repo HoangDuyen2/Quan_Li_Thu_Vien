@@ -50,9 +50,7 @@ namespace Quan_Li_Thu_Vien
         }
         private void btnExit_Click(object sender, EventArgs e)
         {
-            FDanhSachCacTacGia DSTacGia = new FDanhSachCacTacGia();
-            this.Hide();
-            DSTacGia.ShowDialog();
+            this.Close();
         }
         #endregion
     }

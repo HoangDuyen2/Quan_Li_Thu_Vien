@@ -71,7 +71,7 @@
             // 
             this.btnThongTinCaNhan.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnThongTinCaNhan.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThongTinCaNhan.Location = new System.Drawing.Point(0, 266);
+            this.btnThongTinCaNhan.Location = new System.Drawing.Point(-2, 266);
             this.btnThongTinCaNhan.Name = "btnThongTinCaNhan";
             this.btnThongTinCaNhan.Size = new System.Drawing.Size(214, 65);
             this.btnThongTinCaNhan.TabIndex = 12;
@@ -107,7 +107,7 @@
             // 
             this.btnDSPhieuNhap.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnDSPhieuNhap.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDSPhieuNhap.Location = new System.Drawing.Point(-4, 0);
+            this.btnDSPhieuNhap.Location = new System.Drawing.Point(-2, 0);
             this.btnDSPhieuNhap.Name = "btnDSPhieuNhap";
             this.btnDSPhieuNhap.Size = new System.Drawing.Size(214, 65);
             this.btnDSPhieuNhap.TabIndex = 8;

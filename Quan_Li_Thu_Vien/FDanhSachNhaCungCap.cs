@@ -17,7 +17,6 @@ namespace Quan_Li_Thu_Vien
         public FDanhSachNhaCungCap()
         {
             InitializeComponent();
-            LoadData();
             if (LoginInfo.Role == "ToTruong")
                 btnThem.Hide();
         }
@@ -44,8 +43,8 @@ namespace Quan_Li_Thu_Vien
 
                 // Thêm logic xử lý khi cell được click sau khi áp dụng bộ lọc
                 FChiTietNCC fChiTiet = new FChiTietNCC(ncc);
-                this.Hide();
                 fChiTiet.ShowDialog();
+                FDanhSachNhaCungCap_Load(sender, e);
             }
             else
             {
@@ -56,8 +55,8 @@ namespace Quan_Li_Thu_Vien
         private void btnThem_Click(object sender, EventArgs e)
         {
             FNewNCC themNCC = new FNewNCC();
-            this.Hide();
             themNCC.ShowDialog();
+            FDanhSachNhaCungCap_Load(sender, e);
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -71,6 +70,11 @@ namespace Quan_Li_Thu_Vien
             dtgvTG.RowHeadersVisible = false;
             dtgvTG.BackgroundColor = Color.White;
             dtgvTG.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+        }
+
+        private void FDanhSachNhaCungCap_Load(object sender, EventArgs e)
+        {
+            LoadData();
         }
     }
 }

@@ -80,9 +80,7 @@ namespace Quan_Li_Thu_Vien
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            FDanhSachCacNhaXuatBan dsNXB = new FDanhSachCacNhaXuatBan();
-            this.Hide();
-            dsNXB.ShowDialog();
+            this.Close();
         }
 
 

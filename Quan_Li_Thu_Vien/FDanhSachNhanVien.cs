@@ -13,8 +13,8 @@ namespace Quan_Li_Thu_Vien
 {
     public partial class FDanhSachNhanVien : Form
     {
-        DBConnection conn = new DBConnection();
         MuonTraSachController dsnv = new MuonTraSachController();
+        SachController sach = new SachController();
         public string maNV;
 
         public FDanhSachNhanVien()
@@ -23,7 +23,7 @@ namespace Quan_Li_Thu_Vien
         }
         public void LoadData()
         {
-            dtgvNV.DataSource = dsnv.DSNhanVien();
+            dtgvNV.DataSource = sach.DSNhanVienTrongTo(LoginInfo.maTo);
             dtgvNV.RowHeadersVisible = false;
             dtgvNV.BackgroundColor = Color.White;
             dtgvNV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -31,13 +31,6 @@ namespace Quan_Li_Thu_Vien
         private void FDanhSachNhanVien_Load(object sender, EventArgs e)
         {
             LoadData();
-        }
-        private void dtgvNV_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && dtgvNV.Columns[e.ColumnIndex].Name == "MaNV")
-            {
-                maNV = dtgvNV.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
-            }
         }
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
@@ -62,49 +55,32 @@ namespace Quan_Li_Thu_Vien
         {
             FNewNV fNewNV = new FNewNV();
             fNewNV.ShowDialog();
-            this.Show();
-            this.Close();
+            FDanhSachNhanVien_Load(sender, e);
         }
 
-        private void btnSua_Click(object sender, EventArgs e)
-        {
-            FSuaNhanVien fSuaNhanVien = new FSuaNhanVien();
-            this.Close();
-            fSuaNhanVien.ShowDialog();
-            this.Show();
-        }
 
-        private void btnThemTaiKhoanNhanVienMoiTao_Click(object sender, EventArgs e)
+        private void dtgvNV_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            FThemTaiKhoanMoiTao fThemTaiKhoanMoiTao = new FThemTaiKhoanMoiTao();
-            fThemTaiKhoanMoiTao.SetMaNV(maNV);
-            this.Hide();
-            fThemTaiKhoanMoiTao.ShowDialog();
-            this.Show();
-        }
-
-        private void btnXoa_Click(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrEmpty(maNV))
+            if (e.RowIndex >= 0)
             {
-                bool isDeleted = dsnv.xoaThongTinNhanVien(maNV);
+                // Lưu lại dòng dữ liệu vừa kích chọn
+                DataGridViewRow row = dtgvNV.Rows[e.RowIndex];
 
-                if (isDeleted)
-                {
-                    MessageBox.Show("Xóa nhân viên thành công", "Thông báo");
-                    FDanhSachNhanVien fDanhSachNhanVien = new FDanhSachNhanVien();
-                    this.Hide();
-                    fDanhSachNhanVien.ShowDialog();
-                    this.Show();
-                }
-                else
-                {
-                    MessageBox.Show("Xóa Nhân Viên không thành công", "Lỗi");
-                }
+                // Đưa dữ liệu vào các control hoặc xử lý theo nhu cầu
+                int luong;
+                if (!int.TryParse(row.Cells["Luong"].Value.ToString(), out luong))
+                    MessageBox.Show("Lương nhập không hợp lệ, vui lòng nhập lại", "Thông báo");
+                Person person = new Person(row.Cells["MaNV"].Value.ToString(), row.Cells["TenNV"].Value.ToString(), row.Cells["GioiTinh"].Value.ToString(),
+                    row.Cells["NgaySinh"].Value.ToString(), row.Cells["DiaChi"].Value.ToString(), row.Cells["SDT"].Value.ToString(), luong,
+                    row.Cells["Email"].Value.ToString());
+                // Thêm logic xử lý khi cell được click sau khi áp dụng bộ lọc
+                FSuaNhanVien fChiTiet = new FSuaNhanVien(person,LoginInfo.maTo);
+                fChiTiet.ShowDialog();
+                FDanhSachNhanVien_Load(sender, e);
             }
             else
             {
-                MessageBox.Show("Vui lòng chọn nhân viên để xóa", "Thông báo");
+                MessageBox.Show("Không truy xuất được dữ liệu", "Lỗi");
             }
         }
     }

@@ -30,7 +30,6 @@
         {
             this.btnExit = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
-            this.txtGioiTinh = new System.Windows.Forms.TextBox();
             this.lblGioiTinh = new System.Windows.Forms.Label();
             this.txtSoDienThoai = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
@@ -43,8 +42,8 @@
             this.lblThongTinPhieuMuonTra = new System.Windows.Forms.Label();
             this.txtMaLoaiDG = new System.Windows.Forms.TextBox();
             this.lblMaLoaiDocGia = new System.Windows.Forms.Label();
-            this.txtNgayTao = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.radioBtnNu = new System.Windows.Forms.RadioButton();
+            this.radiobtnNam = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // btnExit
@@ -73,22 +72,13 @@
             this.btnOK.UseVisualStyleBackColor = false;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
-            // txtGioiTinh
-            // 
-            this.txtGioiTinh.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtGioiTinh.Location = new System.Drawing.Point(308, 357);
-            this.txtGioiTinh.Multiline = true;
-            this.txtGioiTinh.Name = "txtGioiTinh";
-            this.txtGioiTinh.Size = new System.Drawing.Size(288, 30);
-            this.txtGioiTinh.TabIndex = 59;
-            // 
             // lblGioiTinh
             // 
             this.lblGioiTinh.AutoSize = true;
             this.lblGioiTinh.BackColor = System.Drawing.Color.Transparent;
             this.lblGioiTinh.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGioiTinh.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblGioiTinh.Location = new System.Drawing.Point(22, 359);
+            this.lblGioiTinh.Location = new System.Drawing.Point(22, 398);
             this.lblGioiTinh.Name = "lblGioiTinh";
             this.lblGioiTinh.Size = new System.Drawing.Size(101, 28);
             this.lblGioiTinh.TabIndex = 58;
@@ -97,7 +87,7 @@
             // txtSoDienThoai
             // 
             this.txtSoDienThoai.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSoDienThoai.Location = new System.Drawing.Point(308, 299);
+            this.txtSoDienThoai.Location = new System.Drawing.Point(308, 327);
             this.txtSoDienThoai.Multiline = true;
             this.txtSoDienThoai.Name = "txtSoDienThoai";
             this.txtSoDienThoai.Size = new System.Drawing.Size(288, 30);
@@ -106,7 +96,7 @@
             // txtEmail
             // 
             this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(308, 241);
+            this.txtEmail.Location = new System.Drawing.Point(308, 246);
             this.txtEmail.Multiline = true;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(288, 30);
@@ -115,7 +105,7 @@
             // txtTenDocGia
             // 
             this.txtTenDocGia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTenDocGia.Location = new System.Drawing.Point(308, 177);
+            this.txtTenDocGia.Location = new System.Drawing.Point(308, 168);
             this.txtTenDocGia.Multiline = true;
             this.txtTenDocGia.Name = "txtTenDocGia";
             this.txtTenDocGia.Size = new System.Drawing.Size(288, 30);
@@ -125,7 +115,7 @@
             // 
             this.txtMaDocGia.Enabled = false;
             this.txtMaDocGia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaDocGia.Location = new System.Drawing.Point(308, 114);
+            this.txtMaDocGia.Location = new System.Drawing.Point(308, 90);
             this.txtMaDocGia.Multiline = true;
             this.txtMaDocGia.Name = "txtMaDocGia";
             this.txtMaDocGia.Size = new System.Drawing.Size(288, 30);
@@ -137,7 +127,7 @@
             this.lblSoDienThoai.BackColor = System.Drawing.Color.Transparent;
             this.lblSoDienThoai.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSoDienThoai.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblSoDienThoai.Location = new System.Drawing.Point(22, 301);
+            this.lblSoDienThoai.Location = new System.Drawing.Point(22, 329);
             this.lblSoDienThoai.Name = "lblSoDienThoai";
             this.lblSoDienThoai.Size = new System.Drawing.Size(152, 28);
             this.lblSoDienThoai.TabIndex = 53;
@@ -149,7 +139,7 @@
             this.lblEmail.BackColor = System.Drawing.Color.Transparent;
             this.lblEmail.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEmail.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblEmail.Location = new System.Drawing.Point(22, 243);
+            this.lblEmail.Location = new System.Drawing.Point(22, 248);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(66, 28);
             this.lblEmail.TabIndex = 52;
@@ -161,7 +151,7 @@
             this.lblTenDocGia.BackColor = System.Drawing.Color.Transparent;
             this.lblTenDocGia.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTenDocGia.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblTenDocGia.Location = new System.Drawing.Point(22, 179);
+            this.lblTenDocGia.Location = new System.Drawing.Point(22, 170);
             this.lblTenDocGia.Name = "lblTenDocGia";
             this.lblTenDocGia.Size = new System.Drawing.Size(135, 28);
             this.lblTenDocGia.TabIndex = 51;
@@ -173,7 +163,7 @@
             this.lblMaDocGia.BackColor = System.Drawing.Color.Transparent;
             this.lblMaDocGia.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMaDocGia.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblMaDocGia.Location = new System.Drawing.Point(22, 114);
+            this.lblMaDocGia.Location = new System.Drawing.Point(22, 90);
             this.lblMaDocGia.Name = "lblMaDocGia";
             this.lblMaDocGia.Size = new System.Drawing.Size(127, 28);
             this.lblMaDocGia.TabIndex = 50;
@@ -194,7 +184,7 @@
             // txtMaLoaiDG
             // 
             this.txtMaLoaiDG.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaLoaiDG.Location = new System.Drawing.Point(308, 489);
+            this.txtMaLoaiDG.Location = new System.Drawing.Point(308, 470);
             this.txtMaLoaiDG.Multiline = true;
             this.txtMaLoaiDG.Name = "txtMaLoaiDG";
             this.txtMaLoaiDG.Size = new System.Drawing.Size(288, 30);
@@ -206,46 +196,47 @@
             this.lblMaLoaiDocGia.BackColor = System.Drawing.Color.Transparent;
             this.lblMaLoaiDocGia.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMaLoaiDocGia.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblMaLoaiDocGia.Location = new System.Drawing.Point(22, 491);
+            this.lblMaLoaiDocGia.Location = new System.Drawing.Point(22, 472);
             this.lblMaLoaiDocGia.Name = "lblMaLoaiDocGia";
             this.lblMaLoaiDocGia.Size = new System.Drawing.Size(174, 28);
             this.lblMaLoaiDocGia.TabIndex = 62;
             this.lblMaLoaiDocGia.Text = "Mã Loại Độc Giả";
             // 
-            // txtNgayTao
+            // radioBtnNu
             // 
-            this.txtNgayTao.Enabled = false;
-            this.txtNgayTao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNgayTao.Location = new System.Drawing.Point(308, 425);
-            this.txtNgayTao.Multiline = true;
-            this.txtNgayTao.Name = "txtNgayTao";
-            this.txtNgayTao.Size = new System.Drawing.Size(288, 30);
-            this.txtNgayTao.TabIndex = 65;
+            this.radioBtnNu.AutoSize = true;
+            this.radioBtnNu.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioBtnNu.Location = new System.Drawing.Point(477, 398);
+            this.radioBtnNu.Name = "radioBtnNu";
+            this.radioBtnNu.Size = new System.Drawing.Size(60, 31);
+            this.radioBtnNu.TabIndex = 96;
+            this.radioBtnNu.Text = "Nữ";
+            this.radioBtnNu.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // radiobtnNam
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label1.Location = new System.Drawing.Point(22, 427);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(107, 28);
-            this.label1.TabIndex = 64;
-            this.label1.Text = "Ngày Tạo";
+            this.radiobtnNam.AutoSize = true;
+            this.radiobtnNam.Checked = true;
+            this.radiobtnNam.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radiobtnNam.Location = new System.Drawing.Point(353, 398);
+            this.radiobtnNam.Name = "radiobtnNam";
+            this.radiobtnNam.Size = new System.Drawing.Size(79, 31);
+            this.radiobtnNam.TabIndex = 95;
+            this.radiobtnNam.TabStop = true;
+            this.radiobtnNam.Text = "Nam";
+            this.radiobtnNam.UseVisualStyleBackColor = true;
             // 
             // FThemDocGia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(612, 599);
-            this.Controls.Add(this.txtNgayTao);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.radioBtnNu);
+            this.Controls.Add(this.radiobtnNam);
             this.Controls.Add(this.txtMaLoaiDG);
             this.Controls.Add(this.lblMaLoaiDocGia);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnOK);
-            this.Controls.Add(this.txtGioiTinh);
             this.Controls.Add(this.lblGioiTinh);
             this.Controls.Add(this.txtSoDienThoai);
             this.Controls.Add(this.txtEmail);
@@ -269,7 +260,6 @@
 
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnOK;
-        private System.Windows.Forms.TextBox txtGioiTinh;
         private System.Windows.Forms.Label lblGioiTinh;
         private System.Windows.Forms.TextBox txtSoDienThoai;
         private System.Windows.Forms.TextBox txtEmail;
@@ -282,7 +272,7 @@
         private System.Windows.Forms.Label lblThongTinPhieuMuonTra;
         private System.Windows.Forms.TextBox txtMaLoaiDG;
         private System.Windows.Forms.Label lblMaLoaiDocGia;
-        private System.Windows.Forms.TextBox txtNgayTao;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.RadioButton radioBtnNu;
+        private System.Windows.Forms.RadioButton radiobtnNam;
     }
 }

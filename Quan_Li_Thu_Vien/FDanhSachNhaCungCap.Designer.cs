@@ -147,6 +147,7 @@
             this.Name = "FDanhSachNhaCungCap";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FDanhSachNhaCungCap";
+            this.Load += new System.EventHandler(this.FDanhSachNhaCungCap_Load);
             this.panelNen.ResumeLayout(false);
             this.panelNen.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvTG)).EndInit();

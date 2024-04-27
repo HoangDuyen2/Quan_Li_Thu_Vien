@@ -45,6 +45,7 @@ namespace Quan_Li_Thu_Vien
                 // Thêm logic xử lý khi cell được click sau khi áp dụng bộ lọc
                 FChiTietSachMuon fChiTiet = new FChiTietSachMuon(sach, row.Cells["TenDocGia"].Value.ToString(), row.Cells["TinhTrang"].Value.ToString());
                 fChiTiet.ShowDialog();
+                FDanhSachCacSachBiHu_Load(sender, e);
             }
         }
 

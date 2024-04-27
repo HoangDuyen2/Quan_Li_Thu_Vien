@@ -105,7 +105,6 @@
             this.radbtnToTruong.TabStop = true;
             this.radbtnToTruong.Text = "Tổ Trưởng";
             this.radbtnToTruong.UseVisualStyleBackColor = true;
-            this.radbtnToTruong.CheckedChanged += new System.EventHandler(this.radbtnToTruong_CheckedChanged);
             // 
             // radbtnNhanVien
             // 
@@ -117,7 +116,6 @@
             this.radbtnNhanVien.TabStop = true;
             this.radbtnNhanVien.Text = "Nhân Viên";
             this.radbtnNhanVien.UseVisualStyleBackColor = true;
-            this.radbtnNhanVien.CheckedChanged += new System.EventHandler(this.radbtnNhanVien_CheckedChanged);
             // 
             // radbtnNguoiQuanLy
             // 
@@ -129,7 +127,6 @@
             this.radbtnNguoiQuanLy.TabStop = true;
             this.radbtnNguoiQuanLy.Text = "Người Quản Lý";
             this.radbtnNguoiQuanLy.UseVisualStyleBackColor = true;
-            this.radbtnNguoiQuanLy.CheckedChanged += new System.EventHandler(this.radbtnNguoiQuanLy_CheckedChanged);
             // 
             // panel3
             // 

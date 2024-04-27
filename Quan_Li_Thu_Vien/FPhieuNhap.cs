@@ -14,12 +14,10 @@ namespace Quan_Li_Thu_Vien
     {
         PhieuNhap phieuNhap;
         PhieuNhapController nhapController = new PhieuNhapController();
-        int SLCu;
 
         public FPhieuNhap(PhieuNhap pn) : this()
         {
             phieuNhap = pn;
-            SLCu = pn.SoLuong;
         }
         public FPhieuNhap()
         {
@@ -39,7 +37,6 @@ namespace Quan_Li_Thu_Vien
         {
             LoadData();
         }
- 
 
         public void LoadPhieuNhap()
         {
@@ -92,9 +89,7 @@ namespace Quan_Li_Thu_Vien
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            FDanhSachPhieuNhap phieuNhap = new FDanhSachPhieuNhap();
-            this.Hide();
-            phieuNhap.ShowDialog();
+            this.Close();
         }
         #endregion
 
@@ -133,6 +128,9 @@ namespace Quan_Li_Thu_Vien
                 if (nhapController.xoaPhieuNhap(phieuNhap.MaPhieuNhap))
                 {
                     MessageBox.Show("Thực thi dữ liệu thành công", "Thông báo");
+                    btnOK.Hide();
+                    btnThemChiTiet.Hide();
+                    btnChinhSua.Hide();
                 }
                 else
                 {

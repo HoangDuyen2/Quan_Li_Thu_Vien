@@ -58,8 +58,8 @@ namespace Quan_Li_Thu_Vien
                     null, 0,0);
                 // Thêm logic xử lý khi cell được click sau khi áp dụng bộ lọc
                 FPhieuNhap fChiTietPhieNhap = new FPhieuNhap(phieuNhap);
-                this.Hide();
                 fChiTietPhieNhap.ShowDialog();
+                FDanhSachPhieuNhap_Load(sender, e);
             }
         }
 
@@ -71,8 +71,8 @@ namespace Quan_Li_Thu_Vien
         private void btnThem_Click(object sender, EventArgs e)
         {
             FThemPhieuNhap themPhieuNhap = new FThemPhieuNhap();
-            this.Hide();
             themPhieuNhap.ShowDialog();
+            FDanhSachPhieuNhap_Load(sender, e);
         }
 
         private void btnTimKiem_Click(object sender, EventArgs e)
@@ -91,7 +91,6 @@ namespace Quan_Li_Thu_Vien
                     MessageBox.Show("Không truy xuất được dữ liệu", "Lỗi");
                 }
             }
-            else LoadData();
         }
     }
 }

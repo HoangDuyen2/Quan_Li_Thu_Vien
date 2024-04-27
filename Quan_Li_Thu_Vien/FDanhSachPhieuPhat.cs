@@ -14,7 +14,6 @@ namespace Quan_Li_Thu_Vien
     public partial class FDanhSachPhieuPhat : Form
     {
         MuonTraSachController dspp = new MuonTraSachController();
-        private string maPhieuPhat;
         public FDanhSachPhieuPhat()
         {
             InitializeComponent();
@@ -34,8 +33,8 @@ namespace Quan_Li_Thu_Vien
         private void btnThem_Click(object sender, EventArgs e)
         {
             FThemPhieuPhat fThemPhieuPhat = new FThemPhieuPhat();
-            this.Hide();
             fThemPhieuPhat.ShowDialog();
+            FDanhSachPhieuPhat_Load(sender, e);
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -58,44 +57,47 @@ namespace Quan_Li_Thu_Vien
             }
         }
 
-        private void dtgvPhieuPhat_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dtgvPhieuPhat_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && dtgvPhieuPhat.Columns[e.ColumnIndex].Name == "MaPhieuPhat")
+            if (e.RowIndex >= 0)
             {
-                maPhieuPhat = dtgvPhieuPhat.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
-            }
-        }
+                // Lưu lại dòng dữ liệu vừa kích chọn
+                DataGridViewRow row = dtgvPhieuPhat.Rows[e.RowIndex];
 
-        private void btnXoa_Click(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrEmpty(maPhieuPhat))
-            {
-                bool isDeleted = dspp.XoaPhieuPhat(maPhieuPhat);
-
-                if (isDeleted)
-                {
-                    MessageBox.Show("Xóa phiếu phạt thành công", "Thông báo");
-                    FDanhSachPhieuPhat danhSachPhieuPhat = new FDanhSachPhieuPhat();
-                    this.Hide();
-                    danhSachPhieuPhat.ShowDialog();
-                }
-                else
-                {
-                    MessageBox.Show("Xóa phiếu mượn trả không thành công", "Lỗi");
-                }
+                // Đưa dữ liệu vào các control hoặc xử lý theo nhu cầu
+                int tongtien;
+                if (!int.TryParse(row.Cells["TongTien"].Value.ToString(), out tongtien))
+                    tongtien = 0;
+                PhieuPhat pp = new PhieuPhat(row.Cells["MaPhieuPhat"].Value.ToString(), row.Cells["MaPhieuMuonTra"].Value.ToString(),
+                    row.Cells["TenDocGia"].Value.ToString(), row.Cells["TenSach"].Value.ToString(), tongtien);
+                // Thêm logic xử lý khi cell được click sau khi áp dụng bộ lọc
+                FChiTietPhieuPhat fChiTiet = new FChiTietPhieuPhat(pp);
+                fChiTiet.ShowDialog();
+                FDanhSachPhieuPhat_Load(sender, e);
             }
             else
             {
-                MessageBox.Show("Vui lòng chọn một phiếu mượn trả để xóa", "Thông báo");
+                MessageBox.Show("Không truy xuất được dữ liệu", "Lỗi");
             }
         }
 
-        private void btnChiTietPhieuPhat_Click(object sender, EventArgs e)
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            FChiTietPhieuPhat fChiTietPhieuPhat = new FChiTietPhieuPhat();
-            fChiTietPhieuPhat.SetMaPhieuPhat(maPhieuPhat);
-            this.Hide();
-            fChiTietPhieuPhat.ShowDialog();
+            if(comboBox1.Text == "Trễ hạn")
+            {
+                try
+                {
+                    dtgvPhieuPhat.DataSource = dspp.DSPhieuTreHan();
+                    dtgvPhieuPhat.RowHeadersVisible = false;
+                    dtgvPhieuPhat.BackgroundColor = Color.White;
+                    dtgvPhieuPhat.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                }
+                catch
+                {
+                    MessageBox.Show("Không truy xuất được dữ liệu", "Lỗi");
+                }
+            }
+            else FDanhSachPhieuPhat_Load(sender, e);
         }
     }
 }

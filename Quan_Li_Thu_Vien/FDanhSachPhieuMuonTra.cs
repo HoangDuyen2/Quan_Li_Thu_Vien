@@ -13,31 +13,30 @@ namespace Quan_Li_Thu_Vien
 {
     public partial class FDanhSachPhieuMuonTra : Form
     {
-        DBConnection conn = new DBConnection();
         MuonTraSachController dspmt = new MuonTraSachController();
-        private string maPMT;
-
         public FDanhSachPhieuMuonTra()
         {
             InitializeComponent();
+
         }
         public void LoadData()
         {
-            dtgvPhieuMuonTra.DataSource = dspmt.DSPhieuMuonTra();
-            dtgvPhieuMuonTra.RowHeadersVisible = false;
-            dtgvPhieuMuonTra.BackgroundColor = Color.White;
-            dtgvPhieuMuonTra.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            try
+            {
+                dtgvPhieuMuonTra.DataSource = dspmt.DSPhieuMuonTra();
+                dtgvPhieuMuonTra.RowHeadersVisible = false;
+                dtgvPhieuMuonTra.BackgroundColor = Color.White;
+                dtgvPhieuMuonTra.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            }
+            catch
+            {
+                MessageBox.Show("Không truy xuất được dữ liệu", "Lỗi");
+            }
         }
         private void FDanhSachPhieuMuonTra_Load(object sender, EventArgs e)
         {
             LoadData();
-        }
-        private void dtgvPhieuMuonTra_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && dtgvPhieuMuonTra.Columns[e.ColumnIndex].Name == "MaPhieuMuonTra")
-            {
-                maPMT = dtgvPhieuMuonTra.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
-            }
+
         }
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
@@ -56,54 +55,29 @@ namespace Quan_Li_Thu_Vien
         private void btnThem_Click(object sender, EventArgs e)
         {
             FThemPhieuMuonTra fThemPhieuMuonTra = new FThemPhieuMuonTra();
-            this.Close();
             fThemPhieuMuonTra.ShowDialog();
-            this.Show();
+            FDanhSachPhieuMuonTra_Load(sender,e);
         }
-        private void btnXoa_Click(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrEmpty(maPMT))
-            {
-                bool isDeleted = dspmt.XoaPhieuMuonTra(maPMT);
-
-                if (isDeleted)
-                {
-                    MessageBox.Show("Xóa phiếu mượn trả thành công", "Thông báo");
-                    FDanhSachPhieuMuonTra danhSachPhieuMuonTra = new FDanhSachPhieuMuonTra();
-                    this.Close();
-                    danhSachPhieuMuonTra.ShowDialog();
-                    this.Show();
-                }
-                else
-                {
-                    MessageBox.Show("Xóa phiếu mượn trả không thành công", "Lỗi");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Vui lòng chọn một phiếu mượn trả để xóa", "Thông báo");
-            }
-        }
-        private void btnSua_Click(object sender, EventArgs e)
-        {
-            FSuaPhieuMuonTra fSuaPhieuMuonTra = new FSuaPhieuMuonTra();
-            this.Close();
-            fSuaPhieuMuonTra.ShowDialog();
-            this.Show();
-        }
-
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void btnChiTietPhieuMuonTra_Click(object sender, EventArgs e)
+        private void dtgvPhieuMuonTra_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            FChiTietPhieuMuonTra fChiTietPhieuMuonTra = new FChiTietPhieuMuonTra();
-            fChiTietPhieuMuonTra.SetMaPMT(maPMT);
-            this.Close();
-            fChiTietPhieuMuonTra.ShowDialog();
-            this.Show();
+            if (e.RowIndex >= 0)
+            {
+                //Lưu lại dòng dữ liệu vừa kích chọn
+                DataGridViewRow row = this.dtgvPhieuMuonTra.Rows[e.RowIndex];
+                //Đưa dữ liệu vào textbox
+                PhieuMuonTra pmt = new PhieuMuonTra(row.Cells["MaPhieuMuonTra"].Value.ToString(),
+                    row.Cells["TenNV"].Value.ToString(), row.Cells["TenDocGia"].Value.ToString(),
+                    row.Cells["NgayMuon"].Value.ToString(), row.Cells["HanTra"].Value.ToString());
+                // Thêm logic xử lý khi cell được click sau khi áp dụng bộ lọc
+                FPhieuMuonTra fPhieuMuonTra = new FPhieuMuonTra(pmt);
+                fPhieuMuonTra.ShowDialog();
+                FDanhSachPhieuMuonTra_Load(sender, e);
+            }
         }
     }
 }

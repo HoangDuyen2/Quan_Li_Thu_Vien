@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.panelNen = new System.Windows.Forms.Panel();
-            this.btnChiTietPhieuPhat = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.lbLoaiViPham = new System.Windows.Forms.Label();
             this.btnTimKiem = new System.Windows.Forms.Button();
             this.txtMaSach = new System.Windows.Forms.TextBox();
             this.lbMaSach = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
-            this.btnXoa = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.lbDanhSachPhieuPhat = new System.Windows.Forms.Label();
             this.dtgvPhieuPhat = new System.Windows.Forms.DataGridView();
@@ -45,12 +45,12 @@
             // panelNen
             // 
             this.panelNen.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panelNen.Controls.Add(this.btnChiTietPhieuPhat);
+            this.panelNen.Controls.Add(this.comboBox1);
+            this.panelNen.Controls.Add(this.lbLoaiViPham);
             this.panelNen.Controls.Add(this.btnTimKiem);
             this.panelNen.Controls.Add(this.txtMaSach);
             this.panelNen.Controls.Add(this.lbMaSach);
             this.panelNen.Controls.Add(this.btnExit);
-            this.panelNen.Controls.Add(this.btnXoa);
             this.panelNen.Controls.Add(this.btnThem);
             this.panelNen.Controls.Add(this.lbDanhSachPhieuPhat);
             this.panelNen.Controls.Add(this.dtgvPhieuPhat);
@@ -60,19 +60,29 @@
             this.panelNen.Size = new System.Drawing.Size(1357, 693);
             this.panelNen.TabIndex = 5;
             // 
-            // btnChiTietPhieuPhat
+            // comboBox1
             // 
-            this.btnChiTietPhieuPhat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.btnChiTietPhieuPhat.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnChiTietPhieuPhat.ForeColor = System.Drawing.Color.White;
-            this.btnChiTietPhieuPhat.Location = new System.Drawing.Point(0, 647);
-            this.btnChiTietPhieuPhat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnChiTietPhieuPhat.Name = "btnChiTietPhieuPhat";
-            this.btnChiTietPhieuPhat.Size = new System.Drawing.Size(320, 44);
-            this.btnChiTietPhieuPhat.TabIndex = 15;
-            this.btnChiTietPhieuPhat.Text = "Chi Tiết Phiếu Phạt";
-            this.btnChiTietPhieuPhat.UseVisualStyleBackColor = false;
-            this.btnChiTietPhieuPhat.Click += new System.EventHandler(this.btnChiTietPhieuPhat_Click);
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Tất cả",
+            "Trễ hạn"});
+            this.comboBox1.Location = new System.Drawing.Point(572, 57);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(217, 24);
+            this.comboBox1.TabIndex = 18;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // lbLoaiViPham
+            // 
+            this.lbLoaiViPham.AutoSize = true;
+            this.lbLoaiViPham.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.lbLoaiViPham.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbLoaiViPham.ForeColor = System.Drawing.Color.DarkBlue;
+            this.lbLoaiViPham.Location = new System.Drawing.Point(435, 56);
+            this.lbLoaiViPham.Name = "lbLoaiViPham";
+            this.lbLoaiViPham.Size = new System.Drawing.Size(122, 25);
+            this.lbLoaiViPham.TabIndex = 17;
+            this.lbLoaiViPham.Text = "Loại vi phạm";
             // 
             // btnTimKiem
             // 
@@ -99,7 +109,7 @@
             this.lbMaSach.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.lbMaSach.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbMaSach.ForeColor = System.Drawing.Color.DarkBlue;
-            this.lbMaSach.Location = new System.Drawing.Point(784, 58);
+            this.lbMaSach.Location = new System.Drawing.Point(809, 57);
             this.lbMaSach.Name = "lbMaSach";
             this.lbMaSach.Size = new System.Drawing.Size(91, 25);
             this.lbMaSach.TabIndex = 12;
@@ -119,26 +129,12 @@
             this.btnExit.UseVisualStyleBackColor = false;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // btnXoa
-            // 
-            this.btnXoa.BackColor = System.Drawing.Color.Red;
-            this.btnXoa.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXoa.ForeColor = System.Drawing.Color.White;
-            this.btnXoa.Location = new System.Drawing.Point(1062, 647);
-            this.btnXoa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(144, 44);
-            this.btnXoa.TabIndex = 8;
-            this.btnXoa.Text = "Xóa";
-            this.btnXoa.UseVisualStyleBackColor = false;
-            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
-            // 
             // btnThem
             // 
             this.btnThem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.btnThem.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThem.ForeColor = System.Drawing.Color.White;
-            this.btnThem.Location = new System.Drawing.Point(912, 647);
+            this.btnThem.Location = new System.Drawing.Point(1108, 649);
             this.btnThem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(144, 44);
@@ -167,15 +163,15 @@
             this.dtgvPhieuPhat.ReadOnly = true;
             this.dtgvPhieuPhat.RowHeadersWidth = 51;
             this.dtgvPhieuPhat.RowTemplate.Height = 24;
-            this.dtgvPhieuPhat.Size = new System.Drawing.Size(1355, 589);
+            this.dtgvPhieuPhat.Size = new System.Drawing.Size(1355, 550);
             this.dtgvPhieuPhat.TabIndex = 0;
-            this.dtgvPhieuPhat.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvPhieuPhat_CellClick);
+            this.dtgvPhieuPhat.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvPhieuPhat_CellContentClick);
             // 
             // FDanhSachPhieuPhat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1357, 693);
+            this.ClientSize = new System.Drawing.Size(1356, 694);
             this.Controls.Add(this.panelNen);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -196,11 +192,11 @@
         private System.Windows.Forms.Label lbDanhSachPhieuPhat;
         private System.Windows.Forms.DataGridView dtgvPhieuPhat;
         private System.Windows.Forms.Button btnThem;
-        private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnTimKiem;
         private System.Windows.Forms.TextBox txtMaSach;
         private System.Windows.Forms.Label lbMaSach;
-        private System.Windows.Forms.Button btnChiTietPhieuPhat;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label lbLoaiViPham;
     }
 }

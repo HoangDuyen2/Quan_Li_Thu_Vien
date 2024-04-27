@@ -31,12 +31,12 @@
             this.panelNen = new System.Windows.Forms.Panel();
             this.picBoxNen = new System.Windows.Forms.PictureBox();
             this.panelMucLuc = new System.Windows.Forms.Panel();
+            this.btnDSCTPN = new System.Windows.Forms.Button();
             this.btnXemNhanVienTrongTo = new System.Windows.Forms.Button();
             this.btnThongTinCaNhan = new System.Windows.Forms.Button();
             this.btnDSCacSach = new System.Windows.Forms.Button();
             this.btnDSNCC = new System.Windows.Forms.Button();
             this.btnDSPhieuNhap = new System.Windows.Forms.Button();
-            this.btnDSCTPN = new System.Windows.Forms.Button();
             this.panelNen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxNen)).BeginInit();
             this.panelMucLuc.SuspendLayout();
@@ -76,6 +76,18 @@
             this.panelMucLuc.Size = new System.Drawing.Size(212, 607);
             this.panelMucLuc.TabIndex = 0;
             // 
+            // btnDSCTPN
+            // 
+            this.btnDSCTPN.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnDSCTPN.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDSCTPN.Location = new System.Drawing.Point(-2, 67);
+            this.btnDSCTPN.Name = "btnDSCTPN";
+            this.btnDSCTPN.Size = new System.Drawing.Size(214, 65);
+            this.btnDSCTPN.TabIndex = 15;
+            this.btnDSCTPN.Text = "Danh sách chi tiết phiếu nhập";
+            this.btnDSCTPN.UseVisualStyleBackColor = false;
+            this.btnDSCTPN.Click += new System.EventHandler(this.btnDSCTPN_Click);
+            // 
             // btnXemNhanVienTrongTo
             // 
             this.btnXemNhanVienTrongTo.BackColor = System.Drawing.SystemColors.ActiveCaption;
@@ -92,7 +104,7 @@
             // 
             this.btnThongTinCaNhan.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnThongTinCaNhan.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThongTinCaNhan.Location = new System.Drawing.Point(0, 336);
+            this.btnThongTinCaNhan.Location = new System.Drawing.Point(-2, 336);
             this.btnThongTinCaNhan.Name = "btnThongTinCaNhan";
             this.btnThongTinCaNhan.Size = new System.Drawing.Size(214, 65);
             this.btnThongTinCaNhan.TabIndex = 12;
@@ -128,25 +140,13 @@
             // 
             this.btnDSPhieuNhap.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnDSPhieuNhap.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDSPhieuNhap.Location = new System.Drawing.Point(-4, 0);
+            this.btnDSPhieuNhap.Location = new System.Drawing.Point(-2, 0);
             this.btnDSPhieuNhap.Name = "btnDSPhieuNhap";
             this.btnDSPhieuNhap.Size = new System.Drawing.Size(214, 65);
             this.btnDSPhieuNhap.TabIndex = 8;
             this.btnDSPhieuNhap.Text = "Danh sách phiếu nhập";
             this.btnDSPhieuNhap.UseVisualStyleBackColor = false;
             this.btnDSPhieuNhap.Click += new System.EventHandler(this.btnDSPhieuNhap_Click);
-            // 
-            // btnDSCTPN
-            // 
-            this.btnDSCTPN.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnDSCTPN.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDSCTPN.Location = new System.Drawing.Point(-2, 67);
-            this.btnDSCTPN.Name = "btnDSCTPN";
-            this.btnDSCTPN.Size = new System.Drawing.Size(214, 65);
-            this.btnDSCTPN.TabIndex = 15;
-            this.btnDSCTPN.Text = "Danh sách chi tiết phiếu nhập";
-            this.btnDSCTPN.UseVisualStyleBackColor = false;
-            this.btnDSCTPN.Click += new System.EventHandler(this.btnDSCTPN_Click);
             // 
             // FTrangChuToNhapSach_ToTruongcs
             // 

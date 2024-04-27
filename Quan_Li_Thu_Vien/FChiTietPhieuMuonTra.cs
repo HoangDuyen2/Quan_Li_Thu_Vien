@@ -13,20 +13,19 @@ namespace Quan_Li_Thu_Vien
 {
     public partial class FChiTietPhieuMuonTra : Form
     {
-        DBConnection conn = new DBConnection();
         MuonTraSachController dsctpmt = new MuonTraSachController();
-        private string maPMT;
+        string maPhieu;
+        public FChiTietPhieuMuonTra(string pmt):this()
+        {
+            maPhieu = pmt;
+        }
         public FChiTietPhieuMuonTra()
         {
             InitializeComponent();
         }
-        public void SetMaPMT(string maPMT)
-        {
-            this.maPMT = maPMT;
-        }
         public void LoadData()
         {
-            dtgvChiTietPhieuMuonTra.DataSource = dsctpmt.DSChiTietPhieuMuonTra(maPMT);
+            dtgvChiTietPhieuMuonTra.DataSource = dsctpmt.DSChiTietPhieuMuonTra(maPhieu);
             dtgvChiTietPhieuMuonTra.RowHeadersVisible = false;
             dtgvChiTietPhieuMuonTra.BackgroundColor = Color.White;
             dtgvChiTietPhieuMuonTra.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -38,10 +37,7 @@ namespace Quan_Li_Thu_Vien
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            FDanhSachPhieuMuonTra danhSachPhieuMuonTra = new FDanhSachPhieuMuonTra();
             this.Close();
-            danhSachPhieuMuonTra.ShowDialog();
-            this.Show();
         }
 
         private void btnThemMaSach_Click(object sender, EventArgs e)
@@ -53,7 +49,7 @@ namespace Quan_Li_Thu_Vien
             }
             if (txtMaSach.Text != "")
             {
-                if (dsctpmt.themChiTietPhieuMuonTra(maPMT, txtMaSach.Text))
+                if (dsctpmt.themChiTietPhieuMuonTra(maPhieu, txtMaSach.Text))
                 {
                     MessageBox.Show("Thực thi dữ liệu thành công", "Thông báo");
                 }
@@ -70,7 +66,24 @@ namespace Quan_Li_Thu_Vien
             }
             if (txtMaSach.Text != "")
             {
-                if (dsctpmt.daTraChiTietPhieuMuonTra(maPMT, txtMaSach.Text))
+                if (dsctpmt.daTraChiTietPhieuMuonTra(maPhieu, txtMaSach.Text))
+                {
+                    MessageBox.Show("Thực thi dữ liệu thành công", "Thông báo");
+                }
+            }
+            FChiTietPhieuMuonTra_Load(sender, e);
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtMaSach.Text))
+            {
+                MessageBox.Show("Không để trống các trường.", "Thông báo");
+                return;
+            }
+            if (txtMaSach.Text != "")
+            {
+                if (dsctpmt.xoaChiTietPhieuMuonTra(maPhieu, txtMaSach.Text))
                 {
                     MessageBox.Show("Thực thi dữ liệu thành công", "Thông báo");
                 }

@@ -36,6 +36,7 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.lbDanhSachDocGia = new System.Windows.Forms.Label();
             this.dtgvChiTietPhieuMuonTra = new System.Windows.Forms.DataGridView();
+            this.btnXoa = new System.Windows.Forms.Button();
             this.panelNen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvChiTietPhieuMuonTra)).BeginInit();
             this.SuspendLayout();
@@ -43,6 +44,7 @@
             // panelNen
             // 
             this.panelNen.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panelNen.Controls.Add(this.btnXoa);
             this.panelNen.Controls.Add(this.btnThemMaSach);
             this.panelNen.Controls.Add(this.btnDaTra);
             this.panelNen.Controls.Add(this.lblMaSach);
@@ -50,9 +52,9 @@
             this.panelNen.Controls.Add(this.btnExit);
             this.panelNen.Controls.Add(this.lbDanhSachDocGia);
             this.panelNen.Controls.Add(this.dtgvChiTietPhieuMuonTra);
-            this.panelNen.Location = new System.Drawing.Point(-11, 2);
+            this.panelNen.Location = new System.Drawing.Point(0, 1);
             this.panelNen.Name = "panelNen";
-            this.panelNen.Size = new System.Drawing.Size(1042, 423);
+            this.panelNen.Size = new System.Drawing.Size(1045, 637);
             this.panelNen.TabIndex = 5;
             // 
             // btnThemMaSach
@@ -60,7 +62,7 @@
             this.btnThemMaSach.BackColor = System.Drawing.Color.Goldenrod;
             this.btnThemMaSach.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThemMaSach.ForeColor = System.Drawing.Color.White;
-            this.btnThemMaSach.Location = new System.Drawing.Point(849, 131);
+            this.btnThemMaSach.Location = new System.Drawing.Point(885, 282);
             this.btnThemMaSach.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnThemMaSach.Name = "btnThemMaSach";
             this.btnThemMaSach.Size = new System.Drawing.Size(109, 44);
@@ -74,7 +76,7 @@
             this.btnDaTra.BackColor = System.Drawing.Color.Goldenrod;
             this.btnDaTra.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDaTra.ForeColor = System.Drawing.Color.White;
-            this.btnDaTra.Location = new System.Drawing.Point(849, 189);
+            this.btnDaTra.Location = new System.Drawing.Point(885, 340);
             this.btnDaTra.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDaTra.Name = "btnDaTra";
             this.btnDaTra.Size = new System.Drawing.Size(109, 44);
@@ -86,19 +88,20 @@
             // lblMaSach
             // 
             this.lblMaSach.AutoSize = true;
-            this.lblMaSach.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMaSach.Font = new System.Drawing.Font("Microsoft YaHei UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMaSach.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblMaSach.Location = new System.Drawing.Point(751, 68);
+            this.lblMaSach.Location = new System.Drawing.Point(717, 212);
             this.lblMaSach.Name = "lblMaSach";
-            this.lblMaSach.Size = new System.Drawing.Size(82, 24);
+            this.lblMaSach.Size = new System.Drawing.Size(112, 31);
             this.lblMaSach.TabIndex = 7;
             this.lblMaSach.Text = "Mã Sách";
             // 
             // txtMaSach
             // 
-            this.txtMaSach.Location = new System.Drawing.Point(849, 68);
+            this.txtMaSach.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMaSach.Location = new System.Drawing.Point(854, 212);
             this.txtMaSach.Name = "txtMaSach";
-            this.txtMaSach.Size = new System.Drawing.Size(142, 22);
+            this.txtMaSach.Size = new System.Drawing.Size(176, 30);
             this.txtMaSach.TabIndex = 6;
             // 
             // btnExit
@@ -106,7 +109,7 @@
             this.btnExit.BackColor = System.Drawing.Color.Red;
             this.btnExit.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExit.ForeColor = System.Drawing.Color.White;
-            this.btnExit.Location = new System.Drawing.Point(933, 379);
+            this.btnExit.Location = new System.Drawing.Point(936, 591);
             this.btnExit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(109, 44);
@@ -120,7 +123,7 @@
             this.lbDanhSachDocGia.AutoSize = true;
             this.lbDanhSachDocGia.Font = new System.Drawing.Font("Microsoft YaHei UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbDanhSachDocGia.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lbDanhSachDocGia.Location = new System.Drawing.Point(23, 7);
+            this.lbDanhSachDocGia.Location = new System.Drawing.Point(23, 25);
             this.lbDanhSachDocGia.Name = "lbDanhSachDocGia";
             this.lbDanhSachDocGia.Size = new System.Drawing.Size(511, 37);
             this.lbDanhSachDocGia.TabIndex = 1;
@@ -129,19 +132,33 @@
             // dtgvChiTietPhieuMuonTra
             // 
             this.dtgvChiTietPhieuMuonTra.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvChiTietPhieuMuonTra.Location = new System.Drawing.Point(13, 68);
+            this.dtgvChiTietPhieuMuonTra.Location = new System.Drawing.Point(30, 87);
             this.dtgvChiTietPhieuMuonTra.Name = "dtgvChiTietPhieuMuonTra";
             this.dtgvChiTietPhieuMuonTra.ReadOnly = true;
             this.dtgvChiTietPhieuMuonTra.RowHeadersWidth = 51;
             this.dtgvChiTietPhieuMuonTra.RowTemplate.Height = 24;
-            this.dtgvChiTietPhieuMuonTra.Size = new System.Drawing.Size(681, 354);
+            this.dtgvChiTietPhieuMuonTra.Size = new System.Drawing.Size(681, 508);
             this.dtgvChiTietPhieuMuonTra.TabIndex = 0;
+            // 
+            // btnXoa
+            // 
+            this.btnXoa.BackColor = System.Drawing.Color.Goldenrod;
+            this.btnXoa.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXoa.ForeColor = System.Drawing.Color.White;
+            this.btnXoa.Location = new System.Drawing.Point(885, 400);
+            this.btnXoa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(109, 44);
+            this.btnXoa.TabIndex = 11;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.UseVisualStyleBackColor = false;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // FChiTietPhieuMuonTra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1032, 426);
+            this.ClientSize = new System.Drawing.Size(1044, 638);
             this.Controls.Add(this.panelNen);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FChiTietPhieuMuonTra";
@@ -165,5 +182,6 @@
         private System.Windows.Forms.Button btnThemMaSach;
         private System.Windows.Forms.Button btnDaTra;
         private System.Windows.Forms.Label lblMaSach;
+        private System.Windows.Forms.Button btnXoa;
     }
 }

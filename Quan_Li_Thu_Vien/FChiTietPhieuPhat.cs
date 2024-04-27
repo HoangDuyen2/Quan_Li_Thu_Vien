@@ -14,19 +14,20 @@ namespace Quan_Li_Thu_Vien
     public partial class FChiTietPhieuPhat : Form
     {
         MuonTraSachController dsctpp = new MuonTraSachController();
-        private string maPhieuPhat;
+        PhieuPhat PhieuPhat = new PhieuPhat();
+        string loaiPhat;
+        public FChiTietPhieuPhat(PhieuPhat pp) : this()
+        {
+            PhieuPhat = pp;
+        }
         public FChiTietPhieuPhat()
         {
             InitializeComponent();
             LoadComboboxLoaiPhat();
         }
-        public void SetMaPhieuPhat(string maPhieuPhat)
-        {
-            this.maPhieuPhat = maPhieuPhat;
-        }
         public void LoadData()
         {
-            dtgvChiTietPhieuPhat.DataSource = dsctpp.DSChiTietPhieuPhat(maPhieuPhat);
+            dtgvChiTietPhieuPhat.DataSource = dsctpp.DSChiTietPhieuPhat(PhieuPhat.MaPhieuPhat);
             dtgvChiTietPhieuPhat.RowHeadersVisible = false;
             dtgvChiTietPhieuPhat.BackgroundColor = Color.White;
             dtgvChiTietPhieuPhat.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -39,14 +40,35 @@ namespace Quan_Li_Thu_Vien
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            FDanhSachPhieuPhat fDanhSachPhieuPhat = new FDanhSachPhieuPhat();
-            this.Hide();
-            fDanhSachPhieuPhat.ShowDialog();
+            this.Close();
         }
 
         private void comboBoxLoaiPhat_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (dsctpp.themChiTietPhieuPhat(maPhieuPhat, comboBoxLoaiPhat.Text))
+            loaiPhat = comboBoxLoaiPhat.Text;
+        }
+        public void LoadComboboxLoaiPhat()
+        {
+            comboBoxLoaiPhat.DataSource = dsctpp.DSTenCacLoaiPhat();
+            comboBoxLoaiPhat.DisplayMember = dsctpp.DSTenCacLoaiPhat().Columns[0].ToString();
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            if (dsctpp.XoaPhieuPhat(PhieuPhat.MaPhieuPhat))
+            {
+                MessageBox.Show("Xóa phiếu phạt thành công", "Thông báo");
+                btnThemMaSach.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Xóa phiếu mượn trả không thành công", "Lỗi");
+            }
+        }
+
+        private void btnThemChiTIetPhieuPhat_Click(object sender, EventArgs e)
+        {
+            if (dsctpp.themChiTietPhieuPhat(PhieuPhat.MaPhieuPhat, loaiPhat))
             {
                 MessageBox.Show("Thực thi dữ liệu thành công", "Thông báo");
             }
@@ -56,11 +78,5 @@ namespace Quan_Li_Thu_Vien
             }
             FChiTietPhieuPhat_Load(sender, e);
         }
-        public void LoadComboboxLoaiPhat()
-        {
-            comboBoxLoaiPhat.DataSource = dsctpp.DSTenCacLoaiPhat();
-            comboBoxLoaiPhat.DisplayMember = dsctpp.DSTenCacLoaiPhat().Columns[0].ToString();
-        }
-
     }
 }

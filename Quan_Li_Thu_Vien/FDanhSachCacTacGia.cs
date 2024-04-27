@@ -60,8 +60,8 @@ namespace Quan_Li_Thu_Vien
         private void btnThem_Click(object sender, EventArgs e)
         {
             FNewAuthor fNewAuthor = new FNewAuthor();
-            this.Hide();
             fNewAuthor.ShowDialog();
+            FDanhSachCacTacGia_Load(sender, e);
         }
         private void btnExit_Click(object sender, EventArgs e)
         {

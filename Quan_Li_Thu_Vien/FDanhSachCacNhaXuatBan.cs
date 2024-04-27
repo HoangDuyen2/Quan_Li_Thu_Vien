@@ -58,6 +58,7 @@ namespace Quan_Li_Thu_Vien
                 this.Hide();
                 fChiTiet.ShowDialog();
             }
+            FDanhSachCacNhaXuatBan_Load(sender, e);
         }
 
         private void btnTimKiem_Click(object sender, EventArgs e)
@@ -78,8 +79,8 @@ namespace Quan_Li_Thu_Vien
         private void btnThem_Click(object sender, EventArgs e)
         {
             FNewNXB fNewNXB = new FNewNXB();
-            this.Hide();
             fNewNXB.ShowDialog();
+            FDanhSachCacNhaXuatBan_Load(sender, e);
         }
     }
 }

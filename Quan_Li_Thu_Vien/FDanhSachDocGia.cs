@@ -14,8 +14,7 @@ namespace Quan_Li_Thu_Vien
     public partial class FDanhSachDocGia : Form
     {
         DocGiaController dsdg = new DocGiaController();
-        private string maDocGia;
-
+        MuonTraSachController dsdgvp = new MuonTraSachController();
         public FDanhSachDocGia()
         {
             InitializeComponent();
@@ -30,14 +29,6 @@ namespace Quan_Li_Thu_Vien
         private void FDanhSachDocGia_Load(object sender, EventArgs e)
         {
             LoadData();
-        }
-
-        private void dtgvDocGia_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && dtgvDocGia.Columns[e.ColumnIndex].Name == "MaDocGia")
-            {
-                maDocGia = dtgvDocGia.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
-            }
         }
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
@@ -59,41 +50,51 @@ namespace Quan_Li_Thu_Vien
             fThemDocGia.ShowDialog();
             FDanhSachDocGia_Load(sender, e);
         }
-        private void btnXoa_Click(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrEmpty(maDocGia))
-            {
-                bool isDeleted = dsdg.XoaDocGia(maDocGia);
-
-                if (isDeleted)
-                {
-                    MessageBox.Show("Xóa độc giả thành công", "Thông báo");
-                    FDanhSachDocGia danhSachDocGia = new FDanhSachDocGia();
-                    this.Hide();
-                    danhSachDocGia.ShowDialog();
-                    this.Show();
-                }
-                else
-                {
-                    MessageBox.Show("Xóa độc giả không thành công", "Lỗi");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Vui lòng chọn một độc giả để xóa", "Thông báo");
-            }
-            FDanhSachDocGia_Load(sender, e);
-        }
-        private void btnSua_Click(object sender, EventArgs e)
-        {
-            FSuaDocGia fSuaDocGia = new FSuaDocGia();
-            fSuaDocGia.ShowDialog();
-            FDanhSachDocGia_Load(sender, e);
-        }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void dtgvDocGia_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                // Lưu lại dòng dữ liệu vừa kích chọn
+                DataGridViewRow row = dtgvDocGia.Rows[e.RowIndex];
+
+                // Đưa dữ liệu vào các control hoặc xử lý theo nhu cầu
+                Person person = new Person(row.Cells["MaDocGia"].Value.ToString(), row.Cells["TenDocGia"].Value.ToString(),
+                    row.Cells["GioiTinh"].Value.ToString(), row.Cells["TenLoaiDG"].Value.ToString(), "", row.Cells["SoDienThoai"].Value.ToString(),
+                    0, row.Cells["Email"].Value.ToString());
+                // Thêm logic xử lý khi cell được click sau khi áp dụng bộ lọc
+                FSuaDocGia fChiTiet = new FSuaDocGia(person);
+                fChiTiet.ShowDialog();
+                FDanhSachDocGia_Load(sender, e);
+            }
+            else
+            {
+                MessageBox.Show("Không truy xuất được dữ liệu", "Lỗi");
+            }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.Text == "Vi phạm")
+            {
+                try
+                {
+                    dtgvDocGia.DataSource = dsdgvp.DSDocGiaViPham();
+                    dtgvDocGia.RowHeadersVisible = false;
+                    dtgvDocGia.BackgroundColor = Color.White;
+                    dtgvDocGia.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+                }
+                catch
+                {
+                    MessageBox.Show("Không truy xuất được dữ liệu", "Lỗi");
+                }
+            }
         }
     }
 }

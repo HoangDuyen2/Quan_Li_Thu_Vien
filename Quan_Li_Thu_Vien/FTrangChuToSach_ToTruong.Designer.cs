@@ -84,7 +84,7 @@ namespace Quan_Li_Thu_Vien
             // 
             this.btnDSNXB.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnDSNXB.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDSNXB.Location = new System.Drawing.Point(-4, 265);
+            this.btnDSNXB.Location = new System.Drawing.Point(-2, 265);
             this.btnDSNXB.Name = "btnDSNXB";
             this.btnDSNXB.Size = new System.Drawing.Size(214, 65);
             this.btnDSNXB.TabIndex = 13;
@@ -96,7 +96,7 @@ namespace Quan_Li_Thu_Vien
             // 
             this.btnThongTinCaNhan.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnThongTinCaNhan.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThongTinCaNhan.Location = new System.Drawing.Point(-1, 404);
+            this.btnThongTinCaNhan.Location = new System.Drawing.Point(-2, 400);
             this.btnThongTinCaNhan.Name = "btnThongTinCaNhan";
             this.btnThongTinCaNhan.Size = new System.Drawing.Size(214, 65);
             this.btnThongTinCaNhan.TabIndex = 12;
@@ -108,7 +108,7 @@ namespace Quan_Li_Thu_Vien
             // 
             this.btnDSTacGia.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnDSTacGia.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDSTacGia.Location = new System.Drawing.Point(-4, 198);
+            this.btnDSTacGia.Location = new System.Drawing.Point(-2, 198);
             this.btnDSTacGia.Name = "btnDSTacGia";
             this.btnDSTacGia.Size = new System.Drawing.Size(214, 65);
             this.btnDSTacGia.TabIndex = 11;
@@ -120,7 +120,7 @@ namespace Quan_Li_Thu_Vien
             // 
             this.btnDanhSachSachDangMuon.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnDanhSachSachDangMuon.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDanhSachSachDangMuon.Location = new System.Drawing.Point(-4, 66);
+            this.btnDanhSachSachDangMuon.Location = new System.Drawing.Point(-2, 66);
             this.btnDanhSachSachDangMuon.Name = "btnDanhSachSachDangMuon";
             this.btnDanhSachSachDangMuon.Size = new System.Drawing.Size(214, 65);
             this.btnDanhSachSachDangMuon.TabIndex = 10;
@@ -132,7 +132,7 @@ namespace Quan_Li_Thu_Vien
             // 
             this.btnDanhSachCacSachBiHu.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnDanhSachCacSachBiHu.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDanhSachCacSachBiHu.Location = new System.Drawing.Point(-4, 132);
+            this.btnDanhSachCacSachBiHu.Location = new System.Drawing.Point(-2, 132);
             this.btnDanhSachCacSachBiHu.Name = "btnDanhSachCacSachBiHu";
             this.btnDanhSachCacSachBiHu.Size = new System.Drawing.Size(214, 65);
             this.btnDanhSachCacSachBiHu.TabIndex = 9;
@@ -144,7 +144,7 @@ namespace Quan_Li_Thu_Vien
             // 
             this.btnXemDSSach.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnXemDSSach.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXemDSSach.Location = new System.Drawing.Point(-4, 0);
+            this.btnXemDSSach.Location = new System.Drawing.Point(-2, 0);
             this.btnXemDSSach.Name = "btnXemDSSach";
             this.btnXemDSSach.Size = new System.Drawing.Size(214, 65);
             this.btnXemDSSach.TabIndex = 8;
@@ -156,7 +156,7 @@ namespace Quan_Li_Thu_Vien
             // 
             this.btnDSNhanVien.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnDSNhanVien.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDSNhanVien.Location = new System.Drawing.Point(-2, 333);
+            this.btnDSNhanVien.Location = new System.Drawing.Point(-1, 333);
             this.btnDSNhanVien.Name = "btnDSNhanVien";
             this.btnDSNhanVien.Size = new System.Drawing.Size(214, 65);
             this.btnDSNhanVien.TabIndex = 4;

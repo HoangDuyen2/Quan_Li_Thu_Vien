@@ -15,9 +15,7 @@ namespace Quan_Li_Thu_Vien
         PhieuNhapController nhapController = new PhieuNhapController();
         public FDanhSachChiTietPhieuNhap()
         {
-            InitializeComponent();
-            if (LoginInfo.Role == "ToTruong")
-            { }    
+            InitializeComponent();   
         }
 
         private void dtgvPhieuNhap_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -40,8 +38,8 @@ namespace Quan_Li_Thu_Vien
                     row.Cells["TenSach"].Value.ToString(), donGia,sl);
                 // Thêm logic xử lý khi cell được click sau khi áp dụng bộ lọc
                 FSuaChiTietPhieuNhap fPhieNhap = new FSuaChiTietPhieuNhap(phieuNhap);
-                this.Hide();
                 fPhieNhap.ShowDialog();
+                FDanhSachChiTietPhieuNhap_Load(sender, e);
             }
         }
         public void LoadData()

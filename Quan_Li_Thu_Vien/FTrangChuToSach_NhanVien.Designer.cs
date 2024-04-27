@@ -140,7 +140,7 @@
             // 
             this.btnXemDSSach.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnXemDSSach.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXemDSSach.Location = new System.Drawing.Point(-1, 1);
+            this.btnXemDSSach.Location = new System.Drawing.Point(0, 1);
             this.btnXemDSSach.Name = "btnXemDSSach";
             this.btnXemDSSach.Size = new System.Drawing.Size(214, 65);
             this.btnXemDSSach.TabIndex = 0;

@@ -57,9 +57,7 @@ namespace Quan_Li_Thu_Vien
         }
         private void btnExit_Click(object sender, EventArgs e)
         {
-            FDanhSachCacSach dsSach = new FDanhSachCacSach();
-            this.Hide();
-            dsSach.ShowDialog();
+            this.Close();
         }
         #endregion
         #region Các check khi thêm, sửa

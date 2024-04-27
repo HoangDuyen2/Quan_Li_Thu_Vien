@@ -202,12 +202,6 @@
     <Compile Include="FChiTietTacGia.Designer.cs">
       <DependentUpon>FChiTietTacGia.cs</DependentUpon>
     </Compile>
-    <Compile Include="FDanhSachCacSachDaMuon.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FDanhSachCacSachDaMuon.Designer.cs">
-      <DependentUpon>FDanhSachCacSachDaMuon.cs</DependentUpon>
-    </Compile>
     <Compile Include="FDanhSachCacSachDangMuon.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -250,12 +244,6 @@
     <Compile Include="FDanhSachDocGia.Designer.cs">
       <DependentUpon>FDanhSachDocGia.cs</DependentUpon>
     </Compile>
-    <Compile Include="FDanhSachDocGiaViPham.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FDanhSachDocGiaViPham.Designer.cs">
-      <DependentUpon>FDanhSachDocGiaViPham.cs</DependentUpon>
-    </Compile>
     <Compile Include="FDanhSachNhaCungCap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -267,12 +255,6 @@
     </Compile>
     <Compile Include="FDanhSachNhanVien.Designer.cs">
       <DependentUpon>FDanhSachNhanVien.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FDanhSachNVMuonTra.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FDanhSachNVMuonTra.Designer.cs">
-      <DependentUpon>FDanhSachNVMuonTra.cs</DependentUpon>
     </Compile>
     <Compile Include="FDanhSachPhieuMuonTra.cs">
       <SubType>Form</SubType>
@@ -291,12 +273,6 @@
     </Compile>
     <Compile Include="FDanhSachPhieuPhat.Designer.cs">
       <DependentUpon>FDanhSachPhieuPhat.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FDanhSachPhieuTreHan.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FDanhSachPhieuTreHan.Designer.cs">
-      <DependentUpon>FDanhSachPhieuTreHan.cs</DependentUpon>
     </Compile>
     <Compile Include="FManager.cs">
       <SubType>Form</SubType>
@@ -346,6 +322,12 @@
     <Compile Include="FormDangNhap.Designer.cs">
       <DependentUpon>FormDangNhap.cs</DependentUpon>
     </Compile>
+    <Compile Include="FPhieuMuonTra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FPhieuMuonTra.Designer.cs">
+      <DependentUpon>FPhieuMuonTra.cs</DependentUpon>
+    </Compile>
     <Compile Include="FPhieuNhap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -369,12 +351,6 @@
     </Compile>
     <Compile Include="FSuaNhanVien.Designer.cs">
       <DependentUpon>FSuaNhanVien.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FSuaPhieuMuonTra.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FSuaPhieuMuonTra.Designer.cs">
-      <DependentUpon>FSuaPhieuMuonTra.cs</DependentUpon>
     </Compile>
     <Compile Include="FThemDocGia.cs">
       <SubType>Form</SubType>
@@ -455,6 +431,7 @@
       <DependentUpon>FTrangChuToSach_ToTruong.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginInfo.cs" />
+    <Compile Include="ManagerController.cs" />
     <Compile Include="NCC.cs" />
     <Compile Include="PhieuMuonTra.cs" />
     <Compile Include="MuonTraSachController.cs" />
@@ -493,9 +470,6 @@
     <EmbeddedResource Include="FChiTietTacGia.resx">
       <DependentUpon>FChiTietTacGia.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FDanhSachCacSachDaMuon.resx">
-      <DependentUpon>FDanhSachCacSachDaMuon.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FDanhSachCacSachDangMuon.resx">
       <DependentUpon>FDanhSachCacSachDangMuon.cs</DependentUpon>
     </EmbeddedResource>
@@ -517,17 +491,11 @@
     <EmbeddedResource Include="FDanhSachDocGia.resx">
       <DependentUpon>FDanhSachDocGia.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FDanhSachDocGiaViPham.resx">
-      <DependentUpon>FDanhSachDocGiaViPham.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FDanhSachNhaCungCap.resx">
       <DependentUpon>FDanhSachNhaCungCap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FDanhSachNhanVien.resx">
       <DependentUpon>FDanhSachNhanVien.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FDanhSachNVMuonTra.resx">
-      <DependentUpon>FDanhSachNVMuonTra.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FDanhSachPhieuMuonTra.resx">
       <DependentUpon>FDanhSachPhieuMuonTra.cs</DependentUpon>
@@ -537,9 +505,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FDanhSachPhieuPhat.resx">
       <DependentUpon>FDanhSachPhieuPhat.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FDanhSachPhieuTreHan.resx">
-      <DependentUpon>FDanhSachPhieuTreHan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FManager.resx">
       <DependentUpon>FManager.cs</DependentUpon>
@@ -565,6 +530,9 @@
     <EmbeddedResource Include="FormDangNhap.resx">
       <DependentUpon>FormDangNhap.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FPhieuMuonTra.resx">
+      <DependentUpon>FPhieuMuonTra.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FPhieuNhap.resx">
       <DependentUpon>FPhieuNhap.cs</DependentUpon>
     </EmbeddedResource>
@@ -576,9 +544,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FSuaNhanVien.resx">
       <DependentUpon>FSuaNhanVien.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FSuaPhieuMuonTra.resx">
-      <DependentUpon>FSuaPhieuMuonTra.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FThemDocGia.resx">
       <DependentUpon>FThemDocGia.cs</DependentUpon>

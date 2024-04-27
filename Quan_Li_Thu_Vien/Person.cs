@@ -16,6 +16,8 @@ namespace Quan_Li_Thu_Vien
         private string SDT;
         private int luong;
         private string email;
+        private string maTo;
+        public Person() { }
         public Person(string maNguoi, string tenNguoi, string gioiTinh, string ngaySinh, string diaChi, string sDT, int luong,string email)
         {
             this.maNguoi = maNguoi;
@@ -36,5 +38,6 @@ namespace Quan_Li_Thu_Vien
         public string SDT1 { get => SDT; set => SDT = value; }
         public int Luong { get => luong; set => luong = value; }
         public string Email { get => email; set => email = value; }
+        public string MaTo { get => maTo; set => maTo = value; }
     }
 }

@@ -69,7 +69,6 @@ namespace Quan_Li_Thu_Vien
         {
             txtTenSach.Enabled = true;
             txtDonGia.Enabled = true;
-            txtNCC.Enabled = true;
             txtSoLuongSach.Enabled = true;
         }
         #endregion
@@ -99,9 +98,7 @@ namespace Quan_Li_Thu_Vien
         }
         private void btnExit_Click_1(object sender, EventArgs e)
         {
-            FDanhSachChiTietPhieuNhap danhSachPhieuNhap = new FDanhSachChiTietPhieuNhap();
-            this.Hide();
-            danhSachPhieuNhap.ShowDialog();
+            this.Close();
         }
 
         #endregion

@@ -35,10 +35,7 @@
             this.txtTenNV = new System.Windows.Forms.TextBox();
             this.panelNen = new System.Windows.Forms.Panel();
             this.btnThem = new System.Windows.Forms.Button();
-            this.btnSua = new System.Windows.Forms.Button();
-            this.btnXoa = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
-            this.btnThemTaiKhoanNhanVienMoiTao = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvNV)).BeginInit();
             this.panelNen.SuspendLayout();
             this.SuspendLayout();
@@ -53,7 +50,7 @@
             this.dtgvNV.RowTemplate.Height = 24;
             this.dtgvNV.Size = new System.Drawing.Size(1355, 549);
             this.dtgvNV.TabIndex = 0;
-            this.dtgvNV.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvNV_CellClick);
+            this.dtgvNV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvNV_CellContentClick);
             // 
             // lbDanhSachCacNhanVien
             // 
@@ -115,7 +112,7 @@
             this.btnThem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.btnThem.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThem.ForeColor = System.Drawing.Color.White;
-            this.btnThem.Location = new System.Drawing.Point(737, 644);
+            this.btnThem.Location = new System.Drawing.Point(1101, 644);
             this.btnThem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(144, 44);
@@ -123,34 +120,6 @@
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = false;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
-            // 
-            // btnSua
-            // 
-            this.btnSua.BackColor = System.Drawing.Color.DarkOrange;
-            this.btnSua.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSua.ForeColor = System.Drawing.Color.White;
-            this.btnSua.Location = new System.Drawing.Point(887, 644);
-            this.btnSua.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(144, 44);
-            this.btnSua.TabIndex = 20;
-            this.btnSua.Text = "Sửa";
-            this.btnSua.UseVisualStyleBackColor = false;
-            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
-            // 
-            // btnXoa
-            // 
-            this.btnXoa.BackColor = System.Drawing.Color.Red;
-            this.btnXoa.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXoa.ForeColor = System.Drawing.Color.White;
-            this.btnXoa.Location = new System.Drawing.Point(1037, 644);
-            this.btnXoa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(144, 44);
-            this.btnXoa.TabIndex = 21;
-            this.btnXoa.Text = "Xóa";
-            this.btnXoa.UseVisualStyleBackColor = false;
-            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnExit
             // 
@@ -166,29 +135,12 @@
             this.btnExit.UseVisualStyleBackColor = false;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // btnThemTaiKhoanNhanVienMoiTao
-            // 
-            this.btnThemTaiKhoanNhanVienMoiTao.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.btnThemTaiKhoanNhanVienMoiTao.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThemTaiKhoanNhanVienMoiTao.ForeColor = System.Drawing.Color.White;
-            this.btnThemTaiKhoanNhanVienMoiTao.Location = new System.Drawing.Point(2, 644);
-            this.btnThemTaiKhoanNhanVienMoiTao.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnThemTaiKhoanNhanVienMoiTao.Name = "btnThemTaiKhoanNhanVienMoiTao";
-            this.btnThemTaiKhoanNhanVienMoiTao.Size = new System.Drawing.Size(388, 44);
-            this.btnThemTaiKhoanNhanVienMoiTao.TabIndex = 21;
-            this.btnThemTaiKhoanNhanVienMoiTao.Text = "Thêm Tài Khoản Nhân Viên Mới Tạo";
-            this.btnThemTaiKhoanNhanVienMoiTao.UseVisualStyleBackColor = false;
-            this.btnThemTaiKhoanNhanVienMoiTao.Click += new System.EventHandler(this.btnThemTaiKhoanNhanVienMoiTao_Click);
-            // 
             // FDanhSachNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1353, 690);
-            this.Controls.Add(this.btnThemTaiKhoanNhanVienMoiTao);
             this.Controls.Add(this.btnExit);
-            this.Controls.Add(this.btnXoa);
-            this.Controls.Add(this.btnSua);
             this.Controls.Add(this.btnThem);
             this.Controls.Add(this.panelNen);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -211,9 +163,6 @@
         private System.Windows.Forms.TextBox txtTenNV;
         private System.Windows.Forms.Panel panelNen;
         private System.Windows.Forms.Button btnThem;
-        private System.Windows.Forms.Button btnSua;
-        private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.Button btnThemTaiKhoanNhanVienMoiTao;
     }
 }
