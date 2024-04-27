@@ -628,4 +628,17 @@ RETURN (
     WHERE TenNV LIKE '%' + @TenNV + '%'
 )
 --End --Search Nhân Viên theo tên
+
+--Tìm kiếm theo mã phiếu phạt
+CREATE FUNCTION [dbo].[func_TimKiemTheoMaPhieuPhat] (@MaPP NVARCHAR(10))
+RETURNS @PPList TABLE (MaPP NVARCHAR(10), LoaiPhat NVARCHAR(50))
+AS
+BEGIN
+	INSERT INTO @PPList (MaPP, LoaiPhat)
+    SELECT MaPhieuPhat, LoaiPhat
+    FROM dbo.ChiTietPhieuPhat
+    WHERE MaPhieuPhat = @MaPP
+	RETURN
+END
+--Kết thúc tìm kiếm mã phiếu phạt
 --Kết thúc tổ Mượn trả
