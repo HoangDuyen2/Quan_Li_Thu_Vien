@@ -215,3 +215,11 @@ SELECT
 FROM
     ChiTietPhieuPhat
 --End View ChiTietPhieuPhat
+-- View TaiKhoan
+CREATE VIEW TaiKhoanView
+AS
+SELECT
+    *
+FROM
+    TaiKhoan
+--End ViewTaiKhoan
