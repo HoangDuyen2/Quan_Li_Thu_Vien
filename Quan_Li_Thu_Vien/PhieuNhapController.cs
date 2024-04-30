@@ -73,7 +73,7 @@ namespace Quan_Li_Thu_Vien
         }
         public DataTable timKiemNCCTheoTen(string tenNCC)
         {
-            SqlCommand cmmd = new SqlCommand("SELECT * FROM func_SearchNCCNameTablePhieuNhap (@TenNCC)", conn.GetSqlConnection());
+            SqlCommand cmmd = new SqlCommand("SELECT * FROM func_SearchNCCName (@TenNCC)", conn.GetSqlConnection());
             cmmd.Parameters.Add("@TenNCC", SqlDbType.NVarChar).Value = tenNCC;
             SqlDataAdapter adapter = new SqlDataAdapter(cmmd);
             DataTable dt = new DataTable();

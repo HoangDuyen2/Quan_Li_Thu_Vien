@@ -36,7 +36,7 @@ namespace Quan_Li_Thu_Vien
         {
             try
             {
-                dtgvNV.DataSource = dsnv.timKiemNV(txtTenNV.Text);
+                dtgvNV.DataSource = dsnv.timKiemNV(txtTenNV.Text,LoginInfo.maTo);
                 dtgvNV.RowHeadersVisible = false;
                 dtgvNV.BackgroundColor = Color.White;
                 dtgvNV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;

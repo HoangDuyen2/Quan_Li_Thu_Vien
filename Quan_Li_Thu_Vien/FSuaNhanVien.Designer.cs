@@ -51,7 +51,6 @@
             this.radiobtnNu = new System.Windows.Forms.RadioButton();
             this.dtNgaySinh = new System.Windows.Forms.DateTimePicker();
             this.btnChinhSua = new System.Windows.Forms.Button();
-            this.btnXoa = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtMaTo
@@ -309,26 +308,11 @@
             this.btnChinhSua.UseVisualStyleBackColor = false;
             this.btnChinhSua.Click += new System.EventHandler(this.btnChinhSua_Click);
             // 
-            // btnXoa
-            // 
-            this.btnXoa.BackColor = System.Drawing.Color.Gold;
-            this.btnXoa.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXoa.ForeColor = System.Drawing.Color.White;
-            this.btnXoa.Location = new System.Drawing.Point(155, 595);
-            this.btnXoa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(144, 44);
-            this.btnXoa.TabIndex = 131;
-            this.btnXoa.Text = "Xóa";
-            this.btnXoa.UseVisualStyleBackColor = false;
-            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
-            // 
             // FSuaNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(617, 656);
-            this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnChinhSua);
             this.Controls.Add(this.dtNgaySinh);
             this.Controls.Add(this.radiobtnNu);
@@ -386,6 +370,5 @@
         private System.Windows.Forms.RadioButton radiobtnNu;
         private System.Windows.Forms.DateTimePicker dtNgaySinh;
         private System.Windows.Forms.Button btnChinhSua;
-        private System.Windows.Forms.Button btnXoa;
     }
 }

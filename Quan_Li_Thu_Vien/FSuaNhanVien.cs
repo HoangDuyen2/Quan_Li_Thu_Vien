@@ -84,19 +84,6 @@ namespace Quan_Li_Thu_Vien
             btnOK.Show();
             TruyCap();
         }
-        private void btnXoa_Click(object sender, EventArgs e)
-        {
-            if (muonTraSachController.xoaThongTinNhanVien(txtMaNV.Text))
-            {
-                MessageBox.Show("Xóa nhân viên thành công", "Thông báo");
-                btnOK.Hide();
-                btnChinhSua.Hide();
-            }
-            else
-            {
-                MessageBox.Show("Xóa Nhân Viên không thành công", "Lỗi");
-            }
-        }
         #endregion
         #region Truy cập vào textbox
         public void KhongTruyCap()

@@ -422,11 +422,12 @@ namespace Quan_Li_Thu_Vien
             adapter.Fill(table);
             return table;
         }
-        public DataTable timKiemNV(string tenNV)
+        public DataTable timKiemNV(string tenNV, string maTo)
         {
             string funcName = "func_SearchNhanVienByTen";
-            SqlCommand command = new SqlCommand("Select * from " + funcName + " (@TenNV)", conn.GetSqlConnection());
+            SqlCommand command = new SqlCommand("Select * from " + funcName + " (@TenNV, @MaTo)", conn.GetSqlConnection());
             command.Parameters.Add("@TenNV", SqlDbType.NVarChar).Value = tenNV;
+            command.Parameters.Add("@MaTo", SqlDbType.NVarChar).Value = maTo;
             DataTable table = new DataTable();
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             adapter.Fill(table);

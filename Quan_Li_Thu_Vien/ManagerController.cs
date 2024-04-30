@@ -13,7 +13,7 @@ namespace Quan_Li_Thu_Vien
     {
         DBConnection conn = new DBConnection();
         public ManagerController() { }
-        public bool suaTaiKhoan(TaiKhoanUser tk)
+        public bool suaTaiKhoan(TaiKhoan tk)
         {
             SqlCommand cmmd = new SqlCommand("proc_UpdateAccountEmpploye", conn.GetSqlConnection());
             cmmd.CommandType = CommandType.StoredProcedure;
@@ -31,11 +31,13 @@ namespace Quan_Li_Thu_Vien
                 return false;
             }
         }
-        public bool themTaiKhoan(TaiKhoanUser tk)
+        public bool themTaiKhoan(TaiKhoan tk)
         {
-            SqlCommand cmmd = new SqlCommand("InsertTaiKhoan", conn.GetSqlConnection());
+            SqlCommand cmmd = new SqlCommand("proc_CreateAccount", conn.GetSqlConnection());
             cmmd.CommandType = CommandType.StoredProcedure;
             cmmd.Parameters.AddWithValue("@MaNV", tk.MaNV);
+            cmmd.Parameters.AddWithValue("@Username", tk.Username);
+            cmmd.Parameters.AddWithValue("@PasswordUser", tk.PasswordUser);
             conn.openConnection();
             if (cmmd.ExecuteNonQuery() > 0)
             {
@@ -48,7 +50,7 @@ namespace Quan_Li_Thu_Vien
                 return false;
             }
         }
-        public bool xoaTaiKhoan(TaiKhoanUser tk)
+        public bool xoaTaiKhoan(TaiKhoan tk)
         {
             SqlCommand cmmd = new SqlCommand("proc_DeleteAccountEmpploye", conn.GetSqlConnection());
             cmmd.CommandType = CommandType.StoredProcedure;

@@ -22,8 +22,6 @@ namespace Quan_Li_Thu_Vien
         public FPhieuNhap()
         {
             InitializeComponent();
-            if (LoginInfo.Role == "ToTruong")
-                btnThemChiTiet.Hide();
         }
         public void LoadData()
         {
