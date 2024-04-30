@@ -896,40 +896,58 @@ END
 --End Insert InsertThongTinNhanVienvaNhanVien
 
 --Insert TaiKhoan
-CREATE PROCEDURE proc_InsertTaiKhoan
-    @Username NVARCHAR(50),
-    @PasswordUser NVARCHAR(100),
-    @MaNV NVARCHAR(10)
+CREATE PROCEDURE InsertTaiKhoan
+   @username nvarchar(50),
+    @password nvarchar(50),
+    @manv nvarchar(10)
 AS
 BEGIN
     SET NOCOUNT ON;
-
-    BEGIN TRANSACTION tran_CreateAccount
     BEGIN TRY
-        IF @MaNV NOT IN (SELECT MaNV FROM NhanVien)
-        BEGIN
-            DECLARE @err nvarchar(MAX)
-            SELECT @err = N'Lỗi ' + 'Nhân viên có mã ' + @MaNV + ' không tồn tại'
-            RAISERROR (@err, 16, 1);
-            RETURN;
-        END;
+        BEGIN TRANSACTION;
         
-        IF EXISTS (SELECT * FROM TaiKhoan WHERE Username = @Username)
+        IF EXISTS (SELECT * FROM TaiKhoan WHERE Username = @username)
         BEGIN
-            RAISERROR ('Tài khoản đã tồn tại',16,1)
-            RETURN
+            THROW 50000, 'Đã tồn tại Username này trong hệ thống', 1;
         END;
-        
-        INSERT INTO TaiKhoan (Username, PasswordUser, MaNV)
-        VALUES (@Username, @PasswordUser, @MaNV)
 
-        COMMIT TRANSACTION
+        IF NOT EXISTS (SELECT * FROM ThongTinNhanVien tt WHERE tt.MaNV = @manv)
+        BEGIN
+            THROW 50000, 'Không tồn tại mã nhân viên này trong hệ thống', 1;
+        END;
+
+        DECLARE @login nvarchar(4000);
+        SET @login = N'CREATE LOGIN ' + QUOTENAME(@username) + ' WITH PASSWORD = ' +   
+                     QUOTENAME(@password, '''') + ', default_database = ' + QUOTENAME('QL_ThuVien');
+        EXEC(@login);
+        
+        DECLARE @user nvarchar(4000);
+        SET @user = N'CREATE USER ' + QUOTENAME(@username) + ' FOR LOGIN ' + QUOTENAME(@username);
+        EXEC(@user);
+
+        IF EXISTS (SELECT * FROM NhanVien tt WHERE tt.MaNV = @manv)
+        BEGIN
+            EXEC sp_addrolemember 'Staff', @username;
+        END;
+
+        IF EXISTS (SELECT * FROM ToTruong tt WHERE tt.MaNV = @manv)
+        BEGIN
+            EXEC sp_addrolemember 'Leader', @username;
+        END;
+
+        IF EXISTS (SELECT * FROM NguoiQuanLi tt WHERE tt.MaNV = @manv)
+        BEGIN
+            EXEC sp_addrolemember 'Manager', @username;
+        END;
+
+        COMMIT;
+        RETURN 'Tạo tài khoản thành công';
     END TRY
     BEGIN CATCH
-        ROLLBACK TRANSACTION
-        THROW
-    END CATCH
-END
+        ROLLBACK;
+        RETURN ERROR_MESSAGE();
+    END CATCH;
+END;
 
 --End Insert TaiKhoan
 --Insert ChiTietPhieuPhat
@@ -989,57 +1007,3 @@ BEGIN
         THROW
     END CATCH
 END
---Procedure tạo TaiKhoan
-CREATE PROCEDURE TaoTaiKhoan
-    @username nvarchar(50),
-    @password nvarchar(50),
-    @manv nvarchar(10)
-AS
-BEGIN
-    SET NOCOUNT ON;
-    BEGIN TRY
-        BEGIN TRANSACTION;
-        
-        IF EXISTS (SELECT * FROM TaiKhoan WHERE Username = @username)
-        BEGIN
-            THROW 50000, 'Đã tồn tại Username này trong hệ thống', 1;
-        END;
-
-        IF NOT EXISTS (SELECT * FROM ThongTinNhanVien tt WHERE tt.MaNV = @manv)
-        BEGIN
-            THROW 50000, 'Không tồn tại mã nhân viên này trong hệ thống', 1;
-        END;
-
-        DECLARE @login nvarchar(4000);
-        SET @login = N'CREATE LOGIN ' + QUOTENAME(@username) + ' WITH PASSWORD = ' +   
-                     QUOTENAME(@password, '''') + ', default_database = ' + QUOTENAME('QL_ThuVien');
-        EXEC(@login);
-        
-        DECLARE @user nvarchar(4000);
-        SET @user = N'CREATE USER ' + QUOTENAME(@username) + ' FOR LOGIN ' + QUOTENAME(@username);
-        EXEC(@user);
-
-        IF EXISTS (SELECT * FROM NhanVien tt WHERE tt.MaNV = @manv)
-        BEGIN
-            EXEC sp_addrolemember 'Staff', @username;
-        END;
-
-        IF EXISTS (SELECT * FROM ToTruong tt WHERE tt.MaNV = @manv)
-        BEGIN
-            EXEC sp_addrolemember 'Leader', @username;
-        END;
-
-        IF EXISTS (SELECT * FROM NguoiQuanLi tt WHERE tt.MaNV = @manv)
-        BEGIN
-            EXEC sp_addrolemember 'Manager', @username;
-        END;
-
-        COMMIT;
-        RETURN 'Tạo tài khoản thành công';
-    END TRY
-    BEGIN CATCH
-        ROLLBACK;
-        RETURN ERROR_MESSAGE();
-    END CATCH;
-END;
---End proc tạo TaiKhoan
