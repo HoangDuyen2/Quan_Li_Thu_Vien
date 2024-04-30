@@ -990,7 +990,7 @@ BEGIN
     END CATCH
 END
 --Procedure tạo TaiKhoan
-CREATE PROCEDURE CreateAccountProcedure
+CREATE PROCEDURE TaoTaiKhoan
     @username nvarchar(50),
     @password nvarchar(50),
     @manv nvarchar(10)
