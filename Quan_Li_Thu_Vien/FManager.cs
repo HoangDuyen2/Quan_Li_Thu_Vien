@@ -22,8 +22,8 @@ namespace Quan_Li_Thu_Vien
 
         private void btn_Remove_Click(object sender, EventArgs e)
         {
-            TaiKhoan tk = new TaiKhoan(txt_UserName.Text, txt_Password.Text, txt_EmpID.Text);
-            if (manager.xoaTaiKhoan(tk))
+            TaiKhoanUser tk3 = new TaiKhoanUser(txt_UserName.Text, txt_Password.Text, txt_EmpID.Text);
+            if (manager.xoaTaiKhoan(tk3))
             {
                 MessageBox.Show("Thực thi thêm thành công", "Thông báo");
                 FManager_Load(sender, e);
@@ -33,8 +33,8 @@ namespace Quan_Li_Thu_Vien
 
         private void btn_Edit_Click(object sender, EventArgs e)
         {
-            TaiKhoan tk = new TaiKhoan(txt_UserName.Text, txt_Password.Text, txt_EmpID.Text);
-            if (manager.suaTaiKhoan(tk))
+            TaiKhoanUser tk2 = new TaiKhoanUser(txt_UserName.Text, txt_Password.Text, txt_EmpID.Text);
+            if (manager.suaTaiKhoan(tk2))
             {
                 MessageBox.Show("Thực thi sửa thành công", "Thông báo");
                 FManager_Load(sender, e);
@@ -108,8 +108,8 @@ namespace Quan_Li_Thu_Vien
 
         private void button1_Click(object sender, EventArgs e)
         {
-            TaiKhoan tk = new TaiKhoan("", "", txt_EmpID.Text);
-            if (manager.themTaiKhoan(tk))
+            TaiKhoanUser tk1 = new TaiKhoanUser("", "", txt_EmpID.Text);
+            if (manager.themTaiKhoan(tk1))
             {
                 MessageBox.Show("Thực thi thêm thành công", "Thông báo");
                 FManager_Load(sender, e);
