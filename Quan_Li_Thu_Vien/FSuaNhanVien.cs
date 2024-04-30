@@ -96,7 +96,6 @@ namespace Quan_Li_Thu_Vien
             {
                 MessageBox.Show("Xóa Nhân Viên không thành công", "Lỗi");
             }
-            MessageBox.Show("Xóa nhân viên thành công", "Thông báo");
         }
         #endregion
         #region Truy cập vào textbox
