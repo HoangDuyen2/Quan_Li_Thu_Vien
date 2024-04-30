@@ -116,5 +116,23 @@ namespace Quan_Li_Thu_Vien
             }
             else MessageBox.Show("Thực thi thêm thất bại", "Thông báo");
         }
+
+        private void btnMuonSach_Click(object sender, EventArgs e)
+        {
+            FTrangChuToMuonSach_ToTruong fTrangChuToMuonSach_ToTruong = new FTrangChuToMuonSach_ToTruong();
+            fTrangChuToMuonSach_ToTruong.ShowDialog();
+        }
+
+        private void btnNhapSach_Click(object sender, EventArgs e)
+        {
+            FTrangChuToNhapSach_ToTruongcs fTrangChuToNhapSach_ToTruongcs = new FTrangChuToNhapSach_ToTruongcs();
+            fTrangChuToNhapSach_ToTruongcs.ShowDialog();
+        }
+
+        private void btnSach_Click(object sender, EventArgs e)
+        {
+            FTrangChuToSach_ToTruong fTrangChuToSach_ToTruong = new FTrangChuToSach_ToTruong();
+            fTrangChuToSach_ToTruong.ShowDialog();
+        }
     }
 }
