@@ -13,7 +13,7 @@ namespace Quan_Li_Thu_Vien
 {
     public partial class FormDangNhap : Form
     {
-        DBConnection conn;
+        DBConnection conn = new DBConnection();
         public FormDangNhap()
         {
             InitializeComponent();
@@ -41,77 +41,84 @@ namespace Quan_Li_Thu_Vien
             if (radbtnToTruong.Checked)
                 DangNhap("ToTruong");
         }
+
         private void DangNhap(string Role)
         {
-            conn = new DBConnection();
             conn.openConnection();
             string tk = txtTenDangNhap.Text;
             string mk = txtMatKhau.Text;
-            string cmmd = "select distinct * from "+Role+" nv INNER JOIN TaiKhoan tk ON nv.MaNV=tk.MaNV WHERE Username=@username AND PasswordUser=@password";
-            SqlCommand cmd = new SqlCommand(cmmd, conn.GetSqlConnection());
-            cmd.Parameters.AddWithValue("@username", tk);
-            cmd.Parameters.AddWithValue("@password", mk);
 
-            SqlDataReader dta = cmd.ExecuteReader();
-            if (dta.Read())
+            // Check if @username and @password match the existing logins
+            string commands = "IF EXISTS (SELECT 1 FROM sys.sql_logins WHERE name = @username AND PWDCOMPARE(@password, password_hash) = 1) SELECT 1 ELSE SELECT 0";
+            SqlCommand cmdCheckLogin = new SqlCommand(commands, conn.GetSqlConnection());
+            cmdCheckLogin.Parameters.AddWithValue("@username", tk);
+            cmdCheckLogin.Parameters.AddWithValue("@password", mk);
+            int loginExists = Convert.ToInt32(cmdCheckLogin.ExecuteScalar());
+
+            if (loginExists == 1)
             {
-                MessageBox.Show("Đăng nhập thành công");
-                LoginInfo.Username = txtTenDangNhap.Text;
-                string query = "SELECT tk.MaNV, nv.MaTo FROM TaiKhoan tk INNER JOIN "+Role+" nv ON tk.MaNV = nv.MaNV WHERE tk.Username = @username";
-                
-                SqlCommand cmdGetMaNV = new SqlCommand(query, conn.GetSqlConnection());
-                cmdGetMaNV.Parameters.AddWithValue("@username", tk);
-                string maNV = dta["MaNV"].ToString();
-                
-                LoginInfo.Role = Role;
-                if (Role == "NhanVien")
+                string cmmd = "SELECT DISTINCT * FROM " + Role + " nv INNER JOIN TaiKhoan tk ON nv.MaNV=tk.MaNV WHERE Username=@username AND PasswordUser=@password";
+                SqlCommand cmd = new SqlCommand(cmmd, conn.GetSqlConnection());
+                cmd.Parameters.AddWithValue("@username", tk);
+                cmd.Parameters.AddWithValue("@password", mk);
+                SqlDataReader dta = cmd.ExecuteReader();
+
+                if (dta.Read())
                 {
-                    string maTo = dta["MaTo"].ToString();
-                    LoginInfo.maTo = maTo;
-                    if (maTo == "TO01")
+                    MessageBox.Show("Đăng nhập thành công");
+                    LoginInfo.Username = txtTenDangNhap.Text;
+                    LoginInfo.Password = txtMatKhau.Text;
+                    string query = "SELECT tk.MaNV, nv.MaTo FROM TaiKhoan tk INNER JOIN " + Role + " nv ON tk.MaNV = nv.MaNV WHERE tk.Username = @username";
+
+                    SqlCommand cmdGetMaNV = new SqlCommand(query, conn.GetSqlConnection());
+                    cmdGetMaNV.Parameters.AddWithValue("@username", tk);
+                    string maNV = dta["MaNV"].ToString();
+
+                    LoginInfo.Role = Role;
+                    if (Role == "NhanVien")
                     {
-                        FTrangChuToNhapSach_NhanVien fTrangChuToNhapSach_NhanVien = new FTrangChuToNhapSach_NhanVien();
-                        fTrangChuToNhapSach_NhanVien.ShowDialog();
-                        this.Show();
-                    }
-                    if (maTo == "TO02")
-                    {
-                        FTrangChuToMuonSach_NhanVien fTrangChuToMuonSach_NhanVien = new FTrangChuToMuonSach_NhanVien();
-                        fTrangChuToMuonSach_NhanVien.ShowDialog();
-                        this.Show();
-                    }
-                    else
-                    {
-                        if (maTo == "TO03")
+                        string maTo = dta["MaTo"].ToString();
+                        LoginInfo.maTo = maTo;
+                        if (maTo == "TO01")
+                        {
+                            FTrangChuToNhapSach_NhanVien fTrangChuToNhapSach_NhanVien = new FTrangChuToNhapSach_NhanVien();
+                            this.Hide();
+                            fTrangChuToNhapSach_NhanVien.ShowDialog();
+                            this.Show();
+                        }
+                        else if (maTo == "TO02")
+                        {
+                            FTrangChuToMuonSach_NhanVien fTrangChuToMuonSach_NhanVien = new FTrangChuToMuonSach_NhanVien();
+                            this.Hide();
+                            fTrangChuToMuonSach_NhanVien.ShowDialog();
+                            this.Show();
+                        }
+                        else if (maTo == "TO03")
                         {
                             FTrangChuToSach_ToTruong fTrangChuToSach_NhanVien = new FTrangChuToSach_ToTruong();
                             fTrangChuToSach_NhanVien.ShowDialog();
                             this.Show();
                         }
                     }
-                }
-                if (Role == "ToTruong")
-                {
-                    string maTo = dta["MaTo"].ToString();
-                    LoginInfo.maTo = maTo;
-                    if (maTo == "TO01")
+                    else if (Role == "ToTruong")
                     {
-                        FTrangChuToNhapSach_ToTruongcs fTrangChuToNhapSach_ToTruong = new FTrangChuToNhapSach_ToTruongcs();
-                        this.Hide();
-                        fTrangChuToNhapSach_ToTruong.ShowDialog();
-                        this.Show();
-
-                    }
-                    if (maTo == "TO02")
-                    {
-                        FTrangChuToMuonSach_ToTruong fTrangChuToMuonSach_ToTruong = new FTrangChuToMuonSach_ToTruong();
-                        this.Hide();
-                        fTrangChuToMuonSach_ToTruong.ShowDialog();
-                        this.Show();
-                    }
-                    else
-                    {
-                        if (maTo == "TO03")
+                        string maTo = dta["MaTo"].ToString();
+                        LoginInfo.maTo = maTo;
+                        if (maTo == "TO01")
+                        {
+                            FTrangChuToNhapSach_ToTruongcs fTrangChuToNhapSach_ToTruong = new FTrangChuToNhapSach_ToTruongcs();
+                            this.Hide();
+                            fTrangChuToNhapSach_ToTruong.ShowDialog();
+                            this.Show();
+                        }
+                        else if (maTo == "TO02")
+                        {
+                            FTrangChuToMuonSach_ToTruong fTrangChuToMuonSach_ToTruong = new FTrangChuToMuonSach_ToTruong();
+                            this.Hide();
+                            fTrangChuToMuonSach_ToTruong.ShowDialog();
+                            this.Show();
+                        }
+                        else if (maTo == "TO03")
                         {
                             FTrangChuToSach_ToTruong fTrangChuToSach_ToTruong = new FTrangChuToSach_ToTruong();
                             this.Hide();
@@ -119,18 +126,18 @@ namespace Quan_Li_Thu_Vien
                             this.Show();
                         }
                     }
+                    else if (Role == "NguoiQuanLi")
+                    {
+                        FManager fManager = new FManager();
+                        fManager.ShowDialog();
+                    }
                 }
-                if(Role == "NguoiQuanLi")
+                else
                 {
-                    FManager fManager = new FManager();
-                    fManager.ShowDialog();
+                    MessageBox.Show("Đăng nhập thất bại");
                 }
+                dta.Close();
             }
-            else
-            {
-                MessageBox.Show("Đăng nhập thất bại");
-            }
-            conn.closeConnection();
         }
     }
 }
