@@ -17,7 +17,6 @@ namespace Quan_Li_Thu_Vien
         {
             SqlCommand cmmd = new SqlCommand("proc_UpdateAccountEmpploye", conn.GetSqlConnection());
             cmmd.CommandType = CommandType.StoredProcedure;
-            cmmd.Parameters.AddWithValue("@Username", tk.Username);
             cmmd.Parameters.AddWithValue("@PasswordUser", tk.PasswordUser);
             cmmd.Parameters.AddWithValue("@MaNV", tk.MaNV);
             conn.openConnection();

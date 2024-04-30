@@ -36,10 +36,10 @@ namespace Quan_Li_Thu_Vien
             TaiKhoan tk = new TaiKhoan(txt_UserName.Text, txt_Password.Text, txt_EmpID.Text);
             if (manager.suaTaiKhoan(tk))
             {
-                MessageBox.Show("Thực thi thêm thành công", "Thông báo");
+                MessageBox.Show("Thực thi sửa thành công", "Thông báo");
                 FManager_Load(sender, e);
             }
-            else MessageBox.Show("Thực thi thêm thất bại", "Thông báo");
+            else MessageBox.Show("Thực thi sửa thất bại", "Thông báo");
         }
 
         private void FManager_Load(object sender, EventArgs e)
