@@ -72,7 +72,7 @@ namespace Quan_Li_Thu_Vien
 
                     SqlCommand cmdGetMaNV = new SqlCommand(query, conn.GetSqlConnection());
                     cmdGetMaNV.Parameters.AddWithValue("@username", tk);
-                    TaiKhoan.maNV = dta["MaNV"].ToString();
+                    LoginInfo.maNV = dta["MaNV"].ToString();
 
                     LoginInfo.Role = Role;
                     if (Role == "NhanVien")

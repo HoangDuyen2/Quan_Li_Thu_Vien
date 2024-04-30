@@ -25,7 +25,7 @@ namespace Quan_Li_Thu_Vien
         }
         public void LoadData()
         {
-            txtMaNV.Text = TaiKhoan.maNV;
+            txtMaNV.Text = LoginInfo.maNV;
         }
 
         private void btnOK_Click(object sender, EventArgs e)

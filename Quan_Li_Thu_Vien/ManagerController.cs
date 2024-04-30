@@ -35,7 +35,7 @@ namespace Quan_Li_Thu_Vien
         {
             SqlCommand cmmd = new SqlCommand("InsertTaiKhoan", conn.GetSqlConnection());
             cmmd.CommandType = CommandType.StoredProcedure;
-            cmmd.Parameters.AddWithValue("@MaNV", taiKhoan.MaNV);
+            cmmd.Parameters.AddWithValue("@manv", taiKhoan.MaNV);
             conn.openConnection();
             if (cmmd.ExecuteNonQuery() > 0)
             {
@@ -53,6 +53,8 @@ namespace Quan_Li_Thu_Vien
             SqlCommand cmmd = new SqlCommand("proc_DeleteAccountEmpploye", conn.GetSqlConnection());
             cmmd.CommandType = CommandType.StoredProcedure;
             cmmd.Parameters.AddWithValue("@MaNV", tk.MaNV);
+            cmmd.Parameters.AddWithValue("@Username", tk.Username);
+            cmmd.Parameters.AddWithValue("@PasswordUser", tk.PasswordUser);
             conn.openConnection();
             if (cmmd.ExecuteNonQuery() > 0)
             {

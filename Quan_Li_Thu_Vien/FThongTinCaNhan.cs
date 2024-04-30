@@ -24,7 +24,7 @@ namespace Quan_Li_Thu_Vien
             conn = new DBConnection();
             conn.openConnection();
 
-            string maNV = TaiKhoan.maNV;
+            string maNV = LoginInfo.maNV;
 
             string query = "SELECT tt.MaNV, tt.TenNV, tt.GioiTinh, tt.NgaySinh,tt.Luong, tt.DiaChi, tt.SDT, tt.Email,tt.NgayTao " +
                            "FROM ThongTinNhanVien tt " +
