@@ -13,7 +13,7 @@ namespace Quan_Li_Thu_Vien
 {
     public partial class FormDangNhap : Form
     {
-        DBConnection conn;
+        DBConnection conn = new DBConnection();
         public FormDangNhap()
         {
             InitializeComponent();
@@ -44,7 +44,6 @@ namespace Quan_Li_Thu_Vien
 
         private void DangNhap(string Role)
         {
-            conn = new DBConnection();
             conn.openConnection();
             string tk = txtTenDangNhap.Text;
             string mk = txtMatKhau.Text;
@@ -68,6 +67,7 @@ namespace Quan_Li_Thu_Vien
                 {
                     MessageBox.Show("Đăng nhập thành công");
                     LoginInfo.Username = txtTenDangNhap.Text;
+                    LoginInfo.Password = txtMatKhau.Text;
                     string query = "SELECT tk.MaNV, nv.MaTo FROM TaiKhoan tk INNER JOIN " + Role + " nv ON tk.MaNV = nv.MaNV WHERE tk.Username = @username";
 
                     SqlCommand cmdGetMaNV = new SqlCommand(query, conn.GetSqlConnection());
