@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -39,14 +40,16 @@
             this.btn_Remove = new System.Windows.Forms.Button();
             this.btn_Edit = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.label5 = new System.Windows.Forms.Label();
+            this.btnSach = new System.Windows.Forms.Button();
+            this.btnNhapSach = new System.Windows.Forms.Button();
+            this.btnMuonSach = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -58,6 +61,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(944, 51);
             this.panel1.TabIndex = 0;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 12.2F);
+            this.label5.Location = new System.Drawing.Point(536, 18);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(279, 30);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Nhân viên chưa có tài khoản";
             // 
             // label1
             // 
@@ -142,6 +155,9 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.btnSach);
+            this.panel2.Controls.Add(this.btnNhapSach);
+            this.panel2.Controls.Add(this.btnMuonSach);
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.dataGridView2);
             this.panel2.Controls.Add(this.dataGridView1);
@@ -160,16 +176,45 @@
             this.panel2.Size = new System.Drawing.Size(944, 572);
             this.panel2.TabIndex = 1;
             // 
-            // dataGridView1
+            // btnSach
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 6);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(513, 323);
-            this.dataGridView1.TabIndex = 9;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.btnSach.Location = new System.Drawing.Point(216, 523);
+            this.btnSach.Name = "btnSach";
+            this.btnSach.Size = new System.Drawing.Size(97, 46);
+            this.btnSach.TabIndex = 14;
+            this.btnSach.Text = "Sách";
+            this.btnSach.UseVisualStyleBackColor = true;
+            this.btnSach.Click += new System.EventHandler(this.btnSach_Click);
+            // 
+            // btnNhapSach
+            // 
+            this.btnNhapSach.Location = new System.Drawing.Point(113, 523);
+            this.btnNhapSach.Name = "btnNhapSach";
+            this.btnNhapSach.Size = new System.Drawing.Size(97, 46);
+            this.btnNhapSach.TabIndex = 13;
+            this.btnNhapSach.Text = "Nhập Sách";
+            this.btnNhapSach.UseVisualStyleBackColor = true;
+            this.btnNhapSach.Click += new System.EventHandler(this.btnNhapSach_Click);
+            // 
+            // btnMuonSach
+            // 
+            this.btnMuonSach.Location = new System.Drawing.Point(12, 523);
+            this.btnMuonSach.Name = "btnMuonSach";
+            this.btnMuonSach.Size = new System.Drawing.Size(97, 46);
+            this.btnMuonSach.TabIndex = 12;
+            this.btnMuonSach.Text = "Mượn Sách";
+            this.btnMuonSach.UseVisualStyleBackColor = true;
+            this.btnMuonSach.Click += new System.EventHandler(this.btnMuonSach_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(390, 523);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(97, 46);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "Thêm";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // dataGridView2
             // 
@@ -182,25 +227,16 @@
             this.dataGridView2.TabIndex = 10;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
-            // label5
+            // dataGridView1
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 12.2F);
-            this.label5.Location = new System.Drawing.Point(536, 18);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(279, 30);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Nhân viên chưa có tài khoản";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(390, 523);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(97, 46);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "Thêm";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(12, 6);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(513, 323);
+            this.dataGridView1.TabIndex = 9;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // FManager
             // 
@@ -217,8 +253,8 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -240,5 +276,8 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnSach;
+        private System.Windows.Forms.Button btnNhapSach;
+        private System.Windows.Forms.Button btnMuonSach;
     }
 }

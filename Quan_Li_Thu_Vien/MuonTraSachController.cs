@@ -323,7 +323,7 @@ namespace Quan_Li_Thu_Vien
         #region Nhân viên
         public bool themThongTinNhanVien(Person person, string maTo)
         {
-            SqlCommand cmmd = new SqlCommand("InsertStaff", conn.GetSqlConnection());
+            SqlCommand cmmd = new SqlCommand("InsertNhanVienvaNhanVien", conn.GetSqlConnection());
             cmmd.CommandType = CommandType.StoredProcedure;
             cmmd.Parameters.AddWithValue("@TenNV", person.TenNguoi);
             cmmd.Parameters.AddWithValue("@GioiTinh", person.GioiTinh);
