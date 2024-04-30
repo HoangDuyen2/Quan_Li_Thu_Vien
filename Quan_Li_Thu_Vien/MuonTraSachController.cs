@@ -387,25 +387,7 @@ namespace Quan_Li_Thu_Vien
             }
         }
         #endregion
-        public bool themTaiKhoanNhanVien(TaiKhoan taikhoan)
-        {
-            SqlCommand cmmd = new SqlCommand("InsertTaiKhoan", conn.GetSqlConnection());
-            cmmd.CommandType = CommandType.StoredProcedure;
-            cmmd.Parameters.AddWithValue("@Username", taikhoan.Username);
-            cmmd.Parameters.AddWithValue("@PasswordUser", taikhoan.PasswordUser);
-            cmmd.Parameters.AddWithValue("@MaNV", taikhoan.MaNV);
-            conn.openConnection();
-            if (cmmd.ExecuteNonQuery() > 0)
-            {
-                conn.closeConnection();
-                return true;
-            }
-            else
-            {
-                conn.closeConnection();
-                return false;
-            }
-        }
+
         public bool checkTenDocGia(string tenDocGia)
         {
             string funcName = "[dbo].[func_SearchTenDocGiabyTenDocGia]";

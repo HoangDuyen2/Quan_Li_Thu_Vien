@@ -17,23 +17,24 @@ namespace Quan_Li_Thu_Vien
         MuonTraSachController muonTraSachController = new MuonTraSachController();
         public FThemPhieuMuonTra()
         {
-            InitializeComponent();    
+            InitializeComponent();
+            LoadData();
+
         }
         private void FThemPhieuMuonTra_Load(object sender, EventArgs e)
         {
-            LoadData();
         }
         public void LoadData()
         {
             string username = LoginInfo.Username;
-
+            MessageBox.Show(username);
             string query = "SELECT tk.MaNV " +
                            "FROM TaiKhoan tk " +
                            "WHERE tk.Username = @username";
             SqlCommand cmmd = new SqlCommand(query, conn.GetSqlConnection());
             cmmd.Parameters.AddWithValue("@username", username);
             conn.openConnection();
-            string maNV = cmmd.ExecuteScalar()?.ToString();
+            string maNV = cmmd.ExecuteScalar().ToString();
             conn.closeConnection();
             txtMaNV.Text = maNV;
         }

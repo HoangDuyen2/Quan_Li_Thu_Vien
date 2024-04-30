@@ -11,8 +11,7 @@ namespace Quan_Li_Thu_Vien
 {
     public class DBConnection
     {
-        SqlConnection conn = new SqlConnection(Properties.Settings.Default.conn);
-
+        SqlConnection conn = new SqlConnection(@"Data Source = (localdb)\mssqllocaldb;Initial Catalog = QL_ThuVien;User Id=" + LoginInfo.Username + ";Password=" + LoginInfo.Password + ";");
         public SqlConnection GetSqlConnection()
         {
             return conn;

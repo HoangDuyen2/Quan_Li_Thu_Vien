@@ -54,7 +54,7 @@
             this.panelNen.Controls.Add(this.btnThem);
             this.panelNen.Controls.Add(this.lbDanhSachPhieuPhat);
             this.panelNen.Controls.Add(this.dtgvPhieuPhat);
-            this.panelNen.Location = new System.Drawing.Point(-1, 2);
+            this.panelNen.Location = new System.Drawing.Point(1, 2);
             this.panelNen.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelNen.Name = "panelNen";
             this.panelNen.Size = new System.Drawing.Size(1357, 693);
@@ -109,11 +109,11 @@
             this.lbMaSach.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.lbMaSach.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbMaSach.ForeColor = System.Drawing.Color.DarkBlue;
-            this.lbMaSach.Location = new System.Drawing.Point(809, 57);
+            this.lbMaSach.Location = new System.Drawing.Point(813, 57);
             this.lbMaSach.Name = "lbMaSach";
-            this.lbMaSach.Size = new System.Drawing.Size(91, 25);
+            this.lbMaSach.Size = new System.Drawing.Size(98, 25);
             this.lbMaSach.TabIndex = 12;
-            this.lbMaSach.Text = "Mã Sách";
+            this.lbMaSach.Text = "Tên Sách";
             // 
             // btnExit
             // 

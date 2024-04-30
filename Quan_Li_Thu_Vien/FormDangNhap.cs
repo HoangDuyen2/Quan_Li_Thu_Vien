@@ -71,14 +71,12 @@ namespace Quan_Li_Thu_Vien
                     if (maTo == "TO01")
                     {
                         FTrangChuToNhapSach_NhanVien fTrangChuToNhapSach_NhanVien = new FTrangChuToNhapSach_NhanVien();
-                        this.Hide();
                         fTrangChuToNhapSach_NhanVien.ShowDialog();
                         this.Show();
                     }
                     if (maTo == "TO02")
                     {
                         FTrangChuToMuonSach_NhanVien fTrangChuToMuonSach_NhanVien = new FTrangChuToMuonSach_NhanVien();
-                        this.Hide();
                         fTrangChuToMuonSach_NhanVien.ShowDialog();
                         this.Show();
                     }
@@ -86,8 +84,7 @@ namespace Quan_Li_Thu_Vien
                     {
                         if (maTo == "TO03")
                         {
-                            FTrangChuToSach_NhanVien fTrangChuToSach_NhanVien = new FTrangChuToSach_NhanVien();
-                            this.Hide();
+                            FTrangChuToSach_ToTruong fTrangChuToSach_NhanVien = new FTrangChuToSach_ToTruong();
                             fTrangChuToSach_NhanVien.ShowDialog();
                             this.Show();
                         }

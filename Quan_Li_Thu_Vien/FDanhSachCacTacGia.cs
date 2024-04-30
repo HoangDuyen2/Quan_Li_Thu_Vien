@@ -16,8 +16,6 @@ namespace Quan_Li_Thu_Vien
         public FDanhSachCacTacGia()
         {
             InitializeComponent();
-            if(LoginInfo.Role == "ToTruong")
-                btnThem.Hide();
         }
         #region Load data
         public void LoadData()
