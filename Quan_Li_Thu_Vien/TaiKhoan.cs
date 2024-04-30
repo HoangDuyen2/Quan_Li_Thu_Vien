@@ -12,13 +12,12 @@ namespace Quan_Li_Thu_Vien
 
         private string username;
         private string passwordUser;
-        private string maNV;
+        public static string maNV;
 
         public TaiKhoan(string username, string passwordUser, string maNV)
         {
             this.username = username;
             this.passwordUser = passwordUser;
-            this.maNV = maNV;
         }
 
         public string Username { get => username; set => username = value; }

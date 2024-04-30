@@ -36,6 +36,7 @@
             this.btnDSDocGia = new System.Windows.Forms.Button();
             this.btnDSPhieuPhat = new System.Windows.Forms.Button();
             this.btnDSPhieuMuonTra = new System.Windows.Forms.Button();
+            this.btnXemNhanVienTrongTo = new System.Windows.Forms.Button();
             this.panelNen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxNen)).BeginInit();
             this.panelMucLuc.SuspendLayout();
@@ -63,6 +64,7 @@
             // panelMucLuc
             // 
             this.panelMucLuc.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panelMucLuc.Controls.Add(this.btnXemNhanVienTrongTo);
             this.panelMucLuc.Controls.Add(this.btnDanhSachSachDangMuon);
             this.panelMucLuc.Controls.Add(this.btnThongTinCaNhan);
             this.panelMucLuc.Controls.Add(this.btnDSDocGia);
@@ -90,7 +92,7 @@
             // 
             this.btnThongTinCaNhan.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnThongTinCaNhan.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThongTinCaNhan.Location = new System.Drawing.Point(-1, 265);
+            this.btnThongTinCaNhan.Location = new System.Drawing.Point(-1, 331);
             this.btnThongTinCaNhan.Name = "btnThongTinCaNhan";
             this.btnThongTinCaNhan.Size = new System.Drawing.Size(214, 65);
             this.btnThongTinCaNhan.TabIndex = 5;
@@ -134,6 +136,17 @@
             this.btnDSPhieuMuonTra.UseVisualStyleBackColor = false;
             this.btnDSPhieuMuonTra.Click += new System.EventHandler(this.btnDSPhieuMuonTra_Click);
             // 
+            // btnXemNhanVienTrongTo
+            // 
+            this.btnXemNhanVienTrongTo.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnXemNhanVienTrongTo.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXemNhanVienTrongTo.Location = new System.Drawing.Point(-1, 265);
+            this.btnXemNhanVienTrongTo.Name = "btnXemNhanVienTrongTo";
+            this.btnXemNhanVienTrongTo.Size = new System.Drawing.Size(214, 65);
+            this.btnXemNhanVienTrongTo.TabIndex = 15;
+            this.btnXemNhanVienTrongTo.Text = "Xem Nhân Viên Trong Tổ";
+            this.btnXemNhanVienTrongTo.UseVisualStyleBackColor = false;
+            // 
             // FTrangChuToMuonSach_NhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -160,5 +173,6 @@
         private System.Windows.Forms.Button btnDSPhieuPhat;
         private System.Windows.Forms.Button btnDSPhieuMuonTra;
         private System.Windows.Forms.Button btnDanhSachSachDangMuon;
+        private System.Windows.Forms.Button btnXemNhanVienTrongTo;
     }
 }

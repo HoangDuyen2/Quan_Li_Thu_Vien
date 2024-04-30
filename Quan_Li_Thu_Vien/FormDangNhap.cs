@@ -72,7 +72,7 @@ namespace Quan_Li_Thu_Vien
 
                     SqlCommand cmdGetMaNV = new SqlCommand(query, conn.GetSqlConnection());
                     cmdGetMaNV.Parameters.AddWithValue("@username", tk);
-                    string maNV = dta["MaNV"].ToString();
+                    TaiKhoan.maNV = dta["MaNV"].ToString();
 
                     LoginInfo.Role = Role;
                     if (Role == "NhanVien")
@@ -81,14 +81,14 @@ namespace Quan_Li_Thu_Vien
                         LoginInfo.maTo = maTo;
                         if (maTo == "TO01")
                         {
-                            FTrangChuToNhapSach_NhanVien fTrangChuToNhapSach_NhanVien = new FTrangChuToNhapSach_NhanVien();
+                            FTrangChuToNhapSach_ToTruongcs fTrangChuToNhapSach_NhanVien = new FTrangChuToNhapSach_ToTruongcs();
                             this.Hide();
                             fTrangChuToNhapSach_NhanVien.ShowDialog();
                             this.Show();
                         }
                         else if (maTo == "TO02")
                         {
-                            FTrangChuToMuonSach_NhanVien fTrangChuToMuonSach_NhanVien = new FTrangChuToMuonSach_NhanVien();
+                            FTrangChuToNhapSach_ToTruongcs fTrangChuToMuonSach_NhanVien = new FTrangChuToNhapSach_ToTruongcs();
                             this.Hide();
                             fTrangChuToMuonSach_NhanVien.ShowDialog();
                             this.Show();

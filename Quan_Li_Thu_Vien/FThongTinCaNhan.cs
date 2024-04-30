@@ -24,20 +24,18 @@ namespace Quan_Li_Thu_Vien
             conn = new DBConnection();
             conn.openConnection();
 
-            string username = LoginInfo.Username;
+            string maNV = TaiKhoan.maNV;
 
-            string query = "SELECT tk.MaNV, tt.TenNV, tt.GioiTinh, tt.NgaySinh,tt.Luong, tt.DiaChi, tt.SDT, tt.Email,tt.NgayTao " +
-                           "FROM TaiKhoan tk " +
-                           "INNER JOIN ThongTinNhanVien tt ON tk.MaNV = tt.MaNV " +
-                           "WHERE tk.Username = @username";
+            string query = "SELECT tt.MaNV, tt.TenNV, tt.GioiTinh, tt.NgaySinh,tt.Luong, tt.DiaChi, tt.SDT, tt.Email,tt.NgayTao " +
+                           "FROM ThongTinNhanVien tt " +
+                           "WHERE tt.MaNV = @maNV";
 
             SqlCommand cmmd = new SqlCommand(query, conn.GetSqlConnection());
-            cmmd.Parameters.AddWithValue("@username", username);
+            cmmd.Parameters.AddWithValue("@maNV", maNV);
 
             SqlDataReader reader = cmmd.ExecuteReader();
             if (reader.Read())
             {
-                string maNV = reader["MaNV"].ToString();
                 string tenNV = reader["TenNV"].ToString();
                 string gioiTinh = (reader["GioiTinh"].ToString() == "M") ? "Nam" : "Nữ";
                 string ngaySinh = reader["NgaySinh"].ToString();

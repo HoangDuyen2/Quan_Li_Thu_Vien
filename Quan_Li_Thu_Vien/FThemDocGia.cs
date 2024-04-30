@@ -37,7 +37,7 @@ namespace Quan_Li_Thu_Vien
                 MessageBox.Show("Không để trống các trường.", "Thông báo");
                 return;
             }
-            if (txtMaLoaiDG.Text != "SV" && txtMaLoaiDG.Text == "GV")
+            if (txtMaLoaiDG.Text != "SV" && txtMaLoaiDG.Text != "GV")
             {
                 MessageBox.Show("Hãy nhập SV hoặc GV", "Thông báo");
                 return;

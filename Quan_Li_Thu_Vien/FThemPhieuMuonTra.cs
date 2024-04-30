@@ -13,7 +13,6 @@ namespace Quan_Li_Thu_Vien
 {
     public partial class FThemPhieuMuonTra : Form
     {
-        DBConnection conn = new DBConnection();
         MuonTraSachController muonTraSachController = new MuonTraSachController();
         public FThemPhieuMuonTra()
         {
@@ -26,17 +25,7 @@ namespace Quan_Li_Thu_Vien
         }
         public void LoadData()
         {
-            string username = LoginInfo.Username;
-            MessageBox.Show(username);
-            string query = "SELECT tk.MaNV " +
-                           "FROM TaiKhoan tk " +
-                           "WHERE tk.Username = @username";
-            SqlCommand cmmd = new SqlCommand(query, conn.GetSqlConnection());
-            cmmd.Parameters.AddWithValue("@username", username);
-            conn.openConnection();
-            string maNV = cmmd.ExecuteScalar().ToString();
-            conn.closeConnection();
-            txtMaNV.Text = maNV;
+            txtMaNV.Text = TaiKhoan.maNV;
         }
 
         private void btnOK_Click(object sender, EventArgs e)
